@@ -1,4 +1,4 @@
-require 'byebug'
+# require 'byebug'
 class Api::SessionsController < ApplicationController
 
 

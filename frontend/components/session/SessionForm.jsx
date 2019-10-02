@@ -40,7 +40,7 @@ class SessionForm extends React.Component {
         );
     }
     demoUser(){
-        const demo_user = {username: 'Demo', password:'demo123'}
+        const demo_user = {username: 'Demo', password:'test123'}
         return(
             <button className="readon-outline" onClick={() => this.props.demo(demo_user).then(this.props.closeModal)}><i className="far fa-user"></i> Continue as Demo User</button>
             )

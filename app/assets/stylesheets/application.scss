@@ -286,3 +286,65 @@ li.error {
 ul.errors {
     padding: 0px;
 }
+
+.readon-submit:hover {
+    background-color: #1b6179;
+}
+
+[class^="readon"] {
+    transition: .3s all;
+}
+
+button.readon-outline:hover {
+    border-color: #2B9ABF;
+}
+
+.form-container {
+    border-bottom: 5px solid #2B9ABF;
+}
+
+.readon-submit:hover {
+    background-color: #1b6179;
+}
+
+[class^="readon"] {
+    transition: .3s all;
+}
+
+button.readon-outline:hover {
+    border-color: #2B9ABF;
+}
+
+.form-container {
+    border-bottom: 5px solid #2B9ABF;
+}
+
+
+.readon-blank, .readon-outline {
+    position: relative;
+}
+
+.readon-blank:after{
+    position: relative;
+    width: 0px;
+    content:'';
+    display:block;
+    height:1px;
+    background: #2B9ABF;
+    margin: 0 auto;
+    transition: .3s;
+}
+
+.readon-blank:hover:after{
+    position: relative;
+    width:100%;
+    content:'';
+    display:block;
+    height:1px;
+    bottom:0;
+}
+
+.readon-outline p {
+    margin: 0;
+    display: inline-block;
+}

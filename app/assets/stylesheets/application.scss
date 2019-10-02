@@ -17,6 +17,10 @@
 /* color: #6c8ae4;
 color: #544CA0;
 color: #2B9ABF; */
+
+* {
+    box-sizing:border-box;
+}
  main#root {
     max-width: 1600px;
     max-width: 80%;
@@ -27,7 +31,7 @@ color: #2B9ABF; */
 
 body {
     background: #f7f7f7;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Cabin', sans-serif;
 }
 
 html, body {
@@ -83,7 +87,7 @@ section.banner:before {
     left: 0;
     bottom: 0;
     right: 0;
-    background-image: url('../../assets/alcohol-architecture-bar-260922.jpg');
+    background-image: image_url('/assets/alcohol-architecture-bar-260922.jpg');
     background-size: cover;
     background-position: center;
     z-index: 0;
@@ -100,7 +104,7 @@ section.banner:after {
     background:rgba(0,0,0,0.2);
     z-index:0;
 }
-h2 {
+.banner h2 {
     position: relative;
     z-index: 1;
     letter-spacing: .5px;
@@ -123,11 +127,15 @@ header {
     border-radius: 4px;
     font-size: 0.75em;
     text-decoration: none;
+    border:none;
 }
-
-a.readon {
+button{
+    cursor:pointer;
+}
+.readon {
     background-color: #2B9ABF;
     color: #FFFFFF;
+    font-family: inherit;
 }
 
 nav.login-signup {
@@ -137,6 +145,90 @@ nav.login-signup {
     padding-left: 15px;
 }
 
-a.readon-blank {
+.readon-blank {
     color: inherit;
+}
+
+.form-container {
+    max-width: 460px;
+    padding: 36px;
+    margin:0 auto;
+}
+
+.form-container h2 {
+    margin: 0px;
+    font-weight:500;
+}
+
+label {
+    display: none;
+}
+
+input {
+    display: block;
+    margin: 8px 0px;
+    padding: 16px;
+    font-weight: bold;
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 4px;
+    font-family:inherit;
+}
+
+.readon-submit {
+    display: block;
+    max-width: none;
+    width: 100%;
+    font-size: 19px;
+        background-color: #2B9ABF;
+    color: #FFFFFF;
+    
+}
+
+.header-greeting {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}
+
+.header-greeting .header-name {
+    margin-right: 15px;
+}
+
+.modal-background {
+    position: fixed;
+    top:0;
+    bottom:0;
+    right: 0;
+    left:0;
+    background:rgba(0,0,0,0.5);
+    z-index:10;
+}
+
+.modal-child {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-container {
+    background: #FFF;
+    position:relative;
+}
+.close-x {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+form p {
+    font-size: .8em;
+}
+
+button.readon-outline {
+    border: 1px solid #dddddd;
+    width: 100%;
+    background: none;
 }

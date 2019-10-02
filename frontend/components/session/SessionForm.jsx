@@ -42,7 +42,7 @@ class SessionForm extends React.Component {
     demoUser(){
         const demo_user = {username: 'Demo', password:'demo123'}
         return(
-            <button className="readon-outline" onClick={this.props.demo(demo_user)}><i className="far fa-user"></i> Continue as Demo User</button>
+            <button className="readon-outline" onClick={() => this.props.demo(demo_user).then(this.props.closeModal)}><i className="far fa-user"></i> Continue as Demo User</button>
             )
     }
     header(){
@@ -61,12 +61,17 @@ class SessionForm extends React.Component {
     footer(){
         if (this.props.formType === 'Login') {
             return (
+                <div class="form-footer">
                 <p>New to NeverWait? {this.props.otherForm}</p>
+                </div>
             )
         }
     }
 
     render(){
+        const errors = this.props.errors;
+        debugger
+        const errorItems = errors.map(error=>{return (<li key={error.id} className="error">{error}</li>)});
         debugger
         return(
             <>
@@ -79,9 +84,14 @@ class SessionForm extends React.Component {
                 <input type="text" placeholder="Username*" value={this.state.username} onChange={this.update('username')}/>
                 <label htmlFor="password" >Password</label>
                 <input type="password" placeholder="Password*" value={this.state.password} onChange={this.update('password')}/>
+                <ul className="errors">
+                {errorItems}
+                </ul>
+            <button className="readon-submit">{this.props.formType}</button>
             </form>
             <hr />
-            <p>Don't want to complete the form? {demo()}</p>
+            <p>Don't want to complete the form?</p>
+                    {this.demoUser()}
             {this.footer()}
             </div>
             </>

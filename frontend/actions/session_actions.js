@@ -19,13 +19,13 @@ export const receiveErrors = errors => ({
 })
 
 export const signup = user => dispatch => (
-    APIUtils.signup(user).then(user=> dispatch(receiveCurrentUser(user)))
+    APIUtils.signup(user).then(user => dispatch(receiveCurrentUser(user))).fail(errors => dispatch(receiveErrors(errors.responseJSON)))
 )
 
 export const login = user => dispatch => (
-    APIUtils.login(user).then(user => dispatch(receiveCurrentUser(user)))
+    APIUtils.login(user).then(user => dispatch(receiveCurrentUser(user))).fail(errors => dispatch(receiveErrors(errors.responseJSON)))
 )
 
-export const logout = () => dispatch => {
-    return (APIUtils.logout().then(()=>dispatch(logoutCurrentUser())));
-}
+export const logout = () => dispatch => (
+    APIUtils.logout().then(()=>dispatch(logoutCurrentUser())).fail(errors=>dispatch(receiveErrors(errors.responseJSON)))
+)

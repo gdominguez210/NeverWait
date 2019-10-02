@@ -13,3 +13,130 @@
  *= require_tree .
  *= require_self
  */
+
+/* color: #6c8ae4;
+color: #544CA0;
+color: #2B9ABF; */
+ main#root {
+    max-width: 1600px;
+    max-width: 80%;
+    background: #FFFFFF;
+    min-height: 100%;
+    margin: 25px auto;
+}
+
+body {
+    background: #f7f7f7;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+
+.logo-container h1 {
+    font-size: 1.3em;
+    margin: 0px;
+    line-height:1;
+}
+
+.logo-container p {
+    font-size: .7em;
+    margin: 0px;
+}
+
+.logo-container {
+    display: flex;
+}
+
+.logo {
+    color: #2B9ABF;
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    padding: 10px;
+}
+.logo-content {
+    align-self: center;
+}
+
+
+header {
+    padding: 5px 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+section.banner {
+    min-height: 416px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section.banner:before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url('../../assets/alcohol-architecture-bar-260922.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    filter: contrast(0.65);
+}
+section.banner:after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background:rgba(0,0,0,0.2);
+    z-index:0;
+}
+h2 {
+    position: relative;
+    z-index: 1;
+    letter-spacing: .5px;
+    font-size: 2em;
+}
+
+section.banner {
+    color: #FFFFFF;
+}
+
+header {
+    display: flex;
+    align-items: center;
+}
+
+[class^="readon"] {
+    padding: 0px 16px;
+    display: inline-block;
+    line-height: 2.5;
+    border-radius: 4px;
+    font-size: 0.75em;
+    text-decoration: none;
+}
+
+a.readon {
+    background-color: #2B9ABF;
+    color: #FFFFFF;
+}
+
+nav.login-signup {
+    margin-left: auto;
+    position: relative;
+    border-left: 1px solid #dddddd;
+    padding-left: 15px;
+}
+
+a.readon-blank {
+    color: inherit;
+}

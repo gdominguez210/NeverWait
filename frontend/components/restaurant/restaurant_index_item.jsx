@@ -16,9 +16,9 @@ const RestaurantIndexItem = (props) => {
                     <div className="thumbnail-img" style={banner}></div>
             <i className="fas fa-image"></i></div>
         <div className="restaurant-details">
-            <h3 className="restaurant-name">{restaurant.name}</h3>
-            <p className="restaurant-address">{restaurant.address}</p>
-            <p className="restaurant-phone">{restaurant.phone}</p>
+                    <h3 className="restaurant-name">{restaurant.name}</h3>
+                    <p className="restaurant-address">{restaurant.address}</p>
+                    <p className="restaurant-phone">{restaurant.phone}</p>
         </div>
         </Link>
     </li>

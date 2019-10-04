@@ -19,334 +19,335 @@ color: #544CA0;
 color: #2B9ABF; */
 
 * {
-    box-sizing:border-box;
+  box-sizing: border-box;
 }
- main#root {
-    max-width: 1600px;
-    max-width: 80%;
-    background: #FFFFFF;
-    min-height: 100%;
-    margin: 25px auto;
+
+html {
+  scroll-behavior: smooth;
+}
+main#root {
+  max-width: 1600px;
+  // max-width: 80%;
+  background: #ffffff;
+  min-height: 100%;
+  margin: 25px auto;
 }
 
 body {
-    background: #f7f7f7;
-    font-family: 'Cabin', sans-serif;
-        color: #333;
-        
+  background: #f7f7f7;
+  font-family: "Cabin", sans-serif;
+  color: #333;
 }
 
-html, body {
-    height: 100%;
-    margin: 0px;
+html,
+body {
+  height: 100%;
+  margin: 0px;
 }
 
 .logo-container h1 {
-    font-size: 1.3em;
-    margin: 0px;
-    line-height:1;
+  font-size: 1.3em;
+  margin: 0px;
+  line-height: 1;
 }
 
 .logo-container p {
-    font-size: .7em;
-    margin: 0px;
+  font-size: 0.7em;
+  margin: 0px;
 }
 
 .logo-container {
-    display: flex;
+  display: flex;
 }
 
 .logo {
-    color: #2B9ABF;
-    display: flex;
-    align-items: center;
-    font-size: 2em;
-    padding: 10px;
+  color: #2b9abf;
+  display: flex;
+  align-items: center;
+  font-size: 2em;
+  padding: 10px;
 }
 .logo-content {
-    align-self: center;
+  align-self: center;
 }
 
-
 header {
-    padding: 5px 20px;
-    border-bottom: 1px solid #eeeeee;
+  padding: 5px 20px;
+  border-bottom: 1px solid #eeeeee;
 }
 
 section.banner {
-    min-height: 416px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  min-height: 416px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 section.banner:before {
-    display: block;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-image: image-url('alcohol-architecture-bar-260922.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    filter: contrast(0.65);
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: image-url("alcohol-architecture-bar-260922.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  filter: contrast(0.65);
 }
 section.banner:after {
-    display: block;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background:rgba(0,0,0,0.2);
-    z-index:0;
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 0;
 }
 .banner h2 {
-    position: relative;
-    z-index: 1;
-    letter-spacing: .5px;
-    font-size: 2em;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.5px;
+  font-size: 2em;
 }
 
 section.banner {
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 header {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 [class^="readon"] {
-    padding: 0px 16px;
-    display: inline-block;
-    line-height: 2.5;
-    border-radius: 4px;
-    font-size: 0.75em;
-    text-decoration: none;
-    border:none;
+  padding: 0px 16px;
+  display: inline-block;
+  line-height: 2.5;
+  border-radius: 4px;
+  font-size: 0.75em;
+  text-decoration: none;
+  border: none;
 }
-button{
-    cursor:pointer;
-    border:none;
-    background:none;
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
 }
 .readon {
-    background-color: #2B9ABF;
-    color: #FFFFFF;
-    font-family: inherit;
+  background-color: #2b9abf;
+  color: #ffffff;
+  font-family: inherit;
 }
 
 nav.login-signup {
-    margin-left: auto;
-    position: relative;
-    border-left: 1px solid #dddddd;
-    padding-left: 15px;
+  margin-left: auto;
+  position: relative;
+  border-left: 1px solid #dddddd;
+  padding-left: 15px;
 }
 
 .readon-blank {
-    color: inherit;
+  color: inherit;
 }
 
 .form-container {
-    min-width: 460px;
-    padding: 36px;
-    margin:0 auto;
-    border-radius: 4px;
-    box-shadow: 0px 0px 26px;
+  min-width: 460px;
+  padding: 36px;
+  margin: 0 auto;
+  border-radius: 4px;
+  box-shadow: 0px 0px 26px;
 }
 
 .form-container h2 {
-    margin: 0px;
-    font-weight:500;
+  margin: 0px;
+  font-weight: 500;
 }
 
 label {
-    display: none;
+  display: none;
 }
 
 input {
-    display: block;
-    margin: 8px 0px;
-    padding: 16px;
-    font-weight: bold;
-    width: 100%;
-    border: 1px solid rgba(0,0,0,0.12);
-    border-radius: 4px;
-    font-family:inherit;
+  display: block;
+  margin: 8px 0px;
+  padding: 16px;
+  font-weight: bold;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  font-family: inherit;
 }
 
 .readon-submit {
-    display: block;
-    max-width: none;
-    width: 100%;
-    font-size: 19px;
-        background-color: #2B9ABF;
-    color: #FFFFFF;
-    
+  display: block;
+  max-width: none;
+  width: 100%;
+  font-size: 19px;
+  background-color: #2b9abf;
+  color: #ffffff;
 }
 
 .header-greeting {
-    display: flex;
-    margin-left: auto;
-    align-items: center;
+  display: flex;
+  margin-left: auto;
+  align-items: center;
 }
 
 .header-greeting .header-name {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
 .modal-background {
-    position: fixed;
-    top:0;
-    bottom:0;
-    right: 0;
-    left:0;
-    background:rgba(0,0,0,0.5);
-    z-index:10;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }
 
 .modal-child {
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .form-container {
-    background: #FFF;
-    position:relative;
+  background: #fff;
+  position: relative;
 }
 .close-x {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
 }
 
 form p {
-    font-size: .8em;
+  font-size: 0.8em;
 }
 
 button.readon-outline {
-    border: 1px solid #dddddd;
-    width: 100%;
-    background: none;
+  border: 1px solid #dddddd;
+  width: 100%;
+  background: none;
 }
 
 .form-footer p {
-    display: flex;
+  display: flex;
 }
 
 .form-footer p button {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .highlight {
-    background: none;
-    color: #2B9ABF;
+  background: none;
+  color: #2b9abf;
 }
 
-
 button.readon-outline {
-    color: inherit;
-    padding: 16px;
-   
+  color: inherit;
+  padding: 16px;
 }
 
 button {
-    font-family: 'Cabin', sans-serif;
-    cursor:pointer;
+  font-family: "Cabin", sans-serif;
+  cursor: pointer;
 }
 
-.form-containe button:focus, .form-container input:focus{
-    outline: 2px solid #acacac;
-    border-color: rgba(0,0,0,0.2);
+.form-containe button:focus,
+.form-container input:focus {
+  outline: 2px solid #acacac;
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .form-container button.readon-outline {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 button.readon-blank:focus {
-    outline: none;
+  outline: none;
 }
 
 li.error {
-    list-style-type: none;
-    font-weight:bold;
-    color: #d30303;
+  list-style-type: none;
+  font-weight: bold;
+  color: #d30303;
 }
 
 ul.errors {
-    padding: 0px;
+  padding: 0px;
 }
 
 .readon-submit:hover {
-    background-color: #1b6179;
+  background-color: #1b6179;
 }
 
 [class^="readon"] {
-    transition: .3s all;
+  transition: 0.3s all;
 }
 
 button.readon-outline:hover {
-    border-color: #2B9ABF;
+  border-color: #2b9abf;
 }
 
 .form-container {
-    border-bottom: 5px solid #2B9ABF;
+  border-bottom: 5px solid #2b9abf;
 }
 
 .readon-submit:hover {
-    background-color: #1b6179;
+  background-color: #1b6179;
 }
 
 [class^="readon"] {
-    transition: .3s all;
+  transition: 0.3s all;
 }
 
 button.readon-outline:hover {
-    border-color: #2B9ABF;
+  border-color: #2b9abf;
 }
 
 .form-container {
-    border-bottom: 5px solid #2B9ABF;
+  border-bottom: 5px solid #2b9abf;
 }
 
-
-.readon-blank, .readon-outline {
-    position: relative;
+.readon-blank,
+.readon-outline {
+  position: relative;
 }
 
-.readon-blank:after{
-    position: relative;
-    width: 0px;
-    content:'';
-    display:block;
-    height:1px;
-    background: #2B9ABF;
-    margin: 0 auto;
-    transition: .3s;
+.readon-blank:after {
+  position: relative;
+  width: 0px;
+  content: "";
+  display: block;
+  height: 1px;
+  background: #2b9abf;
+  margin: 0 auto;
+  transition: 0.3s;
 }
 
-.readon-blank:hover:after{
-    position: relative;
-    width:100%;
-    content:'';
-    display:block;
-    height:1px;
-    bottom:0;
+.readon-blank:hover:after {
+  position: relative;
+  width: 100%;
+  content: "";
+  display: block;
+  height: 1px;
+  bottom: 0;
 }
 
 .readon-outline p {
-    margin: 0;
-    display: inline-block;
+  margin: 0;
+  display: inline-block;
 }
 
 .example-enter {

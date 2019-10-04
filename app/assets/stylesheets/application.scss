@@ -230,7 +230,11 @@ input {
   right: 15px;
   cursor: pointer;
 }
-
+.logo-container a {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+}
 form p {
   font-size: 0.8em;
 }

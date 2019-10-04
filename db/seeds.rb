@@ -12,7 +12,7 @@ Restaurant.create({
  name: "MMMMM GOOD FOOD",
  address: "200 W 44th, New York, NY 10036",
  phone: "(212) 221-3800",
- owner_id: 5,
+ owner_id: 1,
  location_id: 1,
  lat: 0.40757506e2,
  long: -0.73986686e2,
@@ -24,7 +24,7 @@ Restaurant.create({
  cross_street: nil,
  neighborhood: "Brooklyn",
  hours_of_operation:
-  "Breakfast Monday to Friday 8am to11am, Brunch Saturday, and Sunday 9am to 3:45pm, Lunch Monday to Friday 11:30 to 3:30pm, Dinner Sunday to Wednesday 5 pm to 11 pm, Thursday to Saturday 5 pm to 12 Midnight.",
+  "Breakfast Monday to Friday 8am to 11am, Brunch Saturday, and Sunday 9am to 3:45pm, Lunch Monday to Friday 11:30 to 3:30pm, Dinner Sunday to Wednesday 5 pm to 11 pm, Thursday to Saturday 5 pm to 12 Midnight.",
  cuisines: "BACON",
  dining_style: "casual",
  dress_code: "casual",

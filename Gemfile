@@ -43,7 +43,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'annotate'
+  gem 'annotate', '~> 2.7.0'
   gem 'faker'
 end
 

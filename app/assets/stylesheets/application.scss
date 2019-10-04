@@ -230,6 +230,10 @@ input {
   right: 15px;
   cursor: pointer;
 }
+.inner-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
 .logo-container a {
   display: flex;
   text-decoration: none;
@@ -370,4 +374,29 @@ button.readon-outline:hover {
 .example-leave.example-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
+}
+
+.restaurant-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.restaurant-form textarea {
+  width: 100%;
+}
+
+.restaurant-form input {
+  width: 50%;
+}
+
+textarea[placeholder] {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+textarea {
+  font-family: inherit;
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }

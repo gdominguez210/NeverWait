@@ -9,6 +9,9 @@ class User < ApplicationRecord
 
     has_many :favorites
     has_many :reservations
+    has_many :restaurants,
+    foreign_key: :owner_id,
+    class_name: :Restaurant
 
     def self.find_by_credentials(username, password)
 

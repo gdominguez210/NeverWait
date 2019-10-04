@@ -91,7 +91,7 @@ class SessionForm extends React.Component {
             </form>
             <hr />
             <p>Don't want to complete the form?</p>
-                    {this.demoUser()}
+            {this.demoUser()}
             {this.footer()}
             </div>
             </>

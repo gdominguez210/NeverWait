@@ -3,14 +3,15 @@ import {closeModal} from '../../actions/modal_actions';
 import {connect} from 'react-redux';
 import LoginFormContainer from '../session/LoginFormContainer.jsx'
 import SignUpFormContainer from '../session/SignUpFormContainer.jsx'
-
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; 
+import { CSSTransition } from 'react-transition-group';
 const Modal = (props) => {
     debugger
     if (!props.modal) {
         return null;
     }
 
-    let component;
+    let component = null;
 
     switch(props.modal) {
 

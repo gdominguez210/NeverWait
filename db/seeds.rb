@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # User.delete_all
 # User.new(username: 'Demo', password:'test123').save!
+
+Restaurant.create({name: 'MMMMM GOOD FOOD', address:'200 W 44th, New York, NY 10036', phone:'(212) 221-3800', owner_id: '1', location_id:'1', lat:'40.757506', long:'-73.986686'})

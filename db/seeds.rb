@@ -33,6 +33,4 @@ Restaurant.create({
  payment_options: nil,
  executive_chef: nil,
  additional: nil,
- created_at: Wed, 02 Oct 2019 23:02:30 UTC +00:00,
- updated_at: Fri, 04 Oct 2019 04:17:10 UTC +00:00,
  featured_img_url: "after-business-hours-architecture-bar.jpg"});

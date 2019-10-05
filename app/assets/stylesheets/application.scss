@@ -239,7 +239,7 @@ input {
   text-decoration: none;
   color: inherit;
 }
-form p {
+.modal form p {
   font-size: 0.8em;
 }
 
@@ -381,14 +381,6 @@ button.readon-outline:hover {
   flex-wrap: wrap;
 }
 
-.restaurant-form textarea {
-  width: 100%;
-}
-
-.restaurant-form input {
-  width: 50%;
-}
-
 textarea[placeholder] {
   text-transform: capitalize;
   font-weight: bold;
@@ -399,4 +391,9 @@ textarea {
   padding: 16px;
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+input[placeholder],
+textarea[placeholder] {
+  text-transform: capitalize;
 }

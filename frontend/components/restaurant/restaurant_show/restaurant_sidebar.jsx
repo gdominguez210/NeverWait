@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const RestaurantSidebar = props => {
   let { restaurant } = props;
-  const parameters = restaurant.parameters || {};
+  // const parameters = restaurant.parameters || {};
   debugger;
   return (
     <>
@@ -32,7 +32,7 @@ const RestaurantSidebar = props => {
           </div>
           <div class="sidebar-item-content">
             <p className="sidebar-item-label">Neighborhood</p>
-            <p>{parameters.neighborhood}</p>
+            <p>{restaurant.neighborhood}</p>
           </div>
         </div>
         <div className="sidebar-item">
@@ -41,7 +41,7 @@ const RestaurantSidebar = props => {
           </div>
           <div class="sidebar-item-content">
             <p className="sidebar-item-label">Hours of Operation</p>
-            <p>{parameters.hours_of_operation}</p>
+            <p>{restaurant.hours_of_operation}</p>
           </div>
         </div>
         <div className="sidebar-item">
@@ -50,7 +50,7 @@ const RestaurantSidebar = props => {
           </div>
           <div class="sidebar-item-content">
             <p className="sidebar-item-label"> Cuisines</p>
-            <p>{parameters.cuisines}</p>
+            <p>{restaurant.cuisines}</p>
           </div>
         </div>
         <div className="sidebar-item">
@@ -59,7 +59,7 @@ const RestaurantSidebar = props => {
           </div>
           <div class="sidebar-item-content">
             <p className="sidebar-item-label"> Dining Style</p>
-            <p>{parameters.dining_style}</p>
+            <p>{restaurant.dining_style}</p>
           </div>
         </div>
         <div className="sidebar-item">
@@ -68,7 +68,7 @@ const RestaurantSidebar = props => {
           </div>
           <div class="sidebar-item-content">
             <p className="sidebar-item-label"> Dress Code</p>
-            <p>{parameters.dress_code}</p>
+            <p>{restaurant.dress_code}</p>
           </div>
         </div>
       </aside>

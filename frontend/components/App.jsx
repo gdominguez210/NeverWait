@@ -23,14 +23,16 @@ const App = props => {
       <Route exact path="/" component={Banner} />
 
       <section class="inner-container">
+        <Route exact path="/new-restaurant" component={CreateRestaurantForm} />
         <Route exact path="/" component={RestaurantIndexContainer} />
       </section>
-      {/* <AuthRoute path="/login" component={LoginFormContainer} />
-        <AuthRoute path="/signup" component={SignupFormContainer} /> */}
       <Route
+        exact
         path="/restaurants/:restaurantId"
         component={RestaurantShowContainer}
       ></Route>
+      {/* <AuthRoute path="/login" component={LoginFormContainer} />
+          <AuthRoute path="/signup" component={SignupFormContainer} /> */}
     </>
   );
 };

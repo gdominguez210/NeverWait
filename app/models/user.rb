@@ -21,11 +21,11 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
     attr_reader :password
 
-    has_many :favorites
-    has_many :reservations
-    has_many :restaurants,
-    foreign_key: :owner_id,
-    class_name: :Restaurant
+    # has_many :favorites
+    # has_many :reservations
+    # has_many :restaurants,
+    # foreign_key: :owner_id,
+    # class_name: :Restaurant
 
     def self.find_by_credentials(username, password)
 

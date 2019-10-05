@@ -1,0 +1,98 @@
+.mandatory-input {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.optional-input {
+  width: 100%;
+}
+
+.col-4 {
+  width: 33.33333%;
+}
+
+.col-8 {
+  width: 66.6666%;
+}
+
+[class^="col-"] {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+[class^="col-"] * {
+  flex: 1;
+}
+
+.mandatory-input {
+  margin: 0px -10px;
+}
+
+.restaurant-form .mandatory-input input:last-of-type {
+  margin-bottom: 0px;
+}
+
+.restaurant-form .mandatory-input:first-of-type {
+  margin-top: 0px;
+}
+
+.restaurant-form input,
+.restaurant-form textarea {
+  font-size: 1.2em;
+}
+.restaurant-form-container h1 {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+.restaurant-form h3 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.form-subheader {
+  width: 100%;
+}
+
+.input-container {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.map-container {
+  width: 50%;
+  background: #f1f1f1;
+}
+
+.optional-input {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input-container input {
+  width: 50%;
+}
+
+.input-container {
+  padding-right: 20px;
+}
+
+.restaurant-form-container button.readon {
+  margin-top: 25px;
+  width: 100%;
+  font-size: 1.4em;
+}
+
+.map-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-container svg {
+  font-size: 5em;
+  color: rgba(0, 0, 0, 0.5);
+}

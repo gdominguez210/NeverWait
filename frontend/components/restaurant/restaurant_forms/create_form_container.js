@@ -25,8 +25,7 @@ const mapStateToProps = (state, ownProps) => {
     public_transit: "",
     payment_options: "",
     executive_chef: "",
-    addtional: "",
-    parameters: ""
+    additional: ""
   };
   const formType = "Create Restaurant";
   debugger;

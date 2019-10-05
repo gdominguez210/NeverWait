@@ -12,7 +12,7 @@ const RestaurantMain = props => {
   //         behavior: 'smooth',
   //         block: 'start',
   // });
-
+  debugger;
   return (
     <>
       <main class="restaurant-content">

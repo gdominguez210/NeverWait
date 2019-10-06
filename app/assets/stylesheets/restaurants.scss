@@ -16,11 +16,26 @@ li.restaurant-item {
 }
 
 ul.restaurants-container {
-  padding: 20px;
   margin: 0px;
   display: flex;
+  padding: 20px 0px;
+}
+.featured-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.featured-header a {
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 2;
+}
+
+.featured-header h2 {
+  line-height: 1;
+}
 li.restaurant-item:hover {
   -webkit-box-shadow: 0 2px 4px rgba(45, 51, 63, 0.2);
   box-shadow: 0 2px 4px rgba(45, 51, 63, 0.2);
@@ -272,4 +287,86 @@ p.sidebar-item-label + p {
 
 .stars svg {
   color: rgb(225, 225, 225);
+}
+
+section.restaurants-container {
+  display: flex;
+}
+
+section.restaurants-container aside {
+  padding: 20px;
+  background: #f1f1f1;
+  width: 25%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+ul.restaurants-list {
+  flex: 1;
+  padding: 0px;
+  margin: 0px;
+}
+
+ul.restaurants-list li {
+  list-style-type: none;
+}
+
+li.restaurant-index-item a {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+.thumbnail {
+  flex: 1;
+}
+
+.restaurant-details {
+  flex: 4;
+}
+
+li.restaurant-index-item {
+  padding: 20px 0px;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  margin: 20px;
+}
+
+.restaurant-details .restaurant-name {
+  font-size: 24px;
+}
+
+li.restaurant-index-item {
+  position: relative;
+}
+
+.restaurant-index-item button.highlight {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.inner-wrap {
+  display: flex;
+}
+
+.restaurant-index-item .inner-wrap > a {
+  flex: 1;
+  min-width: 25%;
+  max-width: 25%;
+}
+
+section.restaurant-featured-image {
+  display: flex;
+}
+
+.button-container {
+  flex: 1;
+  position: relative;
+  padding: 20px;
+  z-index: 1;
+}
+.readon {
+  font-size: 16px;
 }

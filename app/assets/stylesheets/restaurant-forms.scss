@@ -96,3 +96,35 @@
   font-size: 5em;
   color: rgba(0, 0, 0, 0.5);
 }
+
+form.restaurant-form ul.errors {
+  padding: 20px;
+  background: #ffc6c6;
+  border-radius: 4px;
+  margin: 10px;
+  width: 100%;
+}
+
+form.restaurant-form hr {
+  width: 100%;
+  border-color: #dddddd;
+  background: none;
+  border: 1px solid #dddddd;
+}
+
+form.restaurant-form li.error {
+  padding: 5px 0px;
+}
+
+.input-container input {
+  width: 49%;
+}
+
+.input-container input:nth-child(2n) {
+  margin-right: 1%;
+}
+
+.input-container input:nth-child(4n) {
+  margin-left: 1%;
+  margin-right: 0%;
+}

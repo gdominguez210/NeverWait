@@ -38,7 +38,22 @@ body {
   font-family: "Cabin", sans-serif;
   color: #333;
 }
-
+.fade-appear {
+  opacity: 0;
+  transition: all 500ms linear;
+}
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  transition: all 500ms linear;
+}
+.fade-enter {
+  opacity: 0;
+  transition: all 500ms linear;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: all 500ms linear;
+}
 html,
 body {
   height: 100%;
@@ -92,7 +107,7 @@ section.banner:before {
   left: 0;
   bottom: 0;
   right: 0;
-  background-image: image-url("alcohol-architecture-bar-260922.jpg");
+  background-image: image-url("alcohol-architecture-bar.jpg");
   background-size: cover;
   background-position: center;
   z-index: 0;
@@ -396,4 +411,24 @@ textarea {
 input[placeholder],
 textarea[placeholder] {
   text-transform: capitalize;
+}
+
+ul.restaurants-container {
+  overflow-x: scroll;
+}
+
+li.restaurant-item {
+  min-width: 20%;
+}
+
+.thumbnail {
+  overflow: hidden;
+}
+
+.thumbnail-img {
+  z-index: 2;
+}
+
+.thumbnail:after {
+  z-index: 3;
 }

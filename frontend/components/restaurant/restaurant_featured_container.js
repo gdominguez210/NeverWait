@@ -1,24 +1,24 @@
 import { connect } from "react-redux";
-import { RestaurantIndex } from "./restaurant_index";
+import { RestaurantFeatured } from "./restaurant_featured";
 import {
-  fetchRestaurants,
-  deleteRestaurant
+  fetchFeaturedRestaurants,
+  fetchRestaurants
 } from "../../actions/restaurants_actions";
 
 const msp = state => {
   const { restaurants } = state.entities;
   return {
     restaurants: Object.values(restaurants),
-    currentUser: state.entities.users[state.session.id]
+    index: 0
   };
 };
 
 const mdp = dispatch => ({
-  fetchRestaurants: () => dispatch(fetchRestaurants()),
-  deleteRestaurant: id => dispatch(deleteRestaurant(id))
+  fetchFeaturedRestaurants: () => dispatch(fetchFeaturedRestaurants()),
+  fetchRestaurants: () => dispatch(fetchFeaturedRestaurants())
 });
 
 export default connect(
   msp,
   mdp
-)(RestaurantIndex);
+)(RestaurantFeatured);

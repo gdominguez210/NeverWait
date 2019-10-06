@@ -2,7 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 
 import RestaurantShow from "./restaurant_show";
-import { fetchRestaurant } from "../../../actions/restaurants_actions";
+import {
+  fetchRestaurant,
+  deleteRestaurant
+} from "../../../actions/restaurants_actions";
 
 const msp = (state, ownProps) => {
   debugger;
@@ -31,12 +34,14 @@ const msp = (state, ownProps) => {
       payment_options: "",
       executive_chef: "",
       additional: ""
-    }
+    },
+    currentUser: state.entities.users[state.session.id]
   };
 };
 
 const mdp = dispatch => ({
-  fetchRestaurant: id => dispatch(fetchRestaurant(id))
+  fetchRestaurant: id => dispatch(fetchRestaurant(id)),
+  deleteRestaurant: id => dispatch(deleteRestaurant(id))
 });
 
 export default connect(

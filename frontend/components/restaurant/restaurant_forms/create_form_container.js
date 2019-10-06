@@ -27,9 +27,11 @@ const mapStateToProps = (state, ownProps) => {
     executive_chef: "",
     additional: ""
   };
+  const errors = state.errors.restaurant;
   const formType = "Create Restaurant";
+  const currentUser = state.entities.users[state.session.id];
   debugger;
-  return { restaurant, formType };
+  return { restaurant, errors, formType, currentUser };
 };
 
 const mapDispatchToProps = dispatch => {

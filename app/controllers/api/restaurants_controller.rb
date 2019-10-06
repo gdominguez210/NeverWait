@@ -1,9 +1,15 @@
 
+
 class Api::RestaurantsController < ApplicationController
 
     def index
         @restaurants = Restaurant.all
 
+    end
+
+    def feature
+        @restaurants = Restaurant.limit(5).order("RANDOM()");
+        render "api/restaurants/index"
     end
 
     def show
@@ -12,18 +18,19 @@ class Api::RestaurantsController < ApplicationController
 
     def create
         @restaurant = Restaurant.new(restaurant_params)
-        debugger
+
         if @restaurant.save
-            debugger
+    
             render "api/restaurants/show"
         else
-            debugger
+ 
             render json: @restaurant.errors.full_messages, status: 422
         end
     end
 
     def update
         @restaurant = Restaurant.find(params[:id])
+
         if current_user.id == @restaurant.owner_id
             if @restaurant.update(restaurant_params)
                 render "api/restaurants/show"
@@ -38,6 +45,7 @@ class Api::RestaurantsController < ApplicationController
         restaurant = current_user.restaurants.find(params[:id])
         if restaurant
             restaurant.destroy
+            
         else
             render json: ["404 Not Found"], status: 404
         end

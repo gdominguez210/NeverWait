@@ -28,11 +28,13 @@ const Modal = props => {
   }
 
   return (
-    <div className="modal-background" onClick={props.closeModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
-        {component}
+    <CSSTransition in={true} appear={true} timeout={500} classNames="fade">
+      <div className="modal-background" onClick={props.closeModal}>
+        <div className="modal-child" onClick={e => e.stopPropagation()}>
+          {component}
+        </div>
       </div>
-    </div>
+    </CSSTransition>
   );
 };
 

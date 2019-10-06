@@ -11,7 +11,16 @@ class RestaurantForm extends React.Component {
     this.state = this.props.restaurant;
     this.update = this.update.bind(this);
   }
-
+  componentDidMount() {
+    if (!this.state.owner_id && !this.state.location_id) {
+      this.setState({
+        owner_id: this.props.currentUser.id,
+        location_id: 1,
+        lat: 11.111,
+        long: 111.111
+      });
+    }
+  }
   update(field) {
     return e => {
       this.setState({ [field]: e.target.value });
@@ -20,18 +29,41 @@ class RestaurantForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    debugger;
     this.props.action(this.state).then(() => this.props.history.push("/"));
   }
-
-  render() {
-    if (!this.state.owner_id && !this.state.location_id) {
-      this.setState({
-        owner_id: 5,
-        location_id: 1,
-        lat: 11.111,
-        long: 111.111
-      });
+  handleSubheader() {
+    if (this.props.formType === "Create Restaurant") {
+      return (
+        <div class="form-subheader">
+          <h3>Additional Information</h3>
+          <p>
+            The following fields are optional, and not needed to create your
+            restaurant. Feel free to skip this information for now, and update
+            your restaurant information later.
+          </p>
+        </div>
+      );
+    } else {
+      return null;
     }
+  }
+  renderErrors() {
+    const errors = this.props.errors;
+    if (errors.length > 0) {
+      debugger;
+      return (
+        <ul className="errors">
+          {errors.map((error, i) => (
+            <li className="error" key={`error-${i}`}>
+              {error}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+  }
+  render() {
     return (
       <div class="restaurant-form-container">
         <h1>{this.props.formType}</h1>
@@ -43,7 +75,7 @@ class RestaurantForm extends React.Component {
                 type="text"
                 id="name"
                 placeholder="Name *"
-                value={this.state.title}
+                value={this.state.name}
                 onChange={this.update("name")}
               />
               <label htmlFor="address">Address</label>
@@ -72,17 +104,11 @@ class RestaurantForm extends React.Component {
                 onChange={this.update("description")}
               />
             </div>
+            {this.renderErrors()}
           </div>
           <hr />
           <div className="optional-input">
-            <div class="form-subheader">
-              <h3>Additional Information</h3>
-              <p>
-                The following fields are optional, and not needed to create your
-                restaurant. Feel free to skip this information for now, and
-                update your restaurant information later.
-              </p>
-            </div>
+            {this.handleSubheader()}
             <div class="input-container">
               <label htmlFor="website">Website</label>
               <input

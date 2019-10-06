@@ -38,9 +38,10 @@ class Restaurant < ApplicationRecord
 
     # belongs_to :location
 
-    # belongs_to :owner,
-    # foreign_key: :owner_id,
-    # class_name: :User
+    belongs_to :owner,
+    foreign_key: :owner_id,
+    class_name: :User
 
+    has_many :reviews
 
 end

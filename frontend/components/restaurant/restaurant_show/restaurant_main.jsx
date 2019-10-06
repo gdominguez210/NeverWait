@@ -22,10 +22,6 @@ const RestaurantMain = props => {
           <RestaurantStars />
           <p>{restaurant.description}</p>
           <RestaurantGallery />
-          <Route
-            path="/restaurants/:restaurantId"
-            component={CreateRestaurantForm}
-          />
         </section>
       </main>
     </>

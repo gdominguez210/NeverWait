@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import RestaurantBanner from "./restaurant_banner";
 import RestaurantMain from "./restaurant_main";
 import RestaurantSidebar from "./restaurant_sidebar";
+import { CSSTransition } from "react-transition-group";
 
 class RestaurantShow extends React.Component {
   constructor(props) {
@@ -31,7 +32,11 @@ class RestaurantShow extends React.Component {
     return (
       <>
         <section class="restaurant-container">
-          <RestaurantBanner restaurant={restaurant} />
+          <RestaurantBanner
+            deleteRestaurant={this.props.deleteRestaurant}
+            restaurant={restaurant}
+            currentUser={this.props.currentUser}
+          />
           <section class="restaurant-content-wrap">
             <RestaurantMain restaurant={restaurant} />
             <RestaurantSidebar restaurant={restaurant} />

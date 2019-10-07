@@ -9,16 +9,16 @@
 # User.new(username: 'Demo', password:'test123').save!
 require 'faker'
 images = %w(
-      /assets/chairs-coffee-shop-drinking-glasses.jpg
-      /assets/bar-city-commerce.jpg
-      /assets/bar-ceiling-chairs.jpg
-      /assets/balcony-chairs-contemporary.jpg
-      /assets/bar-cafe-chairs.jpg
-      /assets/architecture-contemporary-flowers.jpg
-      /assets/architecture-chair-coffee.jpg
-      /assets/architecture-buildings-city.jpg
-      /assets/architecture-brickwall-chairs.jpg
-      /assets/after-business-hours-architecture-bar.jpg
+      chairs-coffee-shop-drinking-glasses.jpg
+      bar-city-commerce.jpg
+      bar-ceiling-chairs.jpg
+      balcony-chairs-contemporary.jpg
+      bar-cafe-chairs.jpg
+      architecture-contemporary-flowers.jpg
+      architecture-chair-coffee.jpg
+      architecture-buildings-city.jpg
+      architecture-brickwall-chairs.jpg
+      after-business-hours-architecture-bar.jpg
     )
 users = []
 price_range = ["cheap", "moderate", "pricey"]

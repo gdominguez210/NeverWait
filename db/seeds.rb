@@ -8,6 +8,8 @@
 # User.delete_all
 # User.new(username: 'Demo', password:'test123').save!
 require 'faker'
+User.destroy_all
+Restaurant.destroy_all
 images = %w(
       chairs-coffee-shop-drinking-glasses.jpg
       bar-city-commerce.jpg

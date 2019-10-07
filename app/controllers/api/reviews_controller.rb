@@ -1,5 +1,13 @@
 class Api::ReviewsController < ApplicationController
     
+
+    def index
+       
+        restaurant = Restaurant.find(params[:restaurant_id])
+        @reviews = restaurant.reviews
+        render "api/reviews/index"
+    end
+
     def create
         @review = Review.new(review_params)
         @review.user_id = current_user.id

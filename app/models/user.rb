@@ -23,6 +23,7 @@ class User < ApplicationRecord
 
     # has_many :favorites
     # has_many :reservations
+    has_many :reviews
     has_many :restaurants,
     foreign_key: :owner_id,
     class_name: :Restaurant

@@ -2,3 +2,11 @@ json.extract! restaurant, :id, :name, :address, :phone, :owner_id, :location_id,
 if restaurant.featured_img_url
     json.image_url asset_path(restaurant.featured_img_url)
 end
+
+
+# restaurant.reviews.each do |review|
+#     json.reviews do 
+#         json.set! review.id do 
+#             json.partial! 'api/reviews/review', review: review
+#     end
+# end

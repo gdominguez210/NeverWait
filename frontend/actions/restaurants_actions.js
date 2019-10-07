@@ -22,7 +22,7 @@ export const receiveRestaurant = restaurant => ({
 });
 
 export const removeRestaurant = restaurantId => ({
-  type: RECEIVE_RESTAURANT,
+  type: REMOVE_RESTAURANT,
   restaurantId
 });
 

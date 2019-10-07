@@ -2,6 +2,7 @@ import React from "react";
 import RestaurantQuickLinks from "./restaurant_quicklinks";
 import RestaurantGallery from "../restaurant_gallery/restaurant_gallery";
 import RestaurantStars from "../restaurant_ratings/rating_stars";
+import ReviewIndex from "../../reviews/review_index_container";
 import CreateRestaurantForm from "../restaurant_forms/create_form_container";
 import { Route, Link } from "react-router-dom";
 const RestaurantMain = props => {
@@ -22,6 +23,7 @@ const RestaurantMain = props => {
           <RestaurantStars />
           <p>{restaurant.description}</p>
           <RestaurantGallery />
+          <ReviewIndex />
         </section>
       </main>
     </>

@@ -23,18 +23,7 @@ class ReviewIndex extends React.Component {
       output = <ul class="reviews">{reviewItems}</ul>;
     }
 
-    return (
-      <>
-        <h2>Reviews</h2>
-        <p>
-          <strong>Overall ratings and reviews</strong>
-        </p>
-        <p>
-          Reviews can only be made by diners who have eaten at this restaurant
-        </p>
-        {output}
-      </>
-    );
+    return <>{output}</>;
   }
 }
 

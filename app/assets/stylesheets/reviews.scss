@@ -16,7 +16,9 @@ li.review-index-item {
   border-right: 1px solid #dddddd;
   margin-right: 15px;
 }
-
+.author-details p {
+  margin: 0px;
+}
 .review-stars {
   width: 100%;
 }
@@ -58,4 +60,47 @@ ul.reviews {
 
 .author-details p {
   font-weight: bold;
+}
+
+p.user-reviews {
+  display: flex;
+  align-items: center;
+  color: #969696;
+  font-weight: normal;
+  margin: 10px 0px;
+}
+
+p.user-reviews div {
+  display: flex;
+}
+
+.author-details {
+  min-width: 150px;
+}
+
+p.user-reviews svg {
+  margin-right: 5px;
+  font-size: 0.8em;
+}
+
+.restaurant-ratings-breakdown {
+  display: flex;
+}
+
+.restaurant-rating-container {
+  padding: 10px;
+  text-align: center;
+}
+
+.restaurant-rating-container p {
+  margin: 0;
+}
+
+.restaurant-rating-container p:first-child {
+  font-weight: bold;
+}
+
+.restaurant-rating-container {
+  padding: 10px;
+  text-align: center;
 }

@@ -18,16 +18,14 @@ const ReviewIndexItem = props => {
         <div className="author-details">
           <div className="user-avatar">{initials}</div>
           <p>{first_name}</p>
-          <p class="user-reviews">
+          <div class="user-reviews">
             <FontAwesomeIcon icon="comment-alt" />
             <div>{`${author.total_reviews} ${total}`}</div>
-          </p>
+          </div>
         </div>
         <div className="review-details">
           <div className="review-ratings">
-            <div className="review-stars">
-              <RestaurantStars />
-            </div>
+            <div className="review-stars"></div>
             <div className="rating-container">
               Total
               <span className="highlight">{review.total_rating}</span>

@@ -4,13 +4,12 @@ total_ratings = []
 food_ratings = []
 service_ratings = []
 value_ratings = [] 
-@restaurant.reviews.each {|review|
+@restaurant.reviews.each do |review|
     total_ratings.push(review.total_rating)
     value_ratings.push(review.value_rating)
     service_ratings.push(review.service_rating)
     food_ratings.push(review.food_rating)
-}
-
+end
 total_rating = ((total_ratings.reduce{|acc, ele| acc + ele} / total_ratings.length) * 10).floor / 10.0
 value_rating = ((value_ratings.reduce{|acc, ele| acc + ele} / value_ratings.length) * 10).floor / 10.0
 service_rating = ((service_ratings.reduce{|acc, ele| acc + ele} / service_ratings.length) * 10).floor / 10.0

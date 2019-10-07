@@ -14,7 +14,8 @@ const reviewsReducer = (state = {}, action) => {
     //   return Object.assign({}, action.restaurant.reviews);
     case RECEIVE_REVIEWS:
       debugger;
-      return action.reviews;
+      return Object.assign({}, state, action.reviews);
+    // return action.reviews;
     case RECEIVE_REVIEW:
       return Object.assign({}, state, { [action.review.id]: action.review });
     case REMOVE_REVIEW:

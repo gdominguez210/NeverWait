@@ -33,7 +33,8 @@ const msp = (state, ownProps) => {
       public_transit: "",
       payment_options: "",
       executive_chef: "",
-      additional: ""
+      additional: "",
+      total_rating: ""
     },
     currentUser: state.entities.users[state.session.id]
   };

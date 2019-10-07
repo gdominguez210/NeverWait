@@ -370,3 +370,58 @@ section.restaurant-featured-image {
 .readon {
   font-size: 16px;
 }
+.subheader p {
+  display: flex;
+  padding: 5px;
+  margin: 0px;
+}
+.subheader p:first-child {
+  padding-left: 0px;
+}
+.subheader {
+  display: flex;
+}
+
+.stars {
+  margin-right: 5px;
+}
+
+section.restaurant-content-inner h2 {
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #d8d9db;
+}
+
+.subheader {
+  position: relative;
+}
+
+.stars-container {
+  align-items: center;
+  display: flex;
+}
+
+.back-stars {
+  position: absolute;
+  color: #d4d4d4;
+  position: relative;
+  display: flex;
+}
+
+.front-stars {
+  color: #2b9abf;
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  transition: all 0.5s;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.back-stars svg {
+  vertical-align: middle;
+}
+
+.front-stars svg {
+  vertical-align: top;
+}

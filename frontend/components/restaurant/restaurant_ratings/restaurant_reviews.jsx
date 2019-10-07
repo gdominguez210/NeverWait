@@ -1,5 +1,6 @@
 import React, { createRef } from "react";
 import ReviewIndexContainer from "../../reviews/review_index_container";
+import RestaurantStars from "./rating_stars";
 import { CSSTransition } from "react-transition-group";
 
 const RestaurantReviews = props => {
@@ -13,7 +14,10 @@ const RestaurantReviews = props => {
         <p>
           Reviews can only be made by diners who have eaten at this restaurant
         </p>
-        <p>{`${props.restaurant.total_rating} based on recent ratings`}</p>
+        <div className="stars-container">
+          <RestaurantStars restaurant={props.restaurant} />
+          <p>{`${props.restaurant.total_rating} based on recent ratings`}</p>
+        </div>
       </div>
       <div class="restaurant-ratings-breakdown">
         <div class="restaurant-rating-container">

@@ -108,3 +108,49 @@ p.user-reviews svg {
   width: 0%;
   transition: 0.3s all ease-in;
 }
+.user-reviews {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-reviews svg {
+  font-size: 0.9em;
+  margin-right: 5px;
+}
+
+.restaurant-bars {
+  flex: 1;
+  padding: 0px 20px;
+}
+
+.stats-container {
+  display: flex;
+}
+
+.stats-overview {
+  width: 60%;
+}
+
+.stat-bar-container {
+  display: flex;
+  margin: 10px;
+}
+
+.stat-bar {
+  flex: 1;
+}
+
+.stat-bar {
+  display: flex;
+  margin-left: 5px;
+  border: 1px solid #dddddd;
+}
+
+.inner-stat-bar {
+  /* flex: 1; */
+  background: #2b9abf;
+  width: 0;
+  transition: 0.3s all ease-in;
+}

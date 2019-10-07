@@ -425,3 +425,14 @@ section.restaurant-content-inner h2 {
 .front-stars svg {
   vertical-align: top;
 }
+
+li.review-index-item:nth-child(2n) .user-avatar {
+  background: #da3743;
+}
+li.review-index-item:nth-child(3n) .user-avatar {
+  background: #d86441;
+}
+
+li.review-index-item:nth-child(4n) .user-avatar {
+  background: #fdaf08;
+}

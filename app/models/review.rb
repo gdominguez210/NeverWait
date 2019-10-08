@@ -24,7 +24,7 @@ class Review < ApplicationRecord
 
     def calc_total_rating
 
-        (self.food_rating + self.service_rating + self.value_rating) / 3.0
+        ((self.food_rating + 0.0) + (self.service_rating + 0.0) + (self.value_rating + 0.0) + (self.ambience_rating + 0.0)) / 4.0
     end
 
 end

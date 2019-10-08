@@ -328,7 +328,7 @@ restaurant = Restaurant.create!({
 restaurants = Restaurant.all
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -341,7 +341,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -354,7 +354,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -367,7 +367,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -380,7 +380,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -393,7 +393,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -406,7 +406,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -419,7 +419,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -432,7 +432,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -445,7 +445,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -458,7 +458,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -471,7 +471,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -484,7 +484,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -497,7 +497,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -510,7 +510,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -523,7 +523,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -536,7 +536,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -549,7 +549,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -562,7 +562,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -575,7 +575,7 @@ review.calc_total_rating()
 review.save!
 review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id
+  restaurant_id: restaurants.sample.id,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),

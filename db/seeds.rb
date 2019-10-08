@@ -325,192 +325,266 @@ restaurant = Restaurant.create!({
  executive_chef: Faker::FunnyName.name
 })
 
-Review.create!({
+restaurants = Restaurant.all
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-
-
-Review.create!({
+review.calc_total_rating()
+review.save!
+review = Review.new({
   user_id: users.sample.id,
-  restaurant_id: Restaurant.all.sample.id
-  food_rating: Faker::Number.between(from: 1, to: 10),
-  service_rating: Faker::Number.between(from: 1, to: 10),
-  value_rating: Faker::Number.between(from: 1, to: 10),
-  noise_level: Faker::Number.between(from: 1, to: 10),
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
+review.calc_total_rating()
+review.save!
+review = Review.new({
+  user_id: users.sample.id,
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
+  recommended: Faker::Boolean.boolean,
+  body: Faker::Restaurant.review
+})
+review.calc_total_rating()
+review.save!
+review = Review.new({
+  user_id: users.sample.id,
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
+  recommended: Faker::Boolean.boolean,
+  body: Faker::Restaurant.review
+})
+review.calc_total_rating()
+review.save!
+review = Review.new({
+  user_id: users.sample.id,
+  restaurant_id: restaurants.sample.id
+  food_rating: Faker::Number.between(from: 1, to: 5),
+  service_rating: Faker::Number.between(from: 1, to: 5),
+  value_rating: Faker::Number.between(from: 1, to: 5),
+  noise_level: Faker::Number.between(from: 1, to: 5),
+  ambience_rating: Faker::Number.between(from: 1, to: 5),
+  recommended: Faker::Boolean.boolean,
+  body: Faker::Restaurant.review
+})
+review.calc_total_rating()
+review.save!
+
+

@@ -7,6 +7,7 @@ class RestaurantForm extends React.Component {
     super(props);
     debugger;
     this.state = {
+      restaurant_id: this.props.match.params.restaurantId,
       total_rating: "",
       food_rating: "",
       service_rating: "",

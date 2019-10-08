@@ -10,8 +10,10 @@ class Api::ReviewsController < ApplicationController
 
     def create
         @review = Review.new(review_params)
+        debugger
         @review.user_id = current_user.id
         @review.restaurant_id = params[:id]
+        debugger
         @review.total_rating = @review.calc_total_rating()
 
         if @review.save
@@ -22,6 +24,6 @@ class Api::ReviewsController < ApplicationController
     end
 
     def review_params
-        params.require(:review).permit(:service_rating, :food_rating, :value_rating, :noise_level, :recommended,  :body)
+        params.require(:review).permit(:service_rating, :food_rating, :value_rating, :noise_level, :ambience_rating, :recommended,  :body)
     end
 end

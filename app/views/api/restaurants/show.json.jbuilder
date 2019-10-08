@@ -19,7 +19,7 @@ star_ratings = {
     one_star: total_ratings.select{|rating| rating == 1}.count
 }
 
-total_rating = ((total_ratings.reduce{|acc, ele| acc + ele} / total_ratings.length) * 10).floor / 10.0
+total_rating = (((total_ratings.reduce{|acc, ele| acc + ele} / total_ratings.length) * 10).floor / 10.0) #split into two chunks, and account for empty array
 value_rating = ((value_ratings.reduce{|acc, ele| acc + ele} / value_ratings.length) * 10).floor / 10.0
 service_rating = ((service_ratings.reduce{|acc, ele| acc + ele} / service_ratings.length) * 10).floor / 10.0
 food_rating = ((food_ratings.reduce{|acc, ele| acc + ele} / food_ratings.length) * 10).floor / 10.0

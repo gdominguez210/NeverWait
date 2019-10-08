@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import ReviewForm from "./restaurant_form";
+import ReviewForm from "./review_form";
 import { createReview } from "../../../actions/review_actions";
-
+import { closeModal } from "../../../actions/modal_actions";
 const mapStateToProps = (state, ownProps) => {
   const review = {
+    restaurant_id: ownProps.match.params.restaurantId,
     total_rating: "",
     food_rating: "",
     service_rating: "",
@@ -15,13 +16,14 @@ const mapStateToProps = (state, ownProps) => {
     ambience_rating: ""
   };
   const currentUser = state.entities.users[state.session.id];
-  debugger;
-  return { review, currentUser };
+  const formType = "Create";
+  return { review, currentUser, formType };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    action: review => dispatch(createReview(review))
+    action: review => dispatch(createReview(review)),
+    closeModal: () => dispatch(closeModal())
   };
 };
 

@@ -14,16 +14,32 @@ class ReviewIndex extends React.Component {
   }
 
   render() {
-    const { reviews } = this.props;
+    const { reviews, currentUser, openModal } = this.props;
     let reviewItems = null;
-    let output = null;
+    let reviewList = null;
+    let addReview = null;
 
+    if (currentUser) {
+      debugger;
+      addReview = (
+        <>
+          <button onClick={() => openModal("review")} className="readon">
+            Add Review
+          </button>
+        </>
+      );
+    }
     if (reviews) {
       reviewItems = reviews.map(review => <ReviewIndexItem review={review} />);
-      output = <ul class="reviews">{reviewItems}</ul>;
+      reviewList = <ul class="reviews">{reviewItems}</ul>;
     }
 
-    return <>{output}</>;
+    return (
+      <>
+        {addReview}
+        {reviewList}
+      </>
+    );
   }
 }
 

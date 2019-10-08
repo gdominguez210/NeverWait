@@ -3,6 +3,7 @@ import { closeModal } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import LoginFormContainer from "../session/LoginFormContainer.jsx";
 import SignUpFormContainer from "../session/SignUpFormContainer.jsx";
+import CreateReviewFormContainer from "../reviews/review_forms/create_review_container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { CSSTransition } from "react-transition-group";
@@ -22,6 +23,9 @@ const Modal = props => {
     case "signup":
       debugger;
       component = <SignUpFormContainer />;
+      break;
+    case "review":
+      component = <CreateReviewFormContainer />;
       break;
     default:
       return null;

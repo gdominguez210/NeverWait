@@ -1,14 +1,19 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import AdditionalItems from "./additional_items";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class RestaurantForm extends React.Component {
   constructor(props) {
     super(props);
+    debugger;
     this.state = {
-      username: "",
-      password: ""
+      total_rating: "",
+      food_rating: "",
+      service_rating: "",
+      value_rating: "",
+      ambience_rating: "",
+      recommended: "",
+      body: ""
     };
     debugger;
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,16 +24,8 @@ class RestaurantForm extends React.Component {
     e.preventDefault();
     debugger;
     const review = Object.assign({}, this.state);
-    this.props.processForm(review).then(this.props.closeModal);
+    this.props.action(review).then(this.props.closeModal);
     // this.props.history.push("/");
-  }
-
-  update(field) {
-    return e => {
-      this.setState({
-        [field]: e.target.value
-      });
-    };
   }
 
   renderErrors() {
@@ -46,12 +43,18 @@ class RestaurantForm extends React.Component {
       );
     }
   }
+  update(field) {
+    return e => {
+      this.setState({ [field]: e.target.value });
+    };
+  }
   header() {
     debugger;
     if (this.props.formType === "Create") {
       return (
         <h2>
-          Hello {this.props.currentUser}, how was your experience at restaurant?{" "}
+          Hello {this.props.currentUser.fname}, how was your experience at
+          restaurant?
         </h2>
       );
     } else if (this.props.formType === "Edit") {
@@ -60,44 +63,101 @@ class RestaurantForm extends React.Component {
   }
 
   render() {
-    const errors = this.props.errors;
-    debugger;
-    const errorItems = errors.map(error => {
-      return (
-        <li key={error.id} className="error">
-          {error}
-        </li>
-      );
-    });
-    debugger;
+    // const errors = this.props.errors;
+    // debugger;
+    // const errorItems = errors.map(error => {
+    //   return (
+    //     <li key={error.id} className="error">
+    //       {error}
+    //     </li>
+    //   );
+    // });
+    // debugger;
     return (
       <>
         <div class="form-container">
           {this.header()}
           <hr />
-          <form onSubmit={this.handleSubmit}>
+          <form className="review" onSubmit={this.handleSubmit}>
             <div onClick={this.props.closeModal} className="close-x">
               <FontAwesomeIcon icon="times" />
             </div>
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              placeholder="Username*"
-              value={this.state.username}
-              onChange={this.update("username")}
-            />
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              placeholder="Password*"
-              value={this.state.password}
-              onChange={this.update("password")}
-            />
-            <ul className="errors">{errorItems}</ul>
+            <label>
+              How would you rate the food?
+              <select
+                value={this.state.food_rating}
+                onChange={this.update("food_rating")}
+              >
+                <option value="5">5 stars</option>
+                <option value="4">4 stars</option>
+                <option value="3">3 stars</option>
+                <option value="2">2 stars</option>
+                <option value="1">1 star</option>
+              </select>
+            </label>
+            <label>
+              How would you rate the service?
+              <select
+                value={this.state.service_rating}
+                onChange={this.update("service_rating")}
+              >
+                <option value="5">5 stars</option>
+                <option value="4">4 stars</option>
+                <option value="3">3 stars</option>
+                <option value="2">2 stars</option>
+                <option value="1">1 star</option>
+              </select>
+            </label>
+            <label>
+              How would you rate the value?
+              <select
+                value={this.state.value_rating}
+                onChange={this.update("value_rating")}
+              >
+                <option value="5">5 stars</option>
+                <option value="4">4 stars</option>
+                <option value="3">3 stars</option>
+                <option value="2">2 stars</option>
+                <option value="1">1 star</option>
+              </select>
+            </label>
+            <label>
+              How would you rate the noise level?
+              <select
+                value={this.state.noise_level}
+                onChange={this.update("noise_level")}
+              >
+                <option value="5">5 stars</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+              </select>
+            </label>
+            <label>
+              How would you rate the ambience?
+              <select
+                value={this.state.ambience_rating}
+                onChange={this.update("ambience_rating")}
+              >
+                <option value="5">5 stars</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+              </select>
+            </label>
+            <label htmlFor="body">Review</label>
+            <textarea
+              name="body"
+              id="body"
+              value={this.state.body}
+              onChange={this.update("body")}
+              cols="30"
+              rows="10"
+            ></textarea>
             <button className="readon-submit">{this.props.formType}</button>
           </form>
-          <hr />
-          <p>Don't want to complete the form?</p>
         </div>
       </>
     );

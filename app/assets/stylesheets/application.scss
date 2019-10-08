@@ -184,10 +184,12 @@ nav.login-signup {
   font-weight: 500;
 }
 
-label {
+.form-container label {
   display: none;
 }
-
+.form-container .review label {
+  display: block;
+}
 input {
   display: block;
   margin: 8px 0px;

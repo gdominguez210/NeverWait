@@ -27,7 +27,7 @@ price_range = ["cheap", "moderate", "pricey"]
 payment_options = ["cash", "credit", "debit"]
 dress_code = ["casual", "business casual", "formal"]
 dining_style = ["casual", "formal", "elegant"]
-demo_user = User.create(username: 'Demo', password:'test123');
+demo_user = User.create(username: 'Demo', password:'test123', fname: 'Demo', lname: 'User');
 
 first_name = Faker::Name.unique.first_name
 last_name = Faker::Name.unique.last_name

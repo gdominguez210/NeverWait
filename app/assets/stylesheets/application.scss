@@ -25,19 +25,20 @@ color: #2B9ABF; */
 html {
   scroll-behavior: smooth;
 }
+body {
+  background: #f7f7f7;
+  font-family: "Cabin", sans-serif;
+  color: #333;
+  font-size: 16px;
+}
 main#root {
-  max-width: 1280px;
+  max-width: 64rem;
   // max-width: 80%;
   background: #ffffff;
   min-height: 100%;
   margin: 25px auto;
 }
 
-body {
-  background: #f7f7f7;
-  font-family: "Cabin", sans-serif;
-  color: #333;
-}
 .fade-appear {
   opacity: 0;
   transition: all 500ms linear;

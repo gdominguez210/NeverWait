@@ -337,7 +337,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -350,7 +350,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -363,7 +363,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -376,7 +376,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -389,7 +389,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -402,7 +402,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -415,7 +415,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -428,7 +428,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -441,7 +441,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -454,7 +454,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -467,7 +467,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -480,7 +480,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -493,7 +493,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -506,7 +506,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -519,7 +519,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -532,7 +532,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -545,7 +545,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -558,7 +558,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -571,7 +571,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 review = Review.new({
   user_id: users.sample.id,
@@ -584,7 +584,7 @@ review = Review.new({
   recommended: Faker::Boolean.boolean,
   body: Faker::Restaurant.review
 })
-review.calc_total_rating()
+review.calc_total_rating
 review.save!
 
 

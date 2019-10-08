@@ -23,7 +23,6 @@ class Review < ApplicationRecord
     belongs_to :user
 
     def calc_total_rating
-        debugger
 
         (self.food_rating + self.service_rating + self.value_rating) / 3.0
     end

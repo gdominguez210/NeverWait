@@ -8,14 +8,14 @@ class SessionForm extends React.Component {
       username: "",
       password: ""
     };
-    debugger;
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger;
+
     const user = Object.assign({}, this.state);
     this.props.processForm(user).then(this.props.closeModal);
     // this.props.history.push("/");
@@ -31,7 +31,7 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     const errors = this.props.errors || [];
-    debugger;
+
     return (
       <ul>
         {errors.map((error, i) => (
@@ -54,7 +54,6 @@ class SessionForm extends React.Component {
     );
   }
   header() {
-    debugger;
     if (this.props.formType === "Signup") {
       return <h2>Welcome to NeverWait</h2>;
     } else if (this.props.formType === "Login") {
@@ -65,7 +64,7 @@ class SessionForm extends React.Component {
   footer() {
     if (this.props.formType === "Login") {
       return (
-        <div class="form-footer">
+        <div className="form-footer">
           <p>New to NeverWait? {this.props.otherForm}</p>
         </div>
       );
@@ -74,7 +73,7 @@ class SessionForm extends React.Component {
 
   render() {
     const errors = this.props.errors;
-    debugger;
+
     const errorItems = errors.map(error => {
       return (
         <li key={error.id} className="error">
@@ -82,10 +81,10 @@ class SessionForm extends React.Component {
         </li>
       );
     });
-    debugger;
+
     return (
       <>
-        <div class="form-container">
+        <div className="form-container">
           {this.header()}
           <hr />
           <form onSubmit={this.handleSubmit}>

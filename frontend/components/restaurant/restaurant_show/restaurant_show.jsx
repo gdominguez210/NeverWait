@@ -27,7 +27,6 @@ class RestaurantShow extends React.Component {
 
   render() {
     const restaurant = this.props.restaurant;
-
     debugger;
     return (
       <>

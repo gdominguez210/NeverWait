@@ -30,7 +30,7 @@ const mapStateToProps = (state, ownProps) => {
   const errors = state.errors.restaurant;
   const formType = "Create Restaurant";
   const currentUser = state.entities.users[state.session.id];
-  debugger;
+
   return { restaurant, errors, formType, currentUser };
 };
 

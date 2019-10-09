@@ -8,7 +8,7 @@ class RestaurantQuickLinks extends React.Component {
 
   render() {
     return (
-      <ul class="restaurant-quick-links">
+      <ul className="restaurant-quick-links">
         <li>
           <NavLink activeClassName="active" to="#overview">
             Overview

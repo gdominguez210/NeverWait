@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 const RestaurantIndexItem = props => {
-  debugger;
   const { restaurant, deleteRestaurant } = props;
   const details = Object.values(restaurant);
   const detailItems = details.map(detail => <li>{detail}</li>);
@@ -15,7 +14,6 @@ const RestaurantIndexItem = props => {
   }
 
   const manageDelete = () => {
-    debugger;
     let result;
     if (props.currentUser) {
       if (props.currentUser.id === restaurant.owner_id) {

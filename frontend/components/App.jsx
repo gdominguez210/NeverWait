@@ -4,7 +4,7 @@ import { Banner } from "./Banner";
 import { Route, Link } from "react-router-dom";
 import { closeModal } from "../actions/modal_actions";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
-import Modal from "./modal/modal";
+import ModalContainer from "./modal/modal_container";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { CSSTransition } from "react-transition-group";
@@ -15,16 +15,15 @@ import CreateRestaurantForm from "./restaurant/restaurant_forms/create_form_cont
 import EditRestaurantForm from "./restaurant/restaurant_forms/edit_form_container";
 // import RestaurantIndexContainer from './restaurant/restaurant_index_container';
 const App = props => {
-  debugger;
   library.add(fas);
 
   return (
     <>
-      <Modal />
+      <ModalContainer />
       <Header />
       <Route exact path="/" component={Banner} />
 
-      <section class="inner-container">
+      <section className="inner-container">
         <ProtectedRoute
           exact
           path="/new-restaurant"

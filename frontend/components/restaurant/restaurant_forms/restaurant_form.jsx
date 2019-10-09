@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class RestaurantForm extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = this.props.restaurant;
     this.update = this.update.bind(this);
@@ -29,13 +28,15 @@ class RestaurantForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger;
-    this.props.action(this.state).then(() => this.props.history.push("/"));
+    this.props.action(this.state).then(action => {
+      debugger;
+      return this.props.history.push(`restaurants/${action.restaurant.id}`);
+    });
   }
   handleSubheader() {
     if (this.props.formType === "Create Restaurant") {
       return (
-        <div class="form-subheader">
+        <div className="form-subheader">
           <h3>Additional Information</h3>
           <p>
             The following fields are optional, and not needed to create your
@@ -51,7 +52,6 @@ class RestaurantForm extends React.Component {
   renderErrors() {
     const errors = this.props.errors;
     if (errors.length > 0) {
-      debugger;
       return (
         <ul className="errors">
           {errors.map((error, i) => (
@@ -65,7 +65,7 @@ class RestaurantForm extends React.Component {
   }
   render() {
     return (
-      <div class="restaurant-form-container">
+      <div className="restaurant-form-container">
         <h1>{this.props.formType}</h1>
         <form className="restaurant-form" onSubmit={this.handleSubmit}>
           <div className="mandatory-input">
@@ -95,7 +95,7 @@ class RestaurantForm extends React.Component {
                 onChange={this.update("phone")}
               />
             </div>
-            <div class="col-8">
+            <div className="col-8">
               <label htmlFor="description">Description</label>
               <textarea
                 id="description"
@@ -109,7 +109,7 @@ class RestaurantForm extends React.Component {
           <hr />
           <div className="optional-input">
             {this.handleSubheader()}
-            <div class="input-container">
+            <div className="input-container">
               <label htmlFor="website">Website</label>
               <input
                 type="text"
@@ -225,7 +225,7 @@ class RestaurantForm extends React.Component {
               />
               <button className="readon">{this.props.formType}</button>
             </div>
-            <div class="map-container">
+            <div className="map-container">
               <FontAwesomeIcon icon="map" />
             </div>
           </div>

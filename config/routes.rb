@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :restaurants, only: [:create, :show, :index, :update, :edit, :destroy, :featured] do
       resources :reviews, only: [:create, :index]
+      resources :reservations, only: [:create]
     end
+    resources :reservations, only: [:update, :edit, :destroy]
     resources :reviews, only: [:update, :edit, :destroy]
     get 'featured-restaurants', :to => 'restaurants#feature'
   end

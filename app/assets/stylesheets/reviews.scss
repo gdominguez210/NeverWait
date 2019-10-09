@@ -47,9 +47,13 @@ ul.reviews {
 
 .author-details .user-avatar {
   background: #2b9abf;
-  padding: 20px;
   border-radius: 60px;
   color: #ffffff;
+  min-width: 60px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .author-details {
@@ -122,7 +126,7 @@ p.user-reviews svg {
 
 .restaurant-bars {
   flex: 1;
-  padding: 0px 20px;
+  padding-left: 20px;
 }
 
 .stats-container {
@@ -135,7 +139,7 @@ p.user-reviews svg {
 
 .stat-bar-container {
   display: flex;
-  margin: 10px;
+  margin: 10px 0px 10px 10px;
 }
 
 .stat-bar {
@@ -149,10 +153,10 @@ p.user-reviews svg {
 }
 
 .inner-stat-bar {
-  /* flex: 1; */
   background: #2b9abf;
   width: 0;
   transition: 0.3s all ease-in;
+  margin: -1px;
 }
 
 .review select {
@@ -171,6 +175,25 @@ p.user-reviews svg {
 .form-container .review label {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0px;
+  padding: 5px 0px;
   font-size: 1.2em;
+}
+
+ul.reviews {
+  margin-top: 0px;
+}
+
+li.review-index-item:first-child {
+  margin-top: 0px;
+}
+
+.review-container button.readon {
+  margin: 25px 0px;
+  align-self: flex-end;
+}
+
+.review-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: -70px;
 }

@@ -1,0 +1,58 @@
+.reservation-container {
+  padding: 10px;
+  background: #ffffff;
+  -webkit-box-shadow: 0 2px 8px rgba(153, 153, 153, 0.4);
+  box-shadow: 0 2px 8px rgba(153, 153, 153, 0.4);
+  margin-bottom: 32px;
+}
+
+.reservation-container h3 {
+  text-align: center;
+}
+
+select {
+  display: block;
+  width: 100%;
+  background: #ffffff;
+  border: none;
+  padding-left: 0px;
+  margin-left: -3px;
+  position: relative;
+  margin-top: 10px;
+  font-size: 0.9em;
+  font-family: inherit;
+}
+
+select:focus {
+  border: none;
+  outline: none;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  padding-left: 4px;
+  margin-bottom: 15px;
+  position: relative;
+  padding-bottom: 5px;
+  font-size: 0.8em;
+}
+
+label:after {
+  height: 1px;
+  background: #dddddd;
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+  right: 5px;
+  content: "";
+  display: block;
+}
+
+option {
+  padding-left: 0px !important;
+  line-height: 1.5;
+}
+.reservation-container button.readon-submit {
+  font-size: 16px;
+}

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 const RestaurantFeaturedItem = props => {
   const { restaurant } = props;
   const details = Object.values(restaurant);
+  debugger;
   const detailItems = details.map(detail => <li>{detail}</li>);
   let banner;
   if (restaurant.image_url) {

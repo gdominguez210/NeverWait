@@ -5,6 +5,7 @@ import { createReview } from "../../../actions/review_actions";
 import { closeModal } from "../../../actions/modal_actions";
 const mapStateToProps = (state, ownProps) => {
   const review = {
+    restaurant_id: ownProps.restaurant_id,
     total_rating: "",
     food_rating: "",
     service_rating: "",

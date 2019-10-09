@@ -1,5 +1,4 @@
 export const fetchRestaurants = () => {
-  debugger;
   return $.ajax({
     method: "GET",
     url: "/api/restaurants"
@@ -7,7 +6,6 @@ export const fetchRestaurants = () => {
 };
 
 export const fetchFeaturedRestaurants = () => {
-  debugger;
   return $.ajax({
     method: "GET",
     url: "/api/featured-restaurants"

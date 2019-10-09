@@ -15,7 +15,7 @@ const RestaurantMain = props => {
   //         behavior: 'smooth',
   //         block: 'start',
   // });
-  debugger;
+
   return (
     <>
       <main class="restaurant-content">
@@ -24,7 +24,7 @@ const RestaurantMain = props => {
           <RestaurantHeader restaurant={restaurant} />
 
           <p>{restaurant.description}</p>
-          <RestaurantGallery />
+          <RestaurantGallery restaurant={restaurant} />
           <RestaurantReviews restaurant={restaurant} />
         </section>
       </main>

@@ -32,7 +32,6 @@ export class RestaurantIndex extends React.Component {
     const { restaurants, deleteRestaurant, currentUser } = this.props;
     let restaurantItems = null;
     if (restaurants) {
-      debugger;
       restaurantItems = restaurants.map(restaurant => (
         <RestaurantIndexItem
           currentUser={currentUser}

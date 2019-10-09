@@ -1,7 +1,6 @@
 import React from "react";
 
 const RestaurantBars = props => {
-  debugger;
   let fillFive,
     fillFour,
     fillThree,
@@ -38,34 +37,34 @@ const RestaurantBars = props => {
   }
   return (
     <>
-      <div class="stat-bar-container">
+      <div className="stat-bar-container">
         5
-        <div class="stat-bar">
-          <div class="inner-stat-bar" style={fillFive}></div>
+        <div className="stat-bar">
+          <div className="inner-stat-bar" style={fillFive}></div>
         </div>
       </div>
-      <div class="stat-bar-container">
+      <div className="stat-bar-container">
         4
-        <div class="stat-bar">
-          <div class="inner-stat-bar" style={fillFour}></div>
+        <div className="stat-bar">
+          <div className="inner-stat-bar" style={fillFour}></div>
         </div>
       </div>
-      <div class="stat-bar-container">
+      <div className="stat-bar-container">
         3
-        <div class="stat-bar">
-          <div class="inner-stat-bar" style={fillThree}></div>
+        <div className="stat-bar">
+          <div className="inner-stat-bar" style={fillThree}></div>
         </div>
       </div>
-      <div class="stat-bar-container">
+      <div className="stat-bar-container">
         2
-        <div class="stat-bar">
-          <div class="inner-stat-bar" style={fillTwo}></div>
+        <div className="stat-bar">
+          <div className="inner-stat-bar" style={fillTwo}></div>
         </div>
       </div>
-      <div class="stat-bar-container">
+      <div className="stat-bar-container">
         1
-        <div class="stat-bar">
-          <div class="inner-stat-bar" style={fillOne}></div>
+        <div className="stat-bar">
+          <div className="inner-stat-bar" style={fillOne}></div>
         </div>
       </div>
     </>

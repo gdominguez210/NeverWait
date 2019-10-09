@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 const RestaurantBanner = props => {
   const { restaurant, deleteRestaurant } = props;
-  debugger;
+
   let banner;
   if (props.restaurant.image_url) {
     banner = {
@@ -14,12 +14,11 @@ const RestaurantBanner = props => {
   }
 
   const manageRestaurantOptions = () => {
-    debugger;
     let result;
     if (props.currentUser) {
       if (props.currentUser.id === restaurant.owner_id) {
         result = (
-          <div class="button-container">
+          <div className="button-container">
             <button
               className="readon"
               onClick={() =>

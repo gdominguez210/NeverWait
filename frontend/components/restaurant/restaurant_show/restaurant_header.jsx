@@ -4,12 +4,11 @@ import { CSSTransition } from "react-transition-group";
 import RestaurantStars from "../restaurant_ratings/rating_stars";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const RestaurantHeader = props => {
-  debugger;
   return (
     <>
-      <div class="restaurant-header">
+      <div className="restaurant-header">
         <h1 id="overview">{props.restaurant.name}</h1>
-        <div class="subheader">
+        <div className="subheader">
           <div className="stars-container">
             <RestaurantStars restaurant={props.restaurant} />
             <p>{props.restaurant.total_rating}</p>

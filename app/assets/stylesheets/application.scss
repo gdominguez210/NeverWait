@@ -32,7 +32,7 @@ body {
   font-size: 16px;
 }
 main#root {
-  max-width: 64rem;
+  max-width: 1600px;
   // max-width: 80%;
   background: #ffffff;
   min-height: 100%;
@@ -188,8 +188,8 @@ nav.login-signup {
 .form-container label {
   display: none;
 }
-.form-container .review label {
-  display: block;
+.restaurant-form label {
+  display: none;
 }
 input {
   display: block;
@@ -421,7 +421,7 @@ ul.restaurants-container {
 }
 
 li.restaurant-item {
-  min-width: 20%;
+  min-width: 25%;
 }
 
 .thumbnail {

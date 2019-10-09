@@ -10,16 +10,20 @@ export const receiveRestaurants = restaurants => ({
   restaurants
 });
 export const receiveErrors = errors => {
-  debugger;
   return {
     type: RECEIVE_RESTAURANT_ERRORS,
     errors
   };
 };
-export const receiveRestaurant = restaurant => ({
-  type: RECEIVE_RESTAURANT,
-  restaurant
-});
+export const receiveRestaurant = payload => {
+  debugger;
+  return {
+    type: RECEIVE_RESTAURANT,
+    restaurant: payload.restaurant,
+    reviews: payload.reviews,
+    users: payload.users
+  };
+};
 
 export const removeRestaurant = restaurantId => ({
   type: REMOVE_RESTAURANT,

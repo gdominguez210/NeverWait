@@ -42,6 +42,7 @@ class Restaurant < ApplicationRecord
     foreign_key: :owner_id,
     class_name: :User
 
-    has_many :reviews
+    has_many :reviews, dependent: :destroy
+    has_many_attached :photos
 
 end

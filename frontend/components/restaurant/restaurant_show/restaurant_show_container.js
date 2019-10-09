@@ -34,9 +34,12 @@ const msp = (state, ownProps) => {
       payment_options: "",
       executive_chef: "",
       additional: "",
-      total_rating: ""
+      total_rating: "",
+      photoUrls: ""
     },
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    users: state.entities.users,
+    reviews: state.entities.reviews
   };
 };
 

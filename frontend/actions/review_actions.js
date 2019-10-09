@@ -3,9 +3,10 @@ import * as ApiUtil from "../util/review_api_util";
 export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
 export const REMOVE_REVIEW = "REMOVE_REVIEW";
 export const RECEIVE_REVIEWS = "RECEIVE_REVIEWS";
-const receiveReviews = reviews => ({
+const receiveReviews = payload => ({
   type: RECEIVE_REVIEWS,
-  reviews
+  reviews: payload.reviews,
+  users: payload.users
 });
 const receiveReview = review => ({
   type: RECEIVE_REVIEW,
@@ -29,9 +30,10 @@ export const deleteReview = reviewId => dispatch =>
   );
 
 export const fetchReviews = id => dispatch => {
-  return ApiUtil.fetchReviews(id).then(reviews =>
-    dispatch(receiveReviews(reviews))
-  );
+  return ApiUtil.fetchReviews(id).then(reviews => {
+    debugger;
+    return dispatch(receiveReviews(reviews));
+  });
 };
 
 // export const fetchReviewsWithId = (restaurantId) => dispatch =>

@@ -49,12 +49,6 @@ export const fetchReservations = id => dispatch => {
   });
 };
 
-export const fetchReservation = id => dispatch => {
-  return ApiUtil.fetchReservation(id).then(reservation => {
-    return dispatch(receiveReservation(reservation));
-  });
-};
-
 export const findTable = reservationRequest => dispatch => {
   debugger;
   reservationRequest.date = String(reservationRequest.date);

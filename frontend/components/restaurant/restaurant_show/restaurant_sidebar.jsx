@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ReservationForm from "../../reservation/reservation_form";
+import FindTableForm from "../../reservation/findtable_container";
 class RestaurantSidebar extends React.Component {
   // const parameters = restaurant.parameters || {};
   constructor(props) {
@@ -15,7 +15,7 @@ class RestaurantSidebar extends React.Component {
           <div className="sidebar-item-icon">
             <FontAwesomeIcon icon="phone" />
           </div>
-          <div class="sidebar-item-content">
+          <div className="sidebar-item-content">
             <p className="sidebar-item-label">Phone</p>
             <p>{this.props.restaurant.phone}</p>
           </div>
@@ -30,7 +30,7 @@ class RestaurantSidebar extends React.Component {
           <div className="sidebar-item-icon">
             <FontAwesomeIcon icon="globe" />
           </div>
-          <div class="sidebar-item-content">
+          <div className="sidebar-item-content">
             <p className="sidebar-item-label">Website</p>
             <p>{this.props.restaurant.website}</p>
           </div>
@@ -44,7 +44,7 @@ class RestaurantSidebar extends React.Component {
         <div className="sidebar-item-icon">
           <FontAwesomeIcon icon="city" />
         </div>
-        <div class="sidebar-item-content">
+        <div className="sidebar-item-content">
           <p className="sidebar-item-label">Neighborhood</p>
           <p>{this.props.restaurant.neighborhood}</p>
         </div>
@@ -58,7 +58,7 @@ class RestaurantSidebar extends React.Component {
           <div className="sidebar-item-icon">
             <FontAwesomeIcon icon="clock" />
           </div>
-          <div class="sidebar-item-content">
+          <div className="sidebar-item-content">
             <p className="sidebar-item-label">Hours of Operation</p>
             <p>{this.props.restaurant.hours_of_operation}</p>
           </div>
@@ -73,7 +73,7 @@ class RestaurantSidebar extends React.Component {
           <div className="sidebar-item-icon">
             <FontAwesomeIcon icon="glass-cheers" />
           </div>
-          <div class="sidebar-item-content">
+          <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Cuisines</p>
             <p>{this.props.restaurant.cuisines}</p>
           </div>
@@ -88,7 +88,7 @@ class RestaurantSidebar extends React.Component {
           <div className="sidebar-item-icon">
             <FontAwesomeIcon icon="concierge-bell" />
           </div>
-          <div class="sidebar-item-content">
+          <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Dining Style</p>
             <p>{this.props.restaurant.dining_style}</p>
           </div>
@@ -103,7 +103,7 @@ class RestaurantSidebar extends React.Component {
           <div className="sidebar-item-icon">
             <FontAwesomeIcon icon="tshirt" />
           </div>
-          <div class="sidebar-item-content">
+          <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Dress Code</p>
             <p>{this.props.restaurant.dress_code}</p>
           </div>
@@ -118,7 +118,7 @@ class RestaurantSidebar extends React.Component {
           <div className="sidebar-item-icon">
             <FontAwesomeIcon icon="road" />
           </div>
-          <div class="sidebar-item-content">
+          <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Cross Street</p>
             <p>{this.props.restaurant.cross_street}</p>
           </div>
@@ -133,7 +133,7 @@ class RestaurantSidebar extends React.Component {
           <div className="sidebar-item-icon">
             <FontAwesomeIcon icon="parking" />
           </div>
-          <div class="sidebar-item-content">
+          <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Parking Details</p>
             <p>{this.props.restaurant.parking_details}</p>
           </div>
@@ -148,7 +148,7 @@ class RestaurantSidebar extends React.Component {
           <div className="sidebar-item-icon">
             <FontAwesomeIcon icon="bus" />
           </div>
-          <div class="sidebar-item-content">
+          <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Public Transit</p>
             <p>{this.props.restaurant.public_transit}</p>
           </div>
@@ -163,7 +163,7 @@ class RestaurantSidebar extends React.Component {
           <div className="sidebar-item-icon">
             <FontAwesomeIcon icon="credit-card" />
           </div>
-          <div class="sidebar-item-content">
+          <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Payment Options</p>
             <p>{this.props.restaurant.payment_options}</p>
           </div>
@@ -178,7 +178,7 @@ class RestaurantSidebar extends React.Component {
           <div className="sidebar-item-icon">
             <FontAwesomeIcon icon="user-alt" />
           </div>
-          <div class="sidebar-item-content">
+          <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Executive Chef</p>
             <p>{this.props.restaurant.executive_chef}</p>
           </div>
@@ -193,7 +193,7 @@ class RestaurantSidebar extends React.Component {
           <div className="sidebar-item-icon">
             <FontAwesomeIcon icon="plus" />
           </div>
-          <div class="sidebar-item-content">
+          <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Additional</p>
             <p>{this.props.restaurant.additional}</p>
           </div>
@@ -206,7 +206,7 @@ class RestaurantSidebar extends React.Component {
     return (
       <>
         <aside className="restaurant-sidebar">
-          <ReservationForm />
+          <FindTableForm />
           {this.phone()}
           {this.website()}
           {this.city()}

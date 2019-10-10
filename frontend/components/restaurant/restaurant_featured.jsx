@@ -6,7 +6,6 @@ import { CSSTransition } from "react-transition-group";
 export class RestaurantFeatured extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
   }
 
   componentDidMount() {
@@ -30,7 +29,7 @@ export class RestaurantFeatured extends React.Component {
 
     return (
       <>
-        <section class="featured-restaurants">
+        <section className="featured-restaurants">
           <div className="featured-header">
             <h2>Featured Restaurants</h2>
             <Link to="/restaurants" className="highlight">

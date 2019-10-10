@@ -27,16 +27,15 @@ class RestaurantShow extends React.Component {
 
   render() {
     const restaurant = this.props.restaurant;
-    debugger;
     return (
       <>
-        <section class="restaurant-container">
+        <section className="restaurant-container">
           <RestaurantBanner
             deleteRestaurant={this.props.deleteRestaurant}
             restaurant={restaurant}
             currentUser={this.props.currentUser}
           />
-          <section class="restaurant-content-wrap">
+          <section className="restaurant-content-wrap">
             <RestaurantMain restaurant={restaurant} />
             <RestaurantSidebar restaurant={restaurant} />
           </section>

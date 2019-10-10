@@ -7,7 +7,7 @@ import {
 
 const msp = state => {
   const { restaurants } = state.entities;
-  debugger;
+   ;
   return {
     restaurants: Object.values(restaurants),
     currentUser: state.entities.users[state.session.id]

@@ -6,7 +6,6 @@ import { CSSTransition } from "react-transition-group";
 export class RestaurantIndex extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
   }
 
   componentDidMount() {
@@ -32,18 +31,19 @@ export class RestaurantIndex extends React.Component {
     const { restaurants, deleteRestaurant, currentUser } = this.props;
     let restaurantItems = null;
     if (restaurants) {
-      restaurantItems = restaurants.map(restaurant => (
+      restaurantItems = restaurants.map((restaurant, idx) => (
         <RestaurantIndexItem
           currentUser={currentUser}
           deleteRestaurant={deleteRestaurant}
           restaurant={restaurant}
+          key={restaurant.id}
         />
       ));
     }
 
     return (
       <>
-        <section class="restaurants-container">
+        <section className="restaurants-container">
           <aside>{this.addNew()}</aside>
           <CSSTransition
             in={true}

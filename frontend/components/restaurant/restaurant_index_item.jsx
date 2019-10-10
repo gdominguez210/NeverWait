@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 const RestaurantIndexItem = props => {
   const { restaurant, deleteRestaurant } = props;
   const details = Object.values(restaurant);
-  const detailItems = details.map(detail => <li>{detail}</li>);
+  const detailItems = details.map((detail, idx) => (
+    <li key={`detail-${idx}`}>{detail}</li>
+  ));
   let banner;
   if (restaurant.image_url) {
     banner = {
@@ -34,7 +36,7 @@ const RestaurantIndexItem = props => {
   return (
     <li className="restaurant-index-item">
       {manageDelete()}
-      <div class="inner-wrap">
+      <div className="inner-wrap">
         <Link to={`/restaurants/${restaurant.id}`}>
           <div className="thumbnail">
             <div className="thumbnail-img" style={banner}></div>

@@ -30,7 +30,7 @@ class ReviewForm extends React.Component {
     e.stopPropagation();
     e.preventDefault();
     const review = Object.assign({}, this.state);
-    debugger;
+     ;
     this.props.action(review).then(() => {
       return this.props.closeModal();
     });
@@ -82,7 +82,7 @@ class ReviewForm extends React.Component {
 
     return (
       <>
-        <div class="form-container review-form">
+        <div  className="form-container review-form">
           {this.header()}
           <hr />
           <form className="review" onSubmit={this.handleSubmit}>

@@ -11,7 +11,6 @@ import { CSSTransition } from "react-transition-group";
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
     this.restaurant_id = this.props.location.pathname[
       this.props.location.pathname.length - 1
     ];
@@ -36,6 +35,8 @@ class Modal extends React.Component {
           <CreateReviewFormContainer restaurant_id={this.restaurant_id} />
         );
         break;
+      case "reservation":
+        component = <p>Reservation reserved!</p>;
       default:
         return null;
     }

@@ -10,7 +10,7 @@ const msp = (state, ownProps) => {
   if (review_ids) {
     reviews = review_ids.map(id => state.entities.reviews[id]);
   }
-  debugger;
+   ;
   return {
     reviews,
     users,

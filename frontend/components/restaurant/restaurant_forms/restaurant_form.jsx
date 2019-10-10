@@ -29,7 +29,7 @@ class RestaurantForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.action(this.state).then(action => {
-      debugger;
+       ;
       return this.props.history.push(`restaurants/${action.restaurant.id}`);
     });
   }

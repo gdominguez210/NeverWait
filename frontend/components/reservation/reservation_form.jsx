@@ -1,33 +1,46 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "react-dates/initialize";
-import "react-dates/lib/css/_datepicker.css";
-
-import {
-  DateRangePicker,
-  SingleDatePicker,
-  DayPickerRangeController
-} from "react-dates";
-
+import moment from "moment";
 class ReservationForm extends React.Component {
   constructor(props) {
     super(props);
+    debugger;
     this.state = {
-      party_size: "",
-      date: "",
-      time: ""
+      party_size: this.props.reservation.party_size || "",
+      date: this.parseDate(this.props.reservation.date) || "",
+      start_time: this.parseTime(this.props.reservation.start_time) || "",
+      first_name: "",
+      end_time: "",
+      last_name: "",
+      phonenumber: "",
+      email: "",
+      restaurant_id: this.props.restaurant.id,
+      user_id: this.props.currentUser.id
     };
+
+    debugger;
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.parseDate = this.parseDate.bind(this);
+    this.parseTime = this.parseTime.bind(this);
+    this.thumbnail = null;
+    debugger;
+    if (this.props.restaurant.image_url) {
+      this.thumbnail = {
+        backgroundImage: `url(${this.props.restaurant.image_url})`
+      };
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
 
-    const user = Object.assign({}, this.state);
-    this.props.processForm(user).this.props.history.push("/");
+    const reservation = Object.assign({}, this.state);
+    this.props
+      .createReservation(reservation)
+      .then(() => this.props.openModal("reservation"));
   }
 
   update(field) {
@@ -49,112 +62,118 @@ class ReservationForm extends React.Component {
       </ul>
     );
   }
+  parseTime(time) {
+    time = time.slice(11, 16);
+    return time[0] < 1 ? `${time.slice(1)} AM` : `${time} PM`;
+  }
+  parseDate(date) {
+    const date_pieces = String(date).split(" ");
+    const months = {
+      Jan: "January",
+      Feb: "February",
+      Mar: "March",
+      Apr: "April",
+      May: "May",
+      Jun: "June",
+      Jul: "July",
+      Aug: "August",
+      Sep: "September",
+      Oct: "October",
+      Nov: "November",
+      Dec: "December"
+    };
 
-  partySize() {
-    let options = [];
-    for (let i = 1; i <= 20; i++) {
-      options.push(<option value={`${i}`}>For {`${i}`}</option>);
-    }
+    const month = months[date_pieces[1]];
+    const day = date_pieces[2];
+    const year = date_pieces[3];
+
+    return `${month} ${day}, ${year}`;
+  }
+
+  header() {
+    // if (this.props.party_size && this.state.date && this.state.start_time) {
     return (
-      <label>
-        Party Size
-        <select
-          value={this.state.party_size}
-          onChange={this.update("party_size")}
-        >
-          {options}
-        </select>
-      </label>
+      <div className="form-head">
+        <h2>You're almost done!</h2>
+        <div className="reservation-thumbnail" style={this.thumbnail}></div>
+        <div className="reservation-booking-details">
+          <h2>{this.props.restaurant.name}</h2>
+          <div className="booking-icons">
+            <div className="booking-icon">
+              <p>
+                <FontAwesomeIcon icon="calendar" />
+              </p>
+              <p>Date: {this.state.date}</p>
+            </div>
+            <div className="booking-icon">
+              <p>
+                <FontAwesomeIcon icon="clock" />
+              </p>
+              <p> Time: {this.state.start_time}</p>
+            </div>
+            <div className="booking-icon">
+              <p>
+                <FontAwesomeIcon icon="user" />
+              </p>
+              <p>Party Size: {this.state.party_size}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
-  startTime() {
+
+  footer() {
     return (
-      <label>
-        Time
-        <select
-          value={this.state.party_size}
-          onChange={this.update("party_size")}
-        >
-          <option value="2019-10-10T00:00:00">12:00 AM</option>
-          <option value="2019-10-10T00:30:00">12:30 AM</option>
-          <option value="2019-10-10T01:00:00">1:00 AM</option>
-          <option value="2019-10-10T01:30:00">1:30 AM</option>
-          <option value="2019-10-10T02:00:00">2:00 AM</option>
-          <option value="2019-10-10T02:30:00">2:30 AM</option>
-          <option value="2019-10-10T03:00:00">3:00 AM</option>
-          <option value="2019-10-10T03:30:00">3:30 AM</option>
-          <option value="2019-10-10T04:00:00">4:00 AM</option>
-          <option value="2019-10-10T04:30:00">4:30 AM</option>
-          <option value="2019-10-10T05:00:00">5:00 AM</option>
-          <option value="2019-10-10T05:30:00">5:30 AM</option>
-          <option value="2019-10-10T06:00:00">6:00 AM</option>
-          <option value="2019-10-10T06:30:00">6:30 AM</option>
-          <option value="2019-10-10T07:00:00">7:00 AM</option>
-          <option value="2019-10-10T07:30:00">7:30 AM</option>
-          <option value="2019-10-10T08:00:00">8:00 AM</option>
-          <option value="2019-10-10T08:30:00">8:30 AM</option>
-          <option value="2019-10-10T09:00:00">9:00 AM</option>
-          <option value="2019-10-10T09:30:00">9:30 AM</option>
-          <option value="2019-10-10T10:00:00">10:00 AM</option>
-          <option value="2019-10-10T10:30:00">10:30 AM</option>
-          <option value="2019-10-10T11:00:00">11:00 AM</option>
-          <option value="2019-10-10T11:30:00">11:30 AM</option>
-          <option value="2019-10-10T12:00:00">12:00 PM</option>
-          <option value="2019-10-10T12:30:00">12:30 PM</option>
-          <option value="2019-10-10T13:00:00">1:00 PM</option>
-          <option value="2019-10-10T13:30:00">1:30 PM</option>
-          <option value="2019-10-10T14:00:00">2:00 PM</option>
-          <option value="2019-10-10T14:30:00">2:30 PM</option>
-          <option value="2019-10-10T15:00:00">3:00 PM</option>
-          <option value="2019-10-10T15:30:00">3:30 PM</option>
-          <option value="2019-10-10T16:00:00">4:00 PM</option>
-          <option value="2019-10-10T16:30:00">4:30 PM</option>
-          <option value="2019-10-10T17:00:00">5:00 PM</option>
-          <option value="2019-10-10T17:30:00">5:30 PM</option>
-          <option value="2019-10-10T18:00:00">6:00 PM</option>
-          <option value="2019-10-10T18:30:00">6:30 PM</option>
-          <option value="2019-10-10T19:00:00">7:00 PM</option>
-          <option value="2019-10-10T19:30:00">7:30 PM</option>
-          <option value="2019-10-10T20:00:00">8:00 PM</option>
-          <option value="2019-10-10T20:30:00">8:30 PM</option>
-          <option value="2019-10-10T21:00:00">9:00 PM</option>
-          <option value="2019-10-10T21:30:00">9:30 PM</option>
-          <option value="2019-10-10T22:00:00">10:00 PM</option>
-          <option value="2019-10-10T22:30:00">10:30 PM</option>
-          <option value="2019-10-10T23:00:00">11:00 PM</option>
-          <option value="2019-10-10T23:30:00">11:30 PM</option>
-        </select>
-      </label>
+      <p>
+        By clicking “Complete reservation” you agree to the NeverWait Terms of
+        Use and Privacy Policy.
+      </p>
     );
   }
-  date() {
-    return (
-      <label>
-        Date
-        <SingleDatePicker
-          date={null} // momentPropTypes.momentObj or null
-          onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
-          focused={this.state.focused} // PropTypes.bool
-          onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-          id="your_unique_id" // PropTypes.string.isRequired,
-        />
-      </label>
-    );
-  }
+
   render() {
+    debugger;
     return (
       <>
-        <div className="reservation-container">
-          <h3>Make a Reservation</h3>
-          <hr />
+        <div className="form-container reservation">
+          {this.header()}
           <form onSubmit={this.handleSubmit}>
-            {this.partySize()}
-            <div class="date-time">
-              {this.date()}
-              {this.startTime()}
+            <div className="inputs-container">
+              <label htmlFor="firstname">First Name</label>
+              <input
+                type="text"
+                placeholder="First Name*"
+                value={this.state.first_name}
+                onChange={this.update("first_name")}
+              />
+              <label htmlFor="username">Last Name</label>
+              <input
+                type="text"
+                placeholder="Last Name*"
+                value={this.state.last_name}
+                onChange={this.update("last_name")}
+              />
+            </div>
+            <div className="inputs-container">
+              <label htmlFor="phonenumber">Phone Number</label>
+              <input
+                type="tel"
+                placeholder="Phone Number*"
+                value={this.state.phonenumber}
+                onChange={this.update("phonenumber")}
+              />
+              <label htmlFor="phonenumber">Email</label>
+              <input
+                type="email"
+                placeholder="Email"
+                value={this.state.email}
+                onChange={this.update("email")}
+              />
             </div>
             {/* <ul className="errors">{errorItems}</ul> */}
-            <button className="readon-submit">Find a Table</button>
+            <button className="readon-submit">Complete Reservation</button>
+            {this.footer()}
           </form>
         </div>
       </>

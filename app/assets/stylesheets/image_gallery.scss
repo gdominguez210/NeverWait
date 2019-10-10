@@ -104,3 +104,46 @@
 .gallery-item {
   overflow: hidden;
 }
+
+.gallery-item img {
+  transition: 0.5s ease-in-out;
+}
+.gallery-item:hover img {
+  transform: scale(1.05, 1.05);
+}
+.gallery-item:hover:after {
+  opacity: 1;
+}
+.gallery-item {
+  position: relative;
+  cursor: pointer;
+}
+.gallery-item:after {
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.35) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.35) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.35) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}

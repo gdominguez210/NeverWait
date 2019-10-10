@@ -19,9 +19,6 @@ li.review-index-item {
 .author-details p {
   margin: 0px;
 }
-.review-stars {
-  width: 100%;
-}
 
 .rating-container {
   padding: 10px;
@@ -30,8 +27,11 @@ li.review-index-item {
 .rating-container .highlight {
   margin-left: 5px;
 }
-
-.review-stars + .rating-container {
+.ratings-container {
+  width: 100%;
+  display: flex;
+}
+.ratings-container .rating-container:first-child {
   padding-left: 0px;
 }
 
@@ -195,5 +195,4 @@ li.review-index-item:first-child {
 .review-container {
   display: flex;
   flex-direction: column;
-  margin-top: -70px;
 }

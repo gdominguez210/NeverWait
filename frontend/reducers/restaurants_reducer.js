@@ -9,7 +9,6 @@ const restaurantsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_RESTAURANTS:
-      debugger;
       return action.restaurants;
     case RECEIVE_RESTAURANT:
       return Object.assign({}, state, {
@@ -17,18 +16,15 @@ const restaurantsReducer = (state = {}, action) => {
       });
     case RECEIVE_REVIEW:
       let reviewState = Object.assign({}, state);
-      debugger;
       reviewState[action.review.restaurant_id].review_ids.push(
         action.review.id
       );
       return reviewState;
     case REMOVE_REVIEW:
       let removeState = Object.assign({}, state);
-      debugger;
       let removeIdx = Object.values(removeState)[0].review_ids.indexOf(
         action.reviewId
       );
-      debugger;
       delete Object.values(removeState)[0].review_ids[removeIdx];
       return removeState;
     case REMOVE_RESTAURANT:

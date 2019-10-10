@@ -1,11 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import RestaurantShow from "./restaurant_show";
-import {
-  fetchRestaurant,
-  deleteRestaurant
-} from "../../../actions/restaurants_actions";
+import ReservationShow from "./reservation_show";
+import { fetchReservations } from "../../../actions/reservations_actions";
 
 const msp = (state, ownProps) => {
   return {

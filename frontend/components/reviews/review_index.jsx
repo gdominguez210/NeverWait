@@ -4,8 +4,6 @@ import ReviewIndexItem from "./review_index_item";
 class ReviewIndex extends React.Component {
   constructor(props) {
     super(props);
-
-    debugger;
   }
 
   componentDidMount() {
@@ -22,7 +20,6 @@ class ReviewIndex extends React.Component {
   }
 
   render() {
-    debugger;
     const { reviews, currentUser, openModal } = this.props;
     let reviewItems = null;
     let reviewList = null;
@@ -44,6 +41,7 @@ class ReviewIndex extends React.Component {
           currentUser={this.props.currentUser}
           review={review}
           author={this.props.users[review.user_id]}
+          key={review.id}
         />
       ));
       reviewList = <ul className="reviews">{reviewItems}</ul>;

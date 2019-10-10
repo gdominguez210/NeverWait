@@ -1,14 +1,21 @@
 import {
   RECEIVE_RESERVATION,
   RECEIVE_RESERVATIONS,
-  REMOVE_RESERVATION
+  REMOVE_RESERVATION,
+  OPEN_TIME_SLOT
 } from "../actions/reservation_actions";
 
-import { RECEIVE_RESTAURANT } from "../actions/restaurant_actions";
+import { RECEIVE_RESTAURANT } from "../actions/restaurants_actions";
 
 const reservationsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
+    case OPEN_TIME_SLOT:
+      return Object.assign({}, state, {
+        date: action.date,
+        start_time: action.start_time,
+        party_size: action.party_size
+      });
     case RECEIVE_RESERVATION:
       return Object.assign({}, state, {
         [action.reservation.user_id]: action.reservation

@@ -6,17 +6,18 @@ import { closeModal } from "../actions/modal_actions";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import ModalContainer from "./modal/modal_container";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
+import { fas, fab } from "@fortawesome/free-solid-svg-icons";
 import { CSSTransition } from "react-transition-group";
+import { Footer } from "./Footer";
 import RestaurantIndexContainer from "./restaurant/restaurant_index_container";
 import RestaurantFeaturedContainer from "./restaurant/restaurant_featured_container";
 import RestaurantShowContainer from "./restaurant/restaurant_show/restaurant_show_container";
 import CreateRestaurantForm from "./restaurant/restaurant_forms/create_form_container";
 import EditRestaurantForm from "./restaurant/restaurant_forms/edit_form_container";
+import CreateReservationForm from "./reservation/reservation_form_container";
 // import RestaurantIndexContainer from './restaurant/restaurant_index_container';
 const App = props => {
   library.add(fas);
-
   return (
     <>
       <ModalContainer />
@@ -34,6 +35,11 @@ const App = props => {
           path="/restaurants/:restaurantId/edit"
           component={EditRestaurantForm}
         />
+        <ProtectedRoute
+          exact
+          path="/new-reservation"
+          component={CreateReservationForm}
+        />
 
         <Route exact path="/" component={RestaurantFeaturedContainer} />
         <Route exact path="/restaurants" component={RestaurantIndexContainer} />
@@ -43,6 +49,7 @@ const App = props => {
         path="/restaurants/:restaurantId"
         component={RestaurantShowContainer}
       ></Route>
+      <Footer />
     </>
   );
 };

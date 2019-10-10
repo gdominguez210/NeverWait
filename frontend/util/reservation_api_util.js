@@ -23,3 +23,12 @@ export const fetchReservations = userId =>
     method: "GET",
     url: `/api/users/${userId}/reservations`
   });
+
+export const findTable = reservationRequest => {
+  debugger;
+  return $.ajax({
+    method: "POST",
+    url: `/api/reservations/findtable`,
+    data: { reservation: reservationRequest }
+  });
+};

@@ -5,6 +5,10 @@
   align-items: center;
   justify-content: center;
 }
+ul.restaurant-quick-links li {
+  padding: 0px 16px;
+  cursor: pointer;
+}
 
 li.restaurant-item {
   max-width: 25%;

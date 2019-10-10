@@ -5,7 +5,7 @@
 #  id              :bigint           not null, primary key
 #  user_id         :integer          not null
 #  restaurant_id   :integer          not null
-#  total_rating    :integer          not null
+#  total_rating    :float            not null
 #  food_rating     :integer          not null
 #  service_rating  :integer          not null
 #  noise_level     :integer          not null

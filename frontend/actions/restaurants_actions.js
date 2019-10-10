@@ -16,7 +16,7 @@ export const receiveErrors = errors => {
   };
 };
 export const receiveRestaurant = payload => {
-  debugger;
+   ;
   return {
     type: RECEIVE_RESTAURANT,
     restaurant: payload.restaurant,

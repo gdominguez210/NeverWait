@@ -10,7 +10,7 @@
   text-align: center;
 }
 
-select {
+.reservation-container select {
   display: block;
   width: 100%;
   background: #ffffff;
@@ -23,12 +23,12 @@ select {
   font-family: inherit;
 }
 
-select:focus {
+.reservation-container select:focus {
   border: none;
   outline: none;
 }
 
-label {
+.reservation-container label {
   display: block;
   font-weight: bold;
   padding-left: 4px;
@@ -38,7 +38,7 @@ label {
   font-size: 0.8em;
 }
 
-label:after {
+.reservation-container label:after {
   height: 1px;
   background: #dddddd;
   position: absolute;
@@ -49,10 +49,116 @@ label:after {
   display: block;
 }
 
-option {
+.reservation-container option {
   padding-left: 0px !important;
   line-height: 1.5;
 }
 .reservation-container button.readon-submit {
   font-size: 16px;
+}
+
+.form-container.reservation {
+  max-width: 50%;
+}
+
+.form-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reservation-booking-details {
+  display: flex;
+  flex-direction: column;
+  /* flex: 1; */
+  padding: 20px;
+}
+
+.booking-icons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.booking-icon {
+  padding: 5px;
+}
+
+.booking-icon svg {
+  margin-right: 10px;
+}
+
+.reservation-thumbnail {
+  min-width: 75px;
+  /* padding: 20px; */
+  min-height: 75px;
+  box-sizing: border-box;
+  background: #eeeeee;
+  border-radius: 4px;
+}
+
+.booking-icon:first-child {
+  padding-left: 0px;
+}
+
+.inputs-container {
+  display: flex;
+  margin: 0px -10px;
+}
+
+.inputs-container input {
+  margin: 10px;
+}
+
+.form-container.reservation {
+  margin: 25px auto;
+}
+
+input#reservation_cal {
+  font-size: inherit;
+  margin: 0px;
+  padding: 0px;
+}
+
+.SingleDatePicker.SingleDatePicker_1 {
+  margin-top: 10px;
+  font-family: inherit;
+  font-size: 0.9em;
+}
+
+.reservation-booking-details {
+  border-bottom: 0px;
+  border-top-right-radius: 4px;
+  flex: 1;
+  width: 100%;
+  padding-top: 50px;
+  background: #f7f7f7;
+}
+
+.reservation-thumbnail {
+  position: relative;
+  margin-bottom: -50px;
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+}
+
+.form-container .reservation-booking-details h2 {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.form-head h2 {
+  margin-bottom: 15px;
+}
+
+form {
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.booking-icon p {
+  margin: 0px;
+}
+.booking-icon {
+  display: flex;
 }

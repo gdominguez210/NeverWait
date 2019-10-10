@@ -31,7 +31,7 @@ export const deleteReview = reviewId => dispatch =>
 
 export const fetchReviews = id => dispatch => {
   return ApiUtil.fetchReviews(id).then(reviews => {
-    debugger;
+     ;
     return dispatch(receiveReviews(reviews));
   });
 };

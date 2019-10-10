@@ -4,10 +4,16 @@ import RestaurantStars from "./rating_stars";
 import { CSSTransition } from "react-transition-group";
 import RestaurantBars from "./restaurant_bars";
 const RestaurantReviews = props => {
+  const header =
+    props.restaurant.total_reviews === 1 ? (
+      <h2>What {props.restaurant.total_reviews} Person Is Saying</h2>
+    ) : (
+      <h2>What {props.restaurant.total_reviews} People Are Saying</h2>
+    );
   return (
     <>
       <div ref={props.reviews}>
-        <h2>What {props.restaurant.total_reviews} People Are Saying</h2>
+        {header}
         <div className="stats-container">
           <div className="stats-overview">
             <p>

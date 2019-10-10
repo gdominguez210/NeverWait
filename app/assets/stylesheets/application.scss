@@ -38,6 +38,12 @@ main#root {
   min-height: 100%;
   margin: 25px auto;
 }
+footer {
+  padding: 20px;
+  background: #333333;
+  color: #acacac;
+  font-weight: bold;
+}
 
 .fade-appear {
   opacity: 0;
@@ -172,7 +178,7 @@ nav.login-signup {
   color: inherit;
 }
 
-.form-container {
+.modal-child .form-container {
   min-width: 460px;
   padding: 36px;
   margin: 0 auto;
@@ -180,7 +186,7 @@ nav.login-signup {
   box-shadow: 0px 0px 26px;
 }
 
-.form-container h2 {
+.modal-child .form-container h2 {
   margin: 0px;
   font-weight: 500;
 }
@@ -326,10 +332,6 @@ button.readon-outline:hover {
   border-color: #2b9abf;
 }
 
-.form-container {
-  border-bottom: 5px solid #2b9abf;
-}
-
 .readon-submit:hover {
   background-color: #1b6179;
 }
@@ -342,7 +344,7 @@ button.readon-outline:hover {
   border-color: #2b9abf;
 }
 
-.form-container {
+.modal-child .form-container {
   border-bottom: 5px solid #2b9abf;
 }
 

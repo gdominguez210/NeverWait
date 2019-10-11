@@ -94,7 +94,7 @@ users.push(user)
   9.times {
   filename = gallery_item.sample
   file = open(filename)
-  restaurant.attach(io:file, filename: filename.split("/")[-1])
+  restaurant.photos.attach(io:file, filename: filename.split("/")[-1])
   }
 }
 

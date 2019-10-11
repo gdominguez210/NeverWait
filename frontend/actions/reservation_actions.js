@@ -57,12 +57,12 @@ export const fetchReservations = id => dispatch => {
 };
 
 export const findTable = reservationRequest => dispatch => {
-  debugger;
+    ;
   reservationRequest.date = String(reservationRequest.date);
-  debugger;
+    ;
   return ApiUtil.findTable(reservationRequest)
     .then(reservation => {
-      debugger;
+        ;
       return dispatch(openTimeslot(reservation));
     })
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)));

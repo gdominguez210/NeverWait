@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const RestaurantStars = props => {
   let percentage = null;
   let fill = null;
-  debugger;
+    ;
   if (props.restaurant) {
     percentage = (props.restaurant.total_rating * 100.0) / 5;
     fill = {
@@ -12,11 +12,11 @@ const RestaurantStars = props => {
   }
   if (props.review) {
     percentage = (props.review.total_rating * 100.0) / 5;
-    debugger;
+      ;
     fill = {
       width: `${percentage}%`
     };
-    debugger;
+      ;
   }
 
   return (

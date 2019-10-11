@@ -4,7 +4,7 @@ import { CSSTransition } from "react-transition-group";
 
 const RestaurantGallery = props => {
   let imagesList = null;
-  debugger;
+    ;
   if (
     props.restaurant.photoUrls instanceof Array &&
     props.restaurant.photoUrls.length >= 1

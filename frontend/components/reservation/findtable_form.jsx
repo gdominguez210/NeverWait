@@ -14,7 +14,7 @@ import {
 class FindTableForm extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
+      ;
     this.defaultDateTime = new Date();
     this.state = {
       party_size: 1,
@@ -30,14 +30,14 @@ class FindTableForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger;
+      ;
     // let parsed = String(this.state.date);
     // this.setState({
     //   date: parsed
     // });
     const reservationRequest = Object.assign({}, this.state);
     this.props.findTable(reservationRequest).then(reservation => {
-      debugger;
+        ;
       return this.props.history.push(`/new-reservation`);
     });
   }

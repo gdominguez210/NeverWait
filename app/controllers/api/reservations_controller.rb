@@ -6,12 +6,12 @@ class Api::ReservationsController < ApplicationController
 
     def create
         @reservation = Reservation.new(reservation_params)
-        # debugger
+        #   
         # @reservation.end_time = @reservation.start_time + 
         if @reservation.save
             render "api/reservations/show"
         else
-            # debugger
+            #   
             render json: @reservation.errors.full_messages, status: 422
         end
     end

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
+      ;
     this.state = {
       restaurant_id: parseInt(this.props.restaurant_id),
       food_rating: 5,

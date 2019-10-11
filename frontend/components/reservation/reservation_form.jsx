@@ -5,7 +5,7 @@ import moment from "moment";
 class ReservationForm extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
+      ;
     this.state = {
       party_size: this.props.reservation.party_size || "",
       date: this.parseDate(this.props.reservation.date) || "",
@@ -19,14 +19,14 @@ class ReservationForm extends React.Component {
       user_id: this.props.currentUser.id
     };
 
-    debugger;
+      ;
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.parseDate = this.parseDate.bind(this);
     this.parseTime = this.parseTime.bind(this);
     this.thumbnail = null;
-    debugger;
+      ;
     if (this.props.restaurant.image_url) {
       this.thumbnail = {
         backgroundImage: `url(${this.props.restaurant.image_url})`
@@ -148,7 +148,7 @@ class ReservationForm extends React.Component {
   }
 
   render() {
-    debugger;
+      ;
     return (
       <>
         <div className="form-container reservation">

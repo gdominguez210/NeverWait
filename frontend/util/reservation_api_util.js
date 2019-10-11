@@ -25,7 +25,7 @@ export const fetchReservations = userId =>
   });
 
 export const findTable = reservationRequest => {
-  debugger;
+    ;
   return $.ajax({
     method: "POST",
     url: `/api/reservations/findtable`,

@@ -5,7 +5,7 @@ import { createReservation } from "./../../actions/reservation_actions";
 import { openModal } from "./../../actions/modal_actions";
 import { closeModal } from "./../../actions/modal_actions";
 const mapStateToProps = (state, ownProps) => {
-  debugger;
+    ;
   const reservation = {
     party_size: state.entities.reservation.party_size,
     date: state.entities.reservation.date,

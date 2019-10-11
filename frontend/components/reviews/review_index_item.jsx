@@ -26,7 +26,6 @@ const ReviewIndexItem = props => {
 
   let numReviews = author.total_reviews;
   numReviews === undefined ? (numReviews = 1) : numReviews;
-  debugger;
   return (
     <>
       <CSSTransition in={true} appear={true} timeout={300} classNames="fade">

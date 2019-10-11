@@ -11,14 +11,17 @@ import { CSSTransition } from "react-transition-group";
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-    const split = this.props.location.pathname.split("/");
-    this.restaurant_id = split[split.length - 1];
+    // const split = this.props.location.pathname.split("/");
+    // this.restaurant_id = split[split.length - 1];
   }
 
   render() {
     if (!this.props.modal) {
       return null;
     }
+
+    const split = this.props.location.pathname.split("/");
+    const restaurant_id = split[split.length - 1];
 
     let component = null;
 
@@ -30,9 +33,7 @@ class Modal extends React.Component {
         component = <SignUpFormContainer />;
         break;
       case "review":
-        component = (
-          <CreateReviewFormContainer restaurant_id={this.restaurant_id} />
-        );
+        component = <CreateReviewFormContainer restaurant_id={restaurant_id} />;
         break;
       case "reservation":
         component = <p>Reservation reserved!</p>;

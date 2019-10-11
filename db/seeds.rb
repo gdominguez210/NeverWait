@@ -92,7 +92,7 @@ users.push(user)
    executive_chef: Faker::FunnyName.name
   })
   9.times {
-  filename = galler_item.sample
+  filename = gallery_item.sample
   file = open(filename)
   restaurant.attach(io:file, filename: filename.split("/")[-1])
   }

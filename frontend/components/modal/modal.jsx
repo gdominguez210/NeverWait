@@ -11,9 +11,8 @@ import { CSSTransition } from "react-transition-group";
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-    this.restaurant_id = this.props.location.pathname[
-      this.props.location.pathname.length - 1
-    ];
+    const split = this.props.location.pathname.split("/");
+    this.restaurant_id = split[split.length - 1];
   }
 
   render() {

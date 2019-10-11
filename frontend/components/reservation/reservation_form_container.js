@@ -19,9 +19,10 @@ const mapStateToProps = (state, ownProps) => {
   };
   const currentUser = state.entities.users[state.session.id];
   const restaurant = Object.values(state.entities.restaurants)[0];
+  const errors = state.errors.reservation;
   // const currentUser = state.entities.users[state.session.id];
   // const formType = "Create";
-  return { reservation, restaurant, currentUser };
+  return { reservation, restaurant, currentUser, errors };
 };
 
 const mapDispatchToProps = dispatch => {

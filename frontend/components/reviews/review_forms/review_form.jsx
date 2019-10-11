@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
-
+    debugger;
     this.state = {
       restaurant_id: parseInt(this.props.restaurant_id),
       food_rating: 5,
@@ -30,7 +30,6 @@ class ReviewForm extends React.Component {
     e.stopPropagation();
     e.preventDefault();
     const review = Object.assign({}, this.state);
-     ;
     this.props.action(review).then(() => {
       return this.props.closeModal();
     });
@@ -82,9 +81,10 @@ class ReviewForm extends React.Component {
 
     return (
       <>
-        <div  className="form-container review-form">
+        <div className="form-container review-form">
           {this.header()}
           <hr />
+          {this.renderErrors()}
           <form className="review" onSubmit={this.handleSubmit}>
             <div onClick={this.props.closeModal} className="close-x">
               <FontAwesomeIcon icon="times" />

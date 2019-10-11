@@ -17,7 +17,8 @@ const mapStateToProps = (state, ownProps) => {
   };
   const currentUser = state.entities.users[state.session.id];
   const formType = "Create";
-  return { review, currentUser, formType };
+  const errors = state.errors.review;
+  return { review, currentUser, formType, errors };
 };
 
 const mapDispatchToProps = dispatch => {

@@ -8,9 +8,10 @@ const mapStateToProps = (state, ownProps) => {
     date: "",
     start_time: ""
   };
+  const errors = state.errors.reservation;
   // const currentUser = state.entities.users[state.session.id];
   // const formType = "Create";
-  return { reservation };
+  return { reservation, errors };
 };
 
 const mapDispatchToProps = dispatch => {

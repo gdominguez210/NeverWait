@@ -40,7 +40,7 @@ class ReservationForm extends React.Component {
     const reservation = Object.assign({}, this.state);
     this.props
       .createReservation(reservation)
-      .then(() => this.props.openModal("reservation"));
+      .then(() => this.props.history.push(`/`));
   }
 
   update(field) {
@@ -88,6 +88,21 @@ class ReservationForm extends React.Component {
     const year = date_pieces[3];
 
     return `${month} ${day}, ${year}`;
+  }
+
+  renderErrors() {
+    const errors = this.props.errors;
+    if (errors.length > 0) {
+      return (
+        <ul className="errors">
+          {errors.map((error, i) => (
+            <li className="error" key={`error-${i}`}>
+              {error}
+            </li>
+          ))}
+        </ul>
+      );
+    }
   }
 
   header() {
@@ -173,6 +188,7 @@ class ReservationForm extends React.Component {
             </div>
             {/* <ul className="errors">{errorItems}</ul> */}
             <button className="readon-submit">Complete Reservation</button>
+            {this.renderErrors()}
             {this.footer()}
           </form>
         </div>

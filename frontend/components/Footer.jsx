@@ -6,12 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export const Footer = () => (
   <>
     <footer>
-      <p>
-        Copyright © 2019 OpenTable, Inc. 1 Montgomery St Ste 700, San Francisco
-        CA 94104 - All rights reserved.
-      </p>
+      <p>Copyright © 2019 NeverWait - Gary Dominguez.</p>
       <div className="icon-container">
-        <FontAwesomeIcon icon="github" />
+        <FontAwesomeIcon icon={["fab", "github"]} />
       </div>
     </footer>
   </>

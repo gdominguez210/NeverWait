@@ -3,12 +3,19 @@ import * as ApiUtil from "../util/reservation_api_util";
 export const RECEIVE_RESERVATION = "RECEIVE_RESERVATION";
 export const REMOVE_RESERVATION = "REMOVE_RESERVATION";
 export const RECEIVE_RESERVATIONS = "RECEIVE_RESERVATIONS";
+export const RECEIVE_RESERVATION_ERRORS = "RECEIVE_RESERVATION_ERRORS";
 export const OPEN_TIME_SLOT = "OPEN_TIME_SLOT";
 
 const receiveReservations = reservations => ({
   type: RECEIVE_RESERVATIONS,
   reservations
 });
+export const receiveErrors = errors => {
+  return {
+    type: RECEIVE_RESERVATION_ERRORS,
+    errors
+  };
+};
 const receiveReservation = reservation => ({
   type: RECEIVE_RESERVATION,
   reservation
@@ -29,19 +36,19 @@ const openTimeslot = payload => {
 };
 
 export const createReservation = reservation => dispatch =>
-  ApiUtil.createReservation(reservation).then(reservation =>
-    dispatch(receiveReservation(reservation))
-  );
+  ApiUtil.createReservation(reservation)
+    .then(reservation => dispatch(receiveReservation(reservation)))
+    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 
 export const updateReservation = reservation => dispatch =>
-  ApiUtil.updateReservation(reservation).then(reservation =>
-    dispatch(receiveReservation(reservation))
-  );
+  ApiUtil.updateReservation(reservation)
+    .then(reservation => dispatch(receiveReservation(reservation)))
+    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 
 export const deleteReservation = reservationId => dispatch =>
-  ApiUtil.deleteReservation(reservationId).then(reservation =>
-    dispatch(removeReservation(reservationId))
-  );
+  ApiUtil.deleteReservation(reservationId)
+    .then(reservation => dispatch(removeReservation(reservationId)))
+    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 
 export const fetchReservations = id => dispatch => {
   return ApiUtil.fetchReservations(id).then(reservations => {
@@ -53,8 +60,10 @@ export const findTable = reservationRequest => dispatch => {
   debugger;
   reservationRequest.date = String(reservationRequest.date);
   debugger;
-  return ApiUtil.findTable(reservationRequest).then(reservation => {
-    debugger;
-    return dispatch(openTimeslot(reservation));
-  });
+  return ApiUtil.findTable(reservationRequest)
+    .then(reservation => {
+      debugger;
+      return dispatch(openTimeslot(reservation));
+    })
+    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 };

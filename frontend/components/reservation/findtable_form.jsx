@@ -14,8 +14,10 @@ import {
 class FindTableForm extends React.Component {
   constructor(props) {
     super(props);
+    debugger;
+    this.defaultDateTime = new Date();
     this.state = {
-      party_size: "",
+      party_size: 1,
       date: moment(new Date()),
       start_time: "",
       focused: false
@@ -184,6 +186,20 @@ class FindTableForm extends React.Component {
       </label>
     );
   }
+  renderErrors() {
+    const errors = this.props.errors;
+    if (errors.length > 0) {
+      return (
+        <ul className="errors">
+          {errors.map((error, i) => (
+            <li className="error" key={`error-${i}`}>
+              {error}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+  }
   render() {
     return (
       <>
@@ -198,6 +214,7 @@ class FindTableForm extends React.Component {
             </div>
             {/* <ul className="errors">{errorItems}</ul> */}
             <button className="readon-submit">Find a Table</button>
+            {this.renderErrors()}
           </form>
         </div>
       </>

@@ -14,12 +14,12 @@ const restaurantsReducer = (state = {}, action) => {
       return Object.assign({}, state, {
         [action.restaurant.id]: action.restaurant
       });
-    case RECEIVE_REVIEW:
-      let reviewState = Object.assign({}, state);
-      reviewState[action.review.restaurant_id].review_ids.push(
-        action.review.id
-      );
-      return reviewState;
+    // case RECEIVE_REVIEW:
+    //   let reviewState = Object.assign({}, state);
+    //   reviewState[action.review.restaurant_id].review_ids.push(
+    //     action.review.id
+    //   );
+    //   return reviewState;
     case REMOVE_REVIEW:
       let removeState = Object.assign({}, state);
       let removeIdx = Object.values(removeState)[0].review_ids.indexOf(

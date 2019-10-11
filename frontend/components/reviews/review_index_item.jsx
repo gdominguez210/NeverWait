@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import RestaurantStars from "../restaurant/restaurant_ratings/rating_stars";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CSSTransition } from "react-transition-group";
 
 const ReviewIndexItem = props => {
   const { review, author } = props;
@@ -23,51 +24,57 @@ const ReviewIndexItem = props => {
       ) : null;
   }
 
+  let numReviews = author.total_reviews;
+  numReviews === undefined ? (numReviews = 1) : numReviews;
   debugger;
   return (
-    <li className="review-index-item">
-      <div className="inner-wrap">
-        <div className="author-details">
-          <div className="user-avatar">{initials}</div>
-          <p>{first_name}</p>
-          <div className="user-reviews">
-            <FontAwesomeIcon icon="comment-alt" />
-            <div>{`${author.total_reviews} ${total}`}</div>
-          </div>
-          {deleteHTML}
-        </div>
-        <div className="review-details">
-          <div className="review-ratings">
-            <div className="review-stars">
-              <RestaurantStars review={review} />
+    <>
+      <CSSTransition in={true} appear={true} timeout={300} classNames="fade">
+        <li className="review-index-item">
+          <div className="inner-wrap">
+            <div className="author-details">
+              <div className="user-avatar">{initials}</div>
+              <p>{first_name}</p>
+              <div className="user-reviews">
+                <FontAwesomeIcon icon="comment-alt" />
+                <div>{`${numReviews} ${total}`}</div>
+              </div>
+              {deleteHTML}
             </div>
-            <div className="ratings-container">
-              <div className="rating-container">
-                Total
-                <span className="highlight">{review.total_rating}</span>
+            <div className="review-details">
+              <div className="review-ratings">
+                <div className="review-stars">
+                  <RestaurantStars review={review} />
+                </div>
+                <div className="ratings-container">
+                  <div className="rating-container">
+                    Total
+                    <span className="highlight">{review.total_rating}</span>
+                  </div>
+                  <div className="rating-container">
+                    Food
+                    <span className="highlight">{review.food_rating}</span>
+                  </div>
+                  <div className="rating-container">
+                    Service
+                    <span className="highlight">{review.service_rating}</span>
+                  </div>
+                  <div className="rating-container">
+                    Value
+                    <span className="highlight">{review.value_rating}</span>
+                  </div>
+                  <div className="rating-container">
+                    Ambience
+                    <span className="highlight">{review.ambience_rating}</span>
+                  </div>
+                </div>
               </div>
-              <div className="rating-container">
-                Food
-                <span className="highlight">{review.food_rating}</span>
-              </div>
-              <div className="rating-container">
-                Service
-                <span className="highlight">{review.service_rating}</span>
-              </div>
-              <div className="rating-container">
-                Value
-                <span className="highlight">{review.value_rating}</span>
-              </div>
-              <div className="rating-container">
-                Ambience
-                <span className="highlight">{review.ambience_rating}</span>
-              </div>
+              <p>{review.body}</p>
             </div>
           </div>
-          <p>{review.body}</p>
-        </div>
-      </div>
-    </li>
+        </li>
+      </CSSTransition>
+    </>
   );
 };
 

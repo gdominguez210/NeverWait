@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FindTableForm from "../../reservation/findtable_container";
+import RestaurantMap from "./restaurant_map";
 class RestaurantSidebar extends React.Component {
   // const parameters = restaurant.parameters || {};
   constructor(props) {
@@ -207,6 +208,7 @@ class RestaurantSidebar extends React.Component {
       <>
         <aside className="restaurant-sidebar">
           <FindTableForm />
+          {/* <RestaurantMap restaurant={this.props.restaurant} /> */}
           {this.phone()}
           {this.website()}
           {this.city()}

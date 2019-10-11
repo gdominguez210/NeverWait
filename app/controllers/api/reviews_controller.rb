@@ -2,7 +2,7 @@ class Api::ReviewsController < ApplicationController
     
 
     def index
-       
+       debugger
         restaurant = Restaurant.find(params[:restaurant_id])
         @reviews = restaurant.reviews
         render "api/reviews/index"

@@ -10,7 +10,7 @@ export const Footer = () => (
         Copyright © 2019 OpenTable, Inc. 1 Montgomery St Ste 700, San Francisco
         CA 94104 - All rights reserved.
       </p>
-      <div class="icon-container">
+      <div className="icon-container">
         <FontAwesomeIcon icon="github" />
       </div>
     </footer>

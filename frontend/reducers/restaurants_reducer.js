@@ -20,12 +20,21 @@ const restaurantsReducer = (state = {}, action) => {
         action.review.id
       );
       return reviewState;
+    // case REMOVE_REVIEW:
+    //   let removeState = Object.assign({}, state);
+    //   debugger;
+    //   let removeIdx = Object.values(removeState)[0].review_ids.indexOf(
+    //     action.reviewId
+    //   );
+    //   delete Object.values(removeState)[0].review_ids[removeIdx];
+    //   return removeState;
     case REMOVE_REVIEW:
       let removeState = Object.assign({}, state);
-      let removeIdx = Object.values(removeState)[0].review_ids.indexOf(
+      debugger;
+      let removeIdx = removeState[action.restaurantId].review_ids.indexOf(
         action.reviewId
       );
-      delete Object.values(removeState)[0].review_ids[removeIdx];
+      delete removeState[action.restaurantId].review_ids[removeIdx];
       return removeState;
     case REMOVE_RESTAURANT:
       let newState = Object.assign({}, state);

@@ -10,7 +10,6 @@ const msp = (state, ownProps) => {
   if (review_ids) {
     reviews = review_ids.map(id => state.entities.reviews[id]);
   }
-   ;
   return {
     reviews,
     users,
@@ -21,7 +20,8 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => ({
   fetchReviews: id => dispatch(fetchReviews(id)),
   openModal: modal => dispatch(openModal(modal)),
-  deleteReview: id => dispatch(deleteReview(id))
+  deleteReview: (reviewId, restaurantId) =>
+    dispatch(deleteReview(reviewId, restaurantId))
 });
 
 export default connect(

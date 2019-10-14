@@ -14,9 +14,10 @@ const receiveReview = review => ({
   review
 });
 
-const removeReview = reviewId => ({
+const removeReview = (reviewId, restaurantId) => ({
   type: REMOVE_REVIEW,
-  reviewId
+  reviewId,
+  restaurantId
 });
 
 export const receiveErrors = errors => {
@@ -36,9 +37,9 @@ export const updateReview = review => dispatch =>
     .then(review => dispatch(receiveReview(review)))
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 
-export const deleteReview = reviewId => dispatch =>
-  ApiUtil.deleteReview(reviewId)
-    .then(review => dispatch(removeReview(reviewId)))
+export const deleteReview = (reviewId, restaurantId) => dispatch =>
+  ApiUtil.deleteReview(reviewId, restaurantId)
+    .then(review => dispatch(removeReview(reviewId, restaurantId)))
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 
 export const fetchReviews = id => dispatch => {

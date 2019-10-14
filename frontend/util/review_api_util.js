@@ -12,7 +12,7 @@ export const updateReview = review =>
     data: { review }
   });
 
-export const deleteReview = reviewId =>
+export const deleteReview = (reviewId, restaurantId) =>
   $.ajax({
     method: "DELETE",
     url: `/api/reviews/${reviewId}`

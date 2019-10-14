@@ -17,7 +17,7 @@ const ReviewIndexItem = props => {
       props.currentUser.id === author.id ? (
         <button
           className="highlight"
-          onClick={() => props.deleteReview(review.id)}
+          onClick={() => props.deleteReview(review.id, review.restaurant_id)}
         >
           Delete Review
         </button>

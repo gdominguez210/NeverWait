@@ -21,8 +21,13 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
     attr_reader :password
 
-    # has_many :favorites
-    # has_many :reservations
+    has_many :favorites
+
+    # has_many :favorited_restaurants,
+    # through: :favorites,
+    # source: :Restaurant
+
+    has_many :reservations
     has_many :reviews
     has_many :restaurants,
     foreign_key: :owner_id,

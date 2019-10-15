@@ -44,6 +44,10 @@ class Restaurant < ApplicationRecord
 
     has_many :reviews, dependent: :destroy
     has_many :reservations, dependent: :destroy
+    has_many :favorites
+    # has_many :favorited,
+    # through: :favorites,
+    # source: :User
     has_many_attached :photos
 
 end

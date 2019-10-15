@@ -278,7 +278,10 @@ p.sidebar-item-label {
 p.sidebar-item-label + p {
   margin-top: 0px;
 }
-
+div#map-container {
+  width: 100%;
+  min-height: 250px;
+}
 .stars {
   display: flex;
   align-items: center;

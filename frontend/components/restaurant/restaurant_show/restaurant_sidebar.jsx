@@ -208,7 +208,7 @@ class RestaurantSidebar extends React.Component {
       <>
         <aside className="restaurant-sidebar">
           <FindTableForm />
-          {/* <RestaurantMap restaurant={this.props.restaurant} /> */}
+          <RestaurantMap restaurant={this.props.restaurant} />
           {this.phone()}
           {this.website()}
           {this.city()}

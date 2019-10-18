@@ -1,12 +1,12 @@
 json.partial! "api/users/user", user: @user
 
-@user.favorites.each do |favorite|
-    json.favorites do
-        json.set! favorite.id do
-            json.extract! favorite, :id, :user_id, :restaurant_id
-        end
-    end
-end
+# @user.favorites.each do |favorite|
+#     json.favorites do
+#         json.set! favorite.id do
+#             json.extract! favorite, :id, :user_id, :restaurant_id
+#         end
+#     end
+# end
 
 @user.reservations.each do |reservation|
 

@@ -18,7 +18,7 @@ class Api::RestaurantsController < ApplicationController
 
     def create
         @restaurant = Restaurant.new(restaurant_params)
-
+        @restaurant.hours
         if @restaurant.save
     
             render "api/restaurants/show"

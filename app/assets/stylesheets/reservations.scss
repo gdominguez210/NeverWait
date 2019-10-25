@@ -186,3 +186,34 @@ form {
 .form-container.reservation .reservation-thumbnail {
   box-shadow: 0px 0px 26px #ffffff;
 }
+
+.timeSlot-container p {
+  padding: 10px;
+  text-align: center;
+  background: hsla(195, 63%, 92%, 1);
+  border-radius: 4px;
+  color: rgba(43, 154, 191, 0.5);
+  font-weight: bold;
+  border: 1px solid hsla(195, 63%, 90%, 1);
+}
+
+.timeSlot-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1% -1%;
+}
+
+.timeSlot-container p,
+h4 {
+  width: 100%;
+}
+
+.timeSlot-container .readon {
+  min-width: 31.3333%;
+  /* flex: 1; */
+  margin: 1%;
+}
+
+.timeSlot-container h4 {
+  margin: 5px;
+}

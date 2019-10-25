@@ -14,32 +14,122 @@ import {
 class FindTableForm extends React.Component {
   constructor(props) {
     super(props);
-      ;
+     ;
     this.defaultDateTime = new Date();
     this.state = {
       party_size: 1,
-      date: moment(new Date()),
+      date: moment(new Date()).startOf("day"),
       start_time: "",
       focused: false
     };
+    this.moment = require("moment");
+     ;
+    this.hours = [
+      "12:00am",
+      "12:30am",
+      "1:00am",
+      "1:30am",
+      "2:00am",
+      "2:30am",
+      "3:00am",
+      "3:30am",
+      "4:00am",
+      "4:30am",
+      "5:00am",
+      "5:30am",
+      "6:00am",
+      "6:30am",
+      "7:00am",
+      "7:30am",
+      "8:00am",
+      "8:30am",
+      "9:00am",
+      "9:30am",
+      "10:00am",
+      "10:30am",
+      "11:00am",
+      "11:30am",
+      "12:00pm",
+      "12:30pm",
+      "1:00pm",
+      "1:30pm",
+      "2:00pm",
+      "2:30pm",
+      "3:00pm",
+      "3:30pm",
+      "4:00pm",
+      "4:30pm",
+      "5:00pm",
+      "5:30pm",
+      "6:00pm",
+      "6:30pm",
+      "7:00pm",
+      "7:30pm",
+      "8:00pm",
+      "8:30pm",
+      "9:00pm",
+      "9:30pm",
+      "10:00pm",
+      "10:30pm",
+      "11:00pm",
+      "11:30pm"
+    ];
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
-    this.parseDate = this.parseDate.bind(this);
+    this.handleAvailableTimes = this.handleAvailableTimes.bind(this);
+    this.renderFindTable = this.renderFindTable.bind(this);
+    this.moment = moment.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-      ;
     // let parsed = String(this.state.date);
     // this.setState({
     //   date: parsed
     // });
+     ;
     const reservationRequest = Object.assign({}, this.state);
-    this.props.findTable(reservationRequest).then(reservation => {
-        ;
-      return this.props.history.push(`/new-reservation`);
-    });
+    this.props
+      .findTable(reservationRequest, this.props.match.params.restaurantId)
+      .then(payload => {
+         ;
+        if (!payload.available_openings) {
+          return this.props.history.push(`/new-reservation`);
+        }
+      });
+  }
+  handleAvailableTimes() {
+    if (Object.values(this.props.restaurants).length > 0) {
+       ;
+      if (
+        this.props.restaurants[this.props.match.params.restaurantId]
+          .receiveReservation
+      ) {
+        let timeslots = this.props.restaurants[
+          this.props.match.params.restaurantId
+        ].available_openings;
+        let times = timeslots.map(el => (
+          <button
+            className="readon"
+            data-timeslot={el}
+            onClick={this.update("start_time")}
+          >
+            {el}
+          </button>
+        ));
+         ;
+        return (
+          <div className="timeSlot-container">
+            <p>
+              You're in luck! We still have {timeslots.length} timeslots left
+            </p>
+            <h4>Select a time:</h4>
+            {times}
+          </div>
+        );
+      }
+    }
   }
 
   handleDateChange(pickedDate) {
@@ -48,35 +138,20 @@ class FindTableForm extends React.Component {
     });
   }
   update(field) {
+     ;
     return e => {
-      this.setState({
-        [field]: e.target.value
-      });
+      if (e.target.className) {
+        this.setState({
+          [field]: e.target.dataset.timeslot
+        });
+      } else {
+        this.setState({
+          [field]: e.target.value
+        });
+      }
     };
   }
-  parseDate(date) {
-    const parts = String(date).split(" ");
-    const months = {
-      Jan: "January",
-      Feb: "February",
-      Mar: "March",
-      Apr: "April",
-      May: "May",
-      Jun: "June",
-      Jul: "July",
-      Aug: "August",
-      Sep: "September",
-      Oct: "October",
-      Nov: "November",
-      Dec: "December"
-    };
 
-    const month = months[parts[1]];
-    const day = parts[2];
-    const year = parts[3];
-
-    return `${month} ${day}, ${year}`;
-  }
   renderErrors() {
     const errors = this.props.errors || [];
 
@@ -111,6 +186,15 @@ class FindTableForm extends React.Component {
     );
   }
   startTime() {
+    let timeNow = this.moment().format("h:mma");
+    let validTimes = this.hours.filter(
+      el => this.moment(el, "h: mma") > this.moment(timeNow, "h:mma")
+    );
+    let options = validTimes.map((el, idx) => (
+      <option key={`el-${idx}`} value={`${el}`}>
+        {el}
+      </option>
+    ));
     return (
       <label>
         Time
@@ -118,54 +202,7 @@ class FindTableForm extends React.Component {
           value={this.state.start_time}
           onChange={this.update("start_time")}
         >
-          <option value="2019-10-10T00:00:00">12:00 AM</option>
-          <option value="2019-10-10T00:30:00">12:30 AM</option>
-          <option value="2019-10-10T01:00:00">1:00 AM</option>
-          <option value="2019-10-10T01:30:00">1:30 AM</option>
-          <option value="2019-10-10T02:00:00">2:00 AM</option>
-          <option value="2019-10-10T02:30:00">2:30 AM</option>
-          <option value="2019-10-10T03:00:00">3:00 AM</option>
-          <option value="2019-10-10T03:30:00">3:30 AM</option>
-          <option value="2019-10-10T04:00:00">4:00 AM</option>
-          <option value="2019-10-10T04:30:00">4:30 AM</option>
-          <option value="2019-10-10T05:00:00">5:00 AM</option>
-          <option value="2019-10-10T05:30:00">5:30 AM</option>
-          <option value="2019-10-10T06:00:00">6:00 AM</option>
-          <option value="2019-10-10T06:30:00">6:30 AM</option>
-          <option value="2019-10-10T07:00:00">7:00 AM</option>
-          <option value="2019-10-10T07:30:00">7:30 AM</option>
-          <option value="2019-10-10T08:00:00">8:00 AM</option>
-          <option value="2019-10-10T08:30:00">8:30 AM</option>
-          <option value="2019-10-10T09:00:00">9:00 AM</option>
-          <option value="2019-10-10T09:30:00">9:30 AM</option>
-          <option value="2019-10-10T10:00:00">10:00 AM</option>
-          <option value="2019-10-10T10:30:00">10:30 AM</option>
-          <option value="2019-10-10T11:00:00">11:00 AM</option>
-          <option value="2019-10-10T11:30:00">11:30 AM</option>
-          <option value="2019-10-10T12:00:00">12:00 PM</option>
-          <option value="2019-10-10T12:30:00">12:30 PM</option>
-          <option value="2019-10-10T13:00:00">1:00 PM</option>
-          <option value="2019-10-10T13:30:00">1:30 PM</option>
-          <option value="2019-10-10T14:00:00">2:00 PM</option>
-          <option value="2019-10-10T14:30:00">2:30 PM</option>
-          <option value="2019-10-10T15:00:00">3:00 PM</option>
-          <option value="2019-10-10T15:30:00">3:30 PM</option>
-          <option value="2019-10-10T16:00:00">4:00 PM</option>
-          <option value="2019-10-10T16:30:00">4:30 PM</option>
-          <option value="2019-10-10T17:00:00">5:00 PM</option>
-          <option value="2019-10-10T17:30:00">5:30 PM</option>
-          <option value="2019-10-10T18:00:00">6:00 PM</option>
-          <option value="2019-10-10T18:30:00">6:30 PM</option>
-          <option value="2019-10-10T19:00:00">7:00 PM</option>
-          <option value="2019-10-10T19:30:00">7:30 PM</option>
-          <option value="2019-10-10T20:00:00">8:00 PM</option>
-          <option value="2019-10-10T20:30:00">8:30 PM</option>
-          <option value="2019-10-10T21:00:00">9:00 PM</option>
-          <option value="2019-10-10T21:30:00">9:30 PM</option>
-          <option value="2019-10-10T22:00:00">10:00 PM</option>
-          <option value="2019-10-10T22:30:00">10:30 PM</option>
-          <option value="2019-10-10T23:00:00">11:00 PM</option>
-          <option value="2019-10-10T23:30:00">11:30 PM</option>
+          {options}
         </select>
       </label>
     );
@@ -200,6 +237,18 @@ class FindTableForm extends React.Component {
       );
     }
   }
+  renderFindTable() {
+    let submit = <button className="readon-submit">Find a Table</button>;
+    if (Object.values(this.props.restaurants).length > 0) {
+      if (
+        this.props.restaurants[this.props.match.params.restaurantId]
+          .available_openings
+      ) {
+        submit = null;
+      }
+    }
+    return submit;
+  }
   render() {
     return (
       <>
@@ -213,7 +262,8 @@ class FindTableForm extends React.Component {
               {this.startTime()}
             </div>
             {/* <ul className="errors">{errorItems}</ul> */}
-            <button className="readon-submit">Find a Table</button>
+            {this.handleAvailableTimes()}
+            {this.renderFindTable()}
             {this.renderErrors()}
           </form>
         </div>

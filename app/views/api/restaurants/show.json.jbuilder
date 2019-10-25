@@ -5,18 +5,26 @@
             json.extract! review, :id, :restaurant_id, :user_id, :total_rating, :value_rating, :service_rating, :food_rating, :recommended, :noise_level, :body, :ambience_rating, :user_id
         end
     end
-
+    
     json.users do
         json.set! review.user_id do
-            json.extract! review.user, :fname, :lname, :id
+            json.extract! review.user, :fname, :lname, :id, :favorite_ids
             json.total_reviews review.user.reviews.count
         end
     end
 end
+@restaurant.favorites.each do |favorite|
+
+    json.favorites do
+        json.set! favorite.id do
+            json.extract! favorite, :id, :user_id, :restaurant_id
+        end
+    end
+end
 json.restaurant do
-json.partial! "api/restaurants/restaurant", restaurant: @restaurant
-json.total_reviews @restaurant.reviews.count
-total_ratings = []
+    json.partial! "api/restaurants/restaurant", restaurant: @restaurant
+    json.total_reviews @restaurant.reviews.count
+    total_ratings = []
 food_ratings = []
 service_ratings = []
 value_ratings = [] 
@@ -26,6 +34,8 @@ value_ratings = []
     service_ratings.push(review.service_rating)
     food_ratings.push(review.food_rating)
 end
+
+
 
 star_ratings = {
     five_stars: total_ratings.select{|rating| rating == 5}.count,

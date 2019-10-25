@@ -1,0 +1,45 @@
+li.reservation-index-item a {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+li.reservation-index-item {
+  padding: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  margin: 20px;
+  list-style-type: none;
+}
+.reservation-index-item {
+  position: relative;
+}
+.reservation-index-item .inner-wrap > a {
+  flex: 1;
+  min-width: 25%;
+  max-width: 25%;
+}
+.reservation-details {
+  flex: 4;
+  padding: 10px;
+}
+
+li.reservation-index-item.past {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+
+li.reservation-index-item {
+  position: relative;
+}
+
+li.reservation-index-item.past:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+}

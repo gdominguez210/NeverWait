@@ -5,10 +5,10 @@ import { CSSTransition } from "react-transition-group";
 class RestaurantMap extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
+     ;
   }
   componentDidMount() {
-    debugger;
+     ;
     const mapOptions = {
       center: {
         lat: parseFloat(this.props.restaurant.lat),

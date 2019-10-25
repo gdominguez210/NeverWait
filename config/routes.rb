@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
 
   namespace :api, defaults: {format: :json} do
-    resources :users, only: [:create, :show]
+    resources :users, only: [:create, :show] do
+      resources :reservations, only: [:index, :show]
+    end
     resource :session, only: [:create, :destroy]
     resources :restaurants, only: [:create, :show, :index, :update, :edit, :destroy, :featured] do
       resources :reviews, only: [:create, :index]
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
     resources :reservations, only: [:update, :edit, :destroy] do 
     end
     resources :reviews, only: [:update, :edit, :destroy]
+    resources :favorites, only: [:create, :index, :destroy, :show]
     get 'featured-restaurants', :to => 'restaurants#feature'
     post 'reservations/findtable', :to => 'reservations#findtable'
   end

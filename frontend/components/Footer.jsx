@@ -6,9 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export const Footer = () => (
   <>
     <footer>
-      <p>Copyright © 2019 NeverWait - Gary Dominguez.</p>
-      <div className="icon-container">
-        <FontAwesomeIcon icon={["fab", "github"]} />
+      <div className="inner-container">
+        <p>Copyright © 2019 NeverWait - Gary Dominguez.</p>
+        <div className="icon-container">
+          <FontAwesomeIcon icon={["fab", "github"]} />
+        </div>
       </div>
     </footer>
   </>

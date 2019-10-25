@@ -6,6 +6,10 @@ import {
   fetchRestaurant,
   deleteRestaurant
 } from "../../../actions/restaurants_actions";
+import {
+  createFavorite,
+  deleteFavorite
+} from "../../../actions/favorite_actions";
 
 const msp = (state, ownProps) => {
   return {
@@ -34,17 +38,24 @@ const msp = (state, ownProps) => {
       executive_chef: "",
       additional: "",
       total_rating: "",
-      photoUrls: ""
+      photoUrls: "",
+      favorite_ids: [],
+      review_ids: [],
+      available_openings: ""
     },
     currentUser: state.entities.users[state.session.id],
     users: state.entities.users,
-    reviews: state.entities.reviews
+    reviews: state.entities.reviews,
+    favorites: state.entities.favorites
   };
 };
 
 const mdp = dispatch => ({
   fetchRestaurant: id => dispatch(fetchRestaurant(id)),
-  deleteRestaurant: id => dispatch(deleteRestaurant(id))
+  deleteRestaurant: id => dispatch(deleteRestaurant(id)),
+  createFavorite: favorite => dispatch(createFavorite(favorite)),
+  deleteFavorite: (favoriteId, restaurantId) =>
+    dispatch(deleteFavorite(favoriteId, restaurantId))
 });
 
 export default connect(

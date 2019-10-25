@@ -5,11 +5,11 @@ import { createReservation } from "./../../actions/reservation_actions";
 import { openModal } from "./../../actions/modal_actions";
 import { closeModal } from "./../../actions/modal_actions";
 const mapStateToProps = (state, ownProps) => {
-    ;
+   ;
   const reservation = {
-    party_size: state.entities.reservation.party_size,
-    date: state.entities.reservation.date,
-    start_time: state.entities.reservation.start_time,
+    party_size: state.entities.reservations.party_size,
+    date: state.entities.reservations.date,
+    start_time: state.entities.reservations.start_time,
     end_time: "",
     restaurant_name: "",
     first_name: "",

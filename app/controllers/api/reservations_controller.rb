@@ -1,7 +1,8 @@
 class Api::ReservationsController < ApplicationController
 
     def index
-        @reservations = Reservation.includes(:restaurants).where("user_id = ?", params[:userId])
+      
+        @reservations = Reservation.includes(:restaurant).where("user_id = ?", params[:user_id]).order('date DESC')
     end
 
     def create
@@ -22,9 +23,19 @@ class Api::ReservationsController < ApplicationController
     def findtable
 
         @reservation = Reservation.find_by(start_time: params[:reservation][:start_time], date: params[:reservation][:date])
-
+     
         if @reservation
-            render json: ["reservation already exists at this time"], status: 422
+            reservation_list = Reservation.where("date = ?", params[:reservation][:date])
+            taken_times = []
+            reservation_list.each{|ele| taken_times.push(ele.start_time)}
+            restaurant = Restaurant.find_by(id: @reservation.restaurant_id)
+            potential_openings = restaurant.available_times(params[:reservation][:start_time]);
+            available_openings = potential_openings.select{|ele| !taken_times.include?(ele)};
+            if available_openings.length > 0 
+                render json: {start_time: params[:reservation][:start_time], date: params[:reservation][:date], party_size: params[:reservation][:party_size], available_openings: available_openings, restaurant_id: params[:restaurantId]}
+            else
+                render json: ["there are no openings within a 2 and a half hour window"], status: 422
+            end
         else
             render json: {start_time: params[:reservation][:start_time], date: params[:reservation][:date], party_size: params[:reservation][:party_size]}
         end
@@ -49,6 +60,6 @@ class Api::ReservationsController < ApplicationController
         end
     end
     def reservation_params
-        params.require(:reservation).permit(:date, :start_time, :end_time, :party_size, :restaurant_id, :user_id, :first_name, :last_name, :email, :phonenumber) 
+        params.require(:reservation).permit(:date, :start_time, :end_time, :party_size, :restaurant_id, :user_id, :first_name, :last_name, :email, :phonenumber, :available_openings) 
     end
 end

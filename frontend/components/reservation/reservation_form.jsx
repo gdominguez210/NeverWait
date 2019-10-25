@@ -5,11 +5,11 @@ import moment from "moment";
 class ReservationForm extends React.Component {
   constructor(props) {
     super(props);
-      ;
+     ;
     this.state = {
       party_size: this.props.reservation.party_size || "",
-      date: this.parseDate(this.props.reservation.date) || "",
-      start_time: this.parseTime(this.props.reservation.start_time) || "",
+      date: this.props.reservation.date || "",
+      start_time: this.props.reservation.start_time || "",
       first_name: "",
       end_time: "",
       last_name: "",
@@ -19,14 +19,11 @@ class ReservationForm extends React.Component {
       user_id: this.props.currentUser.id
     };
 
-      ;
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.parseDate = this.parseDate.bind(this);
     this.parseTime = this.parseTime.bind(this);
     this.thumbnail = null;
-      ;
     if (this.props.restaurant.image_url) {
       this.thumbnail = {
         backgroundImage: `url(${this.props.restaurant.image_url})`
@@ -38,9 +35,11 @@ class ReservationForm extends React.Component {
     e.preventDefault();
 
     const reservation = Object.assign({}, this.state);
-    this.props
-      .createReservation(reservation)
-      .then(() => this.props.history.push(`/`));
+    this.props.createReservation(reservation).then(() => {
+      this.props.history.push(
+        `/users/${this.props.currentUser.id}/reservations`
+      );
+    });
   }
 
   update(field) {
@@ -118,7 +117,7 @@ class ReservationForm extends React.Component {
               <p>
                 <FontAwesomeIcon icon="calendar" />
               </p>
-              <p>Date: {this.state.date}</p>
+              <p>Date: {this.parseDate(this.state.date)}</p>
             </div>
             <div className="booking-icon">
               <p>
@@ -148,7 +147,6 @@ class ReservationForm extends React.Component {
   }
 
   render() {
-      ;
     return (
       <>
         <div className="form-container reservation">

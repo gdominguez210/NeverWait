@@ -4,12 +4,17 @@ export const RECEIVE_RESERVATION = "RECEIVE_RESERVATION";
 export const REMOVE_RESERVATION = "REMOVE_RESERVATION";
 export const RECEIVE_RESERVATIONS = "RECEIVE_RESERVATIONS";
 export const RECEIVE_RESERVATION_ERRORS = "RECEIVE_RESERVATION_ERRORS";
+export const AVAILABLE_TIME_SLOTS = "AVAILABLE_TIME_SLOTS";
 export const OPEN_TIME_SLOT = "OPEN_TIME_SLOT";
 
-const receiveReservations = reservations => ({
-  type: RECEIVE_RESERVATIONS,
-  reservations
-});
+const receiveReservations = payload => {
+   ;
+  return {
+    type: RECEIVE_RESERVATIONS,
+    reservations: payload.reservations,
+    restaurants: payload.restaurants
+  };
+};
 export const receiveErrors = errors => {
   return {
     type: RECEIVE_RESERVATION_ERRORS,
@@ -26,6 +31,17 @@ const removeReservation = reservationId => ({
   reservationId
 });
 
+const availableTimeslots = payload => {
+   ;
+  return {
+    type: AVAILABLE_TIME_SLOTS,
+    date: payload.date,
+    start_time: payload.start_time,
+    party_size: payload.party_size,
+    available_openings: payload.available_openings,
+    restaurant_id: payload.restaurant_id
+  };
+};
 const openTimeslot = payload => {
   return {
     type: OPEN_TIME_SLOT,
@@ -56,14 +72,17 @@ export const fetchReservations = id => dispatch => {
   });
 };
 
-export const findTable = reservationRequest => dispatch => {
-    ;
+export const findTable = (reservationRequest, restaurantId) => dispatch => {
   reservationRequest.date = String(reservationRequest.date);
-    ;
-  return ApiUtil.findTable(reservationRequest)
-    .then(reservation => {
-        ;
-      return dispatch(openTimeslot(reservation));
+  restaurantId = parseInt(restaurantId);
+  return ApiUtil.findTable(reservationRequest, restaurantId)
+    .then(payload => {
+       ;
+      if (payload.available_openings) {
+        return dispatch(availableTimeslots(payload));
+      } else {
+        return dispatch(openTimeslot(payload));
+      }
     })
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 };

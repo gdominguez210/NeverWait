@@ -9,14 +9,14 @@ const mapStateToProps = (state, ownProps) => {
     start_time: ""
   };
   const errors = state.errors.reservation;
-  // const currentUser = state.entities.users[state.session.id];
-  // const formType = "Create";
-  return { reservation, errors };
+  const restaurants = state.entities.restaurants;
+  return { restaurants, reservation, errors };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    findTable: reservationRequest => dispatch(findTable(reservationRequest))
+    findTable: (reservationRequest, restaurantId) =>
+      dispatch(findTable(reservationRequest, restaurantId))
   };
 };
 

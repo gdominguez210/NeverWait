@@ -2,28 +2,79 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 const RestaurantBanner = props => {
-  const { restaurant, deleteRestaurant } = props;
+  const {
+    restaurant,
+    deleteRestaurant,
+    currentUser,
+    deleteFavorite,
+    createFavorite
+  } = props;
 
   let banner;
-  if (props.restaurant.image_url) {
+  if (restaurant.image_url) {
     banner = {
-      backgroundImage: `url(${props.restaurant.image_url})`
+      backgroundImage: `url(${restaurant.image_url})`
     };
   } else {
     banner = {};
   }
-
+  const manageFavoriteOptions = () => {
+    let result;
+     ;
+    if (currentUser) {
+       ;
+      if (restaurant.favorite_ids) {
+         ;
+        if (
+          currentUser.favorite_ids.some(el =>
+            restaurant.favorite_ids.includes(el)
+          )
+        ) {
+          let favorite_id = currentUser.favorite_ids.find(el =>
+            restaurant.favorite_ids.includes(el)
+          );
+          result = (
+            <div className="button-container">
+              <button
+                className="readon"
+                onClick={() => deleteFavorite(favorite_id, restaurant.id)}
+              >
+                Delete Favorite
+              </button>
+            </div>
+          );
+        } else {
+          result = (
+            <div className="button-container">
+              <button
+                className="readon"
+                onClick={() =>
+                  createFavorite({
+                    user_id: currentUser.id,
+                    restaurant_id: restaurant.id
+                  })
+                }
+              >
+                Favorite this Restaurant
+              </button>
+            </div>
+          );
+        }
+        return result;
+      }
+    }
+  };
   const manageRestaurantOptions = () => {
     let result;
-    if (props.currentUser) {
-      if (props.currentUser.id === restaurant.owner_id) {
+    if (currentUser) {
+      if (currentUser.id === restaurant.owner_id) {
         result = (
           <div className="button-container">
             <button
               className="readon"
               onClick={() =>
                 deleteRestaurant(restaurant.id).then(() =>
-                  this.props.history.push("/")
+                  this.history.push("/")
                 )
               }
             >
@@ -46,6 +97,7 @@ const RestaurantBanner = props => {
       <CSSTransition in={true} appear={true} timeout={300} classNames="fade">
         <section className="restaurant-featured-image">
           {manageRestaurantOptions()}
+          {manageFavoriteOptions()}
           <div className="featured-img" style={banner}></div>
         </section>
       </CSSTransition>

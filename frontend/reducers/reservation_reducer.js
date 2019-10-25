@@ -4,7 +4,7 @@ import {
   REMOVE_RESERVATION,
   OPEN_TIME_SLOT
 } from "../actions/reservation_actions";
-
+import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_RESTAURANT } from "../actions/restaurants_actions";
 
 const reservationsReducer = (state = {}, action) => {
@@ -27,6 +27,8 @@ const reservationsReducer = (state = {}, action) => {
       delete newState[action.id];
       return newState;
     case RECEIVE_RESTAURANT:
+      return Object.assign({}, action.reservations);
+    case RECEIVE_CURRENT_USER:
       return Object.assign({}, action.reservations);
     default:
       return state;

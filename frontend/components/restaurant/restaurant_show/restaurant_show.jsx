@@ -8,6 +8,7 @@ import { CSSTransition } from "react-transition-group";
 class RestaurantShow extends React.Component {
   constructor(props) {
     super(props);
+    debugger;
   }
 
   componentDidMount() {
@@ -20,8 +21,26 @@ class RestaurantShow extends React.Component {
 
   componentDidUpdate(prevProps) {
     const restaurantId = this.props.match.params.restaurantId;
-    if (restaurantId != prevProps.match.params.restaurantId) {
-      this.props.fetchRestaurant(this.props.match.params.restaurantId);
+    const favoritesId = this.props.restaurant.favorite_ids;
+    const reviewsId = Object.values(this.props.reviews);
+    debugger;
+    if (prevProps === this.props) {
+      debugger;
+      return;
+    }
+    if (prevProps !== this.props) {
+      if (restaurantId !== prevProps.match.params.restaurantId) {
+        debugger;
+        this.props.fetchRestaurant(this.props.match.params.restaurantId);
+      } else if (
+        favoritesId.length !== prevProps.restaurant.favorite_ids.length
+      ) {
+        debugger;
+        this.props.fetchRestaurant(this.props.match.params.restaurantId);
+      } else if (reviewsId.length !== Object.values(prevProps.reviews).length) {
+        debugger;
+        this.props.fetchRestaurant(this.props.match.params.restaurantId);
+      }
     }
   }
 
@@ -34,6 +53,8 @@ class RestaurantShow extends React.Component {
             deleteRestaurant={this.props.deleteRestaurant}
             restaurant={restaurant}
             currentUser={this.props.currentUser}
+            createFavorite={this.props.createFavorite}
+            deleteFavorite={this.props.deleteFavorite}
           />
           <section className="restaurant-content-wrap">
             <RestaurantMain restaurant={restaurant} />

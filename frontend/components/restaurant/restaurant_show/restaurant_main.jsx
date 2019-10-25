@@ -15,7 +15,7 @@ class RestaurantMain extends React.Component {
     this.overview = React.createRef();
     this.photos = React.createRef();
     this.reviews = React.createRef();
-    debugger;
+     ;
   }
 
   handleClick(ref) {

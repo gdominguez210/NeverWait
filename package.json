@@ -1,21 +1,24 @@
 {
   "name": "Closed-Table",
-  "private": true,
+  "version": "1.0.0",
+  "description": "[Link to live site](http://neverwait.herokuapp.com/) [NeverWait](http://neverwait.herokuapp.com/) is a fullstack application that is modeled after [OpenTable](https://www.opentable.com/). Neverwait utilizes React / Redux to manage the frontend and Ruby on Rails with a PostgresSQL database to store and manage data. Asset management is handled via Amazon Web Services.",
+  "main": "webpack.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
   "dependencies": {
-    "@babel/core": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/runtime": "^7.6.3",
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-regular-svg-icons": "^5.11.2",
-    "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "@fortawesome/react-fontawesome": "^0.1.5",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "acorn": "^7.1.0",
     "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
     "moment": "^2.24.0",
-    "react": "^16.10.2",
+    "react": "^16.11.0",
     "react-datepicker": "^2.9.6",
     "react-dates": "^21.2.0",
-    "react-dom": "^16.10.2",
+    "react-dom": "^16.11.0",
     "react-ionicons": "^3.0.1",
     "react-native-ionicons": "^4.6.1",
     "react-redux": "^7.1.1",
@@ -25,20 +28,11 @@
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "webpack": "^4.41.0",
+    "v8-compile-cache": "^2.1.0",
+    "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9"
   },
-  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
-  "version": "1.0.0",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "test"
-  },
-  "engines": {
-    "node": "12.5.0",
-    "npm": "6.9.0"
-  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --watch --mode=development",
@@ -46,16 +40,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gdominguez210/Closed-Table.git"
+    "url": "git+https://github.com/gdominguez210/NeverWait.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gdominguez210/Closed-Table/issues"
+    "url": "https://github.com/gdominguez210/NeverWait/issues"
   },
-  "homepage": "https://github.com/gdominguez210/Closed-Table#readme",
-  "devDependencies": {
-    "css-loader": "^3.2.0"
-  }
+  "homepage": "https://github.com/gdominguez210/NeverWait#readme"
 }

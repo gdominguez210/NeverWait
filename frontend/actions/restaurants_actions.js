@@ -21,7 +21,8 @@ export const receiveRestaurant = payload => {
     type: RECEIVE_RESTAURANT,
     restaurant: payload.restaurant,
     reviews: payload.reviews,
-    users: payload.users
+    users: payload.users,
+    favorites: payload.favorites
   };
 };
 

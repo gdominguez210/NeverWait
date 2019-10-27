@@ -12,6 +12,7 @@ import {
 const restaurantsReducer = (state = {}, action) => {
   Object.freeze(state);
 
+  debugger;
   switch (action.type) {
     case RECEIVE_RESTAURANTS:
       return action.restaurants;
@@ -31,17 +32,14 @@ const restaurantsReducer = (state = {}, action) => {
       resState[action.restaurant_id].available_openings =
         action.available_openings;
       resState[action.restaurant_id].receiveReservation = true;
-       ;
       return resState;
     case RECEIVE_RESERVATIONS:
       return Object.assign({}, state, action.restaurants);
     case RECEIVE_REVIEW:
       let reviewState = Object.assign({}, state);
-       ;
       reviewState[action.review.restaurant_id].review_ids.push(
         action.review.id
       );
-       ;
       return reviewState;
     // case REMOVE_REVIEW:
     //   let removeState = Object.assign({}, state);
@@ -53,7 +51,6 @@ const restaurantsReducer = (state = {}, action) => {
     //   return removeState;
     case REMOVE_REVIEW:
       let removeState = Object.assign({}, state);
-       ;
       let removeIdx = removeState[action.restaurantId].review_ids.indexOf(
         action.reviewId
       );
@@ -61,19 +58,15 @@ const restaurantsReducer = (state = {}, action) => {
       return removeState;
     case REMOVE_RESTAURANT:
       let newState = Object.assign({}, state);
-       ;
       delete newState[action.restaurantId];
       return newState;
     case RECEIVE_FAVORITE:
       let favoriteState = Object.assign({}, state);
-       ;
       favoriteState[action.favorite.restaurant_id].favorite_ids.push(
         action.favorite.id
       );
-       ;
       return favoriteState;
     case REMOVE_FAVORITE:
-       ;
       let removeFavoriteState = Object.assign({}, state);
       let removeFavIdx = removeFavoriteState[
         action.restaurantId

@@ -14,16 +14,7 @@ import {
 class FindTableForm extends React.Component {
   constructor(props) {
     super(props);
-     ;
-    this.defaultDateTime = new Date();
-    this.state = {
-      party_size: 1,
-      date: moment(new Date()).startOf("day"),
-      start_time: "",
-      focused: false
-    };
     this.moment = require("moment");
-     ;
     this.hours = [
       "12:00am",
       "12:30am",
@@ -74,26 +65,51 @@ class FindTableForm extends React.Component {
       "11:00pm",
       "11:30pm"
     ];
+    this.currentDateObj = moment(new Date());
+    this.validTimeslots(this.currentDateObj);
+    this.state = {
+      party_size: 1,
+      date: this.currentDateObj,
+      focused: false,
+      start_time: this.validTimes[0],
+      validTimes: []
+    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleAvailableTimes = this.handleAvailableTimes.bind(this);
     this.renderFindTable = this.renderFindTable.bind(this);
     this.moment = moment.bind(this);
+    this.is_Mounted = false;
+    this.startTime = this.startTime.bind(this);
+    this.validTimeslots = this.validTimeslots.bind(this);
   }
 
+  validTimeslots(date) {
+    let result = this.currentDateObj.format("M/D/YY") === date.format("M/D/YY");
+    let timeNow = this.moment().format("h:mma");
+    debugger;
+    if (result) {
+      debugger;
+      this.validTimes = this.hours.filter(
+        el => this.moment(el, "h: mma") > this.moment(timeNow, "h:mma")
+      );
+    } else {
+      debugger;
+      this.validTimes = this.hours;
+    }
+  }
+  componentDidMount() {
+    this.is_Mounted = true;
+  }
   handleSubmit(e) {
     e.preventDefault();
-    // let parsed = String(this.state.date);
-    // this.setState({
-    //   date: parsed
-    // });
-     ;
     const reservationRequest = Object.assign({}, this.state);
+    debugger;
     this.props
       .findTable(reservationRequest, this.props.match.params.restaurantId)
       .then(payload => {
-         ;
         if (!payload.available_openings) {
           return this.props.history.push(`/new-reservation`);
         }
@@ -101,7 +117,6 @@ class FindTableForm extends React.Component {
   }
   handleAvailableTimes() {
     if (Object.values(this.props.restaurants).length > 0) {
-       ;
       if (
         this.props.restaurants[this.props.match.params.restaurantId]
           .receiveReservation
@@ -118,7 +133,6 @@ class FindTableForm extends React.Component {
             {el}
           </button>
         ));
-         ;
         return (
           <div className="timeSlot-container">
             <p>
@@ -133,12 +147,16 @@ class FindTableForm extends React.Component {
   }
 
   handleDateChange(pickedDate) {
-    this.setState({
-      date: pickedDate
-    });
+    this.setState(
+      {
+        date: pickedDate
+      },
+      () => {
+        this.validTimeslots(this.state.date);
+      }
+    );
   }
   update(field) {
-     ;
     return e => {
       if (e.target.className) {
         this.setState({
@@ -178,7 +196,7 @@ class FindTableForm extends React.Component {
         Party Size
         <select
           value={this.state.party_size}
-          onChange={this.update("party_size")}
+          onChange={() => this.update("party_size")}
         >
           {options}
         </select>
@@ -186,11 +204,7 @@ class FindTableForm extends React.Component {
     );
   }
   startTime() {
-    let timeNow = this.moment().format("h:mma");
-    let validTimes = this.hours.filter(
-      el => this.moment(el, "h: mma") > this.moment(timeNow, "h:mma")
-    );
-    let options = validTimes.map((el, idx) => (
+    let options = this.validTimes.map((el, idx) => (
       <option key={`el-${idx}`} value={`${el}`}>
         {el}
       </option>

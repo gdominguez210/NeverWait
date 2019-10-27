@@ -3,11 +3,14 @@ import { withRouter } from "react-router-dom";
 import ReviewIndexItem from "./review_index_item";
 class ReviewIndex extends React.Component {
   constructor(props) {
+    debugger;
     super(props);
+    this.is_Mounted = false;
   }
 
   componentDidMount() {
     // this.props.fetchReviews(this.props.match.params.restaurantId);
+    this.is_Mounted = true;
   }
 
   componentDidUpdate(prevProps) {
@@ -34,16 +37,19 @@ class ReviewIndex extends React.Component {
         </>
       );
     }
-    if (reviews) {
-      reviewItems = reviews.map(review => (
-        <ReviewIndexItem
-          deleteReview={this.props.deleteReview}
-          currentUser={this.props.currentUser}
-          review={review}
-          author={this.props.users[review.user_id]}
-          key={review.id}
-        />
-      ));
+    if (this.is_Mounted) {
+      reviewItems = reviews.map(review => {
+        debugger;
+        return (
+          <ReviewIndexItem
+            deleteReview={this.props.deleteReview}
+            currentUser={this.props.currentUser}
+            review={review}
+            author={this.props.users[review.user_id]}
+            key={review.id}
+          />
+        );
+      });
       reviewList = <ul className="reviews">{reviewItems}</ul>;
     }
 

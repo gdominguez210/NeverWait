@@ -9,6 +9,7 @@ class RestaurantShow extends React.Component {
   constructor(props) {
     super(props);
     debugger;
+    this.is_Mounted = false;
   }
 
   componentDidMount() {
@@ -17,6 +18,7 @@ class RestaurantShow extends React.Component {
         this.props.match.params.restaurantId
       )
     });
+    this.is_Mounted = true;
   }
 
   componentDidUpdate(prevProps) {
@@ -24,11 +26,7 @@ class RestaurantShow extends React.Component {
     const favoritesId = this.props.restaurant.favorite_ids;
     const reviewsId = Object.values(this.props.reviews);
     debugger;
-    if (prevProps === this.props) {
-      debugger;
-      return;
-    }
-    if (prevProps !== this.props) {
+    if (this.is_Mounted) {
       if (restaurantId !== prevProps.match.params.restaurantId) {
         debugger;
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
@@ -46,6 +44,7 @@ class RestaurantShow extends React.Component {
 
   render() {
     const restaurant = this.props.restaurant;
+    debugger;
     return (
       <>
         <section className="restaurant-container">

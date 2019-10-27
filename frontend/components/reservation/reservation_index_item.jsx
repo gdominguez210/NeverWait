@@ -3,19 +3,13 @@ import { Link } from "react-router-dom";
 import { parseDate, dateAbvToInt } from "../../util/format_date_time";
 import moment from "moment";
 const ReservationIndexItem = props => {
-  const { reservation, restaurant } = props;
-   ;
-
+  debugger;
+  let moment = require("moment");
+  const { reservation, restaurant, status } = props;
+  debugger;
   let parsedDate = parseDate(reservation.date);
   const { date, start_time, end_time } = reservation;
-  let dateObj = moment(date);
-  let currentDateObj = moment(new Date());
-  let status = null;
-  if (dateObj._d < currentDateObj._d) {
-    status = "past";
-  } else {
-    status = "upcoming";
-  }
+  debugger;
 
   let banner;
   if (restaurant.image_url) {
@@ -26,7 +20,6 @@ const ReservationIndexItem = props => {
     banner = {};
   }
 
-   ;
   return (
     <li className={`reservation-index-item ${status}`}>
       <div className="inner-wrap">

@@ -63,9 +63,5 @@ json.value_rating value_rating
 json.service_rating service_rating
 json.food_rating food_rating
 json.star_ratings star_ratings
-# json.five_stars five_stars
-# json.four_stars four_stars
-# json.three_stars three_stars
-# json.two_stars two_stars
-# json.one_star one_star
+
 end

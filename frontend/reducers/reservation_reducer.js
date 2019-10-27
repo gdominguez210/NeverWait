@@ -27,7 +27,7 @@ const reservationsReducer = (state = {}, action) => {
       delete newState[action.id];
       return newState;
     case RECEIVE_RESTAURANT:
-      return Object.assign({}, action.reservations);
+      return Object.assign({}, state, action.reservations);
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, action.reservations);
     default:

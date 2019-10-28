@@ -4,7 +4,11 @@ import {
   REMOVE_RESTAURANT
 } from "../actions/restaurants_actions";
 import { RECEIVE_REVIEW, REMOVE_REVIEW } from "../actions/review_actions";
-import { RECEIVE_FAVORITE, REMOVE_FAVORITE } from "../actions/favorite_actions";
+import {
+  RECEIVE_FAVORITE,
+  REMOVE_FAVORITE,
+  RECEIVE_FAVORITES
+} from "../actions/favorite_actions";
 import {
   RECEIVE_RESERVATIONS,
   AVAILABLE_TIME_SLOTS
@@ -35,6 +39,9 @@ const restaurantsReducer = (state = {}, action) => {
       return resState;
     case RECEIVE_RESERVATIONS:
       return Object.assign({}, state, action.restaurants);
+    case RECEIVE_FAVORITES:
+      debugger;
+      return action.restaurants;
     case RECEIVE_REVIEW:
       let reviewState = Object.assign({}, state);
       reviewState[action.review.restaurant_id].review_ids.push(

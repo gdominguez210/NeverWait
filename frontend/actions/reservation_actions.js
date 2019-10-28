@@ -8,7 +8,6 @@ export const AVAILABLE_TIME_SLOTS = "AVAILABLE_TIME_SLOTS";
 export const OPEN_TIME_SLOT = "OPEN_TIME_SLOT";
 
 const receiveReservations = payload => {
-   ;
   return {
     type: RECEIVE_RESERVATIONS,
     reservations: payload.reservations,
@@ -32,7 +31,6 @@ const removeReservation = reservationId => ({
 });
 
 const availableTimeslots = payload => {
-   ;
   return {
     type: AVAILABLE_TIME_SLOTS,
     date: payload.date,
@@ -75,9 +73,9 @@ export const fetchReservations = id => dispatch => {
 export const findTable = (reservationRequest, restaurantId) => dispatch => {
   reservationRequest.date = String(reservationRequest.date);
   restaurantId = parseInt(restaurantId);
+  debugger;
   return ApiUtil.findTable(reservationRequest, restaurantId)
     .then(payload => {
-       ;
       if (payload.available_openings) {
         return dispatch(availableTimeslots(payload));
       } else {

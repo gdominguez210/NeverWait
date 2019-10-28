@@ -10,7 +10,8 @@ const mapStateToProps = (state, ownProps) => {
   };
   const errors = state.errors.reservation;
   const restaurants = state.entities.restaurants;
-  return { restaurants, reservation, errors };
+  const currentUser = state.entities.users[state.session.id];
+  return { restaurants, reservation, errors, currentUser };
 };
 
 const mapDispatchToProps = dispatch => {

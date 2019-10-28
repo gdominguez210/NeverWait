@@ -15,9 +15,10 @@ const removeFavorite = (favoriteId, restaurantId) => ({
   restaurantId
 });
 
-const receiveFavorites = favorites => ({
+const receiveFavorites = payload => ({
   type: RECEIVE_FAVORITES,
-  favorites
+  favorites: payload.favorites,
+  restaurants: payload.restaurants
 });
 
 export const createFavorite = favorite => dispatch =>
@@ -27,8 +28,10 @@ export const createFavorite = favorite => dispatch =>
 // .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 
 export const fetchFavorites = userId => dispatch => {
-  return ApiUtil.fetchFavorites(userId).then(favorites => {
-    return dispatch(receiveFavorites(favorites));
+  debugger;
+  return ApiUtil.fetchFavorites(userId).then(payload => {
+    debugger;
+    return dispatch(receiveFavorites(payload));
   });
 };
 

@@ -31,6 +31,34 @@ body {
   color: #333;
   font-size: 16px;
 }
+
+.drop-down ul {
+  position: absolute;
+  right: 0;
+  background: #ffffff;
+  z-index: 1;
+  padding: 0px;
+  min-width: 200px;
+  border: 1px solid #d8d9db;
+}
+
+.drop-down ul li {
+  list-style-type: none;
+}
+.drop-down a .icon-container {
+  margin-right: 10px;
+  display: inline-block;
+}
+.header-greeting {
+  cursor: pointer;
+  position: relative;
+  padding: 10px 20px;
+}
+.drop-down a {
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+}
 main#root {
   max-width: 1600px;
   // max-width: 80%;
@@ -80,6 +108,7 @@ body {
 
 .logo-container {
   display: flex;
+  padding: 10px 20px;
 }
 
 .logo {
@@ -94,7 +123,6 @@ body {
 }
 
 header {
-  padding: 5px 20px;
   border-bottom: 1px solid #eeeeee;
 }
 
@@ -413,10 +441,10 @@ textarea {
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-input[placeholder],
-textarea[placeholder] {
-  text-transform: capitalize;
-}
+// input[placeholder],
+// textarea[placeholder] {
+//   text-transform: capitalize;
+// }
 
 ul.restaurants-container {
   overflow-x: scroll;

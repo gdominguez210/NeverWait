@@ -21,9 +21,11 @@ class Api::ReservationsController < ApplicationController
         @reservation = Reservation.find(params[:id])
     end
     def findtable
+        if !current_user
+            return render json: ["Please sign in to complete your reservation"], status: 403
+        end
 
         @reservation = Reservation.find_by(start_time: params[:reservation][:start_time], date: params[:reservation][:date])
-     
         if @reservation
             reservation_list = Reservation.where("date = ?", params[:reservation][:date])
             taken_times = []

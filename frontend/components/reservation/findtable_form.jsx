@@ -105,6 +105,7 @@ class FindTableForm extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+    debugger;
     const reservationRequest = Object.assign({}, this.state);
     debugger;
     this.props
@@ -153,6 +154,7 @@ class FindTableForm extends React.Component {
       },
       () => {
         this.validTimeslots(this.state.date);
+        this.forceUpdate();
       }
     );
   }
@@ -171,6 +173,7 @@ class FindTableForm extends React.Component {
   }
 
   renderErrors() {
+    debugger;
     const errors = this.props.errors || [];
 
     return (

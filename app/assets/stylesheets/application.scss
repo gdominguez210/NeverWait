@@ -72,7 +72,58 @@ footer {
   color: #acacac;
   font-weight: bold;
 }
+ul.locations-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+}
 
+li.location {
+  width: 33.33333%;
+  min-height: 160px;
+  list-style-type: none;
+  padding: 5px;
+  display: flex;
+}
+li.location:hover a:before {
+  transform: scale(1.05, 1.05);
+}
+li.location a:before {
+  z-index: -2;
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transition: 0.3s all;
+  background-size: cover;
+  background-position: center;
+}
+li.location a:after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.25);
+}
+li.location a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  position: relative;
+  z-index: 2;
+  font-size: 1.5em;
+  color: #ffffff;
+  overflow: hidden;
+}
 .fade-appear {
   opacity: 0;
   transition: all 500ms linear;
@@ -148,6 +199,33 @@ section.banner:before {
   z-index: 0;
   filter: contrast(0.65);
 }
+.location {
+  position: relative;
+}
+#NewYork:before {
+  background-image: image-url("architecture-buildings-city-2190283.jpg");
+}
+#Chicago:before {
+  background-image: image-url("architecture-buildings-cars-1823681-min.jpg");
+}
+#LosAngeles:before {
+  background-image: image-url("architecture-bridge-buildings-462219-min.jpg");
+}
+
+#SanFrancisco:before {
+  background-image: image-url("architecture-bridge-california-1141853-min.jpg");
+}
+#LasVegas:before {
+  background-image: image-url(
+    "architecture-bird-s-eye-view-buildings-161772-min.jpg"
+  );
+}
+#Miami:before {
+  background-image: image-url(
+    "architecture-bird-s-eye-view-buildings-161772-min.jpg"
+  );
+}
+
 section.banner:after {
   display: block;
   content: "";
@@ -262,7 +340,7 @@ input {
   right: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 10;
+  z-index: 20;
 }
 
 .modal-child {

@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
       address: "",
       phone: "",
       owner_id: "",
-      location_id: "",
+      location: "",
       lat: "",
       long: "",
       description: "",

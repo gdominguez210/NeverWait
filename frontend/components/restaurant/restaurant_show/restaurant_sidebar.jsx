@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { withRouter } from "react-router-dom";
 import FindTableForm from "../../reservation/findtable_container";
 import RestaurantMap from "./restaurant_map";
 class RestaurantSidebar extends React.Component {
@@ -225,4 +226,4 @@ class RestaurantSidebar extends React.Component {
     );
   }
 }
-export default RestaurantSidebar;
+export default withRouter(RestaurantSidebar);

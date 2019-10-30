@@ -1,9 +1,18 @@
-    @restaurants.each do |restaurant|
+@restaurants.each do |restaurant|
+
+        total_ratings = []
+        restaurant.reviews.each do |review|
+            total_ratings.push(review.total_rating)
+        end
+
         json.set! restaurant.id do
-            json.extract! restaurant, :id, :name, :address, :phone, :location_id, :owner_id, :lat, :long, :price_range, :favorite_ids, :review_ids
+            json.partial! "api/restaurants/restaurant", restaurant: restaurant
             if (restaurant.featured_img_url)
                 json.image_url image_url(restaurant.featured_img_url)
             end
+            json.total_reviews restaurant.reviews.count
+            json.total_rating restaurant.calc_averages(total_ratings)
+            json.booked_today restaurant.reservations.where('date LIKE ?', Time.now.strftime("%a %b %e %Y") + '%').count
             
         end
     end

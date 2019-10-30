@@ -217,3 +217,16 @@ h4 {
 .timeSlot-container h4 {
   margin: 5px;
 }
+span.icon {
+  margin-right: 5px;
+}
+span.noise-level {
+  position: relative;
+  margin-left: 14px;
+}
+
+span.noise-level:before {
+  position: absolute;
+  content: "\2022";
+  left: -11px;
+}

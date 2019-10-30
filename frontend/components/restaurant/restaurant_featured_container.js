@@ -8,8 +8,7 @@ import {
 const msp = state => {
   const { restaurants } = state.entities;
   return {
-    restaurants: Object.values(restaurants),
-    index: 0
+    restaurants: Object.values(restaurants)
   };
 };
 

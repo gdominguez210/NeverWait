@@ -20,7 +20,7 @@ const msp = (state, ownProps) => {
       address: "",
       phone: "",
       owner_id: "",
-      location_id: "",
+      location: "",
       lat: "",
       long: "",
       description: "",
@@ -41,7 +41,9 @@ const msp = (state, ownProps) => {
       photoUrls: "",
       favorite_ids: [],
       review_ids: [],
-      available_openings: ""
+      available_openings: "",
+      percent_recommended: "",
+      noise_level: ""
     },
     currentUser: state.entities.users[state.session.id],
     users: state.entities.users,

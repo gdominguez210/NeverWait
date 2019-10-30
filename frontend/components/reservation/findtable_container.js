@@ -8,10 +8,12 @@ const mapStateToProps = (state, ownProps) => {
     date: "",
     start_time: ""
   };
+  debugger;
   const errors = state.errors.reservation;
   const restaurants = state.entities.restaurants;
+  const restaurant = Object.values(restaurants);
   const currentUser = state.entities.users[state.session.id];
-  return { restaurants, reservation, errors, currentUser };
+  return { restaurants, reservation, errors, currentUser, restaurant };
 };
 
 const mapDispatchToProps = dispatch => {

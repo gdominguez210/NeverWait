@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const RestaurantIndexItem = props => {
   const { restaurant, deleteRestaurant } = props;
+  debugger;
   const details = Object.values(restaurant);
   const detailItems = details.map((detail, idx) => (
     <li key={`detail-${idx}`}>{detail}</li>
@@ -47,7 +48,10 @@ const RestaurantIndexItem = props => {
           <Link to={`/restaurants/${restaurant.id}`}>
             <h3 className="restaurant-name">{restaurant.name}</h3>
           </Link>
-          <p className="restaurant-address">{restaurant.address}</p>
+          <p className="restaurant-address">
+            {restaurant.total_reviews} reviews
+          </p>
+          <p></p>
           <p className="restaurant-phone">{restaurant.phone}</p>
         </div>
       </div>

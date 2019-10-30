@@ -5,7 +5,6 @@ import moment from "moment";
 class ReservationForm extends React.Component {
   constructor(props) {
     super(props);
-     ;
     this.state = {
       party_size: this.props.reservation.party_size || "",
       date: this.props.reservation.date || "",
@@ -18,7 +17,7 @@ class ReservationForm extends React.Component {
       restaurant_id: this.props.restaurant.id,
       user_id: this.props.currentUser.id
     };
-
+    debugger;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.parseDate = this.parseDate.bind(this);
@@ -117,7 +116,8 @@ class ReservationForm extends React.Component {
               <p>
                 <FontAwesomeIcon icon="calendar" />
               </p>
-              <p>Date: {this.parseDate(this.state.date)}</p>
+              {/* <p>Date: {this.parseDate(this.state.date)}</p> */}
+              <p>Date: {this.state.date}</p>
             </div>
             <div className="booking-icon">
               <p>

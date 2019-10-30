@@ -33,7 +33,7 @@
 class Restaurant < ApplicationRecord
 
 
-    validates :name, :address, :phone, :owner_id, :location_id, :lat, :long, presence: true
+    validates :name, :address, :phone, :owner_id, :location, :lat, :long, presence: true
     validates :name, uniqueness: {scope: :address}
 
     # belongs_to :location
@@ -102,7 +102,6 @@ class Restaurant < ApplicationRecord
     )
 
     def hours
-
        start = self.start_hour
        close = self.end_hour
        self.hours_of_operation = start + ' - ' + close
@@ -120,5 +119,39 @@ class Restaurant < ApplicationRecord
         first_half = hours[pivot - 5...pivot]
         second_half = hours[pivot + 1..pivot + 5]
         first_half + second_half
+    end
+
+    def calc_averages(array)
+        result = array.reduce{|acc, ele| acc + ele} || ""
+        result = ((result / array.length) * 10.0).floor / 10.0 if array.length != 0
+        result
+    end
+
+    def star_ratings(total_ratings)
+
+        star_ratings = {
+            '5' => 0,
+            '4' => 0,
+            '3' => 0,
+            '2' => 0,
+            '1' => 0
+        }
+
+        total_ratings.each do |el|
+            star_ratings[el.to_i.to_s] += 1
+        end
+
+        star_ratings
+    end
+
+    def noise_level_average(noise_levels)
+        noise_level = noise_levels.reduce{|acc, ele| acc + ele} || ""
+        noise_level = noise_level / noise_levels.length if noise_levels.length != 0
+        noise_level
+    end
+
+    def recommended_percentage(recommended)
+        percent = ((recommended.count{|ele| ele == true} / recommended.length) * 100.0) if recommended.length != 0 || ""
+        percent
     end
 end

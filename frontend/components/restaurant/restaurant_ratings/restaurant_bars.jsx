@@ -6,18 +6,18 @@ const RestaurantBars = props => {
     fillThree,
     fillTwo,
     fillOne = null;
-  if (props.restaurant.total_reviews) {
+  if (props.restaurant.star_ratings) {
     const totalReviews = props.restaurant.total_reviews;
     const FiveStarsPercent =
-      (props.restaurant.star_ratings.five_stars / totalReviews) * 100.0;
+      (props.restaurant.star_ratings["5"] / totalReviews) * 100.0;
     const FourStarsPercent =
-      (props.restaurant.star_ratings.four_stars / totalReviews) * 100.0;
+      (props.restaurant.star_ratings["4"] / totalReviews) * 100.0;
     const ThreeStarsPercent =
-      (props.restaurant.star_ratings.three_stars / totalReviews) * 100.0;
+      (props.restaurant.star_ratings["3"] / totalReviews) * 100.0;
     const TwoStarsPercent =
-      (props.restaurant.star_ratings.two_stars / totalReviews) * 100.0;
+      (props.restaurant.star_ratings["2"] / totalReviews) * 100.0;
     const OneStarPercent =
-      (props.restaurant.star_ratings.one_star / totalReviews) * 100.0;
+      (props.restaurant.star_ratings["1"] / totalReviews) * 100.0;
 
     fillFive = {
       width: `${FiveStarsPercent}%`

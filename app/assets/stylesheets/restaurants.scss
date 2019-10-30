@@ -365,6 +365,34 @@ li.restaurant-index-item {
   background: #fff;
   z-index: 10;
 }
+span.noise-level {
+  position: relative;
+  margin-left: 14px;
+}
+
+span.noise-level:before {
+  position: absolute;
+  content: "\2022";
+  left: -11px;
+}
+
+.restaurant-additional-stats {
+  margin: 15px 0px;
+}
+
+.restaurant-ratings-breakdown {
+  margin: -30px -10px -10px -10px;
+}
+
+span.icon {
+  min-width: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.stars-container p {
+  margin: 0px;
+}
 
 .reservation-container {
   position: sticky;

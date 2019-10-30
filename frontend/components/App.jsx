@@ -17,6 +17,7 @@ import EditRestaurantForm from "./restaurant/restaurant_forms/edit_form_containe
 import CreateReservationForm from "./reservation/reservation_form_container";
 import ReservationIndexContainer from "./reservation/reservation_index_container";
 import FavoritesIndexContainer from "./favorite/favorite_index_container";
+import Location from "./location/location";
 // import RestaurantIndexContainer from './restaurant/restaurant_index_container';
 const App = props => {
   library.add(fas);
@@ -44,6 +45,7 @@ const App = props => {
         />
 
         <Route exact path="/" component={RestaurantFeaturedContainer} />
+        <Route exact path="/" component={Location} />
         <Route exact path="/restaurants" component={RestaurantIndexContainer} />
         <Route
           exact

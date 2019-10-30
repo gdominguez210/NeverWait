@@ -72,7 +72,8 @@ class FindTableForm extends React.Component {
       date: this.currentDateObj,
       focused: false,
       start_time: this.validTimes[0],
-      validTimes: []
+      validTimes: [],
+      mounted: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -84,6 +85,8 @@ class FindTableForm extends React.Component {
     this.is_Mounted = false;
     this.startTime = this.startTime.bind(this);
     this.validTimeslots = this.validTimeslots.bind(this);
+    this.bookedAmount = this.bookedAmount.bind(this);
+    debugger;
   }
 
   validTimeslots(date) {
@@ -266,6 +269,31 @@ class FindTableForm extends React.Component {
     }
     return submit;
   }
+  bookedAmount() {
+    if (this.is_Mounted) {
+      debugger;
+      let bookedToday = this.props.restaurant[0].booked_today;
+      if (bookedToday > 0) {
+        debugger;
+        return (
+          <>
+            <p>
+              <span class="icon">
+                <FontAwesomeIcon icon="chart-line" />
+              </span>
+              Booked {bookedToday}
+              {bookedToday === 1 ? " time " : " times "}
+              today
+            </p>
+          </>
+        );
+      } else {
+        return null;
+      }
+    } else {
+      null;
+    }
+  }
   render() {
     return (
       <>
@@ -281,6 +309,7 @@ class FindTableForm extends React.Component {
             {/* <ul className="errors">{errorItems}</ul> */}
             {this.handleAvailableTimes()}
             {this.renderFindTable()}
+            {this.bookedAmount()}
             {this.renderErrors()}
           </form>
         </div>

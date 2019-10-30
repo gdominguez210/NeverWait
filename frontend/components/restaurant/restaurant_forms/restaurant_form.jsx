@@ -11,10 +11,10 @@ class RestaurantForm extends React.Component {
     this.update = this.update.bind(this);
   }
   componentDidMount() {
-    if (!this.state.owner_id && !this.state.location_id) {
+    if (!this.state.owner_id && !this.state.location) {
       this.setState({
         owner_id: this.props.currentUser.id,
-        location_id: 1,
+        location: 1,
         lat: 11.111,
         long: 111.111
       });

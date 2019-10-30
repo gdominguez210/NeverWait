@@ -73,7 +73,7 @@ users.push(user)
     name:restaurant_name,
    address: Faker::Address.full_address,
    owner_id: users.sample.id,
-   location_id: Faker::Number.digit,
+   location: Faker::Number.digit,
    phone: Faker::PhoneNumber.phone_number,
    neighborhood: Faker::Address.community,
    cross_street: Faker::Address.street_name,

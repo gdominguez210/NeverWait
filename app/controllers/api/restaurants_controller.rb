@@ -4,7 +4,6 @@ class Api::RestaurantsController < ApplicationController
 
     def index
         @restaurants = Restaurant.all
-
     end
 
     def feature
@@ -60,7 +59,7 @@ class Api::RestaurantsController < ApplicationController
             :phone,
             :lat,
             :long,
-            :owner_id, :location_id, :description, :website, :price_range, :capacity, :neighborhood, :hours_of_operation, :cuisines, :dining_style, :dress_code, :parking_details, :public_transit, :payment_options, :executive_chef, :additional
+            :owner_id, :location, :description, :website, :price_range, :capacity, :neighborhood, :hours_of_operation, :cuisines, :dining_style, :dress_code, :parking_details, :public_transit, :payment_options, :executive_chef, :additional
         )
     end
 

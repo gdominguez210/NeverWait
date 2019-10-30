@@ -359,6 +359,17 @@ li.restaurant-index-item {
 .inner-wrap {
   display: flex;
 }
+.restaurant-quick-links-wrap {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+.reservation-container {
+  position: sticky;
+  top: 0;
+}
 
 .restaurant-index-item .inner-wrap > a {
   flex: 1;

@@ -11,33 +11,48 @@ class RestaurantMain extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      sticky: false
+    };
     this.handleClick = this.handleClick.bind(this);
     this.overview = React.createRef();
     this.photos = React.createRef();
     this.reviews = React.createRef();
-     ;
   }
 
   handleClick(ref) {
-    ref.current.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+    const yOffset = -65;
+    const y =
+      ref.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    debugger;
+    window.scrollTo({ top: y, behavior: "smooth" });
+    // ref.current.scrollIntoView({
+    //   behavior: "smooth",
+    //   block: "start"
+    // });
   }
   render() {
     return (
       <>
         <main className="restaurant-content">
           {/* <RestaurantQuickLinks /> */}
-          <ul className="restaurant-quick-links">
-            <li onClick={() => this.handleClick(this.overview)}>Overview</li>
-            <li onClick={() => this.handleClick(this.photos)}>Photos</li>
-            {/* <li onClick={() => this.handleClick(this.menu)}>Menu</li> */}
-            <li onClick={() => this.handleClick(this.reviews)}>Reviews</li>
-          </ul>
+          <div
+            className={
+              this.state.sticky
+                ? "restaurant-quick-links-wrap sticky"
+                : "restaurant-quick-links-wrap"
+            }
+          >
+            <ul className="restaurant-quick-links">
+              <li onClick={() => this.handleClick(this.overview)}>Overview</li>
+              <li onClick={() => this.handleClick(this.photos)}>Photos</li>
+              {/* <li onClick={() => this.handleClick(this.menu)}>Menu</li> */}
+              <li onClick={() => this.handleClick(this.reviews)}>Reviews</li>
+            </ul>
+          </div>
           <section className="restaurant-content-inner">
-            <RestaurantHeader restaurant={this.props.restaurant} />
             <div ref={this.overview}>
+              <RestaurantHeader restaurant={this.props.restaurant} />
               <p>{this.props.restaurant.description}</p>
             </div>
             <div ref={this.photos}>

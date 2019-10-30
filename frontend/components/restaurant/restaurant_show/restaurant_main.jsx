@@ -26,10 +26,6 @@ class RestaurantMain extends React.Component {
       ref.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
     debugger;
     window.scrollTo({ top: y, behavior: "smooth" });
-    // ref.current.scrollIntoView({
-    //   behavior: "smooth",
-    //   block: "start"
-    // });
   }
   render() {
     return (

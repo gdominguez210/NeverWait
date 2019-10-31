@@ -90,9 +90,11 @@ class FindTableForm extends React.Component {
   }
 
   validTimeslots(date) {
+    let restaurant = this.props.restaurant[0];
     let result = this.currentDateObj.format("M/D/YY") === date.format("M/D/YY");
     let timeNow = this.moment().format("h:mma");
     debugger;
+
     if (result) {
       debugger;
       this.validTimes = this.hours.filter(

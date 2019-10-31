@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import RestaurantStars from "./restaurant_ratings/rating_stars";
+
 const RestaurantIndexItem = props => {
   const { restaurant, deleteRestaurant } = props;
   debugger;
-  const details = Object.values(restaurant);
-  const detailItems = details.map((detail, idx) => (
-    <li key={`detail-${idx}`}>{detail}</li>
-  ));
   let banner;
   if (restaurant.image_url) {
     banner = {
@@ -16,6 +15,45 @@ const RestaurantIndexItem = props => {
     banner = {};
   }
 
+  const handleAvailableTimes = () => {
+    debugger;
+    if (restaurant.available_times) {
+      let moment = require("moment");
+      let timeNow = moment().format("h:mma");
+      let available_times = restaurant.available_times.filter(
+        el => moment(el, "h: mma") > moment(timeNow, "h:mma")
+      );
+      let times = available_times.map(el => (
+        <button className="readon" data-timeslot={el}>
+          {el}
+        </button>
+      ));
+      let mes = `You're in luck! We still have ${times.length} ${
+        times.length === 1 ? "timeslot" : "timeslots"
+      } left`;
+      return (
+        <>
+          <div className="booking-header">
+            {booked()}
+            <p>{mes}</p>
+          </div>
+          <div className="available-times">{times}</div>
+        </>
+      );
+    }
+  };
+  const booked = () => {
+    return (
+      <p className="restaurant-booked">
+        <span class="icon">
+          <FontAwesomeIcon icon="chart-line" />
+        </span>
+        Booked {restaurant.booked_today}
+        {restaurant.booked_today === 1 ? " time " : " times "}
+        today
+      </p>
+    );
+  };
   const manageDelete = () => {
     let result;
     if (props.currentUser) {
@@ -34,6 +72,37 @@ const RestaurantIndexItem = props => {
     }
     return result;
   };
+
+  const price = () => {
+    let result = null;
+    if (restaurant.price_range === "cheap") {
+      result = (
+        <span class="icon">
+          <FontAwesomeIcon icon="dollar-sign" />
+        </span>
+      );
+    } else if (restaurant.price_range === "moderate") {
+      result = (
+        <>
+          <span class="icon">
+            <FontAwesomeIcon icon="dollar-sign" />
+            <FontAwesomeIcon icon="dollar-sign" />
+          </span>
+        </>
+      );
+    } else if (restaurant.price_range === "pricey") {
+      result = (
+        <>
+          <span class="icon">
+            <FontAwesomeIcon icon="dollar-sign" />
+            <FontAwesomeIcon icon="dollar-sign" />
+            <FontAwesomeIcon icon="dollar-sign" />
+          </span>
+        </>
+      );
+    }
+    return result;
+  };
   return (
     <li className="restaurant-index-item">
       {manageDelete()}
@@ -45,14 +114,25 @@ const RestaurantIndexItem = props => {
           </div>
         </Link>
         <div className="restaurant-details">
-          <Link to={`/restaurants/${restaurant.id}`}>
-            <h3 className="restaurant-name">{restaurant.name}</h3>
-          </Link>
-          <p className="restaurant-address">
-            {restaurant.total_reviews} reviews
-          </p>
-          <p></p>
-          <p className="restaurant-phone">{restaurant.phone}</p>
+          <div className="restaurant-header-container">
+            <div class="restaurant-header-left">
+              <Link to={`/restaurants/${restaurant.id}`}>
+                <h3 className="restaurant-name">{restaurant.name}</h3>
+              </Link>
+              <p className="restaurant-ratings">
+                <RestaurantStars restaurant={props.restaurant} />
+                {restaurant.total_reviews}
+                {restaurant.total_reviews === 1 ? " review " : " reviews "}
+              </p>
+            </div>
+            <div class="restaurant-header-right">
+              <ul className="restaurant-location">
+                <li>{price()}</li>
+                <li>{restaurant.neighborhood}</li>
+              </ul>
+            </div>
+          </div>
+          <div className="restaurant-times">{handleAvailableTimes()}</div>
         </div>
       </div>
     </li>

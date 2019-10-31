@@ -7,7 +7,9 @@ class RestaurantSidebar extends React.Component {
   // const parameters = restaurant.parameters || {};
   constructor(props) {
     super(props);
-    // let { restaurant } = this.props;
+    let { restaurant } = this.props;
+    this.endHour = restaurant.hours_of_operation.split(" ")[2];
+    debugger;
   }
 
   phone() {

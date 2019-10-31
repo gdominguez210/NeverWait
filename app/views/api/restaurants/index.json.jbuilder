@@ -12,6 +12,7 @@
             end
             json.total_reviews restaurant.reviews.count
             json.total_rating restaurant.calc_averages(total_ratings)
+            json.available_times restaurant.available_times(restaurant.current_time)
             json.booked_today restaurant.reservations.where('date LIKE ?', Time.now.strftime("%a %b %e %Y") + '%').count
             
         end

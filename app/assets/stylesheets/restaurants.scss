@@ -113,9 +113,22 @@ li.restaurant-item a {
 
 .restaurant-details p {
   margin: 0px;
-  font-size: 0.75em;
+  font-size: 0.9em;
+}
+p.restaurant-location ul {
+  display: flex;
+  padding-left: 0px;
 }
 
+p.restaurant-location ul li {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+p.restaurant-booked {
+  font-weight: 600;
+}
 .thumbnail {
   position: relative;
 }
@@ -159,6 +172,42 @@ li.restaurant-item:hover .thumbnail:after {
 section.restaurant-featured-image {
   min-height: 459px;
   background: #eeeeee;
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.available-times {
+  display: flex;
+  white-space: pre-wrap;
+  margin: 0px -10px;
+}
+
+.available-times button {
+  flex: 1;
+  margin: 10px;
+  max-width: 20%;
+}
+
+li.restaurant-index-item {
+  margin: 20px 0px;
+  padding: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+
+ul.restaurants-list {
+  margin: 0px 20px;
+}
+
+.restaurant-details {
+  padding-left: 20px;
+}
+
+.thumbnail {
+  border-radius: 4px;
 }
 
 section.restaurant-content-wrap {
@@ -314,7 +363,7 @@ section.restaurants-container aside {
 ul.restaurants-list {
   flex: 1;
   padding: 0px;
-  margin: 0px;
+  margin-left: 20px;
 }
 
 ul.restaurants-list li {
@@ -333,13 +382,6 @@ li.restaurant-index-item a {
 
 .restaurant-details {
   flex: 4;
-}
-
-li.restaurant-index-item {
-  padding: 20px 0px;
-  border-top: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
-  margin: 20px;
 }
 
 .restaurant-details .restaurant-name {
@@ -393,7 +435,17 @@ span.icon {
 .stars-container p {
   margin: 0px;
 }
+.restaurant-ratings {
+  display: flex;
+}
 
+.restaurant-ratings .back-stars {
+  margin-right: 5px;
+}
+p.restaurant-booked {
+  display: flex;
+  align-items: center;
+}
 .reservation-container {
   position: sticky;
   top: 0;
@@ -521,4 +573,32 @@ section.restaurant-featured-image:after {
   background-attachment: fixed;
   transform-origin: 0;
   transform: translateZ(1px);
+}
+
+.restaurant-header-container {
+  display: flex;
+}
+
+.restaurant-header-container .restaurant-header-left,
+.restaurant-header-container .restaurant-header-right {
+  flex: 1;
+}
+
+.restaurant-header-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+ul.restaurant-location {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+ul.restaurant-location li:last-child {
+  margin-top: auto;
+}
+
+.restaurant-header-container span.icon {
+  margin: 0px;
 }

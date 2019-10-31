@@ -29,7 +29,11 @@
 #  updated_at         :datetime         not null
 #  featured_img_url   :string
 #
-
+class Time
+    def round_off(seconds = 60)
+        Time.at((self.to_f / seconds).round * seconds)
+    end
+end
 class Restaurant < ApplicationRecord
 
 
@@ -106,7 +110,11 @@ class Restaurant < ApplicationRecord
        close = self.end_hour
        self.hours_of_operation = start + ' - ' + close
     end
-
+    def current_time
+        current_time = Time.new.round_off(30 * 60)
+        current_time = current_time.strftime("%l:%M%P")
+        current_time[1..-1]
+    end
     def hours_of_operation_list
         start_hour = TIME_SLOTS.index(self.start_hour)
     end_hour = TIME_SLOTS.index(self.end_hour)
@@ -119,6 +127,12 @@ class Restaurant < ApplicationRecord
         first_half = hours[pivot - 5...pivot]
         second_half = hours[pivot + 1..pivot + 5]
         first_half + second_half
+    end
+
+     def available_future_times(time)
+        hours = hours_of_operation_list
+        pivot = hours.index(time)
+        hours[pivot..pivot + 5]
     end
 
     def calc_averages(array)

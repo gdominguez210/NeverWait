@@ -7,7 +7,7 @@ class Api::RestaurantsController < ApplicationController
     end
 
     def feature
-        @restaurants = Restaurant.limit(5).order("RANDOM()");
+        @restaurants = Restaurant.limit(15).order("RANDOM()");
         render "api/restaurants/index"
     end
 

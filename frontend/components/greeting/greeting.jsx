@@ -66,7 +66,7 @@ class Greeting extends React.Component {
                 to={`/users/${this.props.currentUser.id}`}
                 onClick={this.toggleDropDown}
               >
-                <span class="icon-container">
+                <span className="icon-container">
                   <FontAwesomeIcon icon="user" />
                 </span>
                 My Profile
@@ -77,7 +77,7 @@ class Greeting extends React.Component {
                 to={`/users/${this.props.currentUser.id}/reservations`}
                 onClick={this.toggleDropDown}
               >
-                <span class="icon-container">
+                <span className="icon-container">
                   <FontAwesomeIcon icon="calendar-alt" />
                 </span>
                 My Reservations
@@ -88,7 +88,7 @@ class Greeting extends React.Component {
                 to={`/users/${this.props.currentUser.id}/favorites`}
                 onClick={this.toggleDropDown}
               >
-                <span class="icon-container">
+                <span className="icon-container">
                   <FontAwesomeIcon icon="star" />
                 </span>
                 My Favorites
@@ -96,7 +96,7 @@ class Greeting extends React.Component {
             </li>
             <li>
               <Link to="" onClick={this.props.logout}>
-                <span class="icon-container">
+                <span className="icon-container">
                   <FontAwesomeIcon icon="sign-out-alt" />
                 </span>
                 Log Out

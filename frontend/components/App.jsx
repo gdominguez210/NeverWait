@@ -10,13 +10,14 @@ import { fas, fab } from "@fortawesome/free-solid-svg-icons";
 import { CSSTransition } from "react-transition-group";
 import { Footer } from "./Footer";
 import RestaurantIndexContainer from "./restaurant/restaurant_index_container";
-import RestaurantFeaturedContainer from "./restaurant/restaurant_featured_container";
+import RestaurantFeaturedContainer from "./restaurant//restaurant_featured/restaurant_featured_container";
 import RestaurantShowContainer from "./restaurant/restaurant_show/restaurant_show_container";
 import CreateRestaurantForm from "./restaurant/restaurant_forms/create_form_container";
 import EditRestaurantForm from "./restaurant/restaurant_forms/edit_form_container";
 import CreateReservationForm from "./reservation/reservation_form_container";
 import ReservationIndexContainer from "./reservation/reservation_index_container";
 import FavoritesIndexContainer from "./favorite/favorite_index_container";
+import CarouselContainer from "./carousel/carousel_container";
 import Location from "./location/location";
 // import RestaurantIndexContainer from './restaurant/restaurant_index_container';
 const App = props => {
@@ -44,7 +45,8 @@ const App = props => {
           component={CreateReservationForm}
         />
 
-        <Route exact path="/" component={RestaurantFeaturedContainer} />
+        {/* <Route exact path="/" component={RestaurantFeaturedContainer} /> */}
+        <Route exact path="/" component={CarouselContainer} />
         <Route exact path="/" component={Location} />
         <Route exact path="/restaurants" component={RestaurantIndexContainer} />
         <Route

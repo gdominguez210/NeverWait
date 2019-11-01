@@ -9,6 +9,10 @@ import {
   SingleDatePicker,
   DayPickerRangeController
 } from "react-dates";
+// import Loader from "../Loader";
+// Another way to import. This is recommended to reduce bundle size
+// import MoonLoader from "react-spinners/MoonLoader";
+import renderLoader from "../loader/loader";
 // const moment = require("moment");
 
 class FindTableForm extends React.Component {
@@ -73,7 +77,8 @@ class FindTableForm extends React.Component {
       focused: false,
       start_time: this.validTimes[0],
       validTimes: [],
-      mounted: false
+      mounted: false,
+      loading: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -110,16 +115,26 @@ class FindTableForm extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    debugger;
     const reservationRequest = Object.assign({}, this.state);
-    debugger;
-    this.props
-      .findTable(reservationRequest, this.props.match.params.restaurantId)
-      .then(payload => {
-        if (!payload.available_openings) {
-          return this.props.history.push(`/new-reservation`);
-        }
-      });
+    this.setState(
+      {
+        loading: true
+      },
+      () => {
+        this.props
+          .findTable(reservationRequest, this.props.match.params.restaurantId)
+          .then(payload => {
+            if (!payload.available_openings) {
+              return this.props.history.push(`/new-reservation`);
+            }
+          })
+          .then(() =>
+            this.setState({
+              loading: false
+            })
+          );
+      }
+    );
   }
   handleAvailableTimes() {
     if (Object.values(this.props.restaurants).length > 0) {
@@ -271,6 +286,7 @@ class FindTableForm extends React.Component {
     }
     return submit;
   }
+
   bookedAmount() {
     if (this.is_Mounted) {
       debugger;
@@ -310,8 +326,8 @@ class FindTableForm extends React.Component {
             </div>
             {/* <ul className="errors">{errorItems}</ul> */}
             {this.handleAvailableTimes()}
+            {renderLoader(this.state)}
             {this.renderFindTable()}
-            {this.bookedAmount()}
             {this.renderErrors()}
           </form>
         </div>

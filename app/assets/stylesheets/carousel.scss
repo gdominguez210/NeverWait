@@ -1,0 +1,93 @@
+.carousel-container {
+  display: flex;
+}
+
+.carousel-viewport {
+  flex: 1;
+}
+
+.carousel-viewport ul {
+  display: flex;
+}
+.carousel-viewport {
+  min-height: 300px;
+}
+button.carousel-nav {
+  font-size: 2.5em;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  text-align: center;
+  min-width: 50px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+.carousel-viewport {
+  display: flex;
+  align-items: center;
+}
+.carousel-viewport ul {
+  max-width: 100%;
+}
+
+.carousel-container {
+  align-items: center;
+}
+
+button.carousel-nav.carousel-left-nav svg {
+  margin-left: -5px;
+}
+
+button.carousel-nav.carousel-right-nav svg {
+  margin-right: -5px;
+}
+
+.carousel-viewport {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-viewport ul {
+  padding: 0px;
+}
+
+button.carousel-nav.carousel-left-nav {
+  margin-right: -25px;
+  position: relative;
+  z-index: 2;
+}
+
+button.carousel-nav.carousel-right-nav {
+  margin-left: -25px;
+  position: relative;
+  z-index: 2;
+}
+
+.carousel-viewport {
+  position: relative;
+  z-index: 1;
+}
+
+li.restaurant-item {
+  min-width: 300px;
+}
+
+.carousel-container {
+  overflow: hidden;
+}
+
+.carousel-container > * {
+  margin-bottom: -15px;
+}
+button.carousel-nav {
+  outline: none;
+}
+button.carousel-nav:hover {
+  border: 2px solid #2b9abf;
+}
+
+button.carousel-nav {
+  transition: 0.3s;
+}

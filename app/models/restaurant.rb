@@ -124,6 +124,7 @@ class Restaurant < ApplicationRecord
     def available_times(time)
         hours = hours_of_operation_list
         pivot = hours.index(time)
+        return [] if pivot == nil
         first_half = hours[pivot - 5...pivot]
         second_half = hours[pivot + 1..pivot + 5]
         first_half + second_half

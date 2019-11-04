@@ -28,9 +28,15 @@ const RestaurantIndexItem = props => {
           {el}
         </button>
       ));
-      let mes = `You're in luck! We still have ${times.length} ${
-        times.length === 1 ? "timeslot" : "timeslots"
-      } left`;
+      let mes = null;
+      if (times.length === 0) {
+        mes =
+          "Sorry, there are no available times left within a 2 and a half hour window.";
+      } else {
+        mes = `You're in luck! We still have ${times.length} ${
+          times.length === 1 ? "timeslot" : "timeslots"
+        } left`;
+      }
       return (
         <>
           <div className="booking-header">

@@ -50,14 +50,6 @@ class Greeting extends React.Component {
       return (
         <div className="drop-down" onClick={this.toggleDropDown}>
           <span className="toggle-button">
-            <FontAwesomeIcon icon="chevron-down" />
-          </span>
-        </div>
-      );
-    } else {
-      return (
-        <div className="drop-down" onClick={this.toggleDropDown}>
-          <span className="toggle-button">
             <FontAwesomeIcon icon="chevron-up" />
           </span>
           <ul>
@@ -105,6 +97,14 @@ class Greeting extends React.Component {
           </ul>
         </div>
       );
+    } else {
+      return (
+        <div className="drop-down" onClick={() => this.toggleDropDown}>
+          <span className="toggle-button">
+            <FontAwesomeIcon icon="chevron-down" />
+          </span>
+        </div>
+      );
     }
   }
 
@@ -112,7 +112,11 @@ class Greeting extends React.Component {
     let dropDown = this.dropDownMenu();
     debugger;
     return (
-      <div className="header-greeting" onClick={this.toggleDropDown}>
+      <div
+        className="header-greeting"
+        onClick={this.toggleDropDown}
+        onBlur={this.toggleDropDown}
+      >
         <p className="header-name">Hi, {this.props.currentUser.fname}</p>
         <CSSTransition in={true} appear={true} timeout={300} classNames="fade">
           {dropDown}

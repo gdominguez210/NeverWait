@@ -543,3 +543,66 @@ li.restaurant-item {
 .thumbnail:after {
   z-index: 3;
 }
+
+
+
+section.banner:before {
+    background-image: url(https://resizer.otstatic.com/v2/photos/wide-huge/25161502.jpg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 368px;
+    /* position: static; */
+    opacity: 1;
+}
+
+section.banner:after {
+    animation-iteration-count: infinite;
+    animation-duration: 18s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    content: ' ';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    opacity: 0
+}
+
+@keyframes rotate-layer2 {
+    0%,15% {
+        opacity: 0
+    }
+
+    33%,48% {
+        opacity: 1
+    }
+
+    66%,100% {
+        opacity: 0
+    }
+}
+
+section.banner:before {
+    background-image: url(https://resizer.otstatic.com/v2/photos/wide-huge/25160669.jpg);
+    animation-name: rotate-layer2
+}
+
+@keyframes rotate-layer3 {
+    0%,48% {
+        opacity: 0
+    }
+
+    66%,81% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+section.banner:after {
+    background-image: url(https://resizer.otstatic.com/v2/photos/wide-huge/25160340.jpg);
+    animation-name: rotate-layer3
+}

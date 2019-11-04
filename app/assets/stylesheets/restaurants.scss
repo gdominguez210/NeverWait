@@ -191,6 +191,34 @@ section.restaurant-featured-image {
   max-width: 20%;
 }
 
+.restaurant-quick-links li.active:after {
+  position: absolute;
+  content: "";
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: #2b9abf;
+  height: 3px;
+}
+ul.restaurant-quick-links li:after {
+  transition: 0.3s;
+  height: 0px;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+ul.restaurant-quick-links li.active {
+  color: #2b9abf;
+}
+ul.restaurant-quick-links li {
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: 0.3s;
+}
+
 li.restaurant-index-item {
   margin: 20px 0px;
   padding: 20px;
@@ -245,9 +273,6 @@ p.sidebar-item-label {
   min-width: 20px;
 }
 
-p.sidebar-item-label {
-}
-
 section.restaurant-content {
   margin-right: 15px;
 }
@@ -286,10 +311,11 @@ ul.restaurant-quick-links {
   margin: 0px;
   padding: 0px 8px;
   min-height: 50px;
-  align-items: center;
   position: relative;
 }
-
+p.sidebar-item-label + p {
+  text-transform: capitalize;
+}
 ul.restaurant-quick-links li {
   list-style-type: none;
 }

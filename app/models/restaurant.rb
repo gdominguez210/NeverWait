@@ -133,6 +133,7 @@ class Restaurant < ApplicationRecord
      def available_future_times(time)
         hours = hours_of_operation_list
         pivot = hours.index(time)
+        return [] unless pivot
         hours[pivot..pivot + 5]
     end
 

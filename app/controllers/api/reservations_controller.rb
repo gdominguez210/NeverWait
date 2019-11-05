@@ -1,14 +1,11 @@
 class Api::ReservationsController < ApplicationController
 
     def index
-      
         @reservations = Reservation.includes(:restaurant).where("user_id = ?", params[:user_id]).order('date DESC')
     end
 
     def create
         @reservation = Reservation.new(reservation_params)
-        #   
-        # @reservation.end_time = @reservation.start_time + 
         if @reservation.save
             render "api/reservations/show"
         else
@@ -26,7 +23,8 @@ class Api::ReservationsController < ApplicationController
         end
         @reservation = Reservation.find_by(start_time: params[:reservation][:start_time], date: params[:reservation][:date], restaurant_id: params[:restaurantId])
         if @reservation
-            reservation_list = Reservation.where("date = ?", params[:reservation][:date])
+            reservation_list = Reservation.where("date = ? and restaurant_id = ?", params[:reservation][:date], params[:restaurantId])
+            debugger
             taken_times = []
             reservation_list.each{|ele| taken_times.push(ele.start_time)}
             restaurant = Restaurant.find_by(id: @reservation.restaurant_id)

@@ -12,7 +12,7 @@ class Api::RestaurantsController < ApplicationController
         @restaurants = Restaurant.includes(:reservations).where(params[:query])
         @res = params[:res]
         debugger
-        render "api/restaurants/index"
+        render "api/restaurants/search"
     end
     def feature
         @restaurants = Restaurant.limit(15).order("RANDOM()");

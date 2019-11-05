@@ -37,3 +37,10 @@ export const deleteRestaurant = restaurantId =>
     method: "DELETE",
     url: `/api/restaurants/${restaurantId}`
   });
+
+export const fetchSearchedRestaurants = data =>
+  $.ajax({
+    method: "GET",
+    url: `api/search/`,
+    data: { query: data.query, res: data.res }
+  });

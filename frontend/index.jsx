@@ -30,5 +30,5 @@ document.addEventListener("DOMContentLoaded", () => {
   window.dispatch = store.dispatch;
   window.moment = moment;
   window.search = search;
-  window.fetchRestaurants = fetchRestaurants;
+  window.fetchSearchedRestaurants = RestActions.fetchSearchedRestaurants;
 });

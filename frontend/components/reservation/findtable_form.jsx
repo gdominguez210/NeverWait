@@ -9,11 +9,8 @@ import {
   SingleDatePicker,
   DayPickerRangeController
 } from "react-dates";
-// import Loader from "../Loader";
-// Another way to import. This is recommended to reduce bundle size
-// import MoonLoader from "react-spinners/MoonLoader";
+
 import renderLoader from "../loader/loader";
-// const moment = require("moment");
 
 class FindTableForm extends React.Component {
   constructor(props) {

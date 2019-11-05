@@ -16,7 +16,6 @@ export const receiveErrors = errors => {
   };
 };
 export const receiveRestaurant = payload => {
-   ;
   return {
     type: RECEIVE_RESTAURANT,
     restaurant: payload.restaurant,
@@ -30,6 +29,11 @@ export const removeRestaurant = restaurantId => ({
   type: REMOVE_RESTAURANT,
   restaurantId
 });
+
+export const fetchSearchedRestaurants = data => dispatch =>
+  APIUtil.fetchSearchedRestaurants(data)
+    .then(restaurants => dispatch(receiveRestaurants(restaurants)))
+    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 
 export const fetchRestaurants = () => dispatch =>
   APIUtil.fetchRestaurants()

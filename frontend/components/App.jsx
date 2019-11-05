@@ -51,6 +51,11 @@ const App = props => {
         <Route exact path="/restaurants" component={RestaurantIndexContainer} />
         <Route
           exact
+          path="/search/:query"
+          component={RestaurantIndexContainer}
+        />
+        <Route
+          exact
           path="/users/:userId/reservations"
           component={ReservationIndexContainer}
         ></Route>

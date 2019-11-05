@@ -3,9 +3,17 @@
 class Api::RestaurantsController < ApplicationController
 
     def index
-        @restaurants = Restaurant.all
+        @restaurants = Restaurant.includes(:reviews, :reservations, :favorites).all
     end
 
+    def search
+        return @restaurants = Restaurant.all if params[:query] == nil
+        params[:query].permit!
+        @restaurants = Restaurant.includes(:reservations).where(params[:query])
+        @res = params[:res]
+        debugger
+        render "api/restaurants/index"
+    end
     def feature
         @restaurants = Restaurant.limit(15).order("RANDOM()");
         render "api/restaurants/index"
@@ -53,7 +61,7 @@ class Api::RestaurantsController < ApplicationController
     private
 
     def restaurant_params
-        params.require(:restaurant).permit(
+        params.permit(
             :name,
             :address,
             :phone,

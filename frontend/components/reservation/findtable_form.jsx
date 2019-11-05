@@ -123,11 +123,17 @@ class FindTableForm extends React.Component {
       () => {
         this.props
           .findTable(reservationRequest, this.props.match.params.restaurantId)
-          .then(payload => {
-            if (!payload.available_openings) {
-              return this.props.history.push(`/new-reservation`);
-            }
-          })
+          .then(
+            payload => {
+              if (!payload.available_openings) {
+                return this.props.history.push(`/new-reservation`);
+              }
+            },
+            () =>
+              this.setState({
+                loading: false
+              })
+          )
           .then(() =>
             this.setState({
               loading: false

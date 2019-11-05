@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:update, :edit, :destroy]
     resources :favorites, only: [:create, :destroy, :show]
     get 'featured-restaurants', :to => 'restaurants#feature'
-    get 'restaurants/search/:query', :to => 'restaurants#search'
+    get 'search', :to => 'restaurants#search'
     post 'reservations/findtable', :to => 'reservations#findtable'
   end
 

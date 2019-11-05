@@ -24,8 +24,7 @@ class Api::ReservationsController < ApplicationController
         if !current_user
             return render json: ["Please sign in to complete your reservation"], status: 403
         end
-
-        @reservation = Reservation.find_by(start_time: params[:reservation][:start_time], date: params[:reservation][:date])
+        @reservation = Reservation.find_by(start_time: params[:reservation][:start_time], date: params[:reservation][:date], restaurant_id: params[:restaurantId])
         if @reservation
             reservation_list = Reservation.where("date = ?", params[:reservation][:date])
             taken_times = []
@@ -36,7 +35,7 @@ class Api::ReservationsController < ApplicationController
             if available_openings.length > 0 
                 render json: {start_time: params[:reservation][:start_time], date: params[:reservation][:date], party_size: params[:reservation][:party_size], available_openings: available_openings, restaurant_id: params[:restaurantId]}
             else
-                render json: ["there are no openings within a 2 and a half hour window"], status: 422
+                render json: ["There are no openings within a 2 and a half hour window, please try another date and/or time."], status: 422
             end
         else
             render json: {start_time: params[:reservation][:start_time], date: params[:reservation][:date], party_size: params[:reservation][:party_size]}

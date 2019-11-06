@@ -6,7 +6,6 @@ import { CSSTransition } from "react-transition-group";
 export class FavoriteIndex extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
   }
 
   componentDidMount() {
@@ -14,7 +13,6 @@ export class FavoriteIndex extends React.Component {
   }
 
   render() {
-    debugger;
     const { restaurants } = this.props;
     let restaurantItems = null;
     if (restaurants) {

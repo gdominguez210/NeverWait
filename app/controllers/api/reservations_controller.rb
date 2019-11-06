@@ -24,7 +24,6 @@ class Api::ReservationsController < ApplicationController
         @reservation = Reservation.find_by(start_time: params[:reservation][:start_time], date: params[:reservation][:date], restaurant_id: params[:restaurantId])
         if @reservation
             reservation_list = Reservation.where("date = ? and restaurant_id = ?", params[:reservation][:date], params[:restaurantId])
-            debugger
             taken_times = []
             reservation_list.each{|ele| taken_times.push(ele.start_time)}
             restaurant = Restaurant.find_by(id: @reservation.restaurant_id)

@@ -6,7 +6,6 @@ import { CSSTransition } from "react-transition-group";
 export class ReservationIndex extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
   }
 
   componentDidMount() {
@@ -41,13 +40,10 @@ export class ReservationIndex extends React.Component {
           (currentDateObj.format("M/D/YY") === dateObj.format("M/D/YY") &&
             resTime._i < timeNow._i)
         ) {
-          debugger;
           status = "past";
         } else {
-          debugger;
           status = "upcoming";
         }
-        debugger;
         if (status === "past") {
           pastReservations.push(
             <ReservationIndexItem

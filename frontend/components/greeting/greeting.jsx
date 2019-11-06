@@ -32,7 +32,6 @@ class Greeting extends React.Component {
   }
 
   toggleDropDown() {
-    debugger;
     if (this.state.showDropDown) {
       this.setState({
         showDropDown: false
@@ -44,7 +43,6 @@ class Greeting extends React.Component {
     }
   }
   dropDownMenu() {
-    debugger;
     let display = null;
     if (this.state.showDropDown) {
       return (
@@ -110,7 +108,6 @@ class Greeting extends React.Component {
 
   personalGreeting() {
     let dropDown = this.dropDownMenu();
-    debugger;
     return (
       <div
         className="header-greeting"

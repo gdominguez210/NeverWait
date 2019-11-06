@@ -11,7 +11,6 @@ class Api::RestaurantsController < ApplicationController
         params[:query].permit!
         @restaurants = Restaurant.includes(:reservations).where(params[:query])
         @res = params[:res]
-        render "api/restaurants/search"
     end
     def feature
         @restaurants = Restaurant.limit(15).order("RANDOM()");

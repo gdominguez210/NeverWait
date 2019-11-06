@@ -13,17 +13,17 @@ import {
   RECEIVE_RESERVATIONS,
   AVAILABLE_TIME_SLOTS
 } from "../actions/reservation_actions";
+import { RECEIVE_SEARCH_QUERY } from "../actions/search_actions";
 const restaurantsReducer = (state = {}, action) => {
   Object.freeze(state);
 
   debugger;
   switch (action.type) {
     case RECEIVE_RESTAURANTS:
+      debugger;
       return action.restaurants;
-    // case RECEIVE_RESTAURANT:
-    //   return Object.assign({}, state, {
-    //     [action.restaurant.id]: action.restaurant
-    //   });
+    case RECEIVE_SEARCH_QUERY:
+      return {};
     case RECEIVE_RESTAURANT:
       return Object.assign(
         {},
@@ -40,7 +40,6 @@ const restaurantsReducer = (state = {}, action) => {
     case RECEIVE_RESERVATIONS:
       return Object.assign({}, state, action.restaurants);
     case RECEIVE_FAVORITES:
-      debugger;
       return action.restaurants;
     case RECEIVE_REVIEW:
       let reviewState = Object.assign({}, state);

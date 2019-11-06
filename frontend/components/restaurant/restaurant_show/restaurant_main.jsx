@@ -33,10 +33,8 @@ class RestaurantMain extends React.Component {
   }
 
   callback(entries) {
-    debugger;
     for (let i = 0; i < entries.length; i++) {
       let entry = entries[i];
-      debugger;
       this.singleRefs[entry.target.id].ratio = entry.intersectionRatio;
     }
 
@@ -51,29 +49,23 @@ class RestaurantMain extends React.Component {
 
   componentDidMount() {
     Object.values(this.singleRefs).forEach(value => {
-      debugger;
       this.observer.observe(value.ref.current);
     });
   }
 
   handleClick(ref) {
-    debugger;
     const yOffset = -65;
     const yOffsetHeader = -250;
-    debugger;
     let y = null;
     if (ref.current.id === "overview") {
       y =
         ref.current.getBoundingClientRect().top +
         window.pageYOffset +
         yOffsetHeader;
-      debugger;
     } else {
-      debugger;
       y =
         ref.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
     }
-    debugger;
     window.scrollTo({ top: y, behavior: "smooth" });
   }
   render() {

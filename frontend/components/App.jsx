@@ -19,6 +19,7 @@ import ReservationIndexContainer from "./reservation/reservation_index_container
 import FavoritesIndexContainer from "./favorite/favorite_index_container";
 import CarouselContainer from "./carousel/carousel_container";
 import Location from "./location/location";
+import RestaurantSearchContainer from "./restaurant/restaurant_search/restaurant_search_container";
 // import RestaurantIndexContainer from './restaurant/restaurant_index_container';
 const App = props => {
   library.add(fas);
@@ -49,6 +50,11 @@ const App = props => {
         <Route exact path="/" component={CarouselContainer} />
         <Route exact path="/" component={Location} />
         <Route exact path="/restaurants" component={RestaurantIndexContainer} />
+        <Route
+          exact
+          path="/search-restaurants"
+          component={RestaurantSearchContainer}
+        />
         <Route
           exact
           path="/search/:query"

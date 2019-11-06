@@ -50,6 +50,12 @@ gallery_item = %w(
       https://active-storage-neverwait-seed.s3.amazonaws.com/gallery-item-23.jpg
       https://active-storage-neverwait-seed.s3.amazonaws.com/gallery-item-24.jpg
 )
+ 9.times {
+  filename = gallery_item.sample
+  file = open(filename)
+  restaurant.photos.attach(io:file, filename: filename.split("/")[-1])
+  }
+  
 users = []
 price_range = ["cheap", "moderate", "pricey"]
 payment_options = ["cash", "credit", "debit"]

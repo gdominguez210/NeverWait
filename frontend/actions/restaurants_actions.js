@@ -4,6 +4,7 @@ export const RECEIVE_RESTAURANTS = "RECEIVE_RESTAURANTS";
 export const RECEIVE_RESTAURANT = "RECEIVE_RESTAURANT";
 export const REMOVE_RESTAURANT = "REMOVE_RESTAURANT";
 export const RECEIVE_RESTAURANT_ERRORS = "RECEIVE_RESTAURANT_ERRORS";
+export const RECEIVE_SEARCH_RESULTS = "RECEIVE_SEARCH_RESULTS";
 
 export const receiveRestaurants = restaurants => ({
   type: RECEIVE_RESTAURANTS,
@@ -25,20 +26,28 @@ export const receiveRestaurant = payload => {
   };
 };
 
+export const receiveSearchResults = data => ({
+  type: RECEIVE_SEARCH_RESULTS,
+  query: data.query,
+  res: data.res
+});
 export const removeRestaurant = restaurantId => ({
   type: REMOVE_RESTAURANT,
   restaurantId
 });
 
-export const fetchSearchedRestaurants = data => dispatch =>
-  APIUtil.fetchSearchedRestaurants(data)
-    .then(restaurants => dispatch(receiveRestaurants(restaurants)))
-    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
+export const fetchSearchedRestaurants = data => dispatch => {
+  return APIUtil.fetchSearchedRestaurants(data).then(restaurants =>
+    dispatch(receiveRestaurants(restaurants))
+  );
+};
 
-export const fetchRestaurants = () => dispatch =>
-  APIUtil.fetchRestaurants()
+export const fetchRestaurants = () => dispatch => {
+  debugger;
+  return APIUtil.fetchRestaurants()
     .then(restaurants => dispatch(receiveRestaurants(restaurants)))
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
+};
 
 export const fetchFeaturedRestaurants = () => dispatch =>
   APIUtil.fetchFeaturedRestaurants()

@@ -8,7 +8,6 @@ const mapStateToProps = (state, ownProps) => {
     date: "",
     start_time: ""
   };
-  debugger;
   const errors = state.errors.reservation;
   const restaurants = state.entities.restaurants;
   const restaurant = Object.values(restaurants);

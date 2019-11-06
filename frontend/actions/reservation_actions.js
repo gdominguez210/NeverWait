@@ -73,7 +73,6 @@ export const fetchReservations = id => dispatch => {
 export const findTable = (reservationRequest, restaurantId) => dispatch => {
   reservationRequest.date = reservationRequest.date.format("M/D/YY");
   restaurantId = parseInt(restaurantId);
-  debugger;
   return ApiUtil.findTable(reservationRequest, restaurantId)
     .then(payload => {
       if (payload.available_openings) {

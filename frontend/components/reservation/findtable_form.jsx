@@ -88,22 +88,17 @@ class FindTableForm extends React.Component {
     this.startTime = this.startTime.bind(this);
     this.validTimeslots = this.validTimeslots.bind(this);
     this.bookedAmount = this.bookedAmount.bind(this);
-    debugger;
   }
 
   validTimeslots(date) {
     let restaurant = this.props.restaurant[0];
     let result = this.currentDateObj.format("M/D/YY") === date.format("M/D/YY");
     let timeNow = this.moment().format("h:mma");
-    debugger;
-
     if (result) {
-      debugger;
       this.validTimes = this.hours.filter(
         el => this.moment(el, "h: mma") > this.moment(timeNow, "h:mma")
       );
     } else {
-      debugger;
       this.validTimes = this.hours;
     }
   }
@@ -196,7 +191,6 @@ class FindTableForm extends React.Component {
   }
 
   renderErrors() {
-    debugger;
     const errors = this.props.errors || [];
 
     return (
@@ -292,10 +286,8 @@ class FindTableForm extends React.Component {
 
   bookedAmount() {
     if (this.is_Mounted) {
-      debugger;
       let bookedToday = this.props.restaurant[0].booked_today;
       if (bookedToday > 0) {
-        debugger;
         return (
           <>
             <p>

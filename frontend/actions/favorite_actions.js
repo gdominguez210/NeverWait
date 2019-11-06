@@ -28,9 +28,7 @@ export const createFavorite = favorite => dispatch =>
 // .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 
 export const fetchFavorites = userId => dispatch => {
-  debugger;
   return ApiUtil.fetchFavorites(userId).then(payload => {
-    debugger;
     return dispatch(receiveFavorites(payload));
   });
 };

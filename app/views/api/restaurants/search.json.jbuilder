@@ -10,7 +10,6 @@
         reservation_list.each{|ele| taken_times.push(ele.start_time)}
         potential_openings = restaurant.available_times(@res['start_time'])
         available_openings = potential_openings.select{|ele| !taken_times.include?(ele)}
-        debugger
         if available_openings.length > 0
             json.set! restaurant.id do
                 json.partial! "api/restaurants/restaurant", restaurant: restaurant

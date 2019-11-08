@@ -10,7 +10,10 @@ import {
 } from "react-dates";
 
 import renderLoader from "../loader/loader";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 
+library.add(fas);
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
@@ -75,25 +78,30 @@ class SearchForm extends React.Component {
       },
       focused: false,
       query: { name: "" },
-      autocomplete: ""
+      autocomplete: "",
+      showList: false
     };
+    this.restaurants = [];
     this.handleDateChange = this.handleDateChange.bind(this);
+    this.locations = [];
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleList = this.handleList.bind(this);
+    this.throttle = this.throttle.bind(this);
+    this.renderAutoList = this.renderAutoList.bind(this);
+    this.renderLocations = this.renderLocations.bind(this);
+    this.renderRestaurants = this.renderRestaurants.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   validTimeslots(date) {
     let result = this.currentDateObj.format("M/D/YY") === date.format("M/D/YY");
     let timeNow = this.moment().format("h:mma");
-    debugger;
 
     if (result) {
-      debugger;
       this.validTimes = this.hours.filter(
         el => this.moment(el, "h: mma") > this.moment(timeNow, "h:mma")
       );
     } else {
-      debugger;
       this.validTimes = this.hours;
     }
   }
@@ -149,63 +157,156 @@ class SearchForm extends React.Component {
     );
   }
 
-  renderLocations(arr) {
+  renderLocations() {
+    debugger;
     let locationItems = null;
-    if (arr.length > 0) {
-      locationItems = arr.map(el => <li>{el}</li>);
+    if (this.locations.length > 0) {
+      locationItems = this.locations.map(el => (
+        <li onClick={this.handleClick()} data-searchitem={el}>
+          {el}
+        </li>
+      ));
     }
-    return locationItems;
+
+    return this.locations.length > 0 ? (
+      <>
+        <p>
+          <span className="icon">
+            <FontAwesomeIcon icon="map-marker-alt" />
+          </span>
+          Locations
+        </p>
+        <ul>{locationItems}</ul>
+      </>
+    ) : null;
   }
 
-  renderRestaurants(arr) {
+  renderRestaurants() {
+    debugger;
     let restaurantItems = null;
-    if (arr.length > 0) {
-      restaurantItems = arr.map(el => <li>{el}</li>);
+    if (this.restaurants.length > 0) {
+      restaurantItems = this.restaurants.map(el => (
+        <li onClick={this.handleClick()} data-searchitem={el}>
+          {el}
+        </li>
+      ));
     }
-    return restaurantItems;
+
+    return this.restaurants.length > 0 ? (
+      <>
+        <p>
+          <span className="icon">
+            <FontAwesomeIcon icon="store-alt" />
+          </span>
+          Restaurants
+        </p>
+        <ul>{restaurantItems}</ul>
+      </>
+    ) : null;
+  }
+
+  renderAutoList() {
+    debugger;
+    return this.state.showList ? (
+      <div className="search-items" tabIndex="1">
+        <p>
+          <span className="icon">
+            <FontAwesomeIcon icon="search" />
+          </span>
+          Search: {`"${this.state.autocomplete}"`}
+        </p>
+        {this.renderLocations()}
+        {this.renderRestaurants()}
+      </div>
+    ) : null;
+  }
+  throttle() {
+    if (this.debounceId) {
+      clearTimeout(this.debounceId);
+    }
+    this.debounceId = setTimeout(() => this.handleList(), 500);
   }
   handleList() {
-    let restaurants = [];
-    let locations = [];
+    debugger;
+    this.props
+      .autocomplete({
+        autocomplete: this.state.autocomplete
+      })
+      .then(data => {
+        this.restaurants = [];
+        this.locations = [];
 
-    if (this.state.autocomplete.length > 1) {
-      this.props
-        .autocomplete({
-          autocomplete: this.state.autocomplete
-        })
-        .then(data => {
-          data.forEach(el => {
-            if (el.searchable_type === "Location") {
-              locations.push(el.content);
-            }
-            if (el.searchable_type === "Restaurant") {
-              restaurants.push(el.content);
-            }
+        for (let i = 0; i < data.length; i++) {
+          let el = data[i];
+          if (
+            el.searchable_type === "Location" &&
+            !this.locations.includes(el.content)
+          ) {
+            this.locations.push(el.content);
+          }
+          if (
+            el.searchable_type === "Restaurant" &&
+            !this.restaurants.includes(el.content)
+          ) {
+            this.restaurants.push(el.content);
+          }
+        }
+        if (
+          this.restaurants.length === 0 &&
+          this.locations.length === 0 &&
+          this.state.showList
+        ) {
+          debugger;
+          this.setState({
+            showList: false
           });
+        } else {
+          debugger;
+          this.setState({
+            showList: true
+          });
+        }
 
-          console.log(`restaurants: ${restaurants}`);
-          console.log(`locations: ${locations}`);
-        });
-    }
+        console.log(`restaurants: ${this.restaurants}`);
+        console.log(`locations: ${this.locations}`);
+      });
+  }
+
+  handleClick(e) {
+    const query = { ...this.state.query };
+    return e => {
+      debugger;
+      query.name = e.target.dataset.searchitem;
+      this.setState({
+        query: query,
+        autocomplete: query.name,
+        showList: false
+      });
+      debugger;
+    };
   }
   update(field) {
-    debugger;
     const query = { ...this.state.query };
     const res = { ...this.state.res };
-
+    let that = this;
     return e => {
       if (field === "name") {
-        debugger;
-        query.name = e.target.value;
+        if (e.target.dataset.searchitem) {
+          query.name = e.target.dataset.searchitem;
+          debugger;
+        } else {
+          query.name = e.target.value;
+        }
         this.setState(
           {
             query: query,
-            autocomplete: e.target.value
+            autocomplete: query.name
           },
-          console.log(this.state.autocomplete)
+          () => {
+            this.handleList();
+          }
         );
       } else {
-        debugger;
         res[field] = e.target.value;
         this.setState({
           res: res
@@ -229,7 +330,7 @@ class SearchForm extends React.Component {
       );
     }
     let label = parseInt(this.state.res.party_size) === 1 ? "person" : "people";
-    debugger;
+
     return (
       <label>
         <span className="icon">
@@ -261,7 +362,7 @@ class SearchForm extends React.Component {
                 onChange={this.update("name")}
                 value={this.state.query.name}
               />
-              {this.handleList()}
+              {this.state.showList ? this.renderAutoList() : null}
             </div>
             <button className="readon">Let's go</button>
           </form>

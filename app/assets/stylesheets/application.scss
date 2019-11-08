@@ -652,7 +652,44 @@ section.banner:after {
   filter: brightness(75%);
   opacity: 0;
 }
+.search-items {
+  position: absolute;
+  background: #ffffff;
+  left: 0;
+  right: 0;
+  color: #666666;
+}
+.search-items p {
+  font-size: 1.2em;
+  font-weight: bold;
+  border-top: 1px solid #dddddd;
+  padding: 16px;
+  margin: 0px;
+}
+.query-container {
+  position: relative;
+}
+.search-items ul {
+  margin: 0px;
+}
 
+.search-items ul li {
+  list-style-type: none;
+  padding: 16px 0px;
+}
+
+.search-items ul {
+  padding: 0px;
+}
+.search-items ul li {
+  cursor: pointer;
+  padding: 16px 16px 16px 41px;
+}
+
+.search-items ul li:hover {
+  background: #2b9abf;
+  color: #ffffff;
+}
 @keyframes rotate-layer2 {
   0%,
   15% {

@@ -36,7 +36,11 @@ class Time
 end
 class Restaurant < ApplicationRecord
 
-
+ 
+    include PgSearch::Model
+    multisearchable against: [:name],  update_if: :name_changed?
+    pg_search_scope :search_by_keyword, against: [:name]
+    scope :with_locations, -> {joins(:location)}
     validates :name, :address, :phone, :owner_id, :location, :lat, :long, presence: true
     validates :name, uniqueness: {scope: :address}
 
@@ -46,6 +50,7 @@ class Restaurant < ApplicationRecord
     foreign_key: :owner_id,
     class_name: :User
 
+    belongs_to :location
     has_many :reviews, dependent: :destroy
     has_many :reservations, dependent: :destroy
     has_many :favorites, dependent: :destroy

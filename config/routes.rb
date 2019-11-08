@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy, :show]
     get 'featured-restaurants', :to => 'restaurants#feature'
     get 'search', :to => 'search#search'
+    get 'autocomplete', :to => 'search#autocomplete'
     get 'search/restaurants', :to => 'restaurants#search'
     post 'reservations/findtable', :to => 'reservations#findtable'
   end

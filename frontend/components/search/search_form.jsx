@@ -74,10 +74,12 @@ class SearchForm extends React.Component {
         start_time: this.validTimes[0]
       },
       focused: false,
-      query: { name: "" }
+      query: { name: "" },
+      autocomplete: ""
     };
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleList = this.handleList.bind(this);
   }
 
   validTimeslots(date) {
@@ -146,6 +148,46 @@ class SearchForm extends React.Component {
       }
     );
   }
+
+  renderLocations(arr) {
+    let locationItems = null;
+    if (arr.length > 0) {
+      locationItems = arr.map(el => <li>{el}</li>);
+    }
+    return locationItems;
+  }
+
+  renderRestaurants(arr) {
+    let restaurantItems = null;
+    if (arr.length > 0) {
+      restaurantItems = arr.map(el => <li>{el}</li>);
+    }
+    return restaurantItems;
+  }
+  handleList() {
+    let restaurants = [];
+    let locations = [];
+
+    if (this.state.autocomplete.length > 1) {
+      this.props
+        .autocomplete({
+          autocomplete: this.state.autocomplete
+        })
+        .then(data => {
+          data.forEach(el => {
+            if (el.searchable_type === "Location") {
+              locations.push(el.content);
+            }
+            if (el.searchable_type === "Restaurant") {
+              restaurants.push(el.content);
+            }
+          });
+
+          console.log(`restaurants: ${restaurants}`);
+          console.log(`locations: ${locations}`);
+        });
+    }
+  }
   update(field) {
     debugger;
     const query = { ...this.state.query };
@@ -155,9 +197,13 @@ class SearchForm extends React.Component {
       if (field === "name") {
         debugger;
         query.name = e.target.value;
-        this.setState({
-          query: query
-        });
+        this.setState(
+          {
+            query: query,
+            autocomplete: e.target.value
+          },
+          console.log(this.state.autocomplete)
+        );
       } else {
         debugger;
         res[field] = e.target.value;
@@ -215,6 +261,7 @@ class SearchForm extends React.Component {
                 onChange={this.update("name")}
                 value={this.state.query.name}
               />
+              {this.handleList()}
             </div>
             <button className="readon">Let's go</button>
           </form>

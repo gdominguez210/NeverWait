@@ -2,6 +2,7 @@
 
 class Api::RestaurantsController < ApplicationController
 
+    
     def index
         @restaurants = Restaurant.includes(:reviews, :reservations, :favorites).all
     end
@@ -9,7 +10,8 @@ class Api::RestaurantsController < ApplicationController
     def search
         return @restaurants = Restaurant.all if params[:query] == nil
         params[:query].permit!
-        @restaurants = Restaurant.includes(:reservations).where(params[:query])
+        # @restaurants = Restaurant.includes(:reservations).where(params[:query])
+        @restaurants = Restaurant.joins(:location).where("restaurants.name = ?", params[:query][:name]).or(Restaurant.joins(:location).where("locations.name = ?", params[:query][:name]))
         @res = params[:res]
     end
     def feature

@@ -4,6 +4,7 @@ import * as APIUtils from "./util/session_api_util";
 import { createFavorite } from "./actions/favorite_actions";
 import { signup, login } from "./actions/session_actions";
 import { search } from "./actions/search_actions";
+import { autocomplete } from "./util/search_api_util";
 import { fetchRestaurants } from "./util/restaurant_api_util";
 import configureStore from "./store/store";
 import Root from "./components/root";
@@ -32,5 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.state = store.state;
   window.moment = moment;
   window.search = search;
+  window.autocomplete = autocomplete;
   window.fetchSearchedRestaurants = RestActions.fetchSearchedRestaurants;
 });

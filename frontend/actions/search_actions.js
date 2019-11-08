@@ -12,3 +12,7 @@ export const search = data => dispatch => {
   data.res.date = data.res.date.format("M/D/YY");
   return APIUtil.search(data).then(data => dispatch(receiveSearchQuery(data)));
 };
+
+// export const autocomplete = data => dispatch => {
+//   return APIUtil.search(data).then(data => dispatch(receiveSearchQuery(data)));
+// }

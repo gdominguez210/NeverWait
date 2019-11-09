@@ -8,8 +8,8 @@
 #  phone              :string           not null
 #  owner_id           :integer          not null
 #  location_id        :integer          not null
-#  lat                :decimal(, )      not null
-#  long               :decimal(, )      not null
+#  lat                :float            not null
+#  long               :float            not null
 #  description        :text
 #  website            :string
 #  price_range        :string
@@ -28,6 +28,8 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  featured_img_url   :string
+#  start_hour         :string
+#  end_hour           :string
 #
 class Time
     def round_off(seconds = 60)
@@ -110,6 +112,9 @@ class Restaurant < ApplicationRecord
         11:30pm
     )
 
+    def self.time_slots
+        TIME_SLOTS
+    end
     def hours
        start = self.start_hour
        close = self.end_hour

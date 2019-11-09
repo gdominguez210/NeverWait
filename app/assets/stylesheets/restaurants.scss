@@ -253,7 +253,6 @@ main.restaurant-content {
 aside.restaurant-sidebar {
   margin-top: -50px;
   margin-left: 15px;
-  background: #ffffff;
   flex: 1;
   max-width: 320px;
 }
@@ -627,4 +626,16 @@ ul.restaurant-location li:last-child {
 
 .restaurant-header-container span.icon {
   margin: 0px;
+}
+
+div#map-container {
+  z-index: 0;
+  margin: 25px 0px;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+}
+
+.reservation-container {
+  z-index: 10;
+  border-radius: 4px;
 }

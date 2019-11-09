@@ -12,6 +12,8 @@ require 'faker'
 User.destroy_all
 Restaurant.destroy_all
 Review.destroy_all
+Location.destroy_all
+
 images = %w(
       chairs-coffee-shop-drinking-glasses.jpg
       bar-city-commerce.jpg
@@ -62,30 +64,38 @@ payment_options = ["cash", "credit", "debit"]
 dress_code = ["casual", "business casual", "formal"]
 dining_style = ["casual", "formal", "elegant"]
 recommended = [true, false]
+possible_starts = Restaurant.time_slots[12..20]
+possible_ends = Restaurant.time_slots[36..-1]
 demo_user = User.create(username: 'Demo', password:'test123', fname: 'Demo', lname: 'User');
 
-10.times {
+15.times {
 first_name = Faker::Name.unique.first_name
 last_name = Faker::Name.unique.last_name
 user = User.create({username: Faker::Internet.email(name: first_name), fname: first_name, lname: last_name, password: Faker::Internet.password(min_length: 6) })
 users.push(user)
 }
 
-10.times {
+Location.create!(name: 'New York', lat: 40.71427, long: -74.00597)
+Location.create!(name: 'Chicago', lat: 41.85003, long: -87.65005)
+Location.create!(name: 'Los Angeles', lat: 34.05223, long: -118.24368)
+Location.create!(name: 'San Francisco', lat: 37.77493, long: -122.41942)
+Location.create!(name: 'Miami', lat: 25.77427, long: -80.19366)
+Location.create!(name: 'Las Vegas', lat: 36.17497, long: -115.13722)
+
+
+40.times {
   restaurant_name = Faker::Restaurant.name
   domain = restaurant_name.split(" ").map{|ele| ele.downcase}.join("")
   image = images.delete_at(rand(images.length))
-  restaurant = Restaurant.create!({
-    name:restaurant_name,
+  restaurant = Restaurant.new({
+   name:restaurant_name,
    address: Faker::Address.full_address,
    owner_id: users.sample.id,
-   location: Faker::Number.digit,
+   location_id: rand(1..6),
    phone: Faker::PhoneNumber.phone_number,
    neighborhood: Faker::Address.community,
    cross_street: Faker::Address.street_name,
    cuisines:Faker::Restaurant.type,
-   lat: Faker::Address.latitude,
-   long: Faker::Address.longitude,
    description:Faker::Restaurant.description,
    capacity: (25..100).to_a.sample,
    price_range: price_range.sample,
@@ -95,8 +105,14 @@ users.push(user)
    public_transit: nil,       
    payment_options: payment_options.sample,
    featured_img_url: image,
-   executive_chef: Faker::FunnyName.name
+   executive_chef: Faker::FunnyName.name,
+   start_hour: possible_starts.sample,
+end_hour: possible_ends.sample
   })
+  coords = RandomLocation.near_by(res.location.lat, res.location.long, 80467)
+  restaurant.lat, restaurant.long = coords
+  restaurant.hours
+  restaurant.save!
   9.times {
   filename = gallery_item.sample
   file = open(filename)

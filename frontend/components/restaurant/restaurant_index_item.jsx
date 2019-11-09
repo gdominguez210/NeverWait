@@ -5,7 +5,7 @@ import RestaurantStars from "./restaurant_ratings/rating_stars";
 
 const RestaurantIndexItem = props => {
   const { restaurant, deleteRestaurant } = props;
-  debugger;
+   ;
   let banner;
   if (restaurant.image_url) {
     banner = {
@@ -16,7 +16,7 @@ const RestaurantIndexItem = props => {
   }
 
   const handleAvailableTimes = () => {
-    debugger;
+     ;
     if (restaurant.available_times) {
       let moment = require("moment");
       let timeNow = moment().format("h:mma");

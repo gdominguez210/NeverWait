@@ -79,7 +79,8 @@ class SearchForm extends React.Component {
       focused: false,
       query: { name: "" },
       autocomplete: "",
-      showList: false
+      showList: false,
+      activeSelection: 0
     };
     this.restaurants = [];
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -158,7 +159,7 @@ class SearchForm extends React.Component {
   }
 
   renderLocations() {
-    debugger;
+     ;
     let locationItems = null;
     if (this.locations.length > 0) {
       locationItems = this.locations.map(el => (
@@ -182,7 +183,7 @@ class SearchForm extends React.Component {
   }
 
   renderRestaurants() {
-    debugger;
+     ;
     let restaurantItems = null;
     if (this.restaurants.length > 0) {
       restaurantItems = this.restaurants.map(el => (
@@ -206,7 +207,7 @@ class SearchForm extends React.Component {
   }
 
   renderAutoList() {
-    debugger;
+     ;
     return this.state.showList ? (
       <div className="search-items" tabIndex="1">
         <p>
@@ -227,7 +228,7 @@ class SearchForm extends React.Component {
     this.debounceId = setTimeout(() => this.handleList(), 500);
   }
   handleList() {
-    debugger;
+     ;
     this.props
       .autocomplete({
         autocomplete: this.state.autocomplete
@@ -256,12 +257,12 @@ class SearchForm extends React.Component {
           this.locations.length === 0 &&
           this.state.showList
         ) {
-          debugger;
+           ;
           this.setState({
             showList: false
           });
         } else {
-          debugger;
+           ;
           this.setState({
             showList: true
           });
@@ -275,15 +276,19 @@ class SearchForm extends React.Component {
   handleClick(e) {
     const query = { ...this.state.query };
     return e => {
-      debugger;
+       ;
       query.name = e.target.dataset.searchitem;
       this.setState({
         query: query,
         autocomplete: query.name,
         showList: false
       });
-      debugger;
+       ;
     };
+  }
+
+  handleKeyDown(e) {
+     ;
   }
   update(field) {
     const query = { ...this.state.query };
@@ -293,7 +298,7 @@ class SearchForm extends React.Component {
       if (field === "name") {
         if (e.target.dataset.searchitem) {
           query.name = e.target.dataset.searchitem;
-          debugger;
+           ;
         } else {
           query.name = e.target.value;
         }
@@ -360,6 +365,7 @@ class SearchForm extends React.Component {
               <input
                 placeholder="Location or Restaurant"
                 onChange={this.update("name")}
+                onKeyDown={this.handleKeyDown}
                 value={this.state.query.name}
               />
               {this.state.showList ? this.renderAutoList() : null}

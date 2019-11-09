@@ -43,7 +43,7 @@ export const fetchSearchedRestaurants = data => dispatch => {
 };
 
 export const fetchRestaurants = () => dispatch => {
-  debugger;
+   ;
   return APIUtil.fetchRestaurants()
     .then(restaurants => dispatch(receiveRestaurants(restaurants)))
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)));

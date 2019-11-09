@@ -17,10 +17,10 @@ import { RECEIVE_SEARCH_QUERY } from "../actions/search_actions";
 const restaurantsReducer = (state = {}, action) => {
   Object.freeze(state);
 
-  debugger;
+   ;
   switch (action.type) {
     case RECEIVE_RESTAURANTS:
-      debugger;
+       ;
       return action.restaurants;
     case RECEIVE_SEARCH_QUERY:
       return {};

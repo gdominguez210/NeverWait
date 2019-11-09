@@ -2,14 +2,13 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withRouter } from "react-router-dom";
 import FindTableForm from "../../reservation/findtable_container";
-import RestaurantMap from "./restaurant_map";
+import RestaurantMapContainer from "./restaurant_map_container";
 class RestaurantSidebar extends React.Component {
   // const parameters = restaurant.parameters || {};
   constructor(props) {
     super(props);
     let { restaurant } = this.props;
     this.endHour = restaurant.hours_of_operation.split(" ")[2];
-    debugger;
   }
 
   phone() {
@@ -211,6 +210,7 @@ class RestaurantSidebar extends React.Component {
       <>
         <aside className="restaurant-sidebar">
           <FindTableForm />
+          <RestaurantMapContainer match={this.props.match} />
           {this.phone()}
           {this.website()}
           {this.city()}

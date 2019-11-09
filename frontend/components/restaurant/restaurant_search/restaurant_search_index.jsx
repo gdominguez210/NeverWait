@@ -6,11 +6,11 @@ import { CSSTransition } from "react-transition-group";
 export class RestaurantSearchIndex extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
+     ;
   }
 
   componentDidMount() {
-    debugger;
+     ;
     this.props.fetchSearchedRestaurants(this.props.search);
   }
 
@@ -18,7 +18,7 @@ export class RestaurantSearchIndex extends React.Component {
     const { restaurants, deleteRestaurant, currentUser } = this.props;
     let restaurantItems = null;
     if (restaurants) {
-      debugger;
+       ;
       restaurantItems = restaurants.map((restaurant, idx) => (
         <RestaurantIndexItem
           currentUser={currentUser}

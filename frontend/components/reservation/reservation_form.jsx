@@ -17,7 +17,7 @@ class ReservationForm extends React.Component {
       restaurant_id: this.props.restaurant.id,
       user_id: this.props.currentUser.id
     };
-    debugger;
+     ;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.parseDate = this.parseDate.bind(this);

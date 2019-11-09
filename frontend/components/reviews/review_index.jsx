@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import ReviewIndexItem from "./review_index_item";
 class ReviewIndex extends React.Component {
   constructor(props) {
-    debugger;
+     ;
     super(props);
     this.is_Mounted = false;
   }
@@ -39,7 +39,7 @@ class ReviewIndex extends React.Component {
     }
     if (this.is_Mounted) {
       reviewItems = reviews.map(review => {
-        debugger;
+         ;
         return (
           <ReviewIndexItem
             deleteReview={this.props.deleteReview}

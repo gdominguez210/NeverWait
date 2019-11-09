@@ -25,7 +25,7 @@ class Carousel extends React.Component {
 
   handleLeft(e) {
     const { carouselViewport } = this.refs;
-    debugger;
+     ;
     const numOfSlidesToScroll = 3.5;
     const widthOfSlide = 300;
     let newPos = carouselViewport.scrollLeft + carouselViewport.offsetWidth;
@@ -42,7 +42,7 @@ class Carousel extends React.Component {
 
   handleRight(e) {
     const { carouselViewport } = this.refs;
-    debugger;
+     ;
     const numOfSlidesToScroll = 3.5;
     const widthOfSlide = 300;
     let newPos = carouselViewport.scrollLeft - carouselViewport.offsetWidth;

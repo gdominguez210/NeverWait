@@ -3,6 +3,7 @@ import RestaurantIndexItem from "../restaurant_index_item";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import SearchFormContainer from "../../search/search_form_container";
+import SearchSidebarFormContainer from "../../search/search_sidebar_form_container";
 export class RestaurantSearchIndex extends React.Component {
   constructor(props) {
     super(props);
@@ -49,7 +50,9 @@ export class RestaurantSearchIndex extends React.Component {
           <SearchFormContainer />
         </section>
         <section className="restaurants-container">
-          <aside></aside>
+          <aside>
+            <SearchSidebarFormContainer />
+          </aside>
           <CSSTransition
             in={true}
             appear={true}

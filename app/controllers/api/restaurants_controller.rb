@@ -8,7 +8,11 @@ class Api::RestaurantsController < ApplicationController
     end
 
     def search
-        return @restaurants = Restaurant.all if params[:query] == nil
+        if params[:query] == nil || params[:query][:name].length == 0
+             @restaurants = Restaurant.all 
+             @res = params[:res]
+             return
+        end
         params[:query].permit!
         # @restaurants = Restaurant.includes(:reservations).where(params[:query])
         @restaurants = Restaurant.joins(:location).where("restaurants.name = ?", params[:query][:name]).or(Restaurant.joins(:location).where("locations.name = ?", params[:query][:name]))

@@ -6,10 +6,13 @@ export const REMOVE_RESTAURANT = "REMOVE_RESTAURANT";
 export const RECEIVE_RESTAURANT_ERRORS = "RECEIVE_RESTAURANT_ERRORS";
 export const RECEIVE_SEARCH_RESULTS = "RECEIVE_SEARCH_RESULTS";
 
-export const receiveRestaurants = restaurants => ({
-  type: RECEIVE_RESTAURANTS,
-  restaurants
-});
+export const receiveRestaurants = payload => {
+  return {
+    type: RECEIVE_RESTAURANTS,
+    restaurants: payload.restaurants,
+    search: payload.search
+  };
+};
 export const receiveErrors = errors => {
   return {
     type: RECEIVE_RESTAURANT_ERRORS,
@@ -43,7 +46,6 @@ export const fetchSearchedRestaurants = data => dispatch => {
 };
 
 export const fetchRestaurants = () => dispatch => {
-   ;
   return APIUtil.fetchRestaurants()
     .then(restaurants => dispatch(receiveRestaurants(restaurants)))
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)));

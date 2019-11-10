@@ -9,7 +9,12 @@ export const receiveSearchQuery = data => ({
 });
 
 export const search = data => dispatch => {
-  data.res.date = data.res.date.format("M/D/YY");
+  debugger;
+
+  typeof data.res.date === "string"
+    ? data.res.date
+    : (data.res.date = data.res.date.format("M/D/YY"));
+
   return APIUtil.search(data).then(data => dispatch(receiveSearchQuery(data)));
 };
 

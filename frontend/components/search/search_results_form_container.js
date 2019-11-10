@@ -6,12 +6,12 @@ import { autocomplete } from "../../util/search_api_util";
 const msp = (state, ownProps) => {
   const { search } = state.ui;
   return {
-    search
+    searchQuery: search
   };
 };
 
 const mdp = dispatch => ({
-  searchQuery: data => dispatch(search(data)),
+  search: data => dispatch(search(data)),
   autocomplete: data => autocomplete(data)
 });
 

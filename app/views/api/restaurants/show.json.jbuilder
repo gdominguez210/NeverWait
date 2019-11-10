@@ -37,14 +37,17 @@ end
 end
 
 json.restaurant do
+    review_count = @restaurant.reviews.count
     json.partial! "api/restaurants/restaurant", restaurant: @restaurant
-    json.total_reviews @restaurant.reviews.count
+    json.total_reviews review_count
     json.total_rating @restaurant.calc_averages(total_ratings)
     json.value_rating @restaurant.calc_averages(value_ratings)
     json.service_rating @restaurant.calc_averages(service_ratings)
     json.food_rating @restaurant.calc_averages(food_ratings)
     json.star_ratings @restaurant.star_ratings(total_ratings)
     json.booked_today @restaurant.reservations.where('date LIKE ?', Time.now.strftime("%a %b %e %Y") + '%').count
+    if review_count > 0
     json.percent_recommended @restaurant.recommended_percentage(recommended)
     json.noise_level @restaurant.noise_level_average(noise_levels)
+    end
 end

@@ -68,20 +68,42 @@ class SearchForm extends React.Component {
       "11:00pm",
       "11:30pm"
     ];
-    this.currentDateObj = moment(new Date());
+    if (this.props.search.res) {
+      this.currentDateObj = moment(this.props.search.res.date, "MM-DD-YYYY");
+    } else {
+      this.currentDateObj = moment(new Date());
+    }
     this.validTimeslots(this.currentDateObj);
-    this.state = {
-      res: {
-        party_size: 1,
-        date: this.currentDateObj,
-        start_time: this.validTimes[0]
-      },
-      focused: false,
-      query: { name: "" },
-      autocomplete: "",
-      showList: false,
-      activeSelection: 0
-    };
+    debugger;
+    if (this.props.search.res) {
+      let idx = this.validTimes.indexOf(this.props.search.res.start_time);
+      debugger;
+      this.state = {
+        res: {
+          party_size: this.props.search.res.party_size,
+          date: this.props.search.res.date,
+          start_time: this.validTimes[idx]
+        },
+        focused: false,
+        query: this.props.search.query,
+        autocomplete: "",
+        showList: false,
+        activeSelection: 0
+      };
+    } else {
+      this.state = {
+        res: {
+          party_size: 1,
+          date: this.currentDateObj,
+          start_time: this.validTimes[0]
+        },
+        focused: false,
+        query: { name: "" },
+        autocomplete: "",
+        showList: false,
+        activeSelection: 0
+      };
+    }
     this.restaurants = [];
     this.handleDateChange = this.handleDateChange.bind(this);
     this.locations = [];
@@ -95,9 +117,9 @@ class SearchForm extends React.Component {
   }
 
   validTimeslots(date) {
-    let result = this.currentDateObj.format("M/D/YY") === date.format("M/D/YY");
+    let result = moment(new Date()).format("M/D/YY") === date.format("M/D/YY");
     let timeNow = this.moment().format("h:mma");
-
+    debugger;
     if (result) {
       this.validTimes = this.hours.filter(
         el => this.moment(el, "h: mma") > this.moment(timeNow, "h:mma")
@@ -127,13 +149,18 @@ class SearchForm extends React.Component {
     );
   }
   date() {
+    debugger;
     return (
       <label>
         <span className="icon">
           <FontAwesomeIcon icon="calendar" />
         </span>
         <SingleDatePicker
-          date={this.state.res.date} // momentPropTypes.momentObj or null
+          date={
+            moment.isMoment(this.state.res.date)
+              ? this.state.res.date
+              : moment(this.state.res.date, "MM-DD-YYYY")
+          } // momentPropTypes.momentObj or null
           onDateChange={date => this.handleDateChange(date)} // PropTypes.func.isRequired
           focused={this.state.focused} // PropTypes.bool
           onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
@@ -159,7 +186,6 @@ class SearchForm extends React.Component {
   }
 
   renderLocations() {
-     ;
     let locationItems = null;
     if (this.locations.length > 0) {
       locationItems = this.locations.map(el => (
@@ -183,7 +209,6 @@ class SearchForm extends React.Component {
   }
 
   renderRestaurants() {
-     ;
     let restaurantItems = null;
     if (this.restaurants.length > 0) {
       restaurantItems = this.restaurants.map(el => (
@@ -207,7 +232,6 @@ class SearchForm extends React.Component {
   }
 
   renderAutoList() {
-     ;
     return this.state.showList ? (
       <div className="search-items" tabIndex="1">
         <p>
@@ -228,7 +252,6 @@ class SearchForm extends React.Component {
     this.debounceId = setTimeout(() => this.handleList(), 500);
   }
   handleList() {
-     ;
     this.props
       .autocomplete({
         autocomplete: this.state.autocomplete
@@ -257,12 +280,10 @@ class SearchForm extends React.Component {
           this.locations.length === 0 &&
           this.state.showList
         ) {
-           ;
           this.setState({
             showList: false
           });
         } else {
-           ;
           this.setState({
             showList: true
           });
@@ -276,20 +297,16 @@ class SearchForm extends React.Component {
   handleClick(e) {
     const query = { ...this.state.query };
     return e => {
-       ;
       query.name = e.target.dataset.searchitem;
       this.setState({
         query: query,
         autocomplete: query.name,
         showList: false
       });
-       ;
     };
   }
 
-  handleKeyDown(e) {
-     ;
-  }
+  handleKeyDown(e) {}
   update(field) {
     const query = { ...this.state.query };
     const res = { ...this.state.res };
@@ -298,7 +315,6 @@ class SearchForm extends React.Component {
       if (field === "name") {
         if (e.target.dataset.searchitem) {
           query.name = e.target.dataset.searchitem;
-           ;
         } else {
           query.name = e.target.value;
         }
@@ -321,9 +337,14 @@ class SearchForm extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+    let that = this;
     this.props
-      .search(this.state)
-      .then(() => this.props.history.push(`/search-restaurants`));
+      .searchQuery(this.state)
+      .then(() =>
+        this.props.match.url.includes("search-results")
+          ? undefined
+          : this.props.history.push(`/search-restaurants`)
+      );
   }
   partySize() {
     let options = [];

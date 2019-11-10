@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RestaurantStars from "./restaurant_ratings/rating_stars";
 
 const RestaurantIndexItem = props => {
-  const { restaurant, deleteRestaurant } = props;
-   ;
+  const { restaurant, deleteRestaurant, res } = props;
+  debugger;
   let banner;
   if (restaurant.image_url) {
     banner = {
@@ -16,12 +16,13 @@ const RestaurantIndexItem = props => {
   }
 
   const handleAvailableTimes = () => {
-     ;
+    debugger;
     if (restaurant.available_times) {
       let moment = require("moment");
-      let timeNow = moment().format("h:mma");
+      // let timeNow = moment().format("h:mma");
+      let resTime = moment(res.start_time, "h: mma");
       let available_times = restaurant.available_times.filter(
-        el => moment(el, "h: mma") > moment(timeNow, "h:mma")
+        el => moment(el, "h: mma") > moment(resTime, "h:mma")
       );
       let times = available_times.map(el => (
         <button className="readon" data-timeslot={el}>
@@ -56,7 +57,7 @@ const RestaurantIndexItem = props => {
         </span>
         Booked {restaurant.booked_today}
         {restaurant.booked_today === 1 ? " time " : " times "}
-        today
+        this day
       </p>
     );
   };

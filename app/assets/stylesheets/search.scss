@@ -1,0 +1,53 @@
+section.search-results-form-container:after {
+  position: absolute;
+  background: #333333;
+  top: 73px;
+  left: 0;
+  right: 0;
+  content: "";
+  height: 100px;
+  z-index: 0;
+}
+
+main#root {
+  position: relative;
+}
+
+section.search-results-form-container {
+}
+
+.search-form {
+  position: relative;
+  z-index: 1;
+}
+
+section.search-results-form-container .search-form form {
+  margin: 0px;
+}
+
+section.search-results-form-container .search-form .res-container {
+  margin: 0px;
+}
+
+section.search-results-form-container .search-form label {
+  border-radius: 0px;
+}
+
+section.search-results-form-container .query-container {
+  margin: 0px;
+}
+section.search-results-form-container .query-container input {
+  border-radius: 0px;
+}
+section.restaurants-index {
+  flex: 1;
+  margin-left: 20px;
+}
+
+ul.restaurants-list {
+  margin-left: 0px;
+}
+
+section.restaurants-index > p {
+  font-size: 1.5em;
+}

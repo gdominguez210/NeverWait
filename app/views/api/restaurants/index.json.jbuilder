@@ -1,3 +1,4 @@
+json.restaurants do
 @restaurants.each do |restaurant|
   
         total_ratings = []
@@ -16,3 +17,4 @@
             
         end
     end
+end

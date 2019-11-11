@@ -5,7 +5,6 @@ import { createReservation } from "./../../actions/reservation_actions";
 import { openModal } from "./../../actions/modal_actions";
 import { closeModal } from "./../../actions/modal_actions";
 const mapStateToProps = (state, ownProps) => {
-   ;
   const reservation = {
     party_size: state.entities.reservations.party_size,
     date: state.entities.reservations.date,
@@ -18,7 +17,9 @@ const mapStateToProps = (state, ownProps) => {
     email: ""
   };
   const currentUser = state.entities.users[state.session.id];
-  const restaurant = Object.values(state.entities.restaurants)[0];
+  debugger;
+  const restaurant =
+    state.entities.restaurants[state.entities.reservations.restaurant_id];
   const errors = state.errors.reservation;
   // const currentUser = state.entities.users[state.session.id];
   // const formType = "Create";

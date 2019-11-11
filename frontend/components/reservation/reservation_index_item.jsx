@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { parseDate, dateAbvToInt } from "../../util/format_date_time";
 import moment from "moment";
 const ReservationIndexItem = props => {
+  debugger;
   let moment = require("moment");
   const { reservation, restaurant, status } = props;
   let parsedDate = parseDate(reservation.date);
   const { date, start_time, end_time } = reservation;
   let banner;
-  if (restaurant.image_url) {
+  if (restaurant) {
     banner = {
       backgroundImage: `url(${restaurant.image_url})`
     };
@@ -16,7 +17,7 @@ const ReservationIndexItem = props => {
     banner = {};
   }
 
-  return (
+  return restaurant ? (
     <li className={`reservation-index-item ${status}`}>
       <div className="inner-wrap">
         <Link to={`#`}>
@@ -32,7 +33,7 @@ const ReservationIndexItem = props => {
         </div>
       </div>
     </li>
-  );
+  ) : null;
 };
 
 export default ReservationIndexItem;

@@ -17,6 +17,7 @@ class Api::FavoritesController < ApplicationController
         @favorite = Favorite.find(params[:id])
     end
 
+   
     def destroy
         @favorite = current_user.favorites.find(params[:id])
         if @favorite.destroy!

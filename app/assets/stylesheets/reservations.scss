@@ -230,3 +230,20 @@ span.noise-level:before {
   content: "\2022";
   left: -11px;
 }
+
+section.reservations-container-outter {
+  display: flex;
+}
+
+section.reservations-container-outter > section {
+  flex: 1;
+  margin-left: 25px;
+}
+
+ul.reservations-list {
+  padding: 0px;
+}
+
+li.reservation-index-item {
+  margin: 20px 0px;
+}

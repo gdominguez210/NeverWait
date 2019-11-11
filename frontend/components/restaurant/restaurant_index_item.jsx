@@ -4,7 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RestaurantStars from "./restaurant_ratings/rating_stars";
 
 const RestaurantIndexItem = props => {
-  const { restaurant, deleteRestaurant, res } = props;
+  debugger;
+  const {
+    restaurant,
+    deleteRestaurant,
+    deleteFavorite,
+    res,
+    findTable,
+    history,
+    type,
+    currentUser
+  } = props;
   debugger;
   let banner;
   if (restaurant.image_url) {
@@ -14,7 +24,18 @@ const RestaurantIndexItem = props => {
   } else {
     banner = {};
   }
-
+  const handleClick = e => {
+    e.preventDefault();
+    let newRes = Object.assign({}, res);
+    newRes.start_time = e.target.dataset.timeslot;
+    debugger;
+    findTable(newRes, restaurant.id).then(payload => {
+      debugger;
+      if (!payload.available_openings) {
+        return history.push(`/new-reservation`);
+      }
+    });
+  };
   const handleAvailableTimes = () => {
     debugger;
     if (restaurant.available_times) {
@@ -25,7 +46,7 @@ const RestaurantIndexItem = props => {
         el => moment(el, "h: mma") > moment(resTime, "h:mma")
       );
       let times = available_times.map(el => (
-        <button className="readon" data-timeslot={el}>
+        <button className="readon" onClick={handleClick} data-timeslot={el}>
           {el}
         </button>
       ));
@@ -80,6 +101,14 @@ const RestaurantIndexItem = props => {
     return result;
   };
 
+  const manageDeleteFavorite = e => {
+    e.preventDefault();
+    debugger;
+    let favorite_id = currentUser.favorite_ids.find(el =>
+      restaurant.favorite_ids.includes(el)
+    );
+    deleteFavorite(favorite_id, restaurant.id);
+  };
   const price = () => {
     let result = null;
     if (restaurant.price_range === "cheap") {
@@ -122,24 +151,33 @@ const RestaurantIndexItem = props => {
         </Link>
         <div className="restaurant-details">
           <div className="restaurant-header-container">
-            <div class="restaurant-header-left">
+            <div className="restaurant-header-left">
               <Link to={`/restaurants/${restaurant.id}`}>
                 <h3 className="restaurant-name">{restaurant.name}</h3>
               </Link>
               <p className="restaurant-ratings">
-                <RestaurantStars restaurant={props.restaurant} />
-                {restaurant.total_reviews}
+                <RestaurantStars restaurant={restaurant} />
+                {restaurant.total_reviews > 0 ? restaurant.total_review : 0}
                 {restaurant.total_reviews === 1 ? " review " : " reviews "}
               </p>
             </div>
-            <div class="restaurant-header-right">
+            <div className="restaurant-header-right">
+              {type === "favorite" ? (
+                <div className="restaurant-options">
+                  <button onClick={manageDeleteFavorite} className="readon">
+                    Delete Favorite
+                  </button>
+                </div>
+              ) : null}
               <ul className="restaurant-location">
                 <li>{price()}</li>
                 <li>{restaurant.neighborhood}</li>
               </ul>
             </div>
           </div>
-          <div className="restaurant-times">{handleAvailableTimes()}</div>
+          {type !== "favorite" ? (
+            <div className="restaurant-times">{handleAvailableTimes()}</div>
+          ) : null}
         </div>
       </div>
     </li>

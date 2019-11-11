@@ -35,7 +35,7 @@ class Api::ReservationsController < ApplicationController
                 render json: ["There are no openings within a 2 and a half hour window, please try another date and/or time."], status: 422
             end
         else
-            render json: {start_time: params[:reservation][:start_time], date: params[:reservation][:date], party_size: params[:reservation][:party_size]}
+            render json: {start_time: params[:reservation][:start_time], date: params[:reservation][:date], party_size: params[:reservation][:party_size], restaurant_id: params[:restaurantId]}
         end
 
     end
@@ -58,6 +58,6 @@ class Api::ReservationsController < ApplicationController
         end
     end
     def reservation_params
-        params.require(:reservation).permit(:date, :start_time, :end_time, :party_size, :restaurant_id, :user_id, :first_name, :last_name, :email, :phonenumber, :available_openings) 
+        params.require(:reservation).permit(:date, :start_time, :end_time, :party_size, :restaurant_id, :user_id, :first_name, :last_name, :email, :phonenumber, :available_openings, :restaurant_id) 
     end
 end

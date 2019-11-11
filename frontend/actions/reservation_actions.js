@@ -45,7 +45,8 @@ const openTimeslot = payload => {
     type: OPEN_TIME_SLOT,
     date: payload.date,
     start_time: payload.start_time,
-    party_size: payload.party_size
+    party_size: payload.party_size,
+    restaurant_id: payload.restaurant_id
   };
 };
 
@@ -71,7 +72,10 @@ export const fetchReservations = id => dispatch => {
 };
 
 export const findTable = (reservationRequest, restaurantId) => dispatch => {
-  reservationRequest.date = reservationRequest.date.format("M/D/YY");
+  typeof reservationRequest.date === "string"
+    ? reservationRequest.date
+    : (reservationRequest.date = reservationRequest.date.format("M/D/YY"));
+  // reservationRequest.date = reservationRequest.date.format("M/D/YY");
   restaurantId = parseInt(restaurantId);
   return ApiUtil.findTable(reservationRequest, restaurantId)
     .then(payload => {

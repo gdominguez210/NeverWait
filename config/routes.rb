@@ -15,12 +15,13 @@ Rails.application.routes.draw do
     resources :reservations, only: [:update, :edit, :destroy] do 
     end
     resources :reviews, only: [:update, :edit, :destroy]
-    resources :favorites, only: [:create, :destroy, :show]
+    resources :favorites, only: [:create, :show, :destroy]
     get 'featured-restaurants', :to => 'restaurants#feature'
     get 'search', :to => 'search#search'
     get 'autocomplete', :to => 'search#autocomplete'
     get 'search/restaurants', :to => 'restaurants#search'
     post 'reservations/findtable', :to => 'reservations#findtable'
+
   end
 
   root "static_pages#root"

@@ -14,7 +14,8 @@ const reservationsReducer = (state = {}, action) => {
       return Object.assign({}, state, {
         date: action.date,
         start_time: action.start_time,
-        party_size: action.party_size
+        party_size: action.party_size,
+        restaurant_id: action.restaurant_id
       });
     case RECEIVE_RESERVATION:
       return Object.assign({}, state, {

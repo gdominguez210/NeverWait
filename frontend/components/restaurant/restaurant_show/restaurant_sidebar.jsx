@@ -8,7 +8,6 @@ class RestaurantSidebar extends React.Component {
   constructor(props) {
     super(props);
     let { restaurant } = this.props;
-    this.endHour = restaurant.hours_of_operation.split(" ")[2];
   }
 
   phone() {

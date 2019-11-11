@@ -1,13 +1,16 @@
 import React from "react";
 import RestaurantIndexItem from "../restaurant_index_item";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import SearchFormContainer from "../../search/search_form_container";
 import SearchSidebarFormContainer from "../../search/search_sidebar_form_container";
-export class RestaurantSearchIndex extends React.Component {
+
+class RestaurantSearchIndex extends React.Component {
   constructor(props) {
     super(props);
     this.is_Mounted = false;
+    debugger;
   }
 
   componentDidMount() {
@@ -30,7 +33,14 @@ export class RestaurantSearchIndex extends React.Component {
   }
 
   render() {
-    const { restaurants, deleteRestaurant, currentUser, search } = this.props;
+    const {
+      restaurants,
+      deleteRestaurant,
+      currentUser,
+      search,
+      findTable,
+      history
+    } = this.props;
     let restaurantItems = null;
     if (restaurants) {
       restaurantItems = restaurants.map((restaurant, idx) => (
@@ -40,6 +50,8 @@ export class RestaurantSearchIndex extends React.Component {
           restaurant={restaurant}
           res={search.res}
           key={restaurant.id}
+          findTable={findTable}
+          history={history}
         />
       ));
     }
@@ -74,3 +86,5 @@ export class RestaurantSearchIndex extends React.Component {
     );
   }
 }
+
+export default withRouter(RestaurantSearchIndex);

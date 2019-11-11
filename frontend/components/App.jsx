@@ -20,6 +20,7 @@ import FavoritesIndexContainer from "./favorite/favorite_index_container";
 import CarouselContainer from "./carousel/carousel_container";
 import Location from "./location/location";
 import RestaurantSearchContainer from "./restaurant/restaurant_search/restaurant_search_container";
+import UserShowContainer from "./user/user_container";
 // import RestaurantIndexContainer from './restaurant/restaurant_index_container';
 const App = props => {
   library.add(fas);
@@ -60,16 +61,21 @@ const App = props => {
           path="/search/:query"
           component={RestaurantIndexContainer}
         />
-        <Route
+        <ProtectedRoute
           exact
           path="/users/:userId/reservations"
           component={ReservationIndexContainer}
-        ></Route>
-        <Route
+        />
+        <ProtectedRoute
           exact
           path="/users/:userId/favorites"
           component={FavoritesIndexContainer}
-        ></Route>
+        />
+        <ProtectedRoute
+          exact
+          path="/users/:userId"
+          component={UserShowContainer}
+        />
       </section>
       <Route
         exact

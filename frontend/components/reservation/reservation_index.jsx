@@ -2,9 +2,11 @@ import React from "react";
 import ReservationIndexItem from "./reservation_index_item";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class ReservationIndex extends React.Component {
   constructor(props) {
+    debugger;
     super(props);
   }
 
@@ -18,7 +20,7 @@ export class ReservationIndex extends React.Component {
       reservation => reservation instanceof Object
     );
 
-    const { restaurants } = this.props;
+    const { restaurants, currentUser } = this.props;
     let reservationItems = null;
     let pastReservations = null;
     let upcomingReservations = null;
@@ -84,18 +86,41 @@ export class ReservationIndex extends React.Component {
 
     return (
       <>
-        <section className="reservations-container">
-          <CSSTransition
-            in={true}
-            appear={true}
-            timeout={300}
-            classNames="fade"
-          >
-            <>
-              {upcomingResHTML}
-              {pastResHTML}
-            </>
-          </CSSTransition>
+        <section className="reservations-container-outter">
+          <aside className="user-options">
+            <h3>Account Options</h3>
+            <ul>
+              <li>
+                <Link to={`/users/${currentUser.id}/`}>
+                  <span className="icon">
+                    <FontAwesomeIcon icon="user" />
+                  </span>
+                  My Profile
+                </Link>
+              </li>
+              <li>
+                <Link to={`/users/${currentUser.id}/favorites`}>
+                  <span className="icon">
+                    <FontAwesomeIcon icon="star" />
+                  </span>
+                  My Favorites
+                </Link>
+              </li>
+            </ul>
+          </aside>
+          <section className="reservations-container">
+            <CSSTransition
+              in={true}
+              appear={true}
+              timeout={300}
+              classNames="fade"
+            >
+              <>
+                {upcomingResHTML}
+                {pastResHTML}
+              </>
+            </CSSTransition>
+          </section>
         </section>
       </>
     );

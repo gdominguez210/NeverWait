@@ -3,7 +3,6 @@ import ReservationIndex from "./reservation_index";
 import { fetchReservations } from "../../actions/reservation_actions";
 
 const msp = (state, ownProps) => {
-   ;
   return {
     reservations: Object.values(state.entities.reservations) || [
       {
@@ -12,7 +11,8 @@ const msp = (state, ownProps) => {
         party_size: ""
       }
     ],
-    restaurants: state.entities.restaurants
+    restaurants: state.entities.restaurants,
+    currentUser: state.entities.users[state.session.id]
   };
 };
 

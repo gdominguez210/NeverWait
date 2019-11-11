@@ -10,4 +10,9 @@
         end
     end
 
+    json.favorites do
+        json.set! favorite.id do
+            json.extract! favorite, :id, :user_id, :restaurant_id
+        end
+    end
 end

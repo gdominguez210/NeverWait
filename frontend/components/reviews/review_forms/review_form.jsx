@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
-      ;
+    debugger;
     this.state = {
       restaurant_id: parseInt(this.props.restaurant_id),
       food_rating: 5,
@@ -16,7 +16,8 @@ class ReviewForm extends React.Component {
       recommended: true,
       body: ""
     };
-
+    this.restaurant = this.props.restaurants[this.props.restaurant_id];
+    debugger;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
   }
@@ -59,8 +60,8 @@ class ReviewForm extends React.Component {
     if (this.props.formType === "Create") {
       return (
         <h2>
-          Hello {this.props.currentUser.fname}, how was your experience at
-          restaurant?
+          Hello {this.props.currentUser.fname}, how was your experience at{" "}
+          {this.restaurant.name}?
         </h2>
       );
     } else if (this.props.formType === "Edit") {

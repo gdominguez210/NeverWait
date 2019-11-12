@@ -26,7 +26,61 @@ images = %w(
       architecture-brickwall-chairs.jpg
       after-business-hours-architecture-bar.jpg
     )
-gallery_item = %w(
+  
+price_range = ["cheap", "moderate", "pricey"]
+payment_options = ["cash", "credit", "debit"]
+dress_code = ["casual", "business casual", "formal"]
+dining_style = ["casual", "formal", "elegant"]
+recommended = [true, false]
+possible_starts = Restaurant.time_slots[12..20]
+possible_ends = Restaurant.time_slots[36..-1]
+demo_user = User.create(username: 'Demo', password:'test123', fname: 'Demo', lname: 'User');
+
+50.times {
+first_name = Faker::Name.unique.first_name
+last_name = Faker::Name.unique.last_name
+user = User.create({username: Faker::Internet.email(name: first_name), fname: first_name, lname: last_name, password: Faker::Internet.password(min_length: 6) })
+}
+users = User.all.pluck(:id)
+Location.create!(name: 'New York', lat: 40.71427, long: -74.00597)
+Location.create!(name: 'Chicago', lat: 41.85003, long: -87.65005)
+Location.create!(name: 'Los Angeles', lat: 34.05223, long: -118.24368)
+Location.create!(name: 'San Francisco', lat: 37.77493, long: -122.41942)
+Location.create!(name: 'Miami', lat: 25.77427, long: -80.19366)
+Location.create!(name: 'Las Vegas', lat: 36.17497, long: -115.13722)
+location_ids = Location.all.pluck(:id)
+
+50.times {
+  restaurant_name = Faker::Restaurant.name
+  domain = restaurant_name.split(" ").map{|ele| ele.downcase}.join("")
+  image = images.delete_at(rand(images.length))
+  restaurant = Restaurant.new({
+   name:restaurant_name,
+   address: Faker::Address.full_address,
+   owner_id: users.sample,
+   location_id: location_ids.sample,
+   phone: Faker::PhoneNumber.phone_number,
+   neighborhood: Faker::Address.community,
+   cross_street: Faker::Address.street_name,
+   cuisines:Faker::Restaurant.type,
+   description:Faker::Restaurant.description,
+   capacity: (25..100).to_a.sample,
+   price_range: price_range.sample,
+   dining_style: dining_style.sample,
+   dress_code: dress_code.sample,
+   parking_details: nil,
+   public_transit: nil,       
+   payment_options: payment_options.sample,
+   featured_img_url: image,
+   executive_chef: Faker::FunnyName.name,
+   start_hour: possible_starts.sample,
+end_hour: possible_ends.sample
+  })
+  coords = RandomLocation.near_by(res.location.lat, res.location.long, 80467)
+  restaurant.lat, restaurant.long = coords
+  restaurant.hours
+  restaurant.save!
+  gallery_item = %w(
       https://active-storage-neverwait-seed.s3.amazonaws.com/gallery-item-1.jpg
       https://active-storage-neverwait-seed.s3.amazonaws.com/gallery-item-2.jpg
       https://active-storage-neverwait-seed.s3.amazonaws.com/gallery-item-3.jpg
@@ -52,80 +106,19 @@ gallery_item = %w(
       https://active-storage-neverwait-seed.s3.amazonaws.com/gallery-item-23.jpg
       https://active-storage-neverwait-seed.s3.amazonaws.com/gallery-item-24.jpg
 )
- 9.times {
-  filename = gallery_item.sample
-  file = open(filename)
-  restaurant.photos.attach(io:file, filename: filename.split("/")[-1])
-  }
-  
-users = []
-price_range = ["cheap", "moderate", "pricey"]
-payment_options = ["cash", "credit", "debit"]
-dress_code = ["casual", "business casual", "formal"]
-dining_style = ["casual", "formal", "elegant"]
-recommended = [true, false]
-possible_starts = Restaurant.time_slots[12..20]
-possible_ends = Restaurant.time_slots[36..-1]
-demo_user = User.create(username: 'Demo', password:'test123', fname: 'Demo', lname: 'User');
-
-15.times {
-first_name = Faker::Name.unique.first_name
-last_name = Faker::Name.unique.last_name
-user = User.create({username: Faker::Internet.email(name: first_name), fname: first_name, lname: last_name, password: Faker::Internet.password(min_length: 6) })
-users.push(user)
-}
-
-Location.create!(name: 'New York', lat: 40.71427, long: -74.00597)
-Location.create!(name: 'Chicago', lat: 41.85003, long: -87.65005)
-Location.create!(name: 'Los Angeles', lat: 34.05223, long: -118.24368)
-Location.create!(name: 'San Francisco', lat: 37.77493, long: -122.41942)
-Location.create!(name: 'Miami', lat: 25.77427, long: -80.19366)
-Location.create!(name: 'Las Vegas', lat: 36.17497, long: -115.13722)
-
-
-40.times {
-  restaurant_name = Faker::Restaurant.name
-  domain = restaurant_name.split(" ").map{|ele| ele.downcase}.join("")
-  image = images.delete_at(rand(images.length))
-  restaurant = Restaurant.new({
-   name:restaurant_name,
-   address: Faker::Address.full_address,
-   owner_id: users.sample.id,
-   location_id: rand(1..6),
-   phone: Faker::PhoneNumber.phone_number,
-   neighborhood: Faker::Address.community,
-   cross_street: Faker::Address.street_name,
-   cuisines:Faker::Restaurant.type,
-   description:Faker::Restaurant.description,
-   capacity: (25..100).to_a.sample,
-   price_range: price_range.sample,
-   dining_style: dining_style.sample,
-   dress_code: dress_code.sample,
-   parking_details: nil,
-   public_transit: nil,       
-   payment_options: payment_options.sample,
-   featured_img_url: image,
-   executive_chef: Faker::FunnyName.name,
-   start_hour: possible_starts.sample,
-end_hour: possible_ends.sample
-  })
-  coords = RandomLocation.near_by(res.location.lat, res.location.long, 80467)
-  restaurant.lat, restaurant.long = coords
-  restaurant.hours
-  restaurant.save!
   9.times {
-  filename = gallery_item.sample
+  filename = gallery_item.delete_at(rand(gallery_item.length))
   file = open(filename)
   restaurant.photos.attach(io:file, filename: filename.split("/")[-1])
   }
 }
 
-restaurants = Restaurant.all
+restaurants = Restaurant.all.pluck(:id)
 
-20.times{
+50.times{
 review = Review.new({
-  user_id: users.sample.id,
-  restaurant_id: restaurants.sample.id,
+  user_id: users.sample,
+  restaurant_id: restaurants.sample
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),

@@ -323,9 +323,7 @@ class SearchForm extends React.Component {
             query: query,
             autocomplete: query.name
           },
-          () => {
-            this.handleList();
-          }
+          this.throttle()
         );
       } else {
         res[field] = e.target.value;

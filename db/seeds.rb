@@ -13,7 +13,7 @@ User.destroy_all
 Restaurant.destroy_all
 Review.destroy_all
 Location.destroy_all
-
+Reservation.destroy_all
 images = %w(
       chairs-coffee-shop-drinking-glasses.jpg
       bar-city-commerce.jpg

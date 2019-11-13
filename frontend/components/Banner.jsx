@@ -4,7 +4,6 @@ import SearchFormContainer from "./search/search_form_container";
 import { Route, Link } from "react-router-dom";
 import ErrorBoundary from "./ErrorBoundary";
 export const Banner = props => {
-  debugger;
   return (
     <CSSTransition in={true} appear={true} timeout={300} classNames="fade">
       <section className="banner">

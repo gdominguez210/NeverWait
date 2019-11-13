@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { parseDate, dateAbvToInt } from "../../util/format_date_time";
 import moment from "moment";
 const ReservationIndexItem = props => {
-  debugger;
+    ;
   let moment = require("moment");
   const { reservation, restaurant, status } = props;
   let parsedDate = parseDate(reservation.date);

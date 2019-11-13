@@ -6,7 +6,7 @@ import { CSSTransition } from "react-transition-group";
 
 export class Location extends React.Component {
   constructor(props) {
-    debugger;
+      ;
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -39,34 +39,34 @@ export class Location extends React.Component {
           >
             <ul className="locations-container">
               <li className="location" id="New-York" onClick={this.handleClick}>
-                New York
+                <p>New York</p>
               </li>
               <li className="location" id="Chicago" onClick={this.handleClick}>
-                Chicago
+                <p>Chicago</p>
               </li>
               <li
                 className="location"
                 id="Los-Angeles"
                 onClick={this.handleClick}
               >
-                Los Angeles
+                <p> Los Angeles</p>
               </li>
               <li
                 className="location"
                 id="San-Francisco"
                 onClick={this.handleClick}
               >
-                San Francisco
+                <p>San Francisco</p>
               </li>
               <li className="location" id="Miami" onClick={this.handleClick}>
-                Miami
+                <p>Miami</p>
               </li>
               <li
                 className="location"
                 id="Las-Vegas"
                 onClick={this.handleClick}
               >
-                Las Vegas
+                <p>Las Vegas</p>
               </li>
             </ul>
           </CSSTransition>

@@ -84,7 +84,6 @@ section.restaurants-index > p {
 
 .rating-options button {
   display: flex;
-  width: 100%;
   text-align: left;
   position: relative;
   padding-left: 25px;
@@ -106,4 +105,55 @@ section.restaurants-index > p {
   height: 100%;
   border-radius: 2px;
   border: 2px solid #000;
+}
+
+.rating-options button.active:before {
+  background: #2b9abf;
+  border-color: #2b9abf;
+}
+.rating-options button:hover:after {
+  position: absolute;
+  content: "";
+  height: 1px;
+  border-color: #2b9abf;
+  background: #2b9abf;
+  left: 25px;
+  right: 5px;
+  bottom: 0px;
+}
+.rating-options button:focus {
+  outline: none;
+}
+.rating-options button:before {
+  transition: 0.3s;
+}
+.price-options button.active,
+.price-options button:hover {
+  background: #2b9abf;
+  color: #ffffff;
+  border-color: #2b9abf;
+}
+
+span.tag {
+  background: #333333;
+  padding: 5px;
+  border-radius: 4px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  font-size: 0.85em;
+  margin: 5px;
+}
+
+span.tag:before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  content: "";
+  left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #333333;
 }

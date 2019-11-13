@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 let moment = require("moment");
 export class ReservationIndex extends React.Component {
   constructor(props) {
-    debugger;
+      ;
     super(props);
   }
 
@@ -39,7 +39,7 @@ export class ReservationIndex extends React.Component {
         let status = null;
         let result1 = currentDateObj.isSameOrAfter(dateObj);
         let result2 = timeNow.isSameOrAfter(resTime);
-        debugger;
+          ;
         if (
           // dateObj._d < currentDateObj._d ||
           // (currentDateObj.format("M/D/YY") === dateObj.format("M/D/YY") &&

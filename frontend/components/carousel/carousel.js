@@ -17,11 +17,9 @@ class Carousel extends React.Component {
     this.is_Mounted = false;
   }
   componentDidMount() {
-    debugger;
     this.is_Mounted = true;
 
     this.props.fetchFeaturedRestaurants().then(() => {
-      debugger;
       if (this.is_Mounted) {
         this.setState({
           loading: false
@@ -30,7 +28,7 @@ class Carousel extends React.Component {
     });
   }
   componentWillUnmount() {
-    this.props.clearRestaurants();
+    // this.props.clearRestaurants();
     this.is_Mounted = false;
   }
 

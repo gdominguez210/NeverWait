@@ -9,8 +9,6 @@ export const receiveSearchQuery = data => ({
 });
 
 export const search = data => dispatch => {
-  debugger;
-
   typeof data.res.date === "string"
     ? data.res.date
     : (data.res.date = data.res.date.format("M/D/YY"));

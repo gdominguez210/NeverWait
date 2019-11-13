@@ -16,7 +16,7 @@ export class FavoriteIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    debugger;
+      ;
     if (prevProps.favorites.length !== this.props.favorites.length) {
       this.props.fetchFavorites(this.props.match.params.userId);
     }

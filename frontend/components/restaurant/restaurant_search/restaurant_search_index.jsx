@@ -11,7 +11,7 @@ class RestaurantSearchIndex extends React.Component {
   constructor(props) {
     super(props);
     this.is_Mounted = false;
-    debugger;
+      ;
     this.state = {
       loading: true
     };
@@ -32,14 +32,14 @@ class RestaurantSearchIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    debugger;
+      ;
     if (this.is_Mounted && prevProps.search) {
-      debugger;
+        ;
       if (
         prevProps.search.query !== this.props.search.query ||
         prevProps.search.res !== this.props.search.res
       ) {
-        debugger;
+          ;
         this.setState(
           {
             loading: true

@@ -7,7 +7,7 @@ class RestaurantMap extends React.Component {
     super(props);
   }
   componentDidUpdate() {
-    debugger;
+      ;
     if (this.props.restaurant) {
       const mapOptions = {
         center: {
@@ -38,7 +38,7 @@ class RestaurantMap extends React.Component {
   }
 
   render() {
-    debugger;
+      ;
     return (
       // ...
       <div ref={map => (this.mapNode = map)} id="map-container"></div>

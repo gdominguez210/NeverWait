@@ -44,9 +44,10 @@ export const removeRestaurant = restaurantId => ({
 });
 
 export const fetchSearchedRestaurants = data => dispatch => {
-  return APIUtil.fetchSearchedRestaurants(data).then(restaurants =>
-    dispatch(receiveRestaurants(restaurants))
-  );
+  return APIUtil.fetchSearchedRestaurants(data).then(payload => {
+    payload.restaurants ? payload.restaurants : (payload.restaurants = {});
+    dispatch(receiveRestaurants(payload));
+  });
 };
 
 export const fetchRestaurants = () => dispatch => {
@@ -56,10 +57,8 @@ export const fetchRestaurants = () => dispatch => {
 };
 
 export const fetchFeaturedRestaurants = () => dispatch => {
-  debugger;
   return APIUtil.fetchFeaturedRestaurants()
     .then(restaurants => {
-      debugger;
       dispatch(receiveRestaurants(restaurants));
     })
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)));

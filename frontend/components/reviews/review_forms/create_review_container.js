@@ -19,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
   const formType = "Create";
   const errors = state.errors.review;
   const restaurants = state.entities.restaurants;
-  debugger;
+    ;
   return { review, currentUser, formType, errors, restaurants };
 };
 

@@ -5,7 +5,7 @@ import { CSSTransition } from "react-transition-group";
 class UserShow extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
+      ;
   }
 
   render() {

@@ -1,4 +1,5 @@
 total_available_openings = 0;
+
 json.restaurants do
 @restaurants.each do |restaurant|
   
@@ -12,7 +13,26 @@ json.restaurants do
         reservation_list.each{|ele| taken_times.push(ele.start_time)}
         potential_openings = restaurant.available_times(@res['start_time'])
         available_openings = potential_openings.select{|ele| !taken_times.include?(ele)}
-        if available_openings.length > 0
+        total_rating = restaurant.calc_averages(total_ratings)
+        filtered = true
+     
+        if @rating
+            if @rating == "5"
+                filtered = false unless @rating.to_i * 1.0 == total_rating * 1.0
+            elsif @rating == "4"
+                filtered = false unless total_rating.between?(4, 5)
+            elsif @rating == "3"
+                filtered = false unless total_rating.between?(3, 4)
+            elsif @rating == "2"
+                 filtered = false unless total_rating.between?(2, 3)
+            elsif @rating == "1"
+                filtered = false unless total_rating.between?(0, 1)
+            else
+                filtered = false
+            end
+        end
+
+        if available_openings.length > 0 && filtered
             total_available_openings += available_openings.length
             json.set! restaurant.id do
                 json.partial! "api/restaurants/restaurant", restaurant: restaurant

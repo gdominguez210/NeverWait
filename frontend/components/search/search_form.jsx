@@ -17,7 +17,6 @@ library.add(fas);
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
     this.moment = require("moment");
     this.hours = [
       "12:00am",
@@ -75,10 +74,8 @@ class SearchForm extends React.Component {
       this.currentDateObj = moment(new Date());
     }
     this.validTimeslots(this.currentDateObj);
-    debugger;
     if (this.props.search.res) {
       let idx = this.validTimes.indexOf(this.props.search.res.start_time);
-      debugger;
       this.state = {
         res: {
           party_size: this.props.search.res.party_size,
@@ -91,12 +88,9 @@ class SearchForm extends React.Component {
         showList: false,
         activeSelection: 0
       };
-      debugger;
-      // debugger;
+      //   ;
       this.props.passSearch ? this.props.passSearch(this.state.res) : null;
-      debugger;
     } else {
-      debugger;
       this.state = {
         res: {
           party_size: 1,
@@ -109,9 +103,7 @@ class SearchForm extends React.Component {
         showList: false,
         activeSelection: 0
       };
-      debugger;
       this.props.passSearch ? this.props.passSearch(this.state.res) : null;
-      debugger;
     }
     this.restaurants = [];
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -128,7 +120,6 @@ class SearchForm extends React.Component {
   validTimeslots(date) {
     let result = moment(new Date()).format("M/D/YY") === date.format("M/D/YY");
     let timeNow = this.moment().format("h:mma");
-    debugger;
     if (result) {
       this.validTimes = this.hours.filter(
         el => this.moment(el, "h: mma") > this.moment(timeNow, "h:mma")
@@ -182,7 +173,6 @@ class SearchForm extends React.Component {
   handleDateChange(pickedDate) {
     const res = { ...this.state.res };
     res.date = pickedDate;
-    debugger;
     this.setState(
       {
         res: res
@@ -316,17 +306,14 @@ class SearchForm extends React.Component {
   update(field) {
     const query = { ...this.state.query };
     const res = { ...this.state.res };
-    debugger;
     let that = this;
     return e => {
-      debugger;
       if (field === "name") {
         if (e.target.dataset.searchitem) {
           query.name = e.target.dataset.searchitem;
         } else {
           query.name = e.target.value;
         }
-        debugger;
         this.setState(
           {
             query: query,
@@ -345,7 +332,6 @@ class SearchForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let that = this;
-    debugger;
     this.props
       .searchQuery(this.state)
       .then(() =>
@@ -381,7 +367,6 @@ class SearchForm extends React.Component {
     );
   }
   render() {
-    debugger;
     return (
       <>
         <div className="search-form">

@@ -8,7 +8,6 @@ import ErrorBoundary from "./ErrorBoundary";
 class Splash extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
     this.state = {
       search_params: {}
     };
@@ -18,17 +17,14 @@ class Splash extends React.Component {
 
   componentDidMount() {
     this.is_Mounted = true;
-    debugger;
   }
 
   passSearch(params) {
-    debugger;
     this.setState({
       search_params: params
     });
   }
   render() {
-    debugger;
     return (
       <>
         <Banner passSearch={this.passSearch} />

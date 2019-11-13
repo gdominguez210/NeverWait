@@ -1,6 +1,6 @@
 export const parseDate = date => {
   const parts = date.split("/");
-  debugger;
+    ;
   const months = {
     1: "January",
     2: "February",

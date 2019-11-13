@@ -31,7 +31,6 @@ export const createFavorite = favorite => dispatch =>
 
 export const fetchFavorites = userId => dispatch => {
   return ApiUtil.fetchFavorites(userId).then(payload => {
-    debugger;
     return dispatch(receiveFavorites(payload));
   });
 };

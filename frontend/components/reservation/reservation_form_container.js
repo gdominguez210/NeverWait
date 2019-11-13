@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
     email: ""
   };
   const currentUser = state.entities.users[state.session.id];
-  debugger;
+    ;
   const restaurant =
     state.entities.restaurants[state.entities.reservations.restaurant_id];
   const errors = state.errors.reservation;

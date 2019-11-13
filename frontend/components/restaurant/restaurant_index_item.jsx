@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RestaurantStars from "./restaurant_ratings/rating_stars";
 
 const RestaurantIndexItem = props => {
-  debugger;
+    ;
   const {
     restaurant,
     deleteRestaurant,
@@ -15,7 +15,7 @@ const RestaurantIndexItem = props => {
     type,
     currentUser
   } = props;
-  debugger;
+    ;
   let banner;
   if (restaurant.image_url) {
     banner = {
@@ -28,16 +28,16 @@ const RestaurantIndexItem = props => {
     e.preventDefault();
     let newRes = Object.assign({}, res);
     newRes.start_time = e.target.dataset.timeslot;
-    debugger;
+      ;
     findTable(newRes, restaurant.id).then(payload => {
-      debugger;
+        ;
       if (!payload.available_openings) {
         return history.push(`/new-reservation`);
       }
     });
   };
   const handleAvailableTimes = () => {
-    debugger;
+      ;
     if (restaurant.available_times) {
       let moment = require("moment");
       // let timeNow = moment().format("h:mma");
@@ -108,7 +108,7 @@ const RestaurantIndexItem = props => {
 
   const manageDeleteFavorite = e => {
     e.preventDefault();
-    debugger;
+      ;
     let favorite_id = currentUser.favorite_ids.find(el =>
       restaurant.favorite_ids.includes(el)
     );

@@ -4,24 +4,30 @@ class Api::RestaurantsController < ApplicationController
 
     
     def index
-        @restaurants = Restaurant.includes(:reviews, :reservations, :favorites).all
+        @restaurants = Restaurant.includes(:reviews, :reservations, :favorites).with_attached_photos.all
     end
 
     def search
         if params[:query] == nil || params[:query][:name].length == 0
-             @restaurants = Restaurant.all 
+             @restaurants = Restaurant.with_attached_photos.all 
              @res = params[:res]
              return
         end
         params[:query].permit!
-        # @restaurants = Restaurant.includes(:reservations).where(params[:query])
- 
-        @restaurants = Restaurant.joins(:location).where("restaurants.name = ?", params[:query][:name]).or(Restaurant.joins(:location).where("locations.name = ?", params[:query][:name]))
 
-        @res = params[:res]
+        if params[:query][:price_range]
+            @restaurants = Restaurant.joins(:location).with_attached_photos.where("restaurants.name LIKE ? AND restaurants.price_range LIKE ?", params[:query][:name], params[:query][:price_range]).or(Restaurant.joins(:location).with_attached_photos.where("locations.name LIKE ? AND restaurants.price_range LIKE ?", params[:query][:name], params[:query][:price_range]))
+            @res = params[:res]
+            @rating = params[:query][:rating]
+        else
+            @restaurants = Restaurant.joins(:location).with_attached_photos.where("restaurants.name LIKE ?", params[:query][:name]).or(Restaurant.joins(:location).with_attached_photos.where("locations.name LIKE ?", params[:query][:name]))
+            @res = params[:res]
+            @rating = params[:query][:rating]
+        end
+        
     end
     def feature
-        @restaurants = Restaurant.limit(5).order("RANDOM()");
+        @restaurants = Restaurant.limit(15).order("RANDOM()");
         render "api/restaurants/index"
     end
 

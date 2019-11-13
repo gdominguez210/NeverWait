@@ -51,5 +51,9 @@
   "bugs": {
     "url": "https://github.com/gdominguez210/NeverWait/issues"
   },
-  "homepage": "https://github.com/gdominguez210/NeverWait#readme"
+  "homepage": "https://github.com/gdominguez210/NeverWait#readme",
+  "engine": {
+    "node": "10.13.0",
+    "npm": "6.12.0"
+  }
 }

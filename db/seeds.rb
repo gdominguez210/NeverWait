@@ -82,7 +82,7 @@ first_name = Faker::Name.unique.first_name
 last_name = Faker::Name.unique.last_name
 user = User.create({username: Faker::Internet.email(name: first_name), fname: first_name, lname: last_name, password: Faker::Internet.password(min_length: 6) })
 }
-users = User.all.pluck(:id)
+users = User.all
 Location.create!(name: 'New York', lat: 40.71427, long: -74.00597)
 Location.create!(name: 'Chicago', lat: 41.85003, long: -87.65005)
 Location.create!(name: 'Los Angeles', lat: 34.05223, long: -118.24368)
@@ -98,7 +98,7 @@ location_ids = Location.all.pluck(:id)
   restaurant = Restaurant.new({
    name:restaurant_name,
    address: Faker::Address.full_address,
-   owner_id: users.sample,
+   owner_id: users.sample.id,
    location_id: location_ids.sample,
    phone: Faker::PhoneNumber.phone_number,
    neighborhood: Faker::Address.community,
@@ -154,20 +154,39 @@ end_hour: possible_ends.sample
   }
 }
 
-restaurants = Restaurant.all.pluck(:id)
+restaurants = Restaurant.all
 
-200.times{
-review = Review.new({
-  user_id: users.sample,
-  restaurant_id: restaurants.sample,
-  food_rating: Faker::Number.between(from: 1, to: 5),
-  service_rating: Faker::Number.between(from: 1, to: 5),
-  value_rating: Faker::Number.between(from: 1, to: 5),
-  noise_level: Faker::Number.between(from: 1, to: 5),
-  ambience_rating: Faker::Number.between(from: 1, to: 5),
-  body: Faker::Restaurant.review
-  })
-  review.total_rating > 2.5 ? review.recommended = true : review.recommended = false
-review.total_rating = review.calc_total_rating
-review.save
-}
+users.each do |user|
+  new_restaurants = restaurants.dup.shuffle
+  rand(3..15).times do
+    restaurant = new_restaurants.delete_at(rand(new_restaurants.length))
+    review = Review.new({
+      user_id: user.id
+      restaurant_id: restaurant.id,
+      food_rating: Faker::Number.between(from: 1, to: 5),
+      service_rating: Faker::Number.between(from: 1, to: 5),
+      value_rating: Faker::Number.between(from: 1, to: 5),
+      noise_level: Faker::Number.between(from: 1, to: 5),
+      ambience_rating: Faker::Number.between(from: 1, to: 5),
+      body: Faker::Restaurant.review
+    })
+    review.total_rating > 2.5 ? review.recommended = true : review.recommended = false
+    review.total_rating = review.calc_total_rating
+    review.save
+  end
+end
+# 200.times{
+#   restaurant = restaurants.sample
+# review = Review.new({
+#   restaurant_id: restaurant.id,
+#   food_rating: Faker::Number.between(from: 1, to: 5),
+#   service_rating: Faker::Number.between(from: 1, to: 5),
+#   value_rating: Faker::Number.between(from: 1, to: 5),
+#   noise_level: Faker::Number.between(from: 1, to: 5),
+#   ambience_rating: Faker::Number.between(from: 1, to: 5),
+#   body: Faker::Restaurant.review
+#   })
+#   review.total_rating > 2.5 ? review.recommended = true : review.recommended = false
+# review.total_rating = review.calc_total_rating
+# review.save
+# }

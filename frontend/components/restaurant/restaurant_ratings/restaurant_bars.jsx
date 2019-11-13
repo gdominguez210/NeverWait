@@ -38,31 +38,31 @@ const RestaurantBars = props => {
   return (
     <>
       <div className="stat-bar-container">
-        5
+        <span>5</span>
         <div className="stat-bar">
           <div className="inner-stat-bar" style={fillFive}></div>
         </div>
       </div>
       <div className="stat-bar-container">
-        4
+        <span>4</span>
         <div className="stat-bar">
           <div className="inner-stat-bar" style={fillFour}></div>
         </div>
       </div>
       <div className="stat-bar-container">
-        3
+        <span>3</span>
         <div className="stat-bar">
           <div className="inner-stat-bar" style={fillThree}></div>
         </div>
       </div>
       <div className="stat-bar-container">
-        2
+        <span>2</span>
         <div className="stat-bar">
           <div className="inner-stat-bar" style={fillTwo}></div>
         </div>
       </div>
       <div className="stat-bar-container">
-        1
+        <span>1</span>
         <div className="stat-bar">
           <div className="inner-stat-bar" style={fillOne}></div>
         </div>

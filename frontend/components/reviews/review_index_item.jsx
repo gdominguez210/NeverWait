@@ -11,7 +11,6 @@ const ReviewIndexItem = props => {
   const initials = first_name.slice(0, 1) + last_name.slice(0, 1);
   const total = author.total_reviews > 1 ? "reviews" : "review";
   let deleteHTML = null;
-   ;
   if (props.currentUser) {
     deleteHTML =
       props.currentUser.id === author.id ? (

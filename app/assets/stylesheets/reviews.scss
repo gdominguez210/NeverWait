@@ -196,3 +196,44 @@ li.review-index-item:first-child {
   display: flex;
   flex-direction: column;
 }
+
+li.review-index-item {
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  padding: 0px;
+}
+
+.author-details {
+  margin-right: 0px;
+  display: flex;
+  background: #f6f6f6;
+}
+
+.review-details {
+  padding: 20px;
+}
+
+.restaurant-rating-container {
+  border-right: 1px solid #ddd;
+}
+
+.restaurant-rating-container:last-child {
+  border-right: 0px;
+}
+
+.restaurant-rating-container p:last-child {
+  font-weight: bold;
+}
+
+.restaurant-rating-container p:first-child {
+  font-size: 1.2em;
+}
+
+.restaurant-additional-stats {
+  opacity: 0.8;
+}
+
+.stats-overview > p:first-child {
+  font-size: 1.3em;
+  margin-top: 0px;
+}

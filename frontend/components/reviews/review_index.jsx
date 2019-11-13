@@ -1,9 +1,9 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import ReviewIndexItem from "./review_index_item";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class ReviewIndex extends React.Component {
   constructor(props) {
-     ;
     super(props);
     this.is_Mounted = false;
   }
@@ -32,6 +32,9 @@ class ReviewIndex extends React.Component {
       addReview = (
         <>
           <button onClick={() => openModal("review")} className="readon">
+            <span className="icon">
+              <FontAwesomeIcon icon="plus" />
+            </span>
             Add Review
           </button>
         </>
@@ -39,7 +42,6 @@ class ReviewIndex extends React.Component {
     }
     if (this.is_Mounted) {
       reviewItems = reviews.map(review => {
-         ;
         return (
           <ReviewIndexItem
             deleteReview={this.props.deleteReview}

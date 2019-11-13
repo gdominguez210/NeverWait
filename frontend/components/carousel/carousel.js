@@ -14,18 +14,28 @@ class Carousel extends React.Component {
     };
     this.handleLeft = this.handleLeft.bind(this);
     this.handleRight = this.handleRight.bind(this);
+    this.is_Mounted = false;
   }
   componentDidMount() {
+    debugger;
+    this.is_Mounted = true;
+
     this.props.fetchFeaturedRestaurants().then(() => {
-      this.setState({
-        loading: false
-      });
+      debugger;
+      if (this.is_Mounted) {
+        this.setState({
+          loading: false
+        });
+      }
     });
+  }
+  componentWillUnmount() {
+    this.props.clearRestaurants();
+    this.is_Mounted = false;
   }
 
   handleLeft(e) {
     const { carouselViewport } = this.refs;
-     ;
     const numOfSlidesToScroll = 3.5;
     const widthOfSlide = 300;
     let newPos = carouselViewport.scrollLeft + carouselViewport.offsetWidth;
@@ -42,7 +52,6 @@ class Carousel extends React.Component {
 
   handleRight(e) {
     const { carouselViewport } = this.refs;
-     ;
     const numOfSlidesToScroll = 3.5;
     const widthOfSlide = 300;
     let newPos = carouselViewport.scrollLeft - carouselViewport.offsetWidth;

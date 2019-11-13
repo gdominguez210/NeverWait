@@ -14,6 +14,7 @@ Restaurant.destroy_all
 Review.destroy_all
 Location.destroy_all
 Reservation.destroy_all
+
 images = %w(
       chairs-coffee-shop-drinking-glasses.jpg
       bar-city-commerce.jpg
@@ -25,6 +26,46 @@ images = %w(
       architecture-buildings-city.jpg
       architecture-brickwall-chairs.jpg
       after-business-hours-architecture-bar.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/architectural-design-of-a-bar-2835547-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/architecture-bar-blur-boutique-264570-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/architecture-building-chairs-city-532934-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/architecture-ceiling-chairs-chandeliers-262047-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/architecture-chairs-curtains-furniture-279835-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/bikes-inside-store-2817452-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/black-wooden-chairs-1546040-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/brown-and-black-wooden-metal-chairs-2829032-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/brown-leather-bar-stools-2442899-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/brown-pendant-lamp-2221925-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/brown-wooden-dining-tables-2220120-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/brown-wooden-table-1055058-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/building-interior-photography-2813132-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/chair-cutlery-diner-dining-941861-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/chairs-interior-design-restaurant-seats-239975-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/clean-coffee-shop-2467287-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/cull-pistol-establishment-during-nighttime-2260824-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/fixed-tables-and-chairs-2728186-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/food-inside-display-chiller-1855214-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/gray-padded-chair-2290753-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/inside-a-restaurant-2530373-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/interior-design-of-an-empty-restaurant-2923034-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/interior-of-a-building-with-lots-of-chairs-1111162-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/interior-of-modern-building-331107-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/leather-chairs-in-restaurant-2193600-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/lighted-pendant-lights-inside-bar-2079438-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/menu-restaurant-france-eating-9315-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/photo-of-room-with-orange-pendant-lamp-1002745-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/photograph-of-a-woman-in-a-coffee-shop-1002740-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/red-petaled-flowers-on-table-2959410-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/restaurant-interior-776538-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/restaurant-table-and-chairs-1581384-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/round-brown-wooden-table-1095124-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/round-white-tables-with-chairs-2649771-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/table-in-vintage-restaurant-6267-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/tables-and-chairs-2983022-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/tables-and-chairs-under-canopy-2523376-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/view-of-empty-dining-area-near-glass-windowpane-2103726-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/vintage-interior-of-restaurant-6233-min.jpg
+      https://active-storage-neverwait-seed.s3.amazonaws.com/banner_images/well-arranged-tables-and-chairs-inside-room-2079290-min.jpg
     )
   
 price_range = ["cheap", "moderate", "pricey"]
@@ -76,7 +117,7 @@ location_ids = Location.all.pluck(:id)
    start_hour: possible_starts.sample,
 end_hour: possible_ends.sample
   })
-  coords = RandomLocation.near_by(res.location.lat, res.location.long, 80467)
+  coords = RandomLocation.near_by(restaurant.location.lat, restaurant.location.long, 80467)
   restaurant.lat, restaurant.long = coords
   restaurant.hours
   restaurant.save!
@@ -115,10 +156,10 @@ end_hour: possible_ends.sample
 
 restaurants = Restaurant.all.pluck(:id)
 
-50.times{
+200.times{
 review = Review.new({
   user_id: users.sample,
-  restaurant_id: restaurants.sample
+  restaurant_id: restaurants.sample,
   food_rating: Faker::Number.between(from: 1, to: 5),
   service_rating: Faker::Number.between(from: 1, to: 5),
   value_rating: Faker::Number.between(from: 1, to: 5),
@@ -126,7 +167,7 @@ review = Review.new({
   ambience_rating: Faker::Number.between(from: 1, to: 5),
   body: Faker::Restaurant.review
   })
-  review.recommended = recommended.sample,
+  review.total_rating > 2.5 ? review.recommended = true : review.recommended = false
 review.total_rating = review.calc_total_rating
 review.save
 }

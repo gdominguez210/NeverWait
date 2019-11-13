@@ -1,5 +1,5 @@
-@favorites.each do |favorite|
 
+    @favorites.each do |favorite|
     json.restaurants do
         json.set! favorite.restaurant.id do
   

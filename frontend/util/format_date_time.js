@@ -1,25 +1,26 @@
 export const parseDate = date => {
-  const parts = String(date).split(" ");
+  const parts = date.split("/");
+  debugger;
   const months = {
-    Jan: "January",
-    Feb: "February",
-    Mar: "March",
-    Apr: "April",
-    May: "May",
-    Jun: "June",
-    Jul: "July",
-    Aug: "August",
-    Sep: "September",
-    Oct: "October",
-    Nov: "November",
-    Dec: "December"
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December"
   };
 
-  const month = months[parts[1]];
-  const day = parts[2];
-  const year = parts[3];
+  const month = months[parts[0]];
+  const day = parts[1];
+  const year = parts[2];
 
-  return `${month} ${day}, ${year}`;
+  return `${month} ${day}, 20${year}`;
 };
 
 export const dateAbvToInt = date => {

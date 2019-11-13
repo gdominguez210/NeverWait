@@ -1,13 +1,29 @@
 import React from "react";
 // import RestaurantFeaturedItem from "./restaurant_featured_item";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
 export class Location extends React.Component {
   constructor(props) {
+    debugger;
     super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.params !== prevProps.params) {
+      this.setState({ params: this.props.params });
+    }
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    let queryStr = e.target.id.split("-").join(" ");
+    this.props
+      .searchQuery({ query: { name: queryStr }, res: this.props.params })
+      .then(() => this.props.history.push(`/search-restaurants`));
+  }
   render() {
     return (
       <>
@@ -22,38 +38,35 @@ export class Location extends React.Component {
             classNames="fade"
           >
             <ul className="locations-container">
-              <li className="location">
-                <Link id="NewYork" to="/restaurants?location=New-York">
-                  New York
-                </Link>
+              <li className="location" id="New-York" onClick={this.handleClick}>
+                New York
               </li>
-              <li className="location">
-                <Link id="Chicago" to="/restaurants?location=Chicago">
-                  Chicago
-                </Link>
+              <li className="location" id="Chicago" onClick={this.handleClick}>
+                Chicago
               </li>
-              <li className="location">
-                <Link id="LosAngeles" to="/restaurants?location=Los-Angeles">
-                  Los Angeles
-                </Link>
+              <li
+                className="location"
+                id="Los-Angeles"
+                onClick={this.handleClick}
+              >
+                Los Angeles
               </li>
-              <li className="location">
-                <Link
-                  id="SanFrancisco"
-                  to="/restaurants?location=San-Francisco"
-                >
-                  San Francisco
-                </Link>
+              <li
+                className="location"
+                id="San-Francisco"
+                onClick={this.handleClick}
+              >
+                San Francisco
               </li>
-              <li className="location">
-                <Link id="Miami" to="/restaurants?location=Miami">
-                  Miami
-                </Link>
+              <li className="location" id="Miami" onClick={this.handleClick}>
+                Miami
               </li>
-              <li className="location">
-                <Link id="LasVegas" to="/restaurants?location=Las-Vegas">
-                  Las Vegas
-                </Link>
+              <li
+                className="location"
+                id="Las-Vegas"
+                onClick={this.handleClick}
+              >
+                Las Vegas
               </li>
             </ul>
           </CSSTransition>
@@ -62,4 +75,4 @@ export class Location extends React.Component {
     );
   }
 }
-export default Location;
+export default withRouter(Location);

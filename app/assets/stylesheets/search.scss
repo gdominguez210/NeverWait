@@ -8,7 +8,9 @@ section.search-results-form-container:after {
   height: 100px;
   z-index: 0;
 }
-
+section.restaurants-index > div {
+  margin: 25px auto;
+}
 main#root {
   position: relative;
 }

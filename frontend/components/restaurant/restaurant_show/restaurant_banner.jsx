@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const RestaurantBanner = props => {
   const {
     restaurant,
@@ -20,11 +22,8 @@ const RestaurantBanner = props => {
   }
   const manageFavoriteOptions = () => {
     let result;
-     ;
     if (currentUser) {
-       ;
       if (restaurant.favorite_ids) {
-         ;
         if (
           currentUser.favorite_ids.some(el =>
             restaurant.favorite_ids.includes(el)
@@ -36,9 +35,12 @@ const RestaurantBanner = props => {
           result = (
             <div className="button-container">
               <button
-                className="readon"
+                className="readon danger"
                 onClick={() => deleteFavorite(favorite_id, restaurant.id)}
               >
+                <span className="icon">
+                  <FontAwesomeIcon icon="times" />
+                </span>
                 Delete Favorite
               </button>
             </div>
@@ -47,7 +49,7 @@ const RestaurantBanner = props => {
           result = (
             <div className="button-container">
               <button
-                className="readon"
+                className="readon plain"
                 onClick={() =>
                   createFavorite({
                     user_id: currentUser.id,
@@ -55,6 +57,9 @@ const RestaurantBanner = props => {
                   })
                 }
               >
+                <span className="icon">
+                  <FontAwesomeIcon icon="bookmark" />
+                </span>
                 Favorite this Restaurant
               </button>
             </div>
@@ -71,16 +76,22 @@ const RestaurantBanner = props => {
         result = (
           <div className="button-container">
             <button
-              className="readon"
+              className="readon danger"
               onClick={() =>
                 deleteRestaurant(restaurant.id).then(() =>
                   this.history.push("/")
                 )
               }
             >
-              Delete
+              <span className="icon">
+                <FontAwesomeIcon icon="times" />
+              </span>{" "}
+              Delete Restaurant
             </button>
             <Link to={`/restaurants/${restaurant.id}/edit`} className="readon">
+              <span className="icon">
+                <FontAwesomeIcon icon="cog" />
+              </span>{" "}
               Edit Restaurant
             </Link>
           </div>

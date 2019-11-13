@@ -43,16 +43,18 @@ export class RestaurantIndex extends React.Component {
 
     return (
       <>
-        <section className="restaurants-container">
-          <aside>{this.addNew()}</aside>
-          <CSSTransition
-            in={true}
-            appear={true}
-            timeout={300}
-            classNames="fade"
-          >
-            <ul className="restaurants-list">{restaurantItems}</ul>
-          </CSSTransition>
+        <section className="inner-container">
+          <section className="restaurants-container">
+            <aside>{this.addNew()}</aside>
+            <CSSTransition
+              in={true}
+              appear={true}
+              timeout={300}
+              classNames="fade"
+            >
+              <ul className="restaurants-list">{restaurantItems}</ul>
+            </CSSTransition>
+          </section>
         </section>
       </>
     );

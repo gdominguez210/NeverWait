@@ -17,10 +17,8 @@ class ReservationForm extends React.Component {
       restaurant_id: this.props.restaurant.id,
       user_id: this.props.currentUser.id
     };
-     ;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    this.parseDate = this.parseDate.bind(this);
     this.parseTime = this.parseTime.bind(this);
     this.thumbnail = null;
     if (this.props.restaurant.image_url) {
@@ -63,29 +61,6 @@ class ReservationForm extends React.Component {
   parseTime(time) {
     time = time.slice(11, 16);
     return time[0] < 1 ? `${time.slice(1)} AM` : `${time} PM`;
-  }
-  parseDate(date) {
-    const date_pieces = String(date).split(" ");
-    const months = {
-      Jan: "January",
-      Feb: "February",
-      Mar: "March",
-      Apr: "April",
-      May: "May",
-      Jun: "June",
-      Jul: "July",
-      Aug: "August",
-      Sep: "September",
-      Oct: "October",
-      Nov: "November",
-      Dec: "December"
-    };
-
-    const month = months[date_pieces[1]];
-    const day = date_pieces[2];
-    const year = date_pieces[3];
-
-    return `${month} ${day}, ${year}`;
   }
 
   renderErrors() {
@@ -149,47 +124,49 @@ class ReservationForm extends React.Component {
   render() {
     return (
       <>
-        <div className="form-container reservation">
-          {this.header()}
-          <form onSubmit={this.handleSubmit}>
-            <div className="inputs-container">
-              <label htmlFor="firstname">First Name</label>
-              <input
-                type="text"
-                placeholder="First Name*"
-                value={this.state.first_name}
-                onChange={this.update("first_name")}
-              />
-              <label htmlFor="username">Last Name</label>
-              <input
-                type="text"
-                placeholder="Last Name*"
-                value={this.state.last_name}
-                onChange={this.update("last_name")}
-              />
-            </div>
-            <div className="inputs-container">
-              <label htmlFor="phonenumber">Phone Number</label>
-              <input
-                type="tel"
-                placeholder="Phone Number*"
-                value={this.state.phonenumber}
-                onChange={this.update("phonenumber")}
-              />
-              <label htmlFor="phonenumber">Email</label>
-              <input
-                type="email"
-                placeholder="Email"
-                value={this.state.email}
-                onChange={this.update("email")}
-              />
-            </div>
-            {/* <ul className="errors">{errorItems}</ul> */}
-            <button className="readon-submit">Complete Reservation</button>
-            {this.renderErrors()}
-            {this.footer()}
-          </form>
-        </div>
+        <section className="inner-container">
+          <div className="form-container reservation">
+            {this.header()}
+            <form onSubmit={this.handleSubmit}>
+              <div className="inputs-container">
+                <label htmlFor="firstname">First Name</label>
+                <input
+                  type="text"
+                  placeholder="First Name*"
+                  value={this.state.first_name}
+                  onChange={this.update("first_name")}
+                />
+                <label htmlFor="username">Last Name</label>
+                <input
+                  type="text"
+                  placeholder="Last Name*"
+                  value={this.state.last_name}
+                  onChange={this.update("last_name")}
+                />
+              </div>
+              <div className="inputs-container">
+                <label htmlFor="phonenumber">Phone Number</label>
+                <input
+                  type="tel"
+                  placeholder="Phone Number*"
+                  value={this.state.phonenumber}
+                  onChange={this.update("phonenumber")}
+                />
+                <label htmlFor="phonenumber">Email</label>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={this.state.email}
+                  onChange={this.update("email")}
+                />
+              </div>
+              {/* <ul className="errors">{errorItems}</ul> */}
+              <button className="readon-submit">Complete Reservation</button>
+              {this.renderErrors()}
+              {this.footer()}
+            </form>
+          </div>
+        </section>
       </>
     );
   }

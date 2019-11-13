@@ -5,17 +5,30 @@ import { withRouter } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import SearchFormContainer from "../../search/search_form_container";
 import SearchSidebarFormContainer from "../../search/search_sidebar_form_container";
+import renderLoader from "../../loader/loader";
 
 class RestaurantSearchIndex extends React.Component {
   constructor(props) {
     super(props);
     this.is_Mounted = false;
     debugger;
+    this.state = {
+      loading: true
+    };
   }
 
   componentDidMount() {
     this.is_Mounted = true;
-    this.props.fetchSearchedRestaurants(this.props.search);
+    this.props.fetchSearchedRestaurants(this.props.search).then(() => {
+      this.setState({
+        loading: false
+      });
+    });
+  }
+
+  componentWillUnmount() {
+    // this.props.clearRestaurants();
+    this.is_Mounted = false;
   }
 
   componentDidUpdate(prevProps) {
@@ -27,7 +40,17 @@ class RestaurantSearchIndex extends React.Component {
         prevProps.search.res !== this.props.search.res
       ) {
         debugger;
-        this.props.fetchSearchedRestaurants(this.props.search);
+        this.setState(
+          {
+            loading: true
+          },
+          () =>
+            this.props.fetchSearchedRestaurants(this.props.search).then(() => {
+              this.setState({
+                loading: false
+              });
+            })
+        );
       }
     }
   }
@@ -58,29 +81,34 @@ class RestaurantSearchIndex extends React.Component {
 
     return (
       <>
-        <section className="search-results-form-container">
-          <SearchFormContainer />
-        </section>
-        <section className="restaurants-container">
-          <aside>
-            <SearchSidebarFormContainer />
-          </aside>
-          <CSSTransition
-            in={true}
-            appear={true}
-            timeout={300}
-            classNames="fade"
-          >
-            <section class="restaurants-index">
-              <p>
-                {search.total_available_openings} available tables{" "}
-                {restaurants.length > 1 ? "betweeen" : "in"}{" "}
-                {restaurants.length}{" "}
-                {restaurants.length > 1 ? "restaurants" : "restaurant"}
-              </p>
-              <ul className="restaurants-list">{restaurantItems}</ul>
-            </section>
-          </CSSTransition>
+        <section className="inner-container">
+          <section className="search-results-form-container">
+            <SearchFormContainer />
+          </section>
+          <section className="restaurants-container">
+            <aside>
+              <SearchSidebarFormContainer />
+            </aside>
+            <CSSTransition
+              in={true}
+              appear={true}
+              timeout={300}
+              classNames="fade"
+            >
+              <section className="restaurants-index">
+                {renderLoader(this.state)}
+                {this.state.loading ? null : (
+                  <p>
+                    {search.total_available_openings} available tables{" "}
+                    {restaurants.length > 1 ? "betweeen" : "in"}{" "}
+                    {restaurants.length}{" "}
+                    {restaurants.length > 1 ? "restaurants" : "restaurant"}
+                  </p>
+                )}
+                <ul className="restaurants-list">{restaurantItems}</ul>
+              </section>
+            </CSSTransition>
+          </section>
         </section>
       </>
     );

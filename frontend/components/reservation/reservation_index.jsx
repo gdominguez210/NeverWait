@@ -3,7 +3,7 @@ import ReservationIndexItem from "./reservation_index_item";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+let moment = require("moment");
 export class ReservationIndex extends React.Component {
   constructor(props) {
     debugger;
@@ -37,10 +37,15 @@ export class ReservationIndex extends React.Component {
         let resTime = moment(start_time, "h: mma");
         timeNow = moment(timeNow, "h:mma");
         let status = null;
+        let result1 = currentDateObj.isSameOrAfter(dateObj);
+        let result2 = timeNow.isSameOrAfter(resTime);
+        debugger;
         if (
-          dateObj._d < currentDateObj._d ||
-          (currentDateObj.format("M/D/YY") === dateObj.format("M/D/YY") &&
-            resTime._i < timeNow._i)
+          // dateObj._d < currentDateObj._d ||
+          // (currentDateObj.format("M/D/YY") === dateObj.format("M/D/YY") &&
+          //   resTime._i < timeNow._i)
+          result1 &&
+          result2
         ) {
           status = "past";
         } else {
@@ -86,40 +91,42 @@ export class ReservationIndex extends React.Component {
 
     return (
       <>
-        <section className="reservations-container-outter">
-          <aside className="user-options">
-            <h3>Account Options</h3>
-            <ul>
-              <li>
-                <Link to={`/users/${currentUser.id}/`}>
-                  <span className="icon">
-                    <FontAwesomeIcon icon="user" />
-                  </span>
-                  My Profile
-                </Link>
-              </li>
-              <li>
-                <Link to={`/users/${currentUser.id}/favorites`}>
-                  <span className="icon">
-                    <FontAwesomeIcon icon="star" />
-                  </span>
-                  My Favorites
-                </Link>
-              </li>
-            </ul>
-          </aside>
-          <section className="reservations-container">
-            <CSSTransition
-              in={true}
-              appear={true}
-              timeout={300}
-              classNames="fade"
-            >
-              <>
-                {upcomingResHTML}
-                {pastResHTML}
-              </>
-            </CSSTransition>
+        <section className="inner-container">
+          <section className="reservations-container-outter">
+            <aside className="user-options">
+              <h3>Account Options</h3>
+              <ul>
+                <li>
+                  <Link to={`/users/${currentUser.id}/`}>
+                    <span className="icon">
+                      <FontAwesomeIcon icon="user" />
+                    </span>
+                    My Profile
+                  </Link>
+                </li>
+                <li>
+                  <Link to={`/users/${currentUser.id}/favorites`}>
+                    <span className="icon">
+                      <FontAwesomeIcon icon="star" />
+                    </span>
+                    My Favorites
+                  </Link>
+                </li>
+              </ul>
+            </aside>
+            <section className="reservations-container">
+              <CSSTransition
+                in={true}
+                appear={true}
+                timeout={300}
+                classNames="fade"
+              >
+                <>
+                  {upcomingResHTML}
+                  {pastResHTML}
+                </>
+              </CSSTransition>
+            </section>
           </section>
         </section>
       </>

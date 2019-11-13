@@ -1,6 +1,9 @@
 import { connect } from "react-redux";
 import RestaurantSearchIndex from "./restaurant_search_index";
-import { fetchSearchedRestaurants } from "../../../actions/restaurants_actions";
+import {
+  fetchSearchedRestaurants,
+  clearRestaurants
+} from "../../../actions/restaurants_actions";
 import { findTable } from "../../../actions/reservation_actions";
 const msp = state => {
   const { restaurants } = state.entities;
@@ -13,12 +16,10 @@ const msp = state => {
 };
 
 const mdp = dispatch => ({
+  clearRestaurants: () => dispatch(clearRestaurants()),
   fetchSearchedRestaurants: data => dispatch(fetchSearchedRestaurants(data)),
   findTable: (reservationRequest, restaurantId) =>
     dispatch(findTable(reservationRequest, restaurantId))
 });
 
-export default connect(
-  msp,
-  mdp
-)(RestaurantSearchIndex);
+export default connect(msp, mdp)(RestaurantSearchIndex);

@@ -11,8 +11,8 @@ const searchReducer = (state = {}, action) => {
       return { query: action.query, res: action.res };
     case RECEIVE_RESTAURANTS:
       return Object.assign({}, state, action.search);
-    case RECEIVE_RESTAURANT:
-      return {};
+    // case RECEIVE_RESTAURANT:
+    //   return {};
     default:
       return state;
   }

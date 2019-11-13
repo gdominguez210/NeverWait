@@ -2,7 +2,8 @@ import { connect } from "react-redux";
 import { RestaurantFeatured } from "./restaurant_featured";
 import {
   fetchFeaturedRestaurants,
-  fetchRestaurants
+  fetchRestaurants,
+  clearRestaurants
 } from "../../actions/restaurants_actions";
 
 const msp = state => {
@@ -13,11 +14,9 @@ const msp = state => {
 };
 
 const mdp = dispatch => ({
+  clearRestaurants: () => dispatch(clearRestaurants()),
   fetchFeaturedRestaurants: () => dispatch(fetchFeaturedRestaurants()),
   fetchRestaurants: () => dispatch(fetchFeaturedRestaurants())
 });
 
-export default connect(
-  msp,
-  mdp
-)(RestaurantFeatured);
+export default connect(msp, mdp)(RestaurantFeatured);

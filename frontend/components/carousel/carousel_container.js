@@ -1,6 +1,9 @@
 import { connect } from "react-redux";
 import Carousel from "./carousel";
-import { fetchFeaturedRestaurants } from "../../actions/restaurants_actions";
+import {
+  fetchFeaturedRestaurants,
+  clearRestaurants
+} from "../../actions/restaurants_actions";
 
 const msp = state => {
   const { restaurants } = state.entities;
@@ -10,10 +13,8 @@ const msp = state => {
 };
 
 const mdp = dispatch => ({
+  clearRestaurants: () => dispatch(clearRestaurants()),
   fetchFeaturedRestaurants: () => dispatch(fetchFeaturedRestaurants())
 });
 
-export default connect(
-  msp,
-  mdp
-)(Carousel);
+export default connect(msp, mdp)(Carousel);

@@ -17,6 +17,7 @@ library.add(fas);
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
+    debugger;
     this.moment = require("moment");
     this.hours = [
       "12:00am",
@@ -90,7 +91,12 @@ class SearchForm extends React.Component {
         showList: false,
         activeSelection: 0
       };
+      debugger;
+      // debugger;
+      this.props.passSearch ? this.props.passSearch(this.state.res) : null;
+      debugger;
     } else {
+      debugger;
       this.state = {
         res: {
           party_size: 1,
@@ -103,6 +109,9 @@ class SearchForm extends React.Component {
         showList: false,
         activeSelection: 0
       };
+      debugger;
+      this.props.passSearch ? this.props.passSearch(this.state.res) : null;
+      debugger;
     }
     this.restaurants = [];
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -149,7 +158,6 @@ class SearchForm extends React.Component {
     );
   }
   date() {
-    debugger;
     return (
       <label>
         <span className="icon">
@@ -174,6 +182,7 @@ class SearchForm extends React.Component {
   handleDateChange(pickedDate) {
     const res = { ...this.state.res };
     res.date = pickedDate;
+    debugger;
     this.setState(
       {
         res: res
@@ -288,9 +297,6 @@ class SearchForm extends React.Component {
             showList: true
           });
         }
-
-        console.log(`restaurants: ${this.restaurants}`);
-        console.log(`locations: ${this.locations}`);
       });
   }
 
@@ -310,14 +316,17 @@ class SearchForm extends React.Component {
   update(field) {
     const query = { ...this.state.query };
     const res = { ...this.state.res };
+    debugger;
     let that = this;
     return e => {
+      debugger;
       if (field === "name") {
         if (e.target.dataset.searchitem) {
           query.name = e.target.dataset.searchitem;
         } else {
           query.name = e.target.value;
         }
+        debugger;
         this.setState(
           {
             query: query,
@@ -336,6 +345,7 @@ class SearchForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let that = this;
+    debugger;
     this.props
       .searchQuery(this.state)
       .then(() =>
@@ -371,6 +381,7 @@ class SearchForm extends React.Component {
     );
   }
   render() {
+    debugger;
     return (
       <>
         <div className="search-form">
@@ -384,7 +395,6 @@ class SearchForm extends React.Component {
               <input
                 placeholder="Location or Restaurant"
                 onChange={this.update("name")}
-                onKeyDown={this.handleKeyDown}
                 value={this.state.query.name}
               />
               {this.state.showList ? this.renderAutoList() : null}

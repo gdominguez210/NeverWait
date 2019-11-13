@@ -17,7 +17,7 @@
 
 class Review < ApplicationRecord
 
-    validates :total_rating, :food_rating, :service_rating, :value_rating, :noise_level, :recommended, :body, presence: true
+    validates :total_rating, :food_rating, :service_rating, :value_rating, :noise_level, :body, presence: true
     validates :user_id, uniqueness: {scope: :restaurant_id}
     
     belongs_to :restaurant

@@ -148,6 +148,7 @@ class Restaurant < ApplicationRecord
     end
 
     def calc_averages(array)
+        return 0 if array.length == 0
         result = array.reduce{|acc, ele| acc + ele} || ""
         result = ((result / array.length) * 10.0).floor / 10.0 if array.length != 0
         result
@@ -177,7 +178,7 @@ class Restaurant < ApplicationRecord
     end
 
     def recommended_percentage(recommended)
-        percent = ((recommended.count{|ele| ele == true} / recommended.length) * 100.0) if recommended.length != 0 || ""
-        percent
+        percent = (recommended.count{|ele| ele == true} / (recommended.length * 1.0)) * 100.0 if recommended.length != 0 || ""
+        percent.round(2)
     end
 end

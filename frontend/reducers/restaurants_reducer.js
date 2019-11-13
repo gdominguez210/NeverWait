@@ -1,7 +1,8 @@
 import {
   RECEIVE_RESTAURANTS,
   RECEIVE_RESTAURANT,
-  REMOVE_RESTAURANT
+  REMOVE_RESTAURANT,
+  CLEAR_RESTAURANTS
 } from "../actions/restaurants_actions";
 import { RECEIVE_REVIEW, REMOVE_REVIEW } from "../actions/review_actions";
 import {
@@ -17,10 +18,10 @@ import { RECEIVE_SEARCH_QUERY } from "../actions/search_actions";
 const restaurantsReducer = (state = {}, action) => {
   Object.freeze(state);
 
-   ;
   switch (action.type) {
+    case CLEAR_RESTAURANTS:
+      return {};
     case RECEIVE_RESTAURANTS:
-       ;
       return action.restaurants;
     case RECEIVE_SEARCH_QUERY:
       return {};
@@ -40,7 +41,7 @@ const restaurantsReducer = (state = {}, action) => {
     case RECEIVE_RESERVATIONS:
       return Object.assign({}, state, action.restaurants);
     case RECEIVE_FAVORITES:
-      return action.restaurants;
+      return action.restaurants ? action.restaurants : {};
     case RECEIVE_REVIEW:
       let reviewState = Object.assign({}, state);
       reviewState[action.review.restaurant_id].review_ids.push(

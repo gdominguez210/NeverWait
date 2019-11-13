@@ -15,11 +15,13 @@ class Api::RestaurantsController < ApplicationController
         end
         params[:query].permit!
         # @restaurants = Restaurant.includes(:reservations).where(params[:query])
+ 
         @restaurants = Restaurant.joins(:location).where("restaurants.name = ?", params[:query][:name]).or(Restaurant.joins(:location).where("locations.name = ?", params[:query][:name]))
+
         @res = params[:res]
     end
     def feature
-        @restaurants = Restaurant.limit(15).order("RANDOM()");
+        @restaurants = Restaurant.limit(5).order("RANDOM()");
         render "api/restaurants/index"
     end
 

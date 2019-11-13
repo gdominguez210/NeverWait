@@ -45,8 +45,13 @@ const RestaurantIndexItem = props => {
       let available_times = restaurant.available_times.filter(
         el => moment(el, "h: mma") > moment(resTime, "h:mma")
       );
-      let times = available_times.map(el => (
-        <button className="readon" onClick={handleClick} data-timeslot={el}>
+      let times = available_times.map((el, idx) => (
+        <button
+          className="readon"
+          onClick={handleClick}
+          key={`${el}-${idx}`}
+          data-timeslot={el}
+        >
           {el}
         </button>
       ));
@@ -73,7 +78,7 @@ const RestaurantIndexItem = props => {
   const booked = () => {
     return (
       <p className="restaurant-booked">
-        <span class="icon">
+        <span className="icon">
           <FontAwesomeIcon icon="chart-line" />
         </span>
         Booked {restaurant.booked_today}
@@ -113,14 +118,14 @@ const RestaurantIndexItem = props => {
     let result = null;
     if (restaurant.price_range === "cheap") {
       result = (
-        <span class="icon">
+        <span className="icon">
           <FontAwesomeIcon icon="dollar-sign" />
         </span>
       );
     } else if (restaurant.price_range === "moderate") {
       result = (
         <>
-          <span class="icon">
+          <span className="icon">
             <FontAwesomeIcon icon="dollar-sign" />
             <FontAwesomeIcon icon="dollar-sign" />
           </span>
@@ -129,7 +134,7 @@ const RestaurantIndexItem = props => {
     } else if (restaurant.price_range === "pricey") {
       result = (
         <>
-          <span class="icon">
+          <span className="icon">
             <FontAwesomeIcon icon="dollar-sign" />
             <FontAwesomeIcon icon="dollar-sign" />
             <FontAwesomeIcon icon="dollar-sign" />
@@ -155,11 +160,11 @@ const RestaurantIndexItem = props => {
               <Link to={`/restaurants/${restaurant.id}`}>
                 <h3 className="restaurant-name">{restaurant.name}</h3>
               </Link>
-              <p className="restaurant-ratings">
+              <div className="restaurant-ratings">
                 <RestaurantStars restaurant={restaurant} />
                 {restaurant.total_reviews > 0 ? restaurant.total_review : 0}
                 {restaurant.total_reviews === 1 ? " review " : " reviews "}
-              </p>
+              </div>
             </div>
             <div className="restaurant-header-right">
               {type === "favorite" ? (

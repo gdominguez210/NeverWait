@@ -5,7 +5,11 @@ export const RECEIVE_RESTAURANT = "RECEIVE_RESTAURANT";
 export const REMOVE_RESTAURANT = "REMOVE_RESTAURANT";
 export const RECEIVE_RESTAURANT_ERRORS = "RECEIVE_RESTAURANT_ERRORS";
 export const RECEIVE_SEARCH_RESULTS = "RECEIVE_SEARCH_RESULTS";
+export const CLEAR_RESTAURANTS = "CLEAR_RESTAURANTS";
 
+export const clearRestaurants = () => ({
+  type: CLEAR_RESTAURANTS
+});
 export const receiveRestaurants = payload => {
   return {
     type: RECEIVE_RESTAURANTS,
@@ -51,10 +55,15 @@ export const fetchRestaurants = () => dispatch => {
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 
-export const fetchFeaturedRestaurants = () => dispatch =>
-  APIUtil.fetchFeaturedRestaurants()
-    .then(restaurants => dispatch(receiveRestaurants(restaurants)))
+export const fetchFeaturedRestaurants = () => dispatch => {
+  debugger;
+  return APIUtil.fetchFeaturedRestaurants()
+    .then(restaurants => {
+      debugger;
+      dispatch(receiveRestaurants(restaurants));
+    })
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
+};
 
 export const fetchRestaurant = id => dispatch =>
   APIUtil.fetchRestaurant(id)

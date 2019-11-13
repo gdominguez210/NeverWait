@@ -93,10 +93,10 @@ li.location {
   padding: 5px;
   display: flex;
 }
-li.location:hover a:before {
+li.location:hover:before {
   transform: scale(1.05, 1.05);
 }
-li.location a:before {
+li.location:before {
   z-index: -2;
   display: block;
   content: "";
@@ -109,7 +109,7 @@ li.location a:before {
   background-size: cover;
   background-position: center;
 }
-li.location a:after {
+li.location:after {
   display: block;
   content: "";
   position: absolute;
@@ -120,7 +120,7 @@ li.location a:after {
   z-index: -1;
   background: rgba(0, 0, 0, 0.25);
 }
-li.location a {
+li.location {
   flex: 1;
   display: flex;
   align-items: center;
@@ -210,20 +210,20 @@ section.banner:before {
 .location {
   position: relative;
 }
-#NewYork:before {
+#New-York:before {
   background-image: image-url("architecture-buildings-city-2190283.jpg");
 }
 #Chicago:before {
   background-image: image-url("architecture-buildings-cars-1823681-min.jpg");
 }
-#LosAngeles:before {
+#Los-Angeles:before {
   background-image: image-url("architecture-bridge-buildings-462219-min.jpg");
 }
 
-#SanFrancisco:before {
+#San-Francisco:before {
   background-image: image-url("architecture-bridge-california-1141853-min.jpg");
 }
-#LasVegas:before {
+#Las-Vegas:before {
   background-image: image-url(
     "architecture-bird-s-eye-view-buildings-161772-min.jpg"
   );
@@ -266,7 +266,7 @@ header {
   display: inline-block;
   line-height: 2.5;
   border-radius: 4px;
-  font-size: 0.75em;
+
   text-decoration: none;
   border: none;
 }
@@ -279,6 +279,31 @@ button {
   background-color: #2b9abf;
   color: #ffffff;
   font-family: inherit;
+}
+.button-container:nth-child(2) {
+  text-align: right;
+}
+.button-container {
+  margin: 0px -15px;
+}
+.button-container button {
+  margin: 0px 15px;
+}
+
+.readon.danger {
+  background: #da3743;
+}
+button.readon.plain {
+  background: #ffffff;
+  color: inherit;
+  border: 1px solid #dddddd;
+  box-sizing: border-box;
+  margin-top: -1px;
+  font-weight: bold;
+}
+
+button.readon.plain .icon {
+  color: #2b9abf;
 }
 
 nav.login-signup {

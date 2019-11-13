@@ -158,10 +158,11 @@ restaurants = Restaurant.all
 
 users.each do |user|
   new_restaurants = restaurants.dup.shuffle
-  rand(3..15).times do
+  num = rand(3..15)
+  num.times{
     restaurant = new_restaurants.delete_at(rand(new_restaurants.length))
     review = Review.new({
-      user_id: user.id
+      user_id: user.id,
       restaurant_id: restaurant.id,
       food_rating: Faker::Number.between(from: 1, to: 5),
       service_rating: Faker::Number.between(from: 1, to: 5),
@@ -173,20 +174,5 @@ users.each do |user|
     review.total_rating > 2.5 ? review.recommended = true : review.recommended = false
     review.total_rating = review.calc_total_rating
     review.save
-  end
+    }
 end
-# 200.times{
-#   restaurant = restaurants.sample
-# review = Review.new({
-#   restaurant_id: restaurant.id,
-#   food_rating: Faker::Number.between(from: 1, to: 5),
-#   service_rating: Faker::Number.between(from: 1, to: 5),
-#   value_rating: Faker::Number.between(from: 1, to: 5),
-#   noise_level: Faker::Number.between(from: 1, to: 5),
-#   ambience_rating: Faker::Number.between(from: 1, to: 5),
-#   body: Faker::Restaurant.review
-#   })
-#   review.total_rating > 2.5 ? review.recommended = true : review.recommended = false
-# review.total_rating = review.calc_total_rating
-# review.save
-# }

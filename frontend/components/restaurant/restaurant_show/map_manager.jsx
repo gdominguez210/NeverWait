@@ -5,6 +5,6 @@ export default class MarkerManager {
   }
 
   updateMarkers(benches) {
-    console.log("time to update");
+    ("time to update");
   }
 }

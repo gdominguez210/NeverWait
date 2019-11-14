@@ -43,7 +43,7 @@ class RestaurantMain extends React.Component {
       this.state.activeItem
     );
     if (activeItem.ratio > this.state.activeItem.ratio) {
-      this.setState({ activeItem }, console.log(this.state.activeItem));
+      this.setState({ activeItem },    (this.state.activeItem));
     }
   }
 

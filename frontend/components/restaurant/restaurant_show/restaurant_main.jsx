@@ -53,6 +53,10 @@ class RestaurantMain extends React.Component {
     });
   }
 
+  componentWillUnmount() {
+    this.observer.disconnect();
+  }
+
   handleClick(ref) {
     const yOffset = -65;
     const yOffsetHeader = -250;

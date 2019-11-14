@@ -32,7 +32,7 @@ class Api::RestaurantsController < ApplicationController
     end
 
     def show
-        @restaurant = Restaurant.includes(:reviews,:favorites, :reservations, reviews: [:user]).with_attached_photos.find(params[:id])
+        @restaurant = Restaurant.includes(:reviews, :favorites, :reservations, reviews: [:user]).with_attached_photos.find(params[:id])
     end
 
     def create

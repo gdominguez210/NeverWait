@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 let moment = require("moment");
 export class ReservationIndex extends React.Component {
   constructor(props) {
-      ;
     super(props);
   }
 
@@ -31,24 +30,26 @@ export class ReservationIndex extends React.Component {
       upcomingReservations = [];
       reservations.forEach(reservation => {
         let { date, start_time, end_time } = reservation;
-        let dateObj = moment(date);
-        let currentDateObj = moment(new Date());
+        let dateObj = moment(reservation.date, "MM/DD/YY");
+        let currentDateStr = moment(new Date(), "MM/DD/YY").format("MM/DD/YY");
+        let currentDateObj = moment(currentDateStr, "MM/DD/YY");
+        console.log(dateObj);
+        console.log(currentDateObj);
         let timeNow = moment().format("h:mma");
         let resTime = moment(start_time, "h: mma");
+        console.log(timeNow);
+        console.log(resTime);
         timeNow = moment(timeNow, "h:mma");
         let status = null;
-        let result1 = currentDateObj.isSameOrAfter(dateObj);
-        let result2 = timeNow.isSameOrAfter(resTime);
-          ;
-        if (
-          // dateObj._d < currentDateObj._d ||
-          // (currentDateObj.format("M/D/YY") === dateObj.format("M/D/YY") &&
-          //   resTime._i < timeNow._i)
-          result1 &&
-          result2
-        ) {
+        let result1 = currentDateObj.isAfter(dateObj);
+        let result2 =
+          currentDateObj.isSame(dateObj) && timeNow.isAfter(resTime);
+        debugger;
+        if (result1 || result2) {
+          debugger;
           status = "past";
         } else {
+          debugger;
           status = "upcoming";
         }
         if (status === "past") {
@@ -96,14 +97,14 @@ export class ReservationIndex extends React.Component {
             <aside className="user-options">
               <h3>Account Options</h3>
               <ul>
-                <li>
+                {/* <li>
                   <Link to={`/users/${currentUser.id}/`}>
                     <span className="icon">
                       <FontAwesomeIcon icon="user" />
                     </span>
                     My Profile
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to={`/users/${currentUser.id}/favorites`}>
                     <span className="icon">

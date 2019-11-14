@@ -6,7 +6,6 @@ import { CSSTransition } from "react-transition-group";
 
 export class Location extends React.Component {
   constructor(props) {
-      ;
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -20,6 +19,7 @@ export class Location extends React.Component {
   handleClick(e) {
     e.preventDefault();
     let queryStr = e.target.id.split("-").join(" ");
+    debugger;
     this.props
       .searchQuery({ query: { name: queryStr }, res: this.props.params })
       .then(() => this.props.history.push(`/search-restaurants`));
@@ -38,35 +38,36 @@ export class Location extends React.Component {
             classNames="fade"
           >
             <ul className="locations-container">
-              <li className="location" id="New-York" onClick={this.handleClick}>
-                <p>New York</p>
+              <li className="location">
+                <p id="New-York" onClick={this.handleClick}>
+                  New York
+                </p>
               </li>
-              <li className="location" id="Chicago" onClick={this.handleClick}>
-                <p>Chicago</p>
+              <li className="location">
+                <p id="Chicago" onClick={this.handleClick}>
+                  Chicago
+                </p>
               </li>
-              <li
-                className="location"
-                id="Los-Angeles"
-                onClick={this.handleClick}
-              >
-                <p> Los Angeles</p>
+              <li className="location">
+                <p id="Los-Angeles" onClick={this.handleClick}>
+                  {" "}
+                  Los Angeles
+                </p>
               </li>
-              <li
-                className="location"
-                id="San-Francisco"
-                onClick={this.handleClick}
-              >
-                <p>San Francisco</p>
+              <li className="location">
+                <p id="San-Francisco" onClick={this.handleClick}>
+                  San Francisco
+                </p>
               </li>
-              <li className="location" id="Miami" onClick={this.handleClick}>
-                <p>Miami</p>
+              <li className="location">
+                <p id="Miami" onClick={this.handleClick}>
+                  Miami
+                </p>
               </li>
-              <li
-                className="location"
-                id="Las-Vegas"
-                onClick={this.handleClick}
-              >
-                <p>Las Vegas</p>
+              <li className="location">
+                <p id="Las-Vegas" onClick={this.handleClick}>
+                  Las Vegas
+                </p>
               </li>
             </ul>
           </CSSTransition>

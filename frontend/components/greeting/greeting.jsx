@@ -51,7 +51,7 @@ class Greeting extends React.Component {
             <FontAwesomeIcon icon="chevron-up" />
           </span>
           <ul>
-            <li>
+            {/* <li>
               <Link
                 to={`/users/${this.props.currentUser.id}`}
                 onClick={this.toggleDropDown}
@@ -61,7 +61,7 @@ class Greeting extends React.Component {
                 </span>
                 My Profile
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 to={`/users/${this.props.currentUser.id}/reservations`}

@@ -36,12 +36,18 @@ body {
   position: absolute;
   right: 0;
   background: #ffffff;
-  z-index: 1;
+  z-index: 5;
   padding: 0px;
   min-width: 200px;
   border: 1px solid #d8d9db;
 }
+.drop-down a {
+  color: #333333;
+}
 
+.drop-down a svg {
+  color: #2b9abf;
+}
 .drop-down ul li {
   list-style-type: none;
 }
@@ -118,7 +124,7 @@ li.location p:after {
   bottom: 0;
   right: 0;
   z-index: -1;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 li.location p {
@@ -133,6 +139,7 @@ li.location p {
   color: #ffffff;
   overflow: hidden;
   cursor: pointer;
+  text-shadow: 0px 0px 30px #000000;
 }
 .fade-appear {
   opacity: 0;
@@ -212,28 +219,24 @@ section.banner:before {
 .location {
   position: relative;
 }
-#New-York p:before {
+#New-York:before {
   background-image: image-url("architecture-buildings-city-2190283.jpg");
 }
-#Chicago p:before {
+#Chicago:before {
   background-image: image-url("architecture-buildings-cars-1823681-min.jpg");
 }
-#Los-Angeles p:before {
+#Los-Angeles:before {
   background-image: image-url("architecture-bridge-buildings-462219-min.jpg");
 }
 
-#San-Francisco p:before {
+#San-Francisco:before {
   background-image: image-url("architecture-bridge-california-1141853-min.jpg");
 }
-#Las-Vegas p:before {
-  background-image: image-url(
-    "architecture-bird-s-eye-view-buildings-161772-min.jpg"
-  );
+#Las-Vegas:before {
+  background-image: image-url("attraction-building-city-hotel-415999-min");
 }
-#Miami p:before {
-  background-image: image-url(
-    "architecture-bird-s-eye-view-buildings-161772-min.jpg"
-  );
+#Miami:before {
+  background-image: image-url("sea-spring-france-105950-min");
 }
 
 section.banner:after {

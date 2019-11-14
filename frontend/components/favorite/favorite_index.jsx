@@ -16,7 +16,6 @@ export class FavoriteIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-      ;
     if (prevProps.favorites.length !== this.props.favorites.length) {
       this.props.fetchFavorites(this.props.match.params.userId);
     }
@@ -48,14 +47,14 @@ export class FavoriteIndex extends React.Component {
             <aside className="user-options">
               <h3>Account Options</h3>
               <ul>
-                <li>
+                {/* <li>
                   <Link to={`/users/${currentUser.id}/`}>
                     <span className="icon">
                       <FontAwesomeIcon icon="user" />
                     </span>
                     My Profile
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to={`/users/${currentUser.id}/reservations`}>
                     <span className="icon">

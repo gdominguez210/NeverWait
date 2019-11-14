@@ -74,9 +74,9 @@ class Carousel extends React.Component {
       <>
         <div className="featured-header">
           <h2>Featured Restaurants</h2>
-          <Link to="/restaurants" className="highlight">
+          {/* <Link to="/restaurants" className="highlight">
             View All
-          </Link>
+          </Link> */}
         </div>
         <div className="carousel-container">
           <button

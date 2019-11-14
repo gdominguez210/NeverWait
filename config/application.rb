@@ -17,3 +17,17 @@ module ClosedTable
     # the framework and any gems in your application.
   end
 end
+
+if ENV["REDISTOGO_URL"]
+  config = RedisDemoApp::Application.config
+  uri = URI.parse(ENV["REDISTOGO_URL"])
+
+  config.cache_store = [
+    :redis_store, {
+      :host => uri.host,
+      :port => uri.port,
+      :password => uri.password,
+      :namespace => "cache"
+    }
+  ]
+end

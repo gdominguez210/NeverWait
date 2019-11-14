@@ -17,7 +17,7 @@ json.restaurants do
         total_rating = restaurant.calc_averages(total_ratings)
         filtered = true
      
-        if @rating
+        if @rating && @rating != "false"
             if @rating == "5"
                 filtered = false unless @rating.to_i * 1.0 == total_rating * 1.0
             elsif @rating == "4"

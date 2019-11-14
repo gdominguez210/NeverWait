@@ -12,7 +12,6 @@ class RestaurantShow extends React.Component {
       is_Mounted: false,
       receivedReviews: false
     };
-    debugger;
   }
 
   componentDidMount() {
@@ -28,7 +27,6 @@ class RestaurantShow extends React.Component {
     const restaurantId = this.props.match.params.restaurantId;
     const favoritesId = this.props.restaurant.favorite_ids;
     const reviewsId = this.props.restaurant.review_ids;
-    debugger;
     if (this.state.is_Mounted) {
       if (restaurantId !== prevProps.match.params.restaurantId) {
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
@@ -37,14 +35,12 @@ class RestaurantShow extends React.Component {
       ) {
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
       } else if (reviewsId.length !== prevProps.restaurant.review_ids.length) {
-        debugger;
         if (this.state.receivedReviews === false) {
           this.setState({
             receivedReviews: true
           });
         }
         if (this.state.receivedReviews) {
-          debugger;
           this.props.fetchRestaurant(this.props.match.params.restaurantId);
         }
       }

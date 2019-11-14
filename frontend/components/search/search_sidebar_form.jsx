@@ -53,8 +53,11 @@ class SearchSidebarForm extends React.Component {
   handleClick(e) {
     const query = { ...this.state.query };
     const { searchQuery, search } = this.props;
+    // let showActiveRating = false;
     if (e.target.dataset.rating) {
-      query.rating = e.target.dataset.rating;
+      query.rating === e.target.dataset.rating
+        ? (query.rating = false)
+        : (query.rating = e.target.dataset.rating);
       this.setState(
         {
           query,
@@ -63,7 +66,10 @@ class SearchSidebarForm extends React.Component {
         () => searchQuery({ query: this.state.query, res: search.res })
       );
     } else if (e.target.dataset.price_range) {
-      query.price_range = e.target.dataset.price_range;
+      query.price_range === e.target.dataset.price_range
+        ? (query.price_range = false)
+        : (query.price_range = e.target.dataset.price_range);
+
       this.setState(
         {
           query,
@@ -215,7 +221,7 @@ class SearchSidebarForm extends React.Component {
       <div className="filter-options">
         {this.priceRanges()}
         {this.ratings()}
-        {this.renderFilterBar()}
+        {/* {this.renderFilterBar()} */}
       </div>
     );
   }

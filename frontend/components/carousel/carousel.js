@@ -67,15 +67,7 @@ class Carousel extends React.Component {
     let restaurantItems = null;
     if (restaurants) {
       restaurantItems = restaurants.map((restaurant, idx) => (
-        <CSSTransition
-          key={`restaurant-item-${idx}`}
-          in={true}
-          appear={true}
-          timeout={500}
-          classNames="fade"
-        >
-          <RestaurantFeaturedItem restaurant={restaurant} />
-        </CSSTransition>
+        <RestaurantFeaturedItem key={restaurant.id} restaurant={restaurant} />
       ));
     }
     return (
@@ -95,7 +87,14 @@ class Carousel extends React.Component {
           </button>
           <div className="carousel-viewport" ref="carouselViewport">
             {renderLoader(this.state)}
-            <ul>{restaurantItems}</ul>
+            <CSSTransition
+              in={true}
+              appear={true}
+              timeout={500}
+              classNames="fade"
+            >
+              <ul>{restaurantItems}</ul>
+            </CSSTransition>
           </div>
           <button
             className="carousel-nav carousel-right-nav"

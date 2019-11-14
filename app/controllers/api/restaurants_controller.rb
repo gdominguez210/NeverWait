@@ -14,8 +14,7 @@ class Api::RestaurantsController < ApplicationController
              return
         end
         params[:query].permit!
-
-        if params[:query][:price_range]
+        if params[:query][:price_range] && params[:query][:price_range] != "false"
             @restaurants = Restaurant.includes(:reviews, :reservations, :favorites).joins(:location).with_attached_photos.where("restaurants.name LIKE ? AND restaurants.price_range LIKE ?", params[:query][:name], params[:query][:price_range]).or(Restaurant.includes(:reviews, :reservations, :favorites).joins(:location).with_attached_photos.where("locations.name LIKE ? AND restaurants.price_range LIKE ?", params[:query][:name], params[:query][:price_range]))
             @res = params[:res]
             @rating = params[:query][:rating]

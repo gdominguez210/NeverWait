@@ -187,8 +187,12 @@ class SearchForm extends React.Component {
   renderLocations() {
     let locationItems = null;
     if (this.locations.length > 0) {
-      locationItems = this.locations.map(el => (
-        <li onClick={this.handleClick()} data-searchitem={el}>
+      locationItems = this.locations.map((el, idx) => (
+        <li
+          onClick={this.handleClick()}
+          key={`location-${idx}`}
+          data-searchitem={el}
+        >
           {el}
         </li>
       ));
@@ -211,7 +215,11 @@ class SearchForm extends React.Component {
     let restaurantItems = null;
     if (this.restaurants.length > 0) {
       restaurantItems = this.restaurants.map(el => (
-        <li onClick={this.handleClick()} data-searchitem={el}>
+        <li
+          onClick={this.handleClick()}
+          key={`restaurants-${idx}`}
+          data-searchitem={el}
+        >
           {el}
         </li>
       ));

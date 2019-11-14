@@ -171,8 +171,8 @@ users.each do |user|
       ambience_rating: Faker::Number.between(from: 1, to: 5),
       body: Faker::Restaurant.review
     })
-    review.total_rating > 2.5 ? review.recommended = true : review.recommended = false
     review.total_rating = review.calc_total_rating
+    review.total_rating > 2.5 ? review.recommended = true : review.recommended = false
     review.save
     }
 end

@@ -8,31 +8,45 @@ import { CSSTransition } from "react-transition-group";
 class RestaurantShow extends React.Component {
   constructor(props) {
     super(props);
-    this.is_Mounted = false;
+    this.state = {
+      is_Mounted: false,
+      receivedReviews: false
+    };
+    debugger;
   }
 
   componentDidMount() {
     this.setState({
       restaurant: this.props.fetchRestaurant(
         this.props.match.params.restaurantId
-      )
+      ),
+      is_Mounted: true
     });
-    this.is_Mounted = true;
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     const restaurantId = this.props.match.params.restaurantId;
     const favoritesId = this.props.restaurant.favorite_ids;
-    const reviewsId = Object.values(this.props.reviews);
-    if (this.is_Mounted) {
+    const reviewsId = this.props.restaurant.review_ids;
+    debugger;
+    if (this.state.is_Mounted) {
       if (restaurantId !== prevProps.match.params.restaurantId) {
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
       } else if (
         favoritesId.length !== prevProps.restaurant.favorite_ids.length
       ) {
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
-      } else if (reviewsId.length !== Object.values(prevProps.reviews).length) {
-        this.props.fetchRestaurant(this.props.match.params.restaurantId);
+      } else if (reviewsId.length !== prevProps.restaurant.review_ids.length) {
+        debugger;
+        if (this.state.receivedReviews === false) {
+          this.setState({
+            receivedReviews: true
+          });
+        }
+        if (this.state.receivedReviews) {
+          debugger;
+          this.props.fetchRestaurant(this.props.match.params.restaurantId);
+        }
       }
     }
   }

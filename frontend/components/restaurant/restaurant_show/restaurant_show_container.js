@@ -39,8 +39,8 @@ const msp = (state, ownProps) => {
       additional: "",
       total_rating: "",
       photoUrls: "",
-      favorite_ids: [],
       review_ids: [],
+      favorite_ids: [],
       available_openings: "",
       percent_recommended: "",
       noise_level: ""
@@ -60,7 +60,4 @@ const mdp = dispatch => ({
     dispatch(deleteFavorite(favoriteId, restaurantId))
 });
 
-export default connect(
-  msp,
-  mdp
-)(RestaurantShow);
+export default connect(msp, mdp)(RestaurantShow);

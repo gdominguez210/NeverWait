@@ -8,7 +8,8 @@ json.restaurants do
             total_ratings.push(review.total_rating)
         end
 
-        reservation_list = Reservation.where("date = ? and restaurant_id = ?", @res['date'], restaurant.id)
+        # reservation_list = Reservation.where("date = ? and restaurant_id = ?", @res['date'], restaurant.id)
+        reservation_list = restaurant.reservations.select{|ele| ele.date === @res['date']}
         taken_times = []
         reservation_list.each{|ele| taken_times.push(ele.start_time)}
         potential_openings = restaurant.available_times(@res['start_time'])
@@ -37,7 +38,7 @@ json.restaurants do
             json.set! restaurant.id do
                 json.partial! "api/restaurants/restaurant", restaurant: restaurant
                 json.image_url image_url(restaurant.featured_img_url) if restaurant.featured_img_url
-                json.total_reviews restaurant.reviews.count
+                json.total_reviews restaurant.reviews.length
                 json.total_rating restaurant.calc_averages(total_ratings)
 
                 if @res['start_time']
@@ -46,9 +47,12 @@ json.restaurants do
                     json.available_times restaurant.available_future_times(restaurant.current_time)
                 end
                 if @res['date']
-                    json.booked_today restaurant.reservations.where('date LIKE ?', @res['date'] + '%').count
+                    # json.booked_today restaurant.reservations.where('date LIKE ?', @res['date'] + '%').count
+                    json.booked_today restaurant.reservations.select{|ele| ele.date === @res['date']}.length
                 else
-                   json.booked_today restaurant.reservations.where('date LIKE ?', Time.now.strftime("%a %b %e %Y") + '%').count
+                #    json.booked_today restaurant.reservations.where('date LIKE ?', Time.now.strftime("%a %b %e %Y") + '%').count
+                   json.booked_today restaurant.reservations.select{|ele| ele.date == Time.now.strftime("%-m/%-d/%y")}.length
+                   
                 end
             end
         end

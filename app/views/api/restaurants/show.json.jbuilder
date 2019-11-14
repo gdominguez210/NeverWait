@@ -23,7 +23,7 @@ noise_levels = []
     json.users do
         json.set! review.user_id do
             json.extract! review.user, :fname, :lname, :id, :favorite_ids
-            json.total_reviews review.user.reviews.count
+            json.total_reviews review.user.reviews.length
         end
     end
 end
@@ -37,7 +37,7 @@ end
 end
 
 json.restaurant do
-    review_count = @restaurant.reviews.count
+    review_count = @restaurant.reviews.length
     json.partial! "api/restaurants/restaurant", restaurant: @restaurant
     json.total_reviews review_count
     json.total_rating @restaurant.calc_averages(total_ratings)
@@ -45,7 +45,9 @@ json.restaurant do
     json.service_rating @restaurant.calc_averages(service_ratings)
     json.food_rating @restaurant.calc_averages(food_ratings)
     json.star_ratings @restaurant.star_ratings(total_ratings)
-    json.booked_today @restaurant.reservations.where('date LIKE ?', Time.now.strftime("%a %b %e %Y") + '%').count
+
+    # json.booked_today @restaurant.reservations.where('date LIKE ?', Time.now.strftime("%a %b %e %Y") + '%').length
+    json.booked_today @restaurant.reservations.select{|ele| ele.date == Time.now.strftime("%-m/%-d/%y")}.length
     if review_count > 0
     json.percent_recommended @restaurant.recommended_percentage(recommended)
     json.noise_level @restaurant.noise_level_average(noise_levels)

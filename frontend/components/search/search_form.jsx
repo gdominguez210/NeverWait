@@ -214,7 +214,7 @@ class SearchForm extends React.Component {
   renderRestaurants() {
     let restaurantItems = null;
     if (this.restaurants.length > 0) {
-      restaurantItems = this.restaurants.map(el => (
+      restaurantItems = this.restaurants.map((el, idx) => (
         <li
           onClick={this.handleClick()}
           key={`restaurants-${idx}`}

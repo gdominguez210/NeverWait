@@ -676,7 +676,9 @@ section.banner:before {
   filter: brightness(75%);
   opacity: 1;
 }
-
+.banner h2 {
+  text-shadow: 0px 0px 75px #000000;
+}
 section.banner:after {
   animation-iteration-count: infinite;
   animation-duration: 18s;

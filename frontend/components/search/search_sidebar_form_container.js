@@ -15,7 +15,4 @@ const mdp = dispatch => ({
   autocomplete: data => autocomplete(data)
 });
 
-export default connect(
-  msp,
-  mdp
-)(SearchSidebarForm);
+export default connect(msp, mdp)(SearchSidebarForm);

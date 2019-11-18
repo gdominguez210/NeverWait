@@ -1,10 +1,11 @@
 import React from "react";
-import { closeModal } from "../../actions/modal_actions";
+import { closeModal, openModal } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import LoginFormContainer from "../session/LoginFormContainer.jsx";
 import SignUpFormContainer from "../session/SignUpFormContainer.jsx";
 import CreateReviewFormContainer from "../reviews/review_forms/create_review_container";
+import ErrorModal from "../modal/error_modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { CSSTransition } from "react-transition-group";
@@ -15,6 +16,13 @@ class Modal extends React.Component {
     // this.restaurant_id = split[split.length - 1];
   }
 
+  componentDidUpdate(prevProps) {
+    debugger;
+    if (this.props.errors.length > 0) {
+      debugger;
+      this.props.openModal("reservation-error");
+    }
+  }
   render() {
     if (!this.props.modal) {
       return null;
@@ -24,7 +32,7 @@ class Modal extends React.Component {
     const restaurant_id = split[split.length - 1];
 
     let component = null;
-
+    debugger;
     switch (this.props.modal) {
       case "login":
         component = <LoginFormContainer />;
@@ -37,6 +45,11 @@ class Modal extends React.Component {
         break;
       case "reservation":
         component = <p>Reservation reserved!</p>;
+      case "reservation-error":
+        debugger;
+        component = <LoginFormContainer />;
+
+        break;
       default:
         return null;
     }

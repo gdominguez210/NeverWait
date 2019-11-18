@@ -1,4 +1,5 @@
 import * as ApiUtil from "../util/reservation_api_util";
+import { openModal } from "./modal_actions";
 
 export const RECEIVE_RESERVATION = "RECEIVE_RESERVATION";
 export const REMOVE_RESERVATION = "REMOVE_RESERVATION";
@@ -85,5 +86,6 @@ export const findTable = (reservationRequest, restaurantId) => dispatch => {
         return dispatch(openTimeslot(payload));
       }
     })
-    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
+    .fail(errors => dispatch(receiveErrors(errors.responseJSON)))
+    .then(openModal("reservation-error"));
 };

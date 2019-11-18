@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RestaurantStars from "./restaurant_ratings/rating_stars";
+import { openModal } from "../../actions/modal_actions";
 
 const RestaurantIndexItem = props => {
-    ;
   const {
     restaurant,
     deleteRestaurant,
@@ -15,7 +15,7 @@ const RestaurantIndexItem = props => {
     type,
     currentUser
   } = props;
-    ;
+  debugger;
   let banner;
   if (restaurant.image_url) {
     banner = {
@@ -27,17 +27,15 @@ const RestaurantIndexItem = props => {
   const handleClick = e => {
     e.preventDefault();
     let newRes = Object.assign({}, res);
+
     newRes.start_time = e.target.dataset.timeslot;
-      ;
     findTable(newRes, restaurant.id).then(payload => {
-        ;
       if (!payload.available_openings) {
         return history.push(`/new-reservation`);
       }
     });
   };
   const handleAvailableTimes = () => {
-      ;
     if (restaurant.available_times) {
       let moment = require("moment");
       // let timeNow = moment().format("h:mma");
@@ -108,7 +106,6 @@ const RestaurantIndexItem = props => {
 
   const manageDeleteFavorite = e => {
     e.preventDefault();
-      ;
     let favorite_id = currentUser.favorite_ids.find(el =>
       restaurant.favorite_ids.includes(el)
     );

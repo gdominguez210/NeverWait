@@ -6,6 +6,8 @@ import { deleteReview } from "../../actions/review_actions";
 const msp = (state, ownProps) => {
   const review_ids = ownProps.review_ids;
   const { users } = state.entities;
+  const filter = state.ui.filter;
+  debugger;
   let reviews = [];
   if (review_ids) {
     reviews = review_ids.map(id => state.entities.reviews[id]);
@@ -13,7 +15,8 @@ const msp = (state, ownProps) => {
   return {
     reviews,
     users,
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    filter
   };
 };
 
@@ -24,7 +27,4 @@ const mdp = dispatch => ({
     dispatch(deleteReview(reviewId, restaurantId))
 });
 
-export default connect(
-  msp,
-  mdp
-)(ReviewIndex);
+export default connect(msp, mdp)(ReviewIndex);

@@ -158,6 +158,30 @@ p.user-reviews svg {
   transition: 0.3s all ease-in;
   margin: -1px;
 }
+.stat-bar:hover .inner-stat-bar:after {
+  display: block;
+  content: attr(data-amount) " reviews";
+  position: absolute;
+  background: rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  left: 0;
+  bottom: 0px;
+  right: 0;
+  text-align: center;
+}
+
+.inner-stat-bar {
+  position: relative;
+}
+.stat-bar {
+  overflow: hidden;
+}
+
+.stat-bar:hover {
+  border-color: #2b9abf;
+  cursor: pointer;
+  border-width: 2px;
+}
 
 .review select {
   min-width: 33%;

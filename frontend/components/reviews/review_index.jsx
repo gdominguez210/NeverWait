@@ -23,11 +23,11 @@ class ReviewIndex extends React.Component {
   }
 
   render() {
-    const { reviews, currentUser, openModal } = this.props;
+    const { reviews, currentUser, openModal, filter } = this.props;
     let reviewItems = null;
     let reviewList = null;
     let addReview = null;
-
+    debugger;
     if (currentUser) {
       addReview = (
         <>
@@ -41,17 +41,46 @@ class ReviewIndex extends React.Component {
       );
     }
     if (this.is_Mounted) {
-      reviewItems = reviews.map(review => {
-        return (
-          <ReviewIndexItem
-            deleteReview={this.props.deleteReview}
-            currentUser={this.props.currentUser}
-            review={review}
-            author={this.props.users[review.user_id]}
-            key={review.id}
-          />
-        );
-      });
+      if (filter && filter.filterType === "Review") {
+        let filteredReviewItems = [];
+        // filteredReviewItems = reviews.filter(review => {
+        //   if (review.total_rating === this.filter) {
+        //     return review;
+        //   }
+        // }, filter);
+        for (let i = 0; i < reviews.length; i++) {
+          let review = reviews[i];
+          if (review.total_rating === filter.filter) {
+            filteredReviewItems.push(review);
+          }
+        }
+        debugger;
+        reviewItems = filteredReviewItems.map(review => {
+          return (
+            <ReviewIndexItem
+              deleteReview={this.props.deleteReview}
+              currentUser={this.props.currentUser}
+              review={review}
+              author={this.props.users[review.user_id]}
+              key={review.id}
+            />
+          );
+        });
+        debugger;
+      } else {
+        reviewItems = reviews.map(review => {
+          debugger;
+          return (
+            <ReviewIndexItem
+              deleteReview={this.props.deleteReview}
+              currentUser={this.props.currentUser}
+              review={review}
+              author={this.props.users[review.user_id]}
+              key={review.id}
+            />
+          );
+        });
+      }
       reviewList = <ul className="reviews">{reviewItems}</ul>;
     }
 

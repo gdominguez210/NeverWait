@@ -44,29 +44,30 @@ const RestaurantReviews = props => {
               <RestaurantStars restaurant={props.restaurant} />
               <p>{`${props.restaurant.total_rating} based on recent ratings`}</p>
             </div>
+            <div className="restaurant-ratings-breakdown">
+              <div className="restaurant-rating-container">
+                <p>{props.restaurant.food_rating}</p>
+                <p>Food</p>
+              </div>
+              <div className="restaurant-rating-container">
+                <p>{props.restaurant.service_rating}</p>
+                <p>Service</p>
+              </div>
+              <div className="restaurant-rating-container">
+                <p>{props.restaurant.food_rating}</p>
+                <p>Ambience</p>
+              </div>
+              <div className="restaurant-rating-container">
+                <p>{props.restaurant.value_rating}</p>
+                <p>Value</p>
+              </div>
+            </div>
           </div>
           <div className="restaurant-bars">
             <RestaurantBars restaurant={props.restaurant} />
           </div>
         </div>
-        <div className="restaurant-ratings-breakdown">
-          <div className="restaurant-rating-container">
-            <p>{props.restaurant.food_rating}</p>
-            <p>Food</p>
-          </div>
-          <div className="restaurant-rating-container">
-            <p>{props.restaurant.service_rating}</p>
-            <p>Service</p>
-          </div>
-          <div className="restaurant-rating-container">
-            <p>{props.restaurant.food_rating}</p>
-            <p>Ambience</p>
-          </div>
-          <div className="restaurant-rating-container">
-            <p>{props.restaurant.value_rating}</p>
-            <p>Value</p>
-          </div>
-        </div>
+
         <div className="restaurant-additional-stats">
           <p>
             <span className="icon">

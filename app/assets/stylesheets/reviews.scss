@@ -140,6 +140,8 @@ p.user-reviews svg {
 .stat-bar-container {
   display: flex;
   margin: 10px 0px 10px 10px;
+  align-items: center;
+  height: 25px;
 }
 
 .stat-bar {
@@ -147,24 +149,36 @@ p.user-reviews svg {
 }
 
 .stat-bar {
-  display: flex;
   margin-left: 5px;
   border: 1px solid #dddddd;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .inner-stat-bar {
   background: #2b9abf;
   width: 0;
   transition: 0.3s all ease-in;
-  margin: -1px;
+  height: 100%;
+}
+.review-toolbar {
+  display: flex;
+  margin-bottom: 25px;
+}
+.stat-bar-container > span {
+  display: inline-block;
+  min-width: 10px;
 }
 .stat-bar:hover .inner-stat-bar:after {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   content: attr(data-amount) " reviews";
   position: absolute;
   background: rgba(0, 0, 0, 0.25);
   color: #ffffff;
   left: 0;
+  top: 0px;
   bottom: 0px;
   right: 0;
   text-align: center;
@@ -195,7 +209,58 @@ p.user-reviews svg {
   width: 100%;
   margin-bottom: 25px;
 }
+.sort-dropdown button {
+  border: 1px solid #dddddd;
+  max-width: none;
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  min-height: 41px;
+}
 
+.sort-dropdown button > .icon {
+  margin: 0px;
+  margin-left: auto;
+}
+
+.sort-dropdown {
+  max-width: 50%;
+  flex: 1;
+}
+
+.sort-dropdown {
+  position: relative;
+}
+
+.sort-dropdown button ul {
+  position: absolute;
+  top: 73px;
+  left: 0;
+  right: 0;
+  padding: 0px;
+  margin: 0px;
+  background: #ffffff;
+  z-index: 1;
+  border: 1px solid #ddd;
+}
+
+.sort-dropdown button ul li {
+  list-style-type: none;
+  text-align: left;
+  padding: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+span.sort-value {
+  text-transform: capitalize;
+  font-size: 1.2em;
+}
+
+.sort-dropdown button ul li:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
 .form-container .review label {
   display: flex;
   justify-content: space-between;
@@ -212,7 +277,7 @@ li.review-index-item:first-child {
 }
 
 .review-container button.readon {
-  margin: 25px 0px;
+  margin-left: auto;
   align-self: flex-end;
 }
 
@@ -225,6 +290,23 @@ li.review-index-item {
   border: 1px solid #dddddd;
   border-radius: 4px;
   padding: 0px;
+}
+
+.review-filter-sort {
+  flex: 1;
+}
+
+.filter-tag {
+  font-size: 1em;
+  border: 2px solid #2b9abf;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.filter-tag .icon {
+  color: #2b9abf;
+  font-size: 1.3em;
 }
 
 .author-details {

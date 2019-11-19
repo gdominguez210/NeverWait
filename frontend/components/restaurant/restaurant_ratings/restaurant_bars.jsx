@@ -1,5 +1,5 @@
 import React from "react";
-import { receiveFilter } from "../../../actions/filter_actions";
+import { receiveFilter, clearFilter } from "../../../actions/filter_actions";
 const RestaurantBars = props => {
   let fillFive,
     fillFour,

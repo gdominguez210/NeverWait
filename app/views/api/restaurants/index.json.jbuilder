@@ -3,7 +3,7 @@ json.restaurants do
   
         total_ratings = []
         reviews = restaurant.reviews
-        if reviews.length > 1
+        if reviews.length > 0
             reviews.each do |review|
                 total_ratings.push(review.total_rating)
             end

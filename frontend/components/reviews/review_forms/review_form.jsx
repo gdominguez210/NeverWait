@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
-      ;
     this.state = {
       restaurant_id: parseInt(this.props.restaurant_id),
       food_rating: 5,
@@ -17,16 +16,9 @@ class ReviewForm extends React.Component {
       body: ""
     };
     this.restaurant = this.props.restaurants[this.props.restaurant_id];
-      ;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
   }
-
-  // componentDidMount() {
-  //   this.setState({
-  //     restaurant_id: parseInt(this.props.restaurant_id)
-  //   });
-  // }
   handleSubmit(e) {
     e.stopPropagation();
     e.preventDefault();
@@ -34,7 +26,6 @@ class ReviewForm extends React.Component {
     this.props.action(review).then(() => {
       return this.props.closeModal();
     });
-    // this.props.history.push("/");
   }
 
   renderErrors() {
@@ -70,16 +61,6 @@ class ReviewForm extends React.Component {
   }
 
   render() {
-    // const errors = this.props.errors;
-
-    // const errorItems = errors.map(error => {
-    //   return (
-    //     <li key={error.id} className="error">
-    //       {error}
-    //     </li>
-    //   );
-    // });
-
     return (
       <>
         <div className="form-container review-form">

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import ReviewForm from "./review_form";
+import ReviewForm from "./review_form_new";
 import { createReview } from "../../../actions/review_actions";
 import { closeModal } from "../../../actions/modal_actions";
 const mapStateToProps = (state, ownProps) => {
@@ -19,7 +19,6 @@ const mapStateToProps = (state, ownProps) => {
   const formType = "Create";
   const errors = state.errors.review;
   const restaurants = state.entities.restaurants;
-    ;
   return { review, currentUser, formType, errors, restaurants };
 };
 
@@ -30,7 +29,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ReviewForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewForm);

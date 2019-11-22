@@ -18,7 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'pg_search'
 gem 'random-location'
 gem 'redis-rails'
-
+gem "image_processing"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

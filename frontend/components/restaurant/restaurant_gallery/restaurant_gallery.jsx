@@ -1,17 +1,19 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSTransition } from "react-transition-group";
+import LazyLoad from "react-lazyload";
 
 const RestaurantGallery = props => {
   let imagesList = null;
-    ;
   if (
     props.restaurant.photoUrls instanceof Array &&
     props.restaurant.photoUrls.length >= 1
   ) {
     imagesList = props.restaurant.photoUrls.map((url, idx) => (
       <div className="gallery-item" key={`gallery-${idx}`}>
-        <img src={`${url}`} />
+        <LazyLoad height={281}>
+          <img src={`${url}`} width="242" height="281" />
+        </LazyLoad>
       </div>
     ));
   } else {

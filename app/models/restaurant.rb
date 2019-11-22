@@ -36,10 +36,26 @@ class Time
         Time.at((self.to_f / seconds).round * seconds)
     end
 end
+
+module ActiveStorage
+  class RepresentationsController < BaseController
+    include ActiveStorage::SetBlob
+
+    def show
+      expires_in 1.year, public: true
+      variant = @blob.representation(params[:variation_key]).processed
+      send_data @blob.service.download(variant.key),
+                type: @blob.content_type || DEFAULT_SEND_FILE_TYPE,
+                disposition: 'inline'
+    end
+  end
+end
+
 class Restaurant < ApplicationRecord
 
  
     include PgSearch::Model
+    include ActiveStorage
     multisearchable against: [:name],  update_if: :name_changed?
     pg_search_scope :search_by_keyword, against: [:name]
     scope :with_locations, -> {joins(:location)}

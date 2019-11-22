@@ -4,6 +4,7 @@ import RestaurantBanner from "./restaurant_banner";
 import RestaurantMain from "./restaurant_main";
 import RestaurantSidebar from "./restaurant_sidebar";
 import { CSSTransition } from "react-transition-group";
+import MediaQuery from "react-responsive";
 
 class RestaurantShow extends React.Component {
   constructor(props) {
@@ -61,7 +62,9 @@ class RestaurantShow extends React.Component {
           />
           <section className="restaurant-content-wrap">
             <RestaurantMain restaurant={restaurant} />
-            <RestaurantSidebar restaurant={restaurant} />
+            <MediaQuery minDeviceWidth={1051}>
+              <RestaurantSidebar restaurant={restaurant} />
+            </MediaQuery>
           </section>
         </section>
       </>

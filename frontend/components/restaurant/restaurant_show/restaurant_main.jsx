@@ -7,6 +7,9 @@ import RestaurantReviews from "../restaurant_ratings/restaurant_reviews";
 import RestaurantHeader from "./restaurant_header";
 import CreateRestaurantForm from "../restaurant_forms/create_form_container";
 import { Route, Link } from "react-router-dom";
+import RestaurantSidebar from "./restaurant_sidebar";
+import MediaQuery from "react-responsive";
+
 class RestaurantMain extends React.Component {
   constructor(props) {
     super(props);
@@ -115,6 +118,9 @@ class RestaurantMain extends React.Component {
           <section className="restaurant-content-inner">
             <div id="overview" ref={this.overview}>
               <RestaurantHeader restaurant={this.props.restaurant} />
+              <MediaQuery maxDeviceWidth={1050}>
+                <RestaurantSidebar restaurant={this.props.restaurant} />
+              </MediaQuery>
               <p>{this.props.restaurant.description}</p>
             </div>
             <div id="photos" ref={this.photos}>

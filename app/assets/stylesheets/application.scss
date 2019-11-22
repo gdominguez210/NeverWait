@@ -772,3 +772,67 @@ section.banner:after {
   background-image: url(https://resizer.otstatic.com/v2/photos/wide-huge/25160340.jpg);
   animation-name: rotate-layer3;
 }
+
+@media (max-width: 1000px) {
+  .search-form form {
+    display: block;
+    padding: 0px;
+  }
+
+  .search-form form > * {
+    margin: 15px 0px;
+  }
+
+  .search-form label {
+    padding: 15px;
+  }
+
+  .search-form button.readon {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .banner h2 {
+    font-size: 2.5em;
+  }
+
+  .search-form .res-container {
+    margin: 0px;
+  }
+
+  .search-form .query-container {
+    margin-right: 0px;
+  }
+  li.location {
+    width: 50%;
+  }
+
+  section.inner-container {
+    padding: 0px 20px;
+  }
+
+  section.banner .container {
+    padding: 20px;
+  }
+
+  ul.restaurants-container {
+    padding: 0px;
+  }
+
+  .featured-header h2 {
+    margin-bottom: 0px;
+  }
+  .search-form button.readon {
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 560px) {
+  li.location {
+    width: 100%;
+  }
+
+  banner h2 {
+    font-size: 2em;
+  }
+}

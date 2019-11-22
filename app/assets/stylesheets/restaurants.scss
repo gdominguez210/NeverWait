@@ -639,3 +639,50 @@ div#map-container {
   z-index: 10;
   border-radius: 4px;
 }
+
+@media (max-width: 900px) {
+  ul.restaurants-container {
+    display: block;
+  }
+
+  li.restaurant-item {
+    max-width: none;
+    display: flex;
+    margin: 20px;
+  }
+
+  li.restaurant-item > a {
+    display: flex;
+    min-width: 250px;
+    min-height: 150px;
+  }
+
+  .restaurant-location ul {
+    padding: 0px;
+    display: flex;
+  }
+}
+
+@media (max-width: 1050px) {
+  .restaurant-header + aside.restaurant-sidebar {
+    margin: 0px;
+    max-width: none;
+  }
+
+  .reservation-container form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .reservation-container button.readon-submit {
+    width: 100$;
+  }
+
+  .reservation-container label {
+    width: 33.33333%;
+  }
+
+  .date-time {
+    width: 66.6666%;
+  }
+}

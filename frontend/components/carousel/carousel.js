@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import { scrollTo } from "./carousel_util";
 import renderLoader from "../loader/loader";
+import MediaQuery from "react-responsive";
 class Carousel extends React.Component {
   constructor(props) {
     super(props);
@@ -65,44 +66,48 @@ class Carousel extends React.Component {
   render() {
     const { restaurants } = this.props;
     let restaurantItems = null;
+    let mobileRestaurantItems = null;
     if (restaurants) {
       restaurantItems = restaurants.map((restaurant, idx) => (
         <RestaurantFeaturedItem key={restaurant.id} restaurant={restaurant} />
       ));
+      mobileRestaurantItems = restaurantItems.slice(0, 5);
     }
     return (
       <>
         <div className="featured-header">
           <h2>Featured Restaurants</h2>
-          {/* <Link to="/restaurants" className="highlight">
-            View All
-          </Link> */}
         </div>
-        <div className="carousel-container">
-          <button
-            className="carousel-nav carousel-left-nav"
-            onClick={this.handleRight}
-          >
-            <FontAwesomeIcon icon="caret-left" />
-          </button>
-          <div className="carousel-viewport" ref="carouselViewport">
-            {renderLoader(this.state)}
-            <CSSTransition
-              in={true}
-              appear={true}
-              timeout={500}
-              classNames="fade"
+        <MediaQuery minDeviceWidth={901}>
+          <div className="carousel-container">
+            <button
+              className="carousel-nav carousel-left-nav"
+              onClick={this.handleRight}
             >
-              <ul>{restaurantItems}</ul>
-            </CSSTransition>
+              <FontAwesomeIcon icon="caret-left" />
+            </button>
+            <div className="carousel-viewport" ref="carouselViewport">
+              {renderLoader(this.state)}
+              <CSSTransition
+                in={true}
+                appear={true}
+                timeout={500}
+                classNames="fade"
+              >
+                <ul>{restaurantItems}</ul>
+              </CSSTransition>
+            </div>
+            <button
+              className="carousel-nav carousel-right-nav"
+              onClick={this.handleLeft}
+            >
+              <FontAwesomeIcon icon="caret-right" />
+            </button>
           </div>
-          <button
-            className="carousel-nav carousel-right-nav"
-            onClick={this.handleLeft}
-          >
-            <FontAwesomeIcon icon="caret-right" />
-          </button>
-        </div>
+        </MediaQuery>
+        <MediaQuery maxDeviceWidth={900}>
+          <ul className="restaurants-container">{mobileRestaurantItems}</ul>
+        </MediaQuery>
       </>
     );
   }

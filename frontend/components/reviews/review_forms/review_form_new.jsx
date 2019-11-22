@@ -29,10 +29,10 @@ class ReviewForm extends React.Component {
   }
 
   handleClick(e) {
-    debugger;
+     ;
     e.preventDefault();
     if (e.target.className.includes("next")) {
-      debugger;
+       ;
       this.setState({
         active_slide: this.state.active_slide + 1
       });
@@ -61,7 +61,7 @@ class ReviewForm extends React.Component {
   }
 
   handleMouseOver(val) {
-    debugger;
+     ;
     let fill_percent = this.handleFill(val);
     this.setState({
       fill_percent,

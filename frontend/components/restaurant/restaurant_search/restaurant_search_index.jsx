@@ -52,7 +52,7 @@ class RestaurantSearchIndex extends React.Component {
   }
 
   render() {
-    debugger;
+     ;
     const {
       restaurants,
       deleteRestaurant,

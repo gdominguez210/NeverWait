@@ -15,7 +15,7 @@ const RestaurantIndexItem = props => {
     type,
     currentUser
   } = props;
-  debugger;
+   ;
   let banner;
   if (restaurant.image_url) {
     banner = {

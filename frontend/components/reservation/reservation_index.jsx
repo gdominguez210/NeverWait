@@ -44,12 +44,12 @@ export class ReservationIndex extends React.Component {
         let result1 = currentDateObj.isAfter(dateObj);
         let result2 =
           currentDateObj.isSame(dateObj) && timeNow.isAfter(resTime);
-        debugger;
+         ;
         if (result1 || result2) {
-          debugger;
+           ;
           status = "past";
         } else {
-          debugger;
+           ;
           status = "upcoming";
         }
         if (status === "past") {

@@ -19,7 +19,7 @@ export class Location extends React.Component {
   handleClick(e) {
     e.preventDefault();
     let queryStr = e.target.id.split("-").join(" ");
-    debugger;
+     ;
     this.props
       .searchQuery({ query: { name: queryStr }, res: this.props.params })
       .then(() => this.props.history.push(`/search-restaurants`));

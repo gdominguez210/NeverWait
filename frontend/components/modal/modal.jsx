@@ -17,9 +17,9 @@ class Modal extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    debugger;
+     ;
     if (this.props.errors.length > 0) {
-      debugger;
+       ;
       this.props.openModal("reservation-error");
     }
   }
@@ -32,7 +32,7 @@ class Modal extends React.Component {
     const restaurant_id = split[split.length - 1];
 
     let component = null;
-    debugger;
+     ;
     switch (this.props.modal) {
       case "login":
         component = <LoginFormContainer />;
@@ -46,7 +46,7 @@ class Modal extends React.Component {
       case "reservation":
         component = <p>Reservation reserved!</p>;
       case "reservation-error":
-        debugger;
+         ;
         component = <LoginFormContainer />;
 
         break;

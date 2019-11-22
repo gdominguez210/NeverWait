@@ -55,7 +55,7 @@ class SearchSidebarForm extends React.Component {
     const { searchQuery, search } = this.props;
     // let showActiveRating = false;
     if (e.target.dataset.rating) {
-      debugger;
+       ;
       query.rating === e.target.dataset.rating
         ? (query.rating = false)
         : (query.rating = e.target.dataset.rating);
@@ -67,7 +67,7 @@ class SearchSidebarForm extends React.Component {
         () => searchQuery({ query: this.state.query, res: search.res })
       );
     } else if (e.target.dataset.price_range) {
-      debugger;
+       ;
       query.price_range === e.target.dataset.price_range
         ? (query.price_range = false)
         : (query.price_range = e.target.dataset.price_range);

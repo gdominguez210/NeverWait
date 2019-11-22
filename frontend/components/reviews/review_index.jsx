@@ -33,7 +33,7 @@ class ReviewIndex extends React.Component {
   }
 
   sort(arr, type) {
-    debugger;
+     ;
     switch (type) {
       case "newest":
         arr = arr.sort((a, b) => (a.id > b.id ? 1 : -1));
@@ -43,7 +43,7 @@ class ReviewIndex extends React.Component {
         return arr;
       case "top-rated":
         arr = arr.sort((a, b) => (a.total_rating < b.total_rating ? 1 : -1));
-        debugger;
+         ;
         return arr;
       case "lowest-rated":
         arr = arr.sort((a, b) => (a.total_rating > b.total_rating ? 1 : -1));
@@ -88,7 +88,7 @@ class ReviewIndex extends React.Component {
   }
 
   toggleDropdown() {
-    debugger;
+     ;
     if (this.state.showDropdown) {
       this.setState({ showDropdown: false });
     } else {
@@ -151,7 +151,7 @@ class ReviewIndex extends React.Component {
     let reviewItems = null;
     let reviewList = null;
     let addReview = null;
-    debugger;
+     ;
     if (currentUser) {
       addReview = (
         <>
@@ -166,9 +166,9 @@ class ReviewIndex extends React.Component {
     }
     if (this.is_Mounted) {
       if (this.state.sort) {
-        debugger;
+         ;
         reviews = this.sort(reviews, this.state.sort);
-        debugger;
+         ;
       }
       if (filter && filter.filterType === "Review") {
         let filteredReviewItems = [];
@@ -178,7 +178,7 @@ class ReviewIndex extends React.Component {
             filteredReviewItems.push(review);
           }
         }
-        debugger;
+         ;
         reviewItems = filteredReviewItems.map(review => {
           return (
             <ReviewIndexItem
@@ -190,10 +190,10 @@ class ReviewIndex extends React.Component {
             />
           );
         });
-        debugger;
+         ;
       } else {
         reviewItems = reviews.map(review => {
-          debugger;
+           ;
           return (
             <ReviewIndexItem
               deleteReview={this.props.deleteReview}

@@ -772,6 +772,11 @@ section.banner:after {
   background-image: url(https://resizer.otstatic.com/v2/photos/wide-huge/25160340.jpg);
   animation-name: rotate-layer3;
 }
+@media (max-width: 1050px){
+.form-container.reservation {
+    max-width: 75%;
+}
+}
 
 @media (max-width: 1000px) {
   .search-form form {
@@ -836,3 +841,79 @@ section.banner:after {
     font-size: 2em;
   }
 }
+
+
+@media (max-width: 680px){
+.form-container.reservation {
+    max-width: 100%;
+}
+}
+@media (max-width: 486px){
+.form-container.reservation {
+    max-width: 100%;
+}
+
+
+.inputs-container input {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0px;
+}
+
+.inputs-container {
+    display: block;
+    margin: 0px;
+}
+
+.booking-icons {
+    display: block;
+    max-width: 150px;
+    margin: 0 auto;
+}
+
+.booking-icon:first-child {
+    padding: 5px;
+}
+
+section.reservations-container-outter {
+    display: block;
+}
+
+aside.user-options {
+    width: 100%;
+    border-bottom: 1px solid #dddddd;
+    border-right: 0px;
+}
+
+section.reservations-container-outter>section {
+    margin: 0px;
+}
+
+.reservation-index-item .inner-wrap>a {
+    min-width: 200px;
+    max-width: 200px;
+}
+
+section.favorites-outter-container {
+    display: block;
+}
+
+section.favorites-container {
+    margin-left: 0px;
+}
+
+aside.user-options h3 {
+    margin: 0px;
+}
+
+aside.user-options a {
+    padding: 10px 0px;
+}
+
+li.restaurant-item>a {
+    width: 100%;
+}
+
+li.restaurant-item {
+    display: block;
+}}

@@ -772,13 +772,13 @@ section.banner:after {
   background-image: url(https://resizer.otstatic.com/v2/photos/wide-huge/25160340.jpg);
   animation-name: rotate-layer3;
 }
-@media (max-width: 1050px){
-.form-container.reservation {
+@media (max-width: 1050px) {
+  .form-container.reservation {
     max-width: 75%;
-}
+  }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1050px) {
   .search-form form {
     display: block;
     padding: 0px;
@@ -830,6 +830,89 @@ section.banner:after {
   .search-form button.readon {
     margin-top: 0px;
   }
+  main.restaurant-content {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 1.2em;
+    margin-top: -50px;
+  }
+  .search-form .res-container {
+    display: block;
+  }
+
+  .reservation-container {
+    margin: 32px 0px;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .sidebar-item {
+    width: 50%;
+    box-sizing: border-box;
+  }
+
+  aside.restaurant-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .reservation-container label {
+    font-size: 1em;
+  }
+
+  .reservation-container h3 {
+    font-size: 1.2em;
+  }
+
+  li.review-index-item {
+    display: block;
+  }
+
+  li.review-index-item .inner-wrap {
+    display: block;
+  }
+
+  .review-stars {
+    margin: 15px auto;
+    font-size: 1.2em;
+  }
+
+  .ratings-container {
+    justify-content: center;
+  }
+
+  .author-details .user-avatar {
+    margin-top: -50px;
+  }
+
+  .author-details {
+    font-size: 1.2em;
+  }
+
+  li.review-index-item {
+    margin: 50px 0px;
+  }
+
+  li.review-index-item:first-child {
+    margin-top: 50px;
+  }
+
+  .stats-overview {
+    width: 100%;
+  }
+
+  .stats-container {
+    display: block;
+  }
+
+  .restaurant-bars {
+    padding: 0px;
+  }
+
+  section.restaurant-featured-image {
+    min-height: 320px;
+  }
 }
 
 @media (max-width: 560px) {
@@ -840,80 +923,135 @@ section.banner:after {
   banner h2 {
     font-size: 2em;
   }
+  section.reservations-container-outter,
+  section.favorites-outter-container {
+    display: block;
+  }
+
+  aside.user-options {
+    width: 100%;
+    border-right: 0px;
+    border-bottom: 1px solid #dddddd;
+  }
+
+  section.favorites-container,
+  section.reservations-container-outter > section {
+    margin-left: 0px;
+  }
+
+  .restaurant-index-item .inner-wrap > a {
+    display: flex;
+    min-width: 250px;
+    min-height: 150px;
+  }
+
+  section.banner {
+    z-index: 1;
+  }
+
+  .reservation-index-item .inner-wrap > a {
+    display: flex;
+    min-width: 250px;
+    min-height: 150px;
+  }
+
+  li .inner-wrap {
+    display: flex;
+  }
+
+  .restaurant-details {
+    flex: 1;
+  }
+
+  .restaurant-header-container {
+    display: block;
+  }
+
+  .restaurant-header-right {
+    flex-direction: column;
+    flex-direction: column-reverse;
+  }
+
+  .restaurant-header-container {
+    display: block;
+  }
+
+  ul.restaurant-location {
+    align-items: flex-start;
+  }
 }
 
-
-@media (max-width: 680px){
-.form-container.reservation {
+@media (max-width: 680px) {
+  .form-container.reservation {
     max-width: 100%;
+  }
 }
-}
-@media (max-width: 486px){
-.form-container.reservation {
+@media (max-width: 486px) {
+  .form-container.reservation {
     max-width: 100%;
-}
+  }
 
-
-.inputs-container input {
+  .inputs-container input {
     width: 100%;
     box-sizing: border-box;
     margin: 10px 0px;
-}
+  }
 
-.inputs-container {
+  .inputs-container {
     display: block;
     margin: 0px;
-}
+  }
 
-.booking-icons {
+  .booking-icons {
     display: block;
     max-width: 150px;
     margin: 0 auto;
-}
+  }
 
-.booking-icon:first-child {
+  .booking-icon:first-child {
     padding: 5px;
-}
+  }
 
-section.reservations-container-outter {
+  section.reservations-container-outter {
     display: block;
-}
+  }
 
-aside.user-options {
+  aside.user-options {
     width: 100%;
     border-bottom: 1px solid #dddddd;
     border-right: 0px;
-}
+  }
 
-section.reservations-container-outter>section {
+  section.reservations-container-outter > section {
     margin: 0px;
-}
+  }
 
-.reservation-index-item .inner-wrap>a {
+  .reservation-index-item .inner-wrap > a {
     min-width: 200px;
     max-width: 200px;
-}
+  }
 
-section.favorites-outter-container {
+  section.favorites-outter-container {
     display: block;
-}
+  }
 
-section.favorites-container {
+  section.favorites-container {
     margin-left: 0px;
-}
+  }
 
-aside.user-options h3 {
+  aside.user-options h3 {
     margin: 0px;
-}
+  }
 
-aside.user-options a {
+  aside.user-options a {
     padding: 10px 0px;
-}
+  }
 
-li.restaurant-item>a {
+  li.restaurant-item > a {
     width: 100%;
-}
+  }
 
-li.restaurant-item {
+  li.restaurant-item {
     display: block;
-}}
+  }
+}

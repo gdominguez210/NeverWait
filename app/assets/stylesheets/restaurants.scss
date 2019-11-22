@@ -643,12 +643,13 @@ div#map-container {
 @media (max-width: 900px) {
   ul.restaurants-container {
     display: block;
+    overflow: auto;
   }
 
   li.restaurant-item {
     max-width: none;
     display: flex;
-    margin: 20px;
+    margin: 20px 0px;
   }
 
   li.restaurant-item > a {
@@ -684,5 +685,24 @@ div#map-container {
 
   .date-time {
     width: 66.6666%;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-form .res-container {
+    display: block;
+  }
+
+  label {
+    margin: 15px 0px;
+    border-radius: 4px;
+  }
+
+  footer .inner-container {
+    display: block;
+    text-align: center;
+  }
+  .search-form .res-container {
+    display: block;
   }
 }

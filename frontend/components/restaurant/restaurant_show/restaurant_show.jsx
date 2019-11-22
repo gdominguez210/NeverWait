@@ -62,7 +62,7 @@ class RestaurantShow extends React.Component {
           />
           <section className="restaurant-content-wrap">
             <RestaurantMain restaurant={restaurant} />
-            <MediaQuery minDeviceWidth={1051}>
+            <MediaQuery minWidth={1051}>
               <RestaurantSidebar restaurant={restaurant} />
             </MediaQuery>
           </section>

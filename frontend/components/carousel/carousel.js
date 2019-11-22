@@ -78,7 +78,7 @@ class Carousel extends React.Component {
         <div className="featured-header">
           <h2>Featured Restaurants</h2>
         </div>
-        <MediaQuery minDeviceWidth={901}>
+        <MediaQuery minWidth={901}>
           <div className="carousel-container">
             <button
               className="carousel-nav carousel-left-nav"
@@ -105,7 +105,7 @@ class Carousel extends React.Component {
             </button>
           </div>
         </MediaQuery>
-        <MediaQuery maxDeviceWidth={900}>
+        <MediaQuery maxWidth={900}>
           <ul className="restaurants-container">{mobileRestaurantItems}</ul>
         </MediaQuery>
       </>

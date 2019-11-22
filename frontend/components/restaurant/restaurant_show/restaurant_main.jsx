@@ -118,7 +118,7 @@ class RestaurantMain extends React.Component {
           <section className="restaurant-content-inner">
             <div id="overview" ref={this.overview}>
               <RestaurantHeader restaurant={this.props.restaurant} />
-              <MediaQuery maxDeviceWidth={1050}>
+              <MediaQuery maxWidth={1050}>
                 <RestaurantSidebar restaurant={this.props.restaurant} />
               </MediaQuery>
               <p>{this.props.restaurant.description}</p>

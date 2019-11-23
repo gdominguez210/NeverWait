@@ -1,17 +1,17 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { ReviewSlide } from "./review_form_slides/review_slide";
 class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       restaurant_id: parseInt(this.props.restaurant_id),
-      food_rating: 5,
-      service_rating: 5,
-      value_rating: 5,
-      noise_level: 5,
-      ambience_rating: 5,
+      food_rating: 0,
+      service_rating: 0,
+      value_rating: 0,
+      noise_level: 0,
+      ambience_rating: 0,
       body: "",
       active_slide: 1,
       fill_percent: false,
@@ -26,13 +26,13 @@ class ReviewForm extends React.Component {
     this.handleRating = this.handleRating.bind(this);
     this.handleFill = this.handleFill.bind(this);
     this.handleMouseOver = this.handleMouseOver.bind(this);
+    this.handleMouseOut = this.handleMouseOut.bind(this);
+    this.handleFillReset = this.handleFillReset.bind(this);
   }
 
   handleClick(e) {
-     ;
     e.preventDefault();
     if (e.target.className.includes("next")) {
-       ;
       this.setState({
         active_slide: this.state.active_slide + 1
       });
@@ -60,9 +60,24 @@ class ReviewForm extends React.Component {
     }
   }
 
-  handleMouseOver(val) {
-     ;
+  handleFillReset(val) {
+    debugger;
     let fill_percent = this.handleFill(val);
+    this.setState({
+      fill_percent,
+      fill: { width: `${fill_percent}%` }
+    });
+  }
+  handleMouseOver(val) {
+    let fill_percent = this.handleFill(val);
+    this.setState({
+      fill_percent,
+      fill: { width: `${fill_percent}%` }
+    });
+  }
+  handleMouseOut(val) {
+    let fill_percent = this.handleFill(val);
+    debugger;
     this.setState({
       fill_percent,
       fill: { width: `${fill_percent}%` }
@@ -70,12 +85,14 @@ class ReviewForm extends React.Component {
   }
   handleRating(val, rating_type) {
     let fill_percent = this.handleFill(val);
+    debugger;
     this.setState({
       [rating_type]: val,
       fill_percent,
       fill: { width: `${fill_percent}%` }
     });
   }
+
   foodRating() {
     return (
       <section className="food-rating">
@@ -160,13 +177,53 @@ class ReviewForm extends React.Component {
   renderSlide() {
     switch (this.state.active_slide) {
       case 1:
-        return this.foodRating();
+        return (
+          <ReviewSlide
+            handleMouseOver={this.handleMouseOver}
+            handleMouseOut={this.handleMouseOut}
+            handleRating={this.handleRating}
+            handleFillReset={this.handleFillReset}
+            type="food"
+            fill={this.state.fill}
+            state={this.state}
+          />
+        );
       case 2:
-        return <p>This is slide two</p>;
+        return (
+          <ReviewSlide
+            handleMouseOver={this.handleMouseOver}
+            handleMouseOut={this.handleMouseOut}
+            handleRating={this.handleRating}
+            handleFillReset={this.handleFillReset}
+            type="service"
+            fill={this.state.fill}
+            state={this.state}
+          />
+        );
       case 3:
-        return <p>This is slide three</p>;
+        return (
+          <ReviewSlide
+            handleMouseOver={this.handleMouseOver}
+            handleMouseOut={this.handleMouseOut}
+            handleRating={this.handleRating}
+            handleFillReset={this.handleFillReset}
+            type="value"
+            fill={this.state.fill}
+            state={this.state}
+          />
+        );
       case 4:
-        return <p>This is slide four</p>;
+        return (
+          <ReviewSlide
+            handleMouseOver={this.handleMouseOver}
+            handleMouseOut={this.handleMouseOut}
+            handleRating={this.handleRating}
+            handleFillReset={this.handleFillReset}
+            type="ambience"
+            fill={this.state.fill}
+            state={this.state}
+          />
+        );
       default:
         return null;
     }

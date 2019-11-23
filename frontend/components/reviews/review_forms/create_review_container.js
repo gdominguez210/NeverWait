@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import ReviewForm from "./review_form";
+import ReviewForm from "./review_form_new";
 import { createReview } from "../../../actions/review_actions";
 import { closeModal } from "../../../actions/modal_actions";
 const mapStateToProps = (state, ownProps) => {

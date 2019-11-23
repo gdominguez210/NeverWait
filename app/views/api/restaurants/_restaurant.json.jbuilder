@@ -3,5 +3,4 @@ json.extract! restaurant, :id, :name, :address, :phone, :owner_id, :location_id,
         json.image_url image_url(restaurant.featured_img_url)
     end
     # json.photoUrls restaurant.photos.map { |file| url_for(file) }
-        json.photoUrls restaurant.photos.map { |file| file.blob.service_url }
-    # json.photoUrls restaurant.photos.map { |file| file.variant(resize: "242x281").processed.service_url}
+        # json.photoUrls restaurant.photos.map { |file| file.blob.service_url }

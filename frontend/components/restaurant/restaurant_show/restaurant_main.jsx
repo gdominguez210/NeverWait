@@ -9,6 +9,8 @@ import CreateRestaurantForm from "../restaurant_forms/create_form_container";
 import { Route, Link } from "react-router-dom";
 import RestaurantSidebar from "./restaurant_sidebar";
 import MediaQuery from "react-responsive";
+import LazyLoad from "react-lazyload";
+import renderLoader from "../../loader/loader";
 
 class RestaurantMain extends React.Component {
   constructor(props) {
@@ -16,7 +18,8 @@ class RestaurantMain extends React.Component {
 
     this.state = {
       sticky: false,
-      activeItem: { id: null, ratio: 0 }
+      activeItem: { id: null, ratio: 0 },
+      loading: true
     };
     this.handleClick = this.handleClick.bind(this);
     this.rootRef = React.createRef();
@@ -33,8 +36,14 @@ class RestaurantMain extends React.Component {
       root: this.rootRef.current,
       threshold: new Array(101).fill(0).map((v, i) => i * 0.01)
     });
+    this.loadingDone = this.loadingDone.bind(this);
   }
 
+  loadingDone() {
+    this.setState({
+      loading: false
+    });
+  }
   callback(entries) {
     for (let i = 0; i < entries.length; i++) {
       let entry = entries[i];
@@ -124,10 +133,16 @@ class RestaurantMain extends React.Component {
               <p>{this.props.restaurant.description}</p>
             </div>
             <div id="photos" ref={this.photos}>
-              <RestaurantGallery restaurant={this.props.restaurant} />
+              {renderLoader(this.state)}
+              {this.state.loading ? null : (
+                <RestaurantGallery restaurant={this.props.restaurant} />
+              )}
             </div>
             <div id="reviews" ref={this.reviews}>
-              <RestaurantReviews restaurant={this.props.restaurant} />
+              <RestaurantReviews
+                restaurant={this.props.restaurant}
+                loadingDone={this.loadingDone}
+              />
             </div>
           </section>
         </main>

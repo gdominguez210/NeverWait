@@ -2,6 +2,7 @@ import React from "react";
 import MoonLoader from "react-spinners/MoonLoader";
 
 const renderLoader = state => {
+  debugger;
   return state.loading ? (
     <MoonLoader
       sizeUnit={"px"}

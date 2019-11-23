@@ -81,7 +81,10 @@ const RestaurantReviews = props => {
           {props.restaurant.percent_recommended}% of people would recommend it
           to a friend
         </div>
-        <ReviewIndexContainer review_ids={props.restaurant.review_ids} />
+        <ReviewIndexContainer
+          loadingDone={props.loadingDone}
+          review_ids={props.restaurant.review_ids}
+        />
       </div>
     </>
   );

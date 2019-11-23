@@ -21,6 +21,7 @@ class ReviewIndex extends React.Component {
   componentDidMount() {
     // this.props.fetchReviews(this.props.match.params.restaurantId);
     this.is_Mounted = true;
+    this.props.loadingDone();
   }
 
   componentDidUpdate(prevProps) {
@@ -33,7 +34,6 @@ class ReviewIndex extends React.Component {
   }
 
   sort(arr, type) {
-     ;
     switch (type) {
       case "newest":
         arr = arr.sort((a, b) => (a.id > b.id ? 1 : -1));
@@ -43,7 +43,6 @@ class ReviewIndex extends React.Component {
         return arr;
       case "top-rated":
         arr = arr.sort((a, b) => (a.total_rating < b.total_rating ? 1 : -1));
-         ;
         return arr;
       case "lowest-rated":
         arr = arr.sort((a, b) => (a.total_rating > b.total_rating ? 1 : -1));
@@ -88,7 +87,6 @@ class ReviewIndex extends React.Component {
   }
 
   toggleDropdown() {
-     ;
     if (this.state.showDropdown) {
       this.setState({ showDropdown: false });
     } else {
@@ -151,7 +149,6 @@ class ReviewIndex extends React.Component {
     let reviewItems = null;
     let reviewList = null;
     let addReview = null;
-     ;
     if (currentUser) {
       addReview = (
         <>
@@ -166,9 +163,7 @@ class ReviewIndex extends React.Component {
     }
     if (this.is_Mounted) {
       if (this.state.sort) {
-         ;
         reviews = this.sort(reviews, this.state.sort);
-         ;
       }
       if (filter && filter.filterType === "Review") {
         let filteredReviewItems = [];
@@ -178,7 +173,6 @@ class ReviewIndex extends React.Component {
             filteredReviewItems.push(review);
           }
         }
-         ;
         reviewItems = filteredReviewItems.map(review => {
           return (
             <ReviewIndexItem
@@ -190,10 +184,8 @@ class ReviewIndex extends React.Component {
             />
           );
         });
-         ;
       } else {
         reviewItems = reviews.map(review => {
-           ;
           return (
             <ReviewIndexItem
               deleteReview={this.props.deleteReview}

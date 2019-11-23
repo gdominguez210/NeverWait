@@ -39,6 +39,7 @@ end
 json.restaurant do
     review_count = @restaurant.reviews.length
     json.partial! "api/restaurants/restaurant", restaurant: @restaurant
+    json.photoUrls @restaurant.photos.map { |file| file.variant(resize: "242x281").processed.service_url}
     json.total_reviews review_count
     json.total_rating @restaurant.calc_averages(total_ratings)
     json.value_rating @restaurant.calc_averages(value_ratings)

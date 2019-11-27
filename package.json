@@ -40,7 +40,10 @@
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "file-loader": "^4.3.0",
+    "react-svg-loader": "^3.0.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --watch --mode=development",

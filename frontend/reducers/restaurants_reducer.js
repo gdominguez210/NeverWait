@@ -44,24 +44,20 @@ const restaurantsReducer = (state = {}, action) => {
       return action.restaurants ? action.restaurants : {};
     case RECEIVE_REVIEW:
       let reviewState = Object.assign({}, state);
+      debugger;
       reviewState[action.review.restaurant_id].review_ids.push(
         action.review.id
       );
+      debugger;
       return reviewState;
-    // case REMOVE_REVIEW:
-    //   let removeState = Object.assign({}, state);
-    //    ;
-    //   let removeIdx = Object.values(removeState)[0].review_ids.indexOf(
-    //     action.reviewId
-    //   );
-    //   delete Object.values(removeState)[0].review_ids[removeIdx];
-    //   return removeState;
     case REMOVE_REVIEW:
       let removeState = Object.assign({}, state);
       let removeIdx = removeState[action.restaurantId].review_ids.indexOf(
         action.reviewId
       );
-      delete removeState[action.restaurantId].review_ids[removeIdx];
+      debugger;
+      removeState[action.restaurantId].review_ids.splice(removeIdx, 1);
+      debugger;
       return removeState;
     case REMOVE_RESTAURANT:
       let newState = Object.assign({}, state);

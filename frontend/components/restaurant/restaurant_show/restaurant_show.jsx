@@ -28,21 +28,29 @@ class RestaurantShow extends React.Component {
     const restaurantId = this.props.match.params.restaurantId;
     const favoritesId = this.props.restaurant.favorite_ids;
     const reviewsId = this.props.restaurant.review_ids;
+    const fetchRestaurant = this.props.fetchRestaurant;
+
+    debugger;
     if (this.state.is_Mounted) {
       if (restaurantId !== prevProps.match.params.restaurantId) {
-        this.props.fetchRestaurant(this.props.match.params.restaurantId);
+        fetchRestaurant(this.props.match.params.restaurantId);
       } else if (
         favoritesId.length !== prevProps.restaurant.favorite_ids.length
       ) {
-        this.props.fetchRestaurant(this.props.match.params.restaurantId);
-      } else if (reviewsId.length !== prevProps.restaurant.review_ids.length) {
+        fetchRestaurant(this.props.match.params.restaurantId);
+        // } else if (reviewsId.length !== prevProps.restaurant.review_ids.length) {
+      } else if (
+        Object.values(prevProps.reviews).length !==
+        Object.values(this.props.reviews).length
+      ) {
         if (this.state.receivedReviews === false) {
           this.setState({
             receivedReviews: true
           });
         }
         if (this.state.receivedReviews) {
-          this.props.fetchRestaurant(this.props.match.params.restaurantId);
+          debugger;
+          fetchRestaurant(this.props.match.params.restaurantId);
         }
       }
     }

@@ -100,12 +100,6 @@ h3.restaurant-name {
   font-size: 1em;
 }
 
-.restaurant-details * {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 li.restaurant-item a {
   text-decoration: none;
   color: inherit;
@@ -492,7 +486,7 @@ section.restaurant-featured-image {
   padding: 20px;
   z-index: 1;
 }
-.readon {
+[class^="readon"] {
   font-size: 16px;
 }
 .subheader p {

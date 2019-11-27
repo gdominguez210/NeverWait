@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReviewSlide } from "./review_form_slides/review_slide";
+
 class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
@@ -28,11 +29,27 @@ class ReviewForm extends React.Component {
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleMouseOut = this.handleMouseOut.bind(this);
     this.handleFillReset = this.handleFillReset.bind(this);
+    this.handleDisabled = this.handleDisabled.bind(this);
   }
 
+  handleSubmit(e) {
+    const review = Object.assign({}, this.state);
+    if (this.state.body.length > 0) {
+      debugger;
+      this.props
+        .action(review)
+        .then(() => {
+          return this.props.closeModal();
+        })
+        .fail(() => this.props.closeModal());
+    }
+  }
   handleClick(e) {
     e.preventDefault();
-    if (e.target.className.includes("next")) {
+    if (
+      e.target.className.includes("next") &&
+      this.handleDisabled(this.state.active_slide)
+    ) {
       this.setState({
         active_slide: this.state.active_slide + 1
       });
@@ -40,6 +57,25 @@ class ReviewForm extends React.Component {
       this.setState({
         active_slide: this.state.active_slide - 1
       });
+    }
+  }
+
+  handleDisabled(slide) {
+    switch (slide) {
+      case 1:
+        return this.state.food_rating > 0 ? true : false;
+      case 2:
+        return this.state.service_rating > 0 ? true : false;
+      case 3:
+        return this.state.value_rating > 0 ? true : false;
+      case 5:
+        return this.state.noise_level > 0 ? true : false;
+      case 4:
+        return this.state.ambience_rating > 0 ? true : false;
+      case 6:
+        return this.state.body.length > 0 ? true : false;
+      default:
+        return false;
     }
   }
 
@@ -62,21 +98,24 @@ class ReviewForm extends React.Component {
 
   handleFillReset(val) {
     debugger;
-    let fill_percent = this.handleFill(val);
+    let fill_percent = val;
+    debugger;
     this.setState({
       fill_percent,
       fill: { width: `${fill_percent}%` }
     });
   }
   handleMouseOver(val) {
-    let fill_percent = this.handleFill(val);
+    // let fill_percent = this.handleFill(val);
+    debugger;
+    let fill_percent = val;
     this.setState({
       fill_percent,
       fill: { width: `${fill_percent}%` }
     });
   }
   handleMouseOut(val) {
-    let fill_percent = this.handleFill(val);
+    let fill_percent = val;
     debugger;
     this.setState({
       fill_percent,
@@ -84,7 +123,7 @@ class ReviewForm extends React.Component {
     });
   }
   handleRating(val, rating_type) {
-    let fill_percent = this.handleFill(val);
+    let fill_percent = val;
     debugger;
     this.setState({
       [rating_type]: val,
@@ -93,87 +132,6 @@ class ReviewForm extends React.Component {
     });
   }
 
-  foodRating() {
-    return (
-      <section className="food-rating">
-        <div className="review-content">
-          <h3>How would you rate the food?</h3>
-          <div className="review-stars">
-            <div className="back-stars">
-              <button
-                onMouseOver={() => this.handleMouseOver(1)}
-                onClick={() => this.handleRating(1, "food_rating")}
-              >
-                {" "}
-                <FontAwesomeIcon icon="star" />{" "}
-              </button>
-              <button
-                onMouseOver={() => this.handleMouseOver(2)}
-                onClick={() => this.handleRating(2, "food_rating")}
-              >
-                <FontAwesomeIcon icon="star" />{" "}
-              </button>
-              <button
-                onMouseOver={() => this.handleMouseOver(3)}
-                onClick={() => this.handleRating(3, "food_rating")}
-              >
-                <FontAwesomeIcon icon="star" />{" "}
-              </button>
-              <button
-                onMouseOver={() => this.handleMouseOver(4)}
-                onClick={() => this.handleRating(4, "food_rating")}
-              >
-                <FontAwesomeIcon icon="star" />{" "}
-              </button>
-              <button
-                onMouseOver={() => this.handleMouseOver(5)}
-                onClick={() => this.handleRating(5, "food_rating")}
-              >
-                <FontAwesomeIcon icon="star" />{" "}
-              </button>
-              <div className="front-stars" style={this.state.fill}>
-                <button
-                  onMouseOver={() => this.handleMouseOver(1)}
-                  onClick={() => this.handleRating(1, "food_rating")}
-                >
-                  <FontAwesomeIcon icon="star" />
-                </button>
-                <button
-                  onMouseOver={() => this.handleMouseOver(2)}
-                  onClick={() => this.handleRating(2, "food_rating")}
-                >
-                  <FontAwesomeIcon icon="star" />
-                </button>
-                <button
-                  onMouseOver={() => this.handleMouseOver(3)}
-                  onClick={() => this.handleRating(3, "food_rating")}
-                >
-                  <FontAwesomeIcon icon="star" />
-                </button>
-                <button
-                  onMouseOver={() => this.handleMouseOver(4)}
-                  onClick={() => this.handleRating(4, "food_rating")}
-                >
-                  <FontAwesomeIcon icon="star" />
-                </button>
-                <button
-                  onMouseOver={() => this.handleMouseOver(5)}
-                  onClick={() => this.handleRating(5, "food_rating")}
-                >
-                  <FontAwesomeIcon icon="star" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="review-icon">
-          <span className="icon">
-            <FontAwesomeIcon icon="pizza-slice" />
-          </span>
-        </div>
-      </section>
-    );
-  }
   renderSlide() {
     switch (this.state.active_slide) {
       case 1:
@@ -212,6 +170,18 @@ class ReviewForm extends React.Component {
             state={this.state}
           />
         );
+      case 5:
+        return (
+          <ReviewSlide
+            handleMouseOver={this.handleMouseOver}
+            handleMouseOut={this.handleMouseOut}
+            handleRating={this.handleRating}
+            handleFillReset={this.handleFillReset}
+            type="noise"
+            fill={this.state.fill}
+            state={this.state}
+          />
+        );
       case 4:
         return (
           <ReviewSlide
@@ -224,18 +194,23 @@ class ReviewForm extends React.Component {
             state={this.state}
           />
         );
+      case 6:
+        return (
+          <ReviewSlide
+            handleMouseOver={this.handleMouseOver}
+            handleMouseOut={this.handleMouseOut}
+            handleRating={this.handleRating}
+            handleFillReset={this.handleFillReset}
+            handleSubmit={this.handleSubmit}
+            type="body"
+            fill={this.state.fill}
+            state={this.state}
+            update={this.update}
+          />
+        );
       default:
         return null;
     }
-  }
-  handleSubmit(e) {
-    e.stopPropagation();
-    e.preventDefault();
-    const review = Object.assign({}, this.state);
-    this.props.action(review).then(() => {
-      return this.props.closeModal();
-    });
-    // this.props.history.push("/");
   }
 
   renderErrors() {
@@ -274,15 +249,56 @@ class ReviewForm extends React.Component {
   renderNav() {
     return (
       <div className="nav-container">
-        <button className="cancel readon-blank">Cancel</button>
+        <button className="readon danger" onClick={this.props.closeModal}>
+          Cancel
+        </button>
+        <div className="progress-dots">
+          <span
+            className={this.state.active_slide >= 1 ? "icon active" : "icon"}
+          >
+            <FontAwesomeIcon icon="circle" />
+          </span>
+          <span
+            className={this.state.active_slide >= 2 ? "icon active" : "icon"}
+          >
+            <FontAwesomeIcon icon="circle" />
+          </span>
+          <span
+            className={this.state.active_slide >= 3 ? "icon active" : "icon"}
+          >
+            <FontAwesomeIcon icon="circle" />
+          </span>
+          <span
+            className={this.state.active_slide >= 4 ? "icon active" : "icon"}
+          >
+            <FontAwesomeIcon icon="circle" />
+          </span>
+          <span
+            className={this.state.active_slide >= 5 ? "icon active" : "icon"}
+          >
+            <FontAwesomeIcon icon="circle" />
+          </span>
+          <span
+            className={this.state.active_slide >= 6 ? "icon active" : "icon"}
+          >
+            <FontAwesomeIcon icon="circle" />
+          </span>
+        </div>
         <div className="nav-buttons">
           {this.state.active_slide !== 1 ? (
             <button className="readon-blank prev" onClick={this.handleClick}>
               Prev
             </button>
           ) : null}
-          {this.state.active_slide !== 4 ? (
-            <button className="readon next" onClick={this.handleClick}>
+          {this.state.active_slide !== 6 ? (
+            <button
+              className={
+                this.handleDisabled(this.state.active_slide)
+                  ? "readon next"
+                  : "readon next disabled"
+              }
+              onClick={this.handleClick}
+            >
               Next
             </button>
           ) : null}

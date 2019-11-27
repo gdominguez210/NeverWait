@@ -6,6 +6,7 @@ import renderLoader from "../loader/loader";
 import { library, toHtml } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { isThisSecond } from "date-fns";
+import { receiveFilter } from "../../actions/filter_actions";
 
 library.add(fas);
 class SearchSidebarForm extends React.Component {
@@ -52,10 +53,10 @@ class SearchSidebarForm extends React.Component {
   }
   handleClick(e) {
     const query = { ...this.state.query };
-    const { searchQuery, search } = this.props;
+    const { searchQuery, search, receiveFilter } = this.props;
     // let showActiveRating = false;
+    debugger;
     if (e.target.dataset.rating) {
-       ;
       query.rating === e.target.dataset.rating
         ? (query.rating = false)
         : (query.rating = e.target.dataset.rating);
@@ -64,10 +65,12 @@ class SearchSidebarForm extends React.Component {
           query,
           showActiveRating: true
         },
-        () => searchQuery({ query: this.state.query, res: search.res })
+        () => {
+          searchQuery({ query: this.state.query, res: search.res });
+          receiveFilter(this.state.query.rating, "Search");
+        }
       );
     } else if (e.target.dataset.price_range) {
-       ;
       query.price_range === e.target.dataset.price_range
         ? (query.price_range = false)
         : (query.price_range = e.target.dataset.price_range);
@@ -76,7 +79,10 @@ class SearchSidebarForm extends React.Component {
           query,
           showActivePriceRange: true
         },
-        () => searchQuery({ query: this.state.query, res: search.res })
+        () => {
+          searchQuery({ query: this.state.query, res: search.res });
+          receiveFilter(this.state.query.price_range, "Search");
+        }
       );
     }
   }

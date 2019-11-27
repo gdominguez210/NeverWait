@@ -216,7 +216,7 @@ class FindTableForm extends React.Component {
         Party Size
         <select
           value={this.state.party_size}
-          onChange={() => this.update("party_size")}
+          onChange={this.update("party_size")}
         >
           {options}
         </select>

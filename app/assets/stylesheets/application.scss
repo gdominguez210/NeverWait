@@ -141,6 +141,7 @@ li.location p {
   cursor: pointer;
   text-shadow: 0px 0px 30px #000000;
 }
+
 .fade-appear {
   opacity: 0;
   transition: all 500ms linear;
@@ -271,7 +272,6 @@ header {
   display: inline-block;
   line-height: 2.5;
   border-radius: 4px;
-
   text-decoration: none;
   border: none;
 }
@@ -554,7 +554,7 @@ ul.errors {
 }
 
 [class^="readon"] {
-  transition: 0.3s all;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 button.readon-outline:hover {
@@ -563,10 +563,6 @@ button.readon-outline:hover {
 
 .readon-submit:hover {
   background-color: #1b6179;
-}
-
-[class^="readon"] {
-  transition: 0.3s all;
 }
 
 button.readon-outline:hover {

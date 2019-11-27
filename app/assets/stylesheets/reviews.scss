@@ -175,7 +175,7 @@ p.user-reviews svg {
   justify-content: center;
   content: attr(data-amount) " reviews";
   position: absolute;
-  background: rgba(0, 0, 0, 0.25);
+  background: hsla(195, 63%, 25%, .35);
   color: #ffffff;
   left: 0;
   top: 0px;
@@ -184,11 +184,9 @@ p.user-reviews svg {
   text-align: center;
 }
 
-.inner-stat-bar {
-  position: relative;
-}
 .stat-bar {
   overflow: hidden;
+  position: relative;
 }
 
 .stat-bar:hover {
@@ -350,13 +348,31 @@ li.review-index-item {
 }
 
 .review-icon {
-  margin-left: auto;
   padding: 20px;
   font-size: 4em;
-  background: #d86441;
-  border-radius: 4px;
   color: rgba(255, 255, 255, 0.8);
-  border-radius: 20px;
+  border-radius: 200px;
+  min-width: 150px;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.food-rating .review-icon {
+  background: #da3743;
+}
+.service-rating .review-icon {
+  background: #971c59;
+}
+.value-rating .review-icon {
+  background: #18856b;
+}
+.noise-rating .review-icon {
+  background: #6c8ae4;
+}
+.ambience-rating .review-icon {
+  background: #7c2f8e;
 }
 
 .review-stars {
@@ -379,7 +395,7 @@ li.review-index-item {
 
 .review-stars button {
   color: inherit;
-  padding: 0px;
+  padding: 5px;
   font-size: 1.2em;
   display: inline-block;
 }
@@ -396,7 +412,7 @@ section.review-header {
   padding: 36px;
 }
 
-section.food-rating {
+.form-container.review-form .review-header + section {
   margin: 0px -36px 0px -36px;
   padding: 36px;
   background: #f1f1f1;
@@ -409,4 +425,151 @@ section.food-rating {
 
 .review-content h3 {
   margin-top: 0px;
+}
+
+.progress-dots {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5em;
+  margin-left: 50px;
+  color: #2b9abf;
+}
+
+.progress-dots .icon {
+  margin: 0px 5px;
+  opacity: 0.3;
+  min-width: auto;
+  transition: 0.3s all;
+}
+
+.progress-dots .active {
+  opacity: 1;
+}
+.form-container.review-form .review-header + section {
+  transition: 0.3s;
+}
+
+.review-icon {
+  transition: 0.3s;
+}
+
+.review-icon span.icon {
+  min-width: 100px;
+  text-align: center;
+  margin: 0px;
+}
+
+.form-container.review-form .review-stars {
+  font-size: 1.2em;
+}
+
+.nav-buttons {
+  min-width: 125px;
+  display: flex;
+}
+
+button.readon.next {
+  margin-left: auto;
+  transition: 0.3s;
+}
+button.readon.next:focus {
+  outline: none;
+}
+button.readon.disabled {
+  opacity: 0.5;
+  filter: grayscale(0.5);
+}
+
+button.readon-blank.prev {
+  margin-left: auto;
+}
+.review-toolbar + .errors {
+  margin-top: 0px;
+  text-align: right;
+  margin-bottom: 25px;
+}
+
+.review-toolbar + .errors li.error {
+  background: hsla(0, 97%, 95%, 1);
+  display: inline-block;
+  padding: 15px;
+  border-radius: 4px;
+}
+.noise-level-buttons .readon.plain {
+  display: block;
+  margin: 10px 0px;
+  font-size: 1.2em;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.review-content {
+  min-width: 50%;
+  flex: 1;
+}
+
+.review-icon-container {
+  width: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding-left: 36px;
+  box-sizing: border-box;
+}
+
+.noise-level-buttons .readon.plain:hover {
+  background: #2b9abf;
+  color: #ffffff;
+}
+
+.review-stars button {
+  transition: 0.3s color;
+  color: #d4d4d4;
+}
+.review-stars button.active {
+  color: #2b9abf;
+}
+button.readon.demo {
+  background: #6dd783;
+  margin-left: 10px;
+}
+button.readon.plain.active {
+  background-color: #2b9abf;
+  color: #ffffff;
+}
+.review-content textarea {
+  width: 100%;
+  min-height: 300px;
+  font-size: 1.2em;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+}
+span.rating-category {
+  text-transform: capitalize;
+}
+
+.review-content h3 {
+  font-size: 1.5em;
+}
+
+.review-content .review-stars {
+  margin: 0px -5px;
+}
+section.body-rating .readon {
+  justify-self: center;
+  margin-top: 15px;
+  width: 50%;
+}
+
+.noise-rating .review-content,
+.body-rating .review-content {
+  text-align: center;
+}
+
+.review-content textarea:focus {
+  outline: none;
+  box-shadow: 0px 0px 26px #e6e6e6;
 }

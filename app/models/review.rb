@@ -18,7 +18,8 @@
 class Review < ApplicationRecord
 
     validates :total_rating, :food_rating, :service_rating, :value_rating, :noise_level, :body, presence: true
-    validates :user_id, uniqueness: {scope: :restaurant_id}
+    validates :user_id, uniqueness: {scope: :restaurant_id, message: "You have already left a review for this restaurant!" }
+
     
     belongs_to :restaurant
     belongs_to :user
@@ -27,6 +28,10 @@ class Review < ApplicationRecord
 
         calc = ((self.food_rating * 1.0) + (self.service_rating * 1.0)  + (self.value_rating * 1.0) + (self.ambience_rating * 1.0)) / 4
         calc.ceil
+    end
+
+    def recommended?
+         self.total_rating > 2.5 ? self.recommended = true : self.recommended = false
     end
 
 end

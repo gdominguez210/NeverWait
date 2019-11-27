@@ -10,6 +10,20 @@ const ReviewIndexItem = props => {
   const last_name = author.lname;
   const initials = first_name.slice(0, 1) + last_name.slice(0, 1);
   const total = author.total_reviews > 1 ? "reviews" : "review";
+  const colors = [
+    "#DA3743",
+    "#7C2F8E",
+    "#971C59",
+    "#D86441",
+    "#FDAF08",
+    "#6C8AE4",
+    "#544CA0",
+    "#18856B"
+  ];
+
+  let userColor = {
+    backgroundColor: `${colors[author.id % colors.length]}`
+  };
   let deleteHTML = null;
   if (props.currentUser) {
     deleteHTML =
@@ -25,13 +39,16 @@ const ReviewIndexItem = props => {
 
   let numReviews = author.total_reviews;
   numReviews === undefined ? (numReviews = 1) : numReviews;
+  debugger;
   return (
     <>
       <CSSTransition in={true} appear={true} timeout={300} classNames="fade">
         <li className="review-index-item">
           <div className="inner-wrap">
             <div className="author-details">
-              <div className="user-avatar">{initials}</div>
+              <div className="user-avatar" style={userColor}>
+                {initials}
+              </div>
               <p>{first_name}</p>
               <div className="user-reviews">
                 <FontAwesomeIcon icon="comment-alt" />

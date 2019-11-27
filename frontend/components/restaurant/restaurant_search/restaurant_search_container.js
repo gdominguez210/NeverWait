@@ -6,20 +6,26 @@ import {
 } from "../../../actions/restaurants_actions";
 import { findTable } from "../../../actions/reservation_actions";
 import { openModal } from "../../../actions/modal_actions";
+import { receiveFilter, clearFilter } from "../../../actions/filter_actions";
+
 const msp = state => {
   const { restaurants } = state.entities;
   const { search } = state.ui;
+  const filter = state.ui.filter;
   const errors = state.errors.reservation;
   return {
     restaurants: Object.values(restaurants),
     currentUser: state.entities.users[state.session.id],
-    search
+    search,
+    filter
   };
 };
 
 const mdp = dispatch => ({
   clearRestaurants: () => dispatch(clearRestaurants()),
   fetchSearchedRestaurants: data => dispatch(fetchSearchedRestaurants(data)),
+  receiveFilter: (val, type) => dispatch(receiveFilter(val, type)),
+  clearFilter: () => dispatch(clearFilter()),
   findTable: (reservationRequest, restaurantId) =>
     dispatch(findTable(reservationRequest, restaurantId))
 });

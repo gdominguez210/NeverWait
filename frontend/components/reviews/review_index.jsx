@@ -16,6 +16,10 @@ class ReviewIndex extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.sort = this.sort.bind(this);
     this.renderSort = this.renderSort.bind(this);
+    this.demoReview = this.demoReview.bind(this);
+    this.handleNewReview = this.handleNewReview.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
+    debugger;
   }
 
   componentDidMount() {
@@ -36,10 +40,10 @@ class ReviewIndex extends React.Component {
   sort(arr, type) {
     switch (type) {
       case "newest":
-        arr = arr.sort((a, b) => (a.id > b.id ? 1 : -1));
+        arr = arr.sort((a, b) => (a.id < b.id ? 1 : -1));
         return arr;
       case "oldest":
-        arr = arr.sort((a, b) => (a.id < b.id ? 1 : -1));
+        arr = arr.sort((a, b) => (a.id > b.id ? 1 : -1));
         return arr;
       case "top-rated":
         arr = arr.sort((a, b) => (a.total_rating < b.total_rating ? 1 : -1));
@@ -124,6 +128,18 @@ class ReviewIndex extends React.Component {
       </ul>
     ) : null;
   }
+
+  demoReview() {
+    return {
+      restaurant_id: parseInt(this.props.match.params.restaurantId),
+      food_rating: Math.floor(Math.random() * (+5 - +1) + +1),
+      service_rating: Math.floor(Math.random() * (+5 - +1) + +1),
+      value_rating: Math.floor(Math.random() * (+5 - +1) + +1),
+      noise_level: Math.floor(Math.random() * (+5 - +1) + +1),
+      ambience_rating: Math.floor(Math.random() * (+5 - +1) + +1),
+      body: "This is a randomly generated review"
+    };
+  }
   renderSort() {
     return (
       <div className="sort-dropdown">
@@ -144,23 +160,42 @@ class ReviewIndex extends React.Component {
       </div>
     );
   }
-  render() {
-    let { reviews, currentUser, openModal, filter } = this.props;
-    let reviewItems = null;
-    let reviewList = null;
-    let addReview = null;
-    if (currentUser) {
-      addReview = (
-        <>
-          <button onClick={() => openModal("review")} className="readon">
-            <span className="icon">
-              <FontAwesomeIcon icon="plus" />
-            </span>
-            Add Review
-          </button>
-        </>
+  renderErrors() {
+    const errors = this.props.errors;
+    if (errors.length > 0) {
+      return (
+        <ul className="errors">
+          {errors.map((error, i) => (
+            <li className="error" key={`error-${i}`}>
+              {error.includes("User")
+                ? error
+                    .split(" ")
+                    .slice(1)
+                    .join(" ")
+                : error}
+            </li>
+          ))}
+        </ul>
       );
     }
+  }
+  handleNewReview(buttonType) {
+    let { currentUser, openModal, createReview } = this.props;
+
+    if (currentUser) {
+      if (buttonType === "addReview") {
+        openModal("review");
+      } else if (buttonType === "demoReview") {
+        createReview(this.demoReview());
+      }
+    } else {
+      openModal("login");
+    }
+  }
+  render() {
+    let { reviews, currentUser, openModal, filter, createReview } = this.props;
+    let reviewItems = null;
+    let reviewList = null;
     if (this.is_Mounted) {
       if (this.state.sort) {
         reviews = this.sort(reviews, this.state.sort);
@@ -185,17 +220,20 @@ class ReviewIndex extends React.Component {
           );
         });
       } else {
-        reviewItems = reviews.map(review => {
-          return (
-            <ReviewIndexItem
-              deleteReview={this.props.deleteReview}
-              currentUser={this.props.currentUser}
-              review={review}
-              author={this.props.users[review.user_id]}
-              key={review.id}
-            />
-          );
-        });
+        reviewItems = reviews
+          .slice(0)
+          .reverse()
+          .map(review => {
+            return (
+              <ReviewIndexItem
+                deleteReview={this.props.deleteReview}
+                currentUser={this.props.currentUser}
+                review={review}
+                author={this.props.users[review.user_id]}
+                key={review.id}
+              />
+            );
+          });
       }
       reviewList = <ul className="reviews">{reviewItems}</ul>;
     }
@@ -208,8 +246,26 @@ class ReviewIndex extends React.Component {
               {this.renderSort()}
               {this.renderFilters()}
             </div>
-            {addReview}
+            <button
+              onClick={() => this.handleNewReview("addReview")}
+              className="readon"
+            >
+              <span className="icon">
+                <FontAwesomeIcon icon="plus" />
+              </span>
+              Add Review
+            </button>
+            <button
+              className="readon demo"
+              onClick={() => this.handleNewReview("demoReview")}
+            >
+              <span className="icon">
+                <FontAwesomeIcon icon="bolt" />
+              </span>
+              Add Quick Review
+            </button>
           </div>
+          {this.renderErrors()}
           {reviewList}
         </div>
       </>

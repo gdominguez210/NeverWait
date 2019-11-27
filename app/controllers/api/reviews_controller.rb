@@ -14,7 +14,7 @@ class Api::ReviewsController < ApplicationController
         # @review.restaurant_id = params[:id]
    
         @review.total_rating = @review.calc_total_rating()
-
+        @review.recommended?
         if @review.save
             render json: @review
         else

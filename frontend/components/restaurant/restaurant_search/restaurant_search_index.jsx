@@ -6,6 +6,7 @@ import { CSSTransition } from "react-transition-group";
 import SearchFormContainer from "../../search/search_form_container";
 import SearchSidebarFormContainer from "../../search/search_sidebar_form_container";
 import renderLoader from "../../loader/loader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class RestaurantSearchIndex extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class RestaurantSearchIndex extends React.Component {
     this.state = {
       loading: true
     };
+    this.renderFilters = this.renderFilters.bind(this);
   }
 
   componentDidMount() {
@@ -51,8 +53,26 @@ class RestaurantSearchIndex extends React.Component {
     }
   }
 
+  renderFilters() {
+    if (this.props.filter && this.props.filter.filterType === "Search") {
+      return (
+        <div className="filters-container">
+          <p>Filters</p>
+          <div class="filter-tags">
+            <button className="filter-tag" onClick={this.props.clearFilter}>
+              <span className="icon">
+                <FontAwesomeIcon icon="check-square" />
+              </span>
+              {this.props.filter.filter}{" "}
+            </button>
+          </div>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  }
   render() {
-     ;
     const {
       restaurants,
       deleteRestaurant,
@@ -93,6 +113,7 @@ class RestaurantSearchIndex extends React.Component {
               classNames="fade"
             >
               <section className="restaurants-index">
+                {this.renderFilters()}
                 {renderLoader(this.state)}
                 {this.state.loading ? null : (
                   <p>

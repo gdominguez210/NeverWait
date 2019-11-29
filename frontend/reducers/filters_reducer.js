@@ -4,7 +4,11 @@ const filterReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_FILTER:
-      return { filter: action.filter, filterType: action.filterType };
+      let filterState = Object.assign({}, state);
+      filterState[`filterItem${action.filter.type}`] = action.filter;
+
+      // return { filter: action.filter, filterType: action.filterType };
+      return filterState;
     case CLEAR_FILTER:
       return {};
     default:

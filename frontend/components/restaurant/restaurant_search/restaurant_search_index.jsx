@@ -54,22 +54,36 @@ class RestaurantSearchIndex extends React.Component {
   }
 
   renderFilters() {
-    if (this.props.filter && this.props.filter.filterType === "Search") {
-      return (
-        <div className="filters-container">
-          <p>Filters</p>
-          <div class="filter-tags">
-            <button className="filter-tag" onClick={this.props.clearFilter}>
+    debugger;
+    if (this.props.filter) {
+      let activeFilters = Object.values(this.props.filter);
+      if (activeFilters.length > 0) {
+        let filterItems = activeFilters.map((filter, idx) => {
+          debugger;
+          return (
+            <button
+              key={filter.type}
+              className="filter-tag"
+              onClick={() => this.props.clearFilter}
+            >
               <span className="icon">
                 <FontAwesomeIcon icon="check-square" />
               </span>
-              {this.props.filter.filter}{" "}
+              {filter.type}: {filter.val}
             </button>
-          </div>
-        </div>
-      );
-    } else {
-      return null;
+          );
+        });
+        return (
+          <>
+            {filterItems.length > 0 ? (
+              <div className="filters-container">
+                <p>Filters</p>
+                <div className="filter-tags">{filterItems}</div>
+              </div>
+            ) : null}
+          </>
+        );
+      }
     }
   }
   render() {

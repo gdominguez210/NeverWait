@@ -67,7 +67,7 @@ class SearchSidebarForm extends React.Component {
         },
         () => {
           searchQuery({ query: this.state.query, res: search.res });
-          receiveFilter(this.state.query.rating, "Search");
+          receiveFilter(this.state.query.rating, "rating");
         }
       );
     } else if (e.target.dataset.price_range) {
@@ -81,7 +81,7 @@ class SearchSidebarForm extends React.Component {
         },
         () => {
           searchQuery({ query: this.state.query, res: search.res });
-          receiveFilter(this.state.query.price_range, "Search");
+          receiveFilter(this.state.query.price_range, "priceRange");
         }
       );
     }

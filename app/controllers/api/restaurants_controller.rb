@@ -8,20 +8,33 @@ class Api::RestaurantsController < ApplicationController
     end
 
     def search
-        if params[:query] == nil || params[:query][:name].length == 0
+        if params[:query] == nil || params[:query][:name].length == 0 && !params[:query][:price_range]
+  
              @restaurants = Restaurant.includes(:reviews, :reservations, :favorites, :location).with_attached_photos.all 
              @res = params[:res]
-             return
+   
+             return @restaurants, @res
         end
         params[:query].permit!
-        if params[:query][:price_range] && params[:query][:price_range] != "false"
+        if params[:query][:price_range] && params[:query][:price_range] != "false" && params[:query][:name].length == 0
+            @restaurants = Restaurant.includes(:reviews, :reservations, :favorites).joins(:location).with_attached_photos.where("restaurants.price_range LIKE ?", params[:query][:price_range])
+            @res = params[:res]
+            @rating = params[:query][:rating]
+  
+            return @restaurants, @res, @rating
+        elsif params[:query][:price_range] && params[:query][:price_range] != "false" && params[:query][:name].length > 0
             @restaurants = Restaurant.includes(:reviews, :reservations, :favorites).joins(:location).with_attached_photos.where("restaurants.name LIKE ? AND restaurants.price_range LIKE ?", params[:query][:name], params[:query][:price_range]).or(Restaurant.includes(:reviews, :reservations, :favorites).joins(:location).with_attached_photos.where("locations.name LIKE ? AND restaurants.price_range LIKE ?", params[:query][:name], params[:query][:price_range]))
             @res = params[:res]
             @rating = params[:query][:rating]
+  
+            return @restaurants, @res, @rating
         else
+  
             @restaurants = Restaurant.includes(:reviews, :reservations, :favorites).joins(:location).with_attached_photos.where("restaurants.name LIKE ?", params[:query][:name]).or(Restaurant.includes(:reviews, :reservations, :favorites).joins(:location).with_attached_photos.where("locations.name LIKE ?", params[:query][:name]))
             @res = params[:res]
             @rating = params[:query][:rating]
+  
+            return @restaurants, @res, @rating
         end
         
     end

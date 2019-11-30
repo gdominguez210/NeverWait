@@ -4,9 +4,10 @@ import { search } from "../../actions/search_actions";
 import { autocomplete } from "../../util/search_api_util";
 import { receiveFilter } from "../../actions/filter_actions";
 const msp = (state, ownProps) => {
-  const { search } = state.ui;
+  const { search, filter } = state.ui;
   return {
-    search
+    search,
+    filter
   };
 };
 

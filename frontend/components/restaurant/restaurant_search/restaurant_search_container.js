@@ -6,7 +6,10 @@ import {
 } from "../../../actions/restaurants_actions";
 import { findTable } from "../../../actions/reservation_actions";
 import { openModal } from "../../../actions/modal_actions";
-import { receiveFilter, clearFilter } from "../../../actions/filter_actions";
+import {
+  receiveFilter,
+  clearAllFilters
+} from "../../../actions/filter_actions";
 
 const msp = state => {
   const { restaurants } = state.entities;
@@ -25,7 +28,7 @@ const mdp = dispatch => ({
   clearRestaurants: () => dispatch(clearRestaurants()),
   fetchSearchedRestaurants: data => dispatch(fetchSearchedRestaurants(data)),
   receiveFilter: (val, type) => dispatch(receiveFilter(val, type)),
-  clearFilter: () => dispatch(clearFilter()),
+  clearAllFilters: () => dispatch(clearAllFilters()),
   findTable: (reservationRequest, restaurantId) =>
     dispatch(findTable(reservationRequest, restaurantId))
 });

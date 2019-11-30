@@ -31,6 +31,28 @@ class SearchSidebarForm extends React.Component {
           query: this.props.search.query
         });
       }
+
+      if (prevProps.filter !== this.props.filter) {
+        const query = { ...this.state.query };
+        const { searchQuery, search, receiveFilter } = this.props;
+        let activeFilters = Object.values(this.props.filter);
+        for (let i = 0; i < activeFilters.length; i++) {
+          let filter = activeFilters[i];
+          debugger;
+          query[filter.type] = filter.val;
+          debugger;
+        }
+        debugger;
+        this.setState(
+          {
+            query
+          },
+          () => {
+            searchQuery({ query: this.state.query, res: search.res });
+          }
+        );
+      }
+      //Add condition for receiving filters from state
     }
   }
 
@@ -57,31 +79,33 @@ class SearchSidebarForm extends React.Component {
     // let showActiveRating = false;
     debugger;
     if (e.target.dataset.rating) {
+      let rating = e.target.dataset.rating;
       query.rating === e.target.dataset.rating
         ? (query.rating = false)
         : (query.rating = e.target.dataset.rating);
       this.setState(
         {
-          query,
+          // query,
           showActiveRating: true
         },
         () => {
-          searchQuery({ query: this.state.query, res: search.res });
-          receiveFilter(this.state.query.rating, "rating");
+          //update this to no longer call search Query in handleclick but instead in component did update
+          receiveFilter(rating, "rating");
         }
       );
     } else if (e.target.dataset.price_range) {
+      let priceRange = e.target.dataset.price_range;
       query.price_range === e.target.dataset.price_range
         ? (query.price_range = false)
         : (query.price_range = e.target.dataset.price_range);
       this.setState(
         {
-          query,
+          // query,
           showActivePriceRange: true
         },
         () => {
-          searchQuery({ query: this.state.query, res: search.res });
-          receiveFilter(this.state.query.price_range, "priceRange");
+          // searchQuery({ query: this.state.query, res: search.res });
+          receiveFilter(priceRange, "price_range");
         }
       );
     }

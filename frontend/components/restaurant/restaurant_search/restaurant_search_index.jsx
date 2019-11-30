@@ -16,6 +16,7 @@ class RestaurantSearchIndex extends React.Component {
       loading: true
     };
     this.renderFilters = this.renderFilters.bind(this);
+    this.parseFilterTag = this.parseFilterTag.bind(this);
   }
 
   componentDidMount() {
@@ -53,10 +54,56 @@ class RestaurantSearchIndex extends React.Component {
     }
   }
 
+  parseFilterTag(filter) {
+    switch (filter.type) {
+      case "rating":
+        return `Rating: Between ${filter.val}-${parseInt(filter.val) +
+          1} stars`;
+      case "price_range":
+        switch (filter.val) {
+          case "pricey":
+            return (
+              <>
+                Price Range: {"  "}
+                <span className="icon">
+                  <FontAwesomeIcon icon="dollar-sign" />
+                  <FontAwesomeIcon icon="dollar-sign" />
+                  <FontAwesomeIcon icon="dollar-sign" />
+                </span>
+              </>
+            );
+          case "moderate":
+            return (
+              <>
+                Price Range: {"  "}
+                <span className="icon">
+                  <FontAwesomeIcon icon="dollar-sign" />
+                  <FontAwesomeIcon icon="dollar-sign" />
+                </span>
+              </>
+            );
+          case "cheap":
+            return (
+              <>
+                Price Range: {"  "}
+                <span className="icon">
+                  <FontAwesomeIcon icon="dollar-sign" />
+                </span>
+              </>
+            );
+          default:
+            undefined;
+        }
+      default:
+        return undefined;
+    }
+  }
+
   renderFilters() {
     debugger;
     if (this.props.filter) {
       let activeFilters = Object.values(this.props.filter);
+      let clearAllFilters = this.props.clearAllFilters;
       if (activeFilters.length > 0) {
         let filterItems = activeFilters.map((filter, idx) => {
           debugger;
@@ -69,7 +116,7 @@ class RestaurantSearchIndex extends React.Component {
               <span className="icon">
                 <FontAwesomeIcon icon="check-square" />
               </span>
-              {filter.type}: {filter.val}
+              {this.parseFilterTag(filter)}
             </button>
           );
         });
@@ -77,7 +124,15 @@ class RestaurantSearchIndex extends React.Component {
           <>
             {filterItems.length > 0 ? (
               <div className="filters-container">
-                <p>Filters</p>
+                <div className="filter-header">
+                  <p>Filters</p>
+                  <button
+                    onClick={() => clearAllFilters()}
+                    className="readon-blank"
+                  >
+                    Clear All Filters
+                  </button>
+                </div>
                 <div className="filter-tags">{filterItems}</div>
               </div>
             ) : null}

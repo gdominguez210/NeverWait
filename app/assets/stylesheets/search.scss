@@ -55,6 +55,8 @@ section.restaurants-index > p {
   border: 1px solid #dddddd;
   padding: 10px;
   display: flex;
+  font-size: 1em;
+  line-height: 1.7;
   flex: 1;
   justify-content: center;
   background: #ffffff;
@@ -86,11 +88,12 @@ section.restaurants-index > p {
   display: flex;
   text-align: left;
   position: relative;
-  padding-left: 25px;
-  box-sizing: borde-rbox;
+  padding-left: 30px;
+  box-sizing: border-box;
   margin: 0.5em 0px;
   vertical-align: middle;
   align-items: center;
+  font-size: 1.1em;
 }
 
 .rating-options button:before {
@@ -101,7 +104,7 @@ section.restaurants-index > p {
   bottom: 0;
   left: 0;
   box-sizing: border-box;
-  width: 20px;
+  width: 25px;
   height: 100%;
   border-radius: 2px;
   border: 2px solid #000;

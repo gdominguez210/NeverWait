@@ -175,7 +175,7 @@ p.user-reviews svg {
   justify-content: center;
   content: attr(data-amount) " reviews";
   position: absolute;
-  background: hsla(195, 63%, 25%, .35);
+  background: hsla(195, 63%, 25%, 0.35);
   color: #ffffff;
   left: 0;
   top: 0px;
@@ -302,11 +302,21 @@ li.review-index-item {
   display: flex;
   align-items: center;
 }
-.filter-tag .icon {
+.filter-tag .icon:first-child {
   color: #2b9abf;
   font-size: 1.3em;
 }
+.filters-container p {
+  font-size: 1.5em;
+}
 
+.filter-tags {
+  display: flex;
+}
+
+button.filter-tag:not(:first-child) {
+  margin: 0px 10px;
+}
 .author-details {
   margin-right: 0px;
   display: flex;

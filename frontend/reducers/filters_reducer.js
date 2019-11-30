@@ -1,4 +1,4 @@
-import { RECEIVE_FILTER, CLEAR_FILTER } from "../actions/filter_actions";
+import { RECEIVE_FILTER, CLEAR_ALL_FILTERS } from "../actions/filter_actions";
 const filterReducer = (state = {}, action) => {
   Object.freeze(state);
 
@@ -9,7 +9,7 @@ const filterReducer = (state = {}, action) => {
 
       // return { filter: action.filter, filterType: action.filterType };
       return filterState;
-    case CLEAR_FILTER:
+    case CLEAR_ALL_FILTERS:
       return {};
     default:
       return state;

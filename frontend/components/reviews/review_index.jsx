@@ -200,25 +200,29 @@ class ReviewIndex extends React.Component {
       if (this.state.sort) {
         reviews = this.sort(reviews, this.state.sort);
       }
-      if (filter && filter.filterType === "Review") {
-        let filteredReviewItems = [];
-        for (let i = 0; i < reviews.length; i++) {
-          let review = reviews[i];
-          if (review.total_rating === filter.filter) {
-            filteredReviewItems.push(review);
+      if (Object.values(filter).length > 0) {
+        let filterItem = Object.values(filter)[0];
+        debugger;
+        if (filterItem.type === "Review") {
+          let filteredReviewItems = [];
+          for (let i = 0; i < reviews.length; i++) {
+            let review = reviews[i];
+            if (review.total_rating === filterItem.val) {
+              filteredReviewItems.push(review);
+            }
           }
+          reviewItems = filteredReviewItems.map(review => {
+            return (
+              <ReviewIndexItem
+                deleteReview={this.props.deleteReview}
+                currentUser={this.props.currentUser}
+                review={review}
+                author={this.props.users[review.user_id]}
+                key={review.id}
+              />
+            );
+          });
         }
-        reviewItems = filteredReviewItems.map(review => {
-          return (
-            <ReviewIndexItem
-              deleteReview={this.props.deleteReview}
-              currentUser={this.props.currentUser}
-              review={review}
-              author={this.props.users[review.user_id]}
-              key={review.id}
-            />
-          );
-        });
       } else {
         reviewItems = reviews
           .slice(0)

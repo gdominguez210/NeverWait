@@ -117,6 +117,11 @@ class SearchForm extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidMount() {
+    if (this.props.match.path.includes("search-restaurants")) {
+      this.props.searchQuery(this.state);
+    }
+  }
   validTimeslots(date) {
     let result = moment(new Date()).format("M/D/YY") === date.format("M/D/YY");
     let timeNow = this.moment().format("h:mma");

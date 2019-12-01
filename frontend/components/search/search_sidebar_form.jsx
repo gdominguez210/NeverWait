@@ -25,34 +25,51 @@ class SearchSidebarForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    const {
+      searchQuery,
+      search,
+      filter,
+      receiveFilter,
+      receiveSearchQuery
+    } = this.props;
+    //  if (this.state.receivedReviews === false) {
+    //       this.setState({
+    //         receivedReviews: true
+    //       });
+    //     }
     if (this.is_Mounted) {
-      if (prevProps.search.query !== this.props.search.query) {
+      debugger;
+      if (
+        JSON.stringify(search.query) !== JSON.stringify(prevProps.search.query)
+      ) {
         this.setState({
           query: this.props.search.query
         });
-      }
-
-      if (prevProps.filter !== this.props.filter) {
+      } else if (JSON.stringify(prevProps.filter) !== JSON.stringify(filter)) {
         const query = { ...this.state.query };
-        const { searchQuery, search, receiveFilter } = this.props;
-        let activeFilters = Object.values(this.props.filter);
+
+        debugger;
+        let activeFilters = Object.values(filter);
         for (let i = 0; i < activeFilters.length; i++) {
           let filter = activeFilters[i];
           debugger;
           query[filter.type] = filter.val;
           debugger;
         }
-        debugger;
         this.setState(
           {
             query
           },
           () => {
-            searchQuery({ query: this.state.query, res: search.res });
+            debugger;
+            console.log(this.state);
+            searchQuery({
+              query,
+              res: search.res
+            });
           }
         );
       }
-      //Add condition for receiving filters from state
     }
   }
 
@@ -85,7 +102,7 @@ class SearchSidebarForm extends React.Component {
         : (query.rating = e.target.dataset.rating);
       this.setState(
         {
-          // query,
+          query,
           showActiveRating: true
         },
         () => {
@@ -100,7 +117,7 @@ class SearchSidebarForm extends React.Component {
         : (query.price_range = e.target.dataset.price_range);
       this.setState(
         {
-          // query,
+          query,
           showActivePriceRange: true
         },
         () => {

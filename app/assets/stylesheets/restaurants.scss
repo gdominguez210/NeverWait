@@ -1,3 +1,4 @@
+@import "./variables";
 .thumbnail {
   min-height: 132px;
   background: #eeeeee;
@@ -192,7 +193,7 @@ section.restaurant-featured-image {
   left: 0;
   right: 0;
   z-index: 2;
-  background: #2b9abf;
+  background: $primary-accent-color;
   height: 3px;
 }
 ul.restaurant-quick-links li:after {
@@ -204,7 +205,7 @@ ul.restaurant-quick-links li:after {
   right: 0;
 }
 ul.restaurant-quick-links li.active {
-  color: #2b9abf;
+  color: $primary-accent-color;
 }
 ul.restaurant-quick-links li {
   display: flex;
@@ -528,7 +529,7 @@ section.restaurant-content-inner h2 {
 }
 
 .front-stars {
-  color: #2b9abf;
+  color: $primary-accent-color;
   overflow: hidden;
   position: absolute;
   top: 0px;

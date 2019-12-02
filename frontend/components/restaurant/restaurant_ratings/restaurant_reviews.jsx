@@ -2,7 +2,7 @@ import React, { createRef } from "react";
 import ReviewIndexContainer from "../../reviews/review_index_container";
 import RestaurantStars from "./rating_stars";
 import { CSSTransition } from "react-transition-group";
-import RestaurantBars from "./restaurant_bars";
+import RestaurantBarsContainer from "./restaurant_bars_container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const RestaurantReviews = props => {
   const header =
@@ -64,7 +64,7 @@ const RestaurantReviews = props => {
             </div>
           </div>
           <div className="restaurant-bars">
-            <RestaurantBars restaurant={props.restaurant} />
+            <RestaurantBarsContainer restaurant={props.restaurant} />
           </div>
         </div>
 

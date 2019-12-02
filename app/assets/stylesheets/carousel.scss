@@ -1,3 +1,4 @@
+@import "./variables";
 .carousel-container {
   display: flex;
 }
@@ -85,7 +86,7 @@ button.carousel-nav {
   outline: none;
 }
 button.carousel-nav:hover {
-  border: 2px solid #2b9abf;
+  border: 2px solid $primary-accent-color;
 }
 
 button.carousel-nav {

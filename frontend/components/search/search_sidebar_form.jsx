@@ -14,7 +14,10 @@ class SearchSidebarForm extends React.Component {
     super(props);
 
     this.state = {
-      query: this.props.search.query
+      showActivePriceRange: false,
+      showActiveRating: false
+      // query: this.props.search.query,
+      // filter: this.props.filter
     };
     this.handleClick = this.handleClick.bind(this);
     this.is_Mounted = false;
@@ -25,110 +28,104 @@ class SearchSidebarForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const {
-      searchQuery,
-      search,
-      filter,
-      receiveFilter,
-      receiveSearchQuery
-    } = this.props;
-    //  if (this.state.receivedReviews === false) {
-    //       this.setState({
-    //         receivedReviews: true
-    //       });
-    //     }
+    const { searchQuery, search, filter } = this.props;
     if (this.is_Mounted) {
-      debugger;
-      if (
-        JSON.stringify(search.query) !== JSON.stringify(prevProps.search.query)
-      ) {
-        this.setState({
-          query: this.props.search.query
-        });
-      } else if (JSON.stringify(prevProps.filter) !== JSON.stringify(filter)) {
-        const query = { ...this.state.query };
+      if (JSON.stringify(prevProps.filter) !== JSON.stringify(filter)) {
+        const filters = Object.values(filter);
+        let filterTerms = {};
 
-        debugger;
-        let activeFilters = Object.values(filter);
-        for (let i = 0; i < activeFilters.length; i++) {
-          let filter = activeFilters[i];
-          debugger;
-          query[filter.type] = filter.val;
-          debugger;
+        for (let i = 0; i < filters.length; i++) {
+          const filterItem = filters[i];
+
+          filterTerms[filterItem.type] = filterItem.val;
         }
-        this.setState(
-          {
-            query
-          },
-          () => {
-            debugger;
-            console.log(this.state);
-            searchQuery({
-              query,
-              res: search.res
-            });
-          }
-        );
+        const { name } = search.query;
+        debugger;
+        let searchTerm = Object.assign({}, { name }, filterTerms);
+        debugger;
+        searchQuery({
+          query: searchTerm,
+          res: search.res
+        });
       }
     }
   }
 
   renderFilterBar() {
+    const { filter } = this.props;
     return this.state.showActivePriceRange || this.state.showActiveRating ? (
       <div className="filter-bar">
         <h2>Filters:</h2>
-        {this.state.query.price_range ? (
+        {filter.price_range ? (
           <div>
-            <span class="tag">Price Range: {this.state.query.price_range}</span>
+            <span class="tag">Price Range: {filter.price_range}</span>
           </div>
         ) : null}
-        {this.state.query.rating ? (
+        {filter.rating ? (
           <div>
-            <span class="tag">Rating: {this.state.query.rating}</span>
+            <span class="tag">Rating: {filter.rating}</span>
           </div>
         ) : null}
       </div>
     ) : null;
   }
   handleClick(e) {
-    const query = { ...this.state.query };
-    const { searchQuery, search, receiveFilter } = this.props;
-    // let showActiveRating = false;
-    debugger;
+    const { receiveFilter, clearFilter, filter } = this.props;
     if (e.target.dataset.rating) {
       let rating = e.target.dataset.rating;
-      query.rating === e.target.dataset.rating
-        ? (query.rating = false)
-        : (query.rating = e.target.dataset.rating);
-      this.setState(
-        {
-          query,
-          showActiveRating: true
-        },
-        () => {
-          //update this to no longer call search Query in handleclick but instead in component did update
-          receiveFilter(rating, "rating");
-        }
-      );
+      debugger;
+      let filterRating = filter.rating || {};
+      debugger;
+      if (filterRating.val === rating) {
+        this.setState(
+          {
+            showActiveRating: false
+          },
+          () => {
+            clearFilter("rating");
+          }
+        );
+      } else {
+        this.setState(
+          {
+            showActiveRating: true
+          },
+          () => {
+            receiveFilter(rating, "rating");
+          }
+        );
+      }
     } else if (e.target.dataset.price_range) {
       let priceRange = e.target.dataset.price_range;
-      query.price_range === e.target.dataset.price_range
-        ? (query.price_range = false)
-        : (query.price_range = e.target.dataset.price_range);
-      this.setState(
-        {
-          query,
-          showActivePriceRange: true
-        },
-        () => {
-          // searchQuery({ query: this.state.query, res: search.res });
-          receiveFilter(priceRange, "price_range");
-        }
-      );
+      let filterPriceRange = filter.price_range || {};
+
+      if (filterPriceRange.val === priceRange) {
+        this.setState(
+          {
+            filter,
+            showActivePriceRange: false
+          },
+          () => {
+            clearFilter("price_range");
+          }
+        );
+      } else {
+        this.setState(
+          {
+            showActivePriceRange: true
+          },
+          () => {
+            receiveFilter(priceRange, "price_range");
+          }
+        );
+      }
     }
   }
 
   ratings() {
+    const { filter } = this.props;
+    const { showActiveRating } = this.state;
+    let filterRating = filter.rating || {};
     return (
       <div className="rating-options">
         <p>
@@ -137,66 +134,61 @@ class SearchSidebarForm extends React.Component {
           </span>
           Rating
         </p>
-        <button
-          onClick={e => this.handleClick(e)}
-          data-rating="5"
-          className={
-            this.state.showActiveRating && this.state.query.rating === "5"
-              ? "active"
-              : null
-          }
-        >
-          5 Stars
-        </button>
-        <button
-          onClick={e => this.handleClick(e)}
-          data-rating="4"
-          className={
-            this.state.showActiveRating && this.state.query.rating === "4"
-              ? "active"
-              : null
-          }
-        >
-          4 Stars
-        </button>
-        <button
-          onClick={e => this.handleClick(e)}
-          data-rating="3"
-          className={
-            this.state.showActiveRating && this.state.query.rating === "3"
-              ? "active"
-              : null
-          }
-        >
-          3 Stars
-        </button>
-        <button
-          onClick={e => this.handleClick(e)}
-          data-rating="2"
-          className={
-            this.state.showActiveRating && this.state.query.rating === "2"
-              ? "active"
-              : null
-          }
-        >
-          2 Stars
-        </button>
-        <button
-          onClick={e => this.handleClick(e)}
-          data-rating="1"
-          className={
-            this.state.showActiveRating && this.state.query.rating === "1"
-              ? "active"
-              : null
-          }
-        >
-          1 Star
-        </button>
+        <div className="ratings-button-container">
+          <button
+            onClick={e => this.handleClick(e)}
+            data-rating="5"
+            className={
+              showActiveRating && filterRating.val === "5" ? "active" : null
+            }
+          >
+            5 Stars
+          </button>
+          <button
+            onClick={e => this.handleClick(e)}
+            data-rating="4"
+            className={
+              showActiveRating && filterRating.val === "4" ? "active" : null
+            }
+          >
+            4 Stars
+          </button>
+          <button
+            onClick={e => this.handleClick(e)}
+            data-rating="3"
+            className={
+              showActiveRating && filterRating.val === "3" ? "active" : null
+            }
+          >
+            3 Stars
+          </button>
+          <button
+            onClick={e => this.handleClick(e)}
+            data-rating="2"
+            className={
+              showActiveRating && filterRating.val === "2" ? "active" : null
+            }
+          >
+            2 Stars
+          </button>
+          <button
+            onClick={e => this.handleClick(e)}
+            data-rating="1"
+            className={
+              showActiveRating && filterRating.val === "1" ? "active" : null
+            }
+          >
+            1 Star
+          </button>
+        </div>
       </div>
     );
   }
-  map() {}
+
   priceRanges() {
+    const { filter } = this.props;
+    const { showActivePriceRange } = this.state;
+    let filterPriceRange = filter.price_range || {};
     return (
       <div className="price-options">
         <p>
@@ -210,8 +202,7 @@ class SearchSidebarForm extends React.Component {
             onClick={e => this.handleClick(e)}
             data-price_range="cheap"
             className={
-              this.state.showActivePriceRange &&
-              this.state.query.price_range === "cheap"
+              showActivePriceRange && filterPriceRange.val === "cheap"
                 ? "active"
                 : null
             }
@@ -224,8 +215,7 @@ class SearchSidebarForm extends React.Component {
             onClick={e => this.handleClick(e)}
             data-price_range="moderate"
             className={
-              this.state.showActivePriceRange &&
-              this.state.query.price_range === "moderate"
+              showActivePriceRange && filterPriceRange.val === "moderate"
                 ? "active"
                 : null
             }
@@ -241,8 +231,7 @@ class SearchSidebarForm extends React.Component {
             onClick={e => this.handleClick(e)}
             data-price_range="pricey"
             className={
-              this.state.showActivePriceRange &&
-              this.state.query.price_range === "pricey"
+              showActivePriceRange && filterPriceRange.val === "pricey"
                 ? "active"
                 : null
             }
@@ -261,15 +250,11 @@ class SearchSidebarForm extends React.Component {
       </div>
     );
   }
-
-  neighborHoods() {}
-
   render() {
     return (
       <div className="filter-options">
         {this.priceRanges()}
         {this.ratings()}
-        {/* {this.renderFilterBar()} */}
       </div>
     );
   }

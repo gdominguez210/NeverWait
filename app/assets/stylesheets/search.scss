@@ -1,12 +1,10 @@
-section.search-results-form-container:after {
-  position: absolute;
+@import "./variables";
+section.search-results-form-container {
+  padding: 20px;
   background: #333333;
-  top: 73px;
-  left: 0;
-  right: 0;
-  content: "";
-  height: 100px;
-  z-index: 0;
+}
+.search-form form {
+  padding: 0px;
 }
 section.restaurants-index > div {
   margin: 25px auto;
@@ -17,7 +15,7 @@ main#root {
 
 .search-form {
   position: relative;
-  z-index: 1;
+  z-index: 5;
 }
 
 section.search-results-form-container .search-form form {
@@ -111,15 +109,15 @@ section.restaurants-index > p {
 }
 
 .rating-options button.active:before {
-  background: #2b9abf;
-  border-color: #2b9abf;
+  background: $primary-accent-color;
+  border-color: $primary-accent-color;
 }
 .rating-options button:hover:after {
   position: absolute;
   content: "";
   height: 1px;
-  border-color: #2b9abf;
-  background: #2b9abf;
+  border-color: $primary-accent-color;
+  background: $primary-accent-color;
   left: 25px;
   right: 5px;
   bottom: 0px;
@@ -132,9 +130,9 @@ section.restaurants-index > p {
 }
 .price-options button.active,
 .price-options button:hover {
-  background: #2b9abf;
+  background: $primary-accent-color;
   color: #ffffff;
-  border-color: #2b9abf;
+  border-color: $primary-accent-color;
 }
 
 span.tag {
@@ -159,4 +157,60 @@ span.tag:before {
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
   border-right: 10px solid #333333;
+}
+
+.filters-container {
+  padding: 26px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  position: sticky;
+  background: #f7f7f7;
+  box-sizing: border-box;
+  top: 0;
+  z-index: 20;
+}
+
+.filter-header p {
+  margin: 0px;
+}
+
+.filter-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.filter-header .readon-blank {
+  margin-left: auto;
+}
+
+.filter-tags button {
+  background: #ffffff;
+  border-radius: 4px;
+}
+
+.filter-tag span.icon:last-child {
+  margin-left: 5px;
+}
+
+ul.restaurants-list {
+  margin: 0px;
+}
+
+section.restaurants-container aside {
+  /* position: sticky; */
+  /* top: 0; */
+}
+
+.filter-options {
+  position: sticky;
+  top: 0;
+}
+
+.price-options button:focus {
+  outline: none;
+}
+
+.filter-options button > * {
+  pointer-events: none;
 }

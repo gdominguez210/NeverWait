@@ -16,8 +16,8 @@
 
 /* color: #6c8ae4;
 color: #544CA0;
-color: #2B9ABF; */
-
+color:  $primary-accent-color; */
+@import "./variables";
 * {
   box-sizing: border-box;
 }
@@ -46,7 +46,7 @@ body {
 }
 
 .drop-down a svg {
-  color: #2b9abf;
+  color: $primary-accent-color;
 }
 .drop-down ul li {
   list-style-type: none;
@@ -58,6 +58,7 @@ body {
 .header-greeting {
   cursor: pointer;
   position: relative;
+  z-index: 6;
   padding: 10px 20px;
 }
 .drop-down a {
@@ -181,7 +182,7 @@ body {
 }
 
 .logo {
-  color: #2b9abf;
+  color: $primary-accent-color;
   display: flex;
   align-items: center;
   font-size: 2em;
@@ -281,9 +282,12 @@ button {
   background: none;
 }
 .readon {
-  background-color: #2b9abf;
+  background-color: $primary-accent-color;
   color: #ffffff;
   font-family: inherit;
+}
+.readon:hover {
+  background-color: darken($primary-accent-color, 15%);
 }
 .button-container:nth-child(2) {
   text-align: right;
@@ -296,7 +300,7 @@ button {
 }
 
 .readon.danger {
-  background: #da3743;
+  background: $warning;
 }
 button.readon.plain {
   background: #ffffff;
@@ -308,7 +312,7 @@ button.readon.plain {
 }
 
 button.readon.plain .icon {
-  color: #2b9abf;
+  color: $primary-accent-color;
 }
 
 nav.login-signup {
@@ -357,7 +361,7 @@ input {
   max-width: none;
   width: 100%;
   font-size: 19px;
-  background-color: #2b9abf;
+  background-color: $primary-accent-color;
   color: #ffffff;
 }
 
@@ -437,7 +441,7 @@ button.readon-outline {
 
 .highlight {
   background: none;
-  color: #2b9abf;
+  color: $primary-accent-color;
 }
 
 button.readon-outline {
@@ -558,7 +562,7 @@ ul.errors {
 }
 
 button.readon-outline:hover {
-  border-color: #2b9abf;
+  border-color: $primary-accent-color;
 }
 
 .readon-submit:hover {
@@ -566,11 +570,11 @@ button.readon-outline:hover {
 }
 
 button.readon-outline:hover {
-  border-color: #2b9abf;
+  border-color: $primary-accent-color;
 }
 
 .modal-child .form-container {
-  border-bottom: 5px solid #2b9abf;
+  border-bottom: 5px solid $primary-accent-color;
 }
 
 .readon-blank,
@@ -584,7 +588,7 @@ button.readon-outline:hover {
   content: "";
   display: block;
   height: 1px;
-  background: #2b9abf;
+  background: $primary-accent-color;
   margin: 0 auto;
   transition: 0.3s;
 }
@@ -723,7 +727,7 @@ section.banner:after {
 }
 
 .search-items ul li:hover {
-  background: #2b9abf;
+  background: $primary-accent-color;
   color: #ffffff;
 }
 @keyframes rotate-layer2 {
@@ -779,11 +783,32 @@ section.banner:after {
     display: block;
     padding: 0px;
   }
+  section.restaurants-container {
+    display: block;
+  }
+  section.restaurants-container aside {
+    width: 100%;
+  }
 
   .search-form form > * {
     margin: 15px 0px;
   }
 
+  .filter-options {
+    display: flex;
+  }
+
+  .filter-options > * {
+    flex: 1;
+  }
+
+  .filter-options p {
+    font-size: 1.2em;
+  }
+
+  .price-options button {
+    max-width: 20%;
+  }
   .search-form label {
     padding: 15px;
   }
@@ -824,7 +849,7 @@ section.banner:after {
     margin-bottom: 0px;
   }
   .search-form button.readon {
-    margin-top: 0px;
+    margin: 0px;
   }
   main.restaurant-content {
     max-width: 640px;
@@ -916,7 +941,7 @@ section.banner:after {
     width: 100%;
   }
 
-  banner h2 {
+  .banner h2 {
     font-size: 2em;
   }
   section.reservations-container-outter,
@@ -974,6 +999,91 @@ section.banner:after {
 
   ul.restaurant-location {
     align-items: flex-start;
+  }
+  li.restaurant-index-item .inner-wrap,
+  .booking-header {
+    display: block;
+  }
+  .available-times button {
+    flex-wrap: wrap;
+  }
+
+  .restaurant-index-item .inner-wrap > a {
+    max-width: 100%;
+    min-height: 200px;
+  }
+
+  .restaurant-details {
+    padding: 20px 0px;
+  }
+
+  .booking-header {
+    display: block;
+    text-align: center;
+  }
+
+  .available-times button {
+    max-width: none;
+    flex: initial;
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .available-times {
+    flex-wrap: wrap;
+    margin: 10px 0px;
+  }
+
+  ul.restaurant-location {
+    padding-left: 0px;
+  }
+
+  .restaurant-header-left > * {
+    text-align: center;
+  }
+
+  li.restaurant-index-item a {
+    display: block;
+    /* font-size: 1.8em; */
+  }
+
+  .restaurant-ratings {
+    /* display: block; */
+    justify-content: center;
+    font-size: 1.5em;
+  }
+
+  .restaurant-details .restaurant-name {
+    font-size: 1.8em;
+  }
+
+  ul.restaurant-location {
+    display: flex;
+    font-size: 1.5em;
+    flex-direction: row;
+    justify-content: center;
+    margin: 5px 0px;
+  }
+
+  ul.restaurants-list li {
+    display: block;
+    text-align: center;
+    margin: 0px 5px;
+  }
+
+  p.restaurant-booked {
+    justify-content: center;
+  }
+
+  .booking-header p {
+    margin: 5px 0px;
+    font-size: 1.2em;
+  }
+  .search-form button.readon {
+    margin-top: 15px;
+  }
+  section.restaurants-index.fade-appear-done.fade-enter-done {
+    margin: 0px;
   }
 }
 

@@ -40,10 +40,10 @@ class ReviewIndex extends React.Component {
   sort(arr, type) {
     switch (type) {
       case "newest":
-        arr = arr.sort((a, b) => (a.id < b.id ? 1 : -1));
+        arr = arr.sort((a, b) => (a.id >= b.id ? 1 : -1));
         return arr;
       case "oldest":
-        arr = arr.sort((a, b) => (a.id > b.id ? 1 : -1));
+        arr = arr.sort((a, b) => (a.id < b.id ? 1 : -1));
         return arr;
       case "top-rated":
         arr = arr.sort((a, b) => (a.total_rating < b.total_rating ? 1 : -1));
@@ -53,27 +53,6 @@ class ReviewIndex extends React.Component {
         return arr;
       default:
         return arr;
-    }
-  }
-
-  renderFilters() {
-    if (this.props.filter && this.props.filter.filterType === "Review") {
-      return (
-        <div className="filters-container">
-          <p>Filters</p>
-          <div class="filter-tags">
-            <button className="filter-tag" onClick={this.props.clearFilter}>
-              <span className="icon">
-                <FontAwesomeIcon icon="check-square" />
-              </span>
-              {this.props.filter.filter}{" "}
-              {this.props.filter.filter === 1 ? "star" : "stars"}
-            </button>
-          </div>
-        </div>
-      );
-    } else {
-      return null;
     }
   }
   handleClick(e) {
@@ -129,6 +108,39 @@ class ReviewIndex extends React.Component {
     ) : null;
   }
 
+  renderFilters() {
+    debugger;
+    if (this.props.filter) {
+      let activeFilters = Object.values(this.props.filter);
+      if (activeFilters.length > 0) {
+        let filterItems = activeFilters.map((filter, idx) => {
+          debugger;
+          return (
+            <button
+              key={filter.type}
+              className="filter-tag"
+              onClick={() => this.props.clearAllFilters()}
+            >
+              <span className="icon">
+                <FontAwesomeIcon icon="check-square" />
+              </span>
+              {filter.val} {filter.val > 1 ? "stars" : "star"}
+            </button>
+          );
+        });
+        return (
+          <>
+            {filterItems.length > 0 ? (
+              <div className="filter-bar">
+                <p>Filters</p>
+                <div className="filter-tags">{filterItems}</div>
+              </div>
+            ) : null}
+          </>
+        );
+      }
+    }
+  }
   demoReview() {
     return {
       restaurant_id: parseInt(this.props.match.params.restaurantId),
@@ -203,11 +215,12 @@ class ReviewIndex extends React.Component {
       if (Object.values(filter).length > 0) {
         let filterItem = Object.values(filter)[0];
         debugger;
-        if (filterItem.type === "Review") {
+        if (filterItem.type === "review") {
+          debugger;
           let filteredReviewItems = [];
           for (let i = 0; i < reviews.length; i++) {
             let review = reviews[i];
-            if (review.total_rating === filterItem.val) {
+            if (review.total_rating === parseInt(filterItem.val)) {
               filteredReviewItems.push(review);
             }
           }
@@ -246,10 +259,7 @@ class ReviewIndex extends React.Component {
       <>
         <div className="review-container">
           <div className="review-toolbar">
-            <div className="review-filter-sort">
-              {this.renderSort()}
-              {this.renderFilters()}
-            </div>
+            <div className="review-filter-sort">{this.renderSort()}</div>
             <button
               onClick={() => this.handleNewReview("addReview")}
               className="readon"
@@ -269,6 +279,7 @@ class ReviewIndex extends React.Component {
               Add Quick Review
             </button>
           </div>
+          {this.renderFilters()}
           {this.renderErrors()}
           {reviewList}
         </div>

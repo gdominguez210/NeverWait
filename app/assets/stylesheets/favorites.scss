@@ -1,3 +1,4 @@
+@import "./variables";
 section.favorites-outter-container {
   display: flex;
   flex: 1;
@@ -60,5 +61,5 @@ aside.user-options a {
 
 aside.user-options a:hover {
   background: #f1f1f1;
-  border-left: 5px solid #2b9abf;
+  border-left: 5px solid $primary-accent-color;
 }

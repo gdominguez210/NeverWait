@@ -3,6 +3,7 @@ import RestaurantIndexItem from "../restaurant_index_item";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
+import MediaQuery from "react-responsive";
 import SearchFormContainer from "../../search/search_form_container";
 import SearchSidebarFormContainer from "../../search/search_sidebar_form_container";
 import renderLoader from "../../loader/loader";
@@ -29,7 +30,6 @@ class RestaurantSearchIndex extends React.Component {
   }
 
   componentWillUnmount() {
-    // this.props.clearRestaurants();
     this.is_Mounted = false;
   }
 
@@ -111,7 +111,7 @@ class RestaurantSearchIndex extends React.Component {
             <button
               key={filter.type}
               className="filter-tag"
-              onClick={() => this.props.clearFilter}
+              onClick={() => this.props.clearFilter(filter.type)}
             >
               <span className="icon">
                 <FontAwesomeIcon icon="check-square" />
@@ -167,14 +167,16 @@ class RestaurantSearchIndex extends React.Component {
 
     return (
       <>
+        <section className="search-results-form-container">
+          <SearchFormContainer />
+        </section>
         <section className="inner-container">
-          <section className="search-results-form-container">
-            <SearchFormContainer />
-          </section>
           <section className="restaurants-container">
-            <aside>
-              <SearchSidebarFormContainer />
-            </aside>
+            <MediaQuery minWidth={1051}>
+              <aside>
+                <SearchSidebarFormContainer />
+              </aside>
+            </MediaQuery>
             <CSSTransition
               in={true}
               appear={true}
@@ -187,7 +189,7 @@ class RestaurantSearchIndex extends React.Component {
                 {this.state.loading ? null : (
                   <p>
                     {search.total_available_openings} available tables{" "}
-                    {restaurants.length > 1 ? "betweeen" : "in"}{" "}
+                    {restaurants.length > 1 ? "across " : ""}
                     {restaurants.length}{" "}
                     {restaurants.length > 1 ? "restaurants" : "restaurant"}
                   </p>

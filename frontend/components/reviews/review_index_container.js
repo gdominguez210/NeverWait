@@ -3,7 +3,7 @@ import ReviewIndex from "./review_index";
 import { fetchReviews } from "../../actions/review_actions";
 import { openModal } from "../../actions/modal_actions";
 import { createReview, deleteReview } from "../../actions/review_actions";
-import { clearFilter } from "../../actions/filter_actions";
+import { clearAllFilters } from "../../actions/filter_actions";
 
 const msp = (state, ownProps) => {
   const review_ids = ownProps.review_ids;
@@ -26,7 +26,7 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => ({
   fetchReviews: id => dispatch(fetchReviews(id)),
   openModal: modal => dispatch(openModal(modal)),
-  clearFilter: () => dispatch(clearFilter()),
+  clearAllFilters: () => dispatch(clearAllFilters()),
   deleteReview: (reviewId, restaurantId) =>
     dispatch(deleteReview(reviewId, restaurantId)),
   createReview: review => dispatch(createReview(review))

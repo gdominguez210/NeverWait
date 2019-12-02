@@ -27,12 +27,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, root);
-  window.createFavorite = createFavorite;
-  window.dispatch = store.dispatch;
-  window.store = store;
-  window.state = store.state;
-  window.moment = moment;
-  window.search = search;
-  window.autocomplete = autocomplete;
-  window.fetchSearchedRestaurants = RestActions.fetchSearchedRestaurants;
 });

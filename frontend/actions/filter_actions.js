@@ -3,7 +3,7 @@ export const CLEAR_ALL_FILTERS = "CLEAR_ALL_FILTERS";
 export const CLEAR_FILTER = "CLEAR_FILTER";
 
 export const receiveFilter = (filterVal, filterType) => {
-  debugger;
+   ;
   return {
     type: RECEIVE_FILTER,
     filter: { type: filterType, val: filterVal }

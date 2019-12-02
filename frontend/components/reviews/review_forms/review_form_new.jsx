@@ -35,7 +35,7 @@ class ReviewForm extends React.Component {
   handleSubmit(e) {
     const review = Object.assign({}, this.state);
     if (this.state.body.length > 0) {
-      debugger;
+       ;
       this.props
         .action(review)
         .then(() => {
@@ -97,9 +97,9 @@ class ReviewForm extends React.Component {
   }
 
   handleFillReset(val) {
-    debugger;
+     ;
     let fill_percent = val;
-    debugger;
+     ;
     this.setState({
       fill_percent,
       fill: { width: `${fill_percent}%` }
@@ -107,7 +107,7 @@ class ReviewForm extends React.Component {
   }
   handleMouseOver(val) {
     // let fill_percent = this.handleFill(val);
-    debugger;
+     ;
     let fill_percent = val;
     this.setState({
       fill_percent,
@@ -116,7 +116,7 @@ class ReviewForm extends React.Component {
   }
   handleMouseOut(val) {
     let fill_percent = val;
-    debugger;
+     ;
     this.setState({
       fill_percent,
       fill: { width: `${fill_percent}%` }
@@ -124,7 +124,7 @@ class ReviewForm extends React.Component {
   }
   handleRating(val, rating_type) {
     let fill_percent = val;
-    debugger;
+     ;
     this.setState({
       [rating_type]: val,
       fill_percent,

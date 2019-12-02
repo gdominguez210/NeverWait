@@ -11,11 +11,11 @@ class RestaurantGallery extends React.Component {
       loading: true
     };
     this.is_Mounted = false;
-    debugger;
+     ;
   }
 
   componentDidMount() {
-    debugger;
+     ;
     this.is_Mounted = true;
     if (this.is_Mounted) {
       this.setState({
@@ -27,7 +27,7 @@ class RestaurantGallery extends React.Component {
   render() {
     let imagesList = null;
     if (this.is_Mounted && this.props.restaurant.photoUrls) {
-      debugger;
+       ;
       imagesList = this.props.restaurant.photoUrls.map((url, idx) => (
         <div className="gallery-item" key={`gallery-${idx}`}>
           <LazyLoad height={281} throttle={200}>
@@ -36,7 +36,7 @@ class RestaurantGallery extends React.Component {
         </div>
       ));
     }
-    debugger;
+     ;
     return (
       <>
         <section className="restaurant-gallery" id="photos">

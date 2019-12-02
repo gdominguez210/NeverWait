@@ -19,7 +19,7 @@ class ReviewIndex extends React.Component {
     this.demoReview = this.demoReview.bind(this);
     this.handleNewReview = this.handleNewReview.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
-    debugger;
+     ;
   }
 
   componentDidMount() {
@@ -109,12 +109,12 @@ class ReviewIndex extends React.Component {
   }
 
   renderFilters() {
-    debugger;
+     ;
     if (this.props.filter) {
       let activeFilters = Object.values(this.props.filter);
       if (activeFilters.length > 0) {
         let filterItems = activeFilters.map((filter, idx) => {
-          debugger;
+           ;
           return (
             <button
               key={filter.type}
@@ -214,9 +214,9 @@ class ReviewIndex extends React.Component {
       }
       if (Object.values(filter).length > 0) {
         let filterItem = Object.values(filter)[0];
-        debugger;
+         ;
         if (filterItem.type === "review") {
-          debugger;
+           ;
           let filteredReviewItems = [];
           for (let i = 0; i < reviews.length; i++) {
             let review = reviews[i];

@@ -40,9 +40,9 @@ class SearchSidebarForm extends React.Component {
           filterTerms[filterItem.type] = filterItem.val;
         }
         const { name } = search.query;
-        debugger;
+         ;
         let searchTerm = Object.assign({}, { name }, filterTerms);
-        debugger;
+         ;
         searchQuery({
           query: searchTerm,
           res: search.res
@@ -73,9 +73,9 @@ class SearchSidebarForm extends React.Component {
     const { receiveFilter, clearFilter, filter } = this.props;
     if (e.target.dataset.rating) {
       let rating = e.target.dataset.rating;
-      debugger;
+       ;
       let filterRating = filter.rating || {};
-      debugger;
+       ;
       if (filterRating.val === rating) {
         this.setState(
           {

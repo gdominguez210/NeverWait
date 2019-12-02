@@ -100,13 +100,13 @@ class RestaurantSearchIndex extends React.Component {
   }
 
   renderFilters() {
-    debugger;
+     ;
     if (this.props.filter) {
       let activeFilters = Object.values(this.props.filter);
       let clearAllFilters = this.props.clearAllFilters;
       if (activeFilters.length > 0) {
         let filterItems = activeFilters.map((filter, idx) => {
-          debugger;
+           ;
           return (
             <button
               key={filter.type}

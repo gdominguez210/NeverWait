@@ -30,7 +30,7 @@ class RestaurantShow extends React.Component {
     const reviewsId = this.props.restaurant.review_ids;
     const fetchRestaurant = this.props.fetchRestaurant;
 
-    debugger;
+     ;
     if (this.state.is_Mounted) {
       if (restaurantId !== prevProps.match.params.restaurantId) {
         fetchRestaurant(this.props.match.params.restaurantId);
@@ -49,7 +49,7 @@ class RestaurantShow extends React.Component {
           });
         }
         if (this.state.receivedReviews) {
-          debugger;
+           ;
           fetchRestaurant(this.props.match.params.restaurantId);
         }
       }

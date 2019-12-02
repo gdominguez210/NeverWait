@@ -4,7 +4,7 @@ import { CSSTransition } from "react-transition-group";
 export class ReviewSlide extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
+     ;
 
     this.handleVariant = this.handleVariant.bind(this);
     this.renderStars = this.renderStars.bind(this);
@@ -13,7 +13,7 @@ export class ReviewSlide extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    debugger;
+     ;
     if (
       prevProps.type !== this.props.type &&
       this.props.state[`${this.props.type}_rating`] === 0
@@ -266,7 +266,7 @@ export class ReviewSlide extends React.Component {
   }
 
   renderBody() {
-    debugger;
+     ;
     return (
       <>
         <h3>Leave a comment for your review:</h3>

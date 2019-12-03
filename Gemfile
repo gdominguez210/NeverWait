@@ -20,7 +20,7 @@ gem 'random-location'
 gem 'redis-rails'
 gem "image_processing"
   gem 'rails_real_favicon'
-  
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -51,7 +51,6 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate', '~> 2.7.0'
-  gem 'rails_real_favicon'
 end
 
 group :development do

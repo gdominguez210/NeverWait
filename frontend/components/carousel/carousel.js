@@ -19,9 +19,7 @@ class Carousel extends React.Component {
   }
   componentDidMount() {
     this.is_Mounted = true;
-    debugger;
     this.props.clearRestaurants();
-    debugger;
     this.props.fetchFeaturedRestaurants().then(() => {
       if (this.is_Mounted) {
         this.setState({

@@ -16,13 +16,11 @@ export class ReservationIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    debugger;
     if (
       JSON.stringify(this.props.reservations) !==
         JSON.stringify(prevProps.reservations) &&
       this.is_Mounted
     ) {
-      debugger;
       this.props.fetchReservations(this.props.match.params.userId);
     }
   }

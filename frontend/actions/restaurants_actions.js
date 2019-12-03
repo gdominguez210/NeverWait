@@ -8,7 +8,6 @@ export const RECEIVE_SEARCH_RESULTS = "RECEIVE_SEARCH_RESULTS";
 export const CLEAR_RESTAURANTS = "CLEAR_RESTAURANTS";
 
 export const clearRestaurants = () => {
-  debugger;
   return {
     type: CLEAR_RESTAURANTS
   };

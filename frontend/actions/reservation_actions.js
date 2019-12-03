@@ -27,7 +27,6 @@ const receiveReservation = reservation => ({
 });
 
 const removeReservation = reservation => {
-  debugger;
   return {
     type: REMOVE_RESERVATION,
     userId: reservation.user_id,

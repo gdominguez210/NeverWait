@@ -50,6 +50,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate', '~> 2.7.0'
+  gem 'rails_real_favicon'
 end
 
 group :development do

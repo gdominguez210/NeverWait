@@ -19,7 +19,6 @@ class ReviewIndex extends React.Component {
     this.demoReview = this.demoReview.bind(this);
     this.handleNewReview = this.handleNewReview.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
-     ;
   }
 
   componentDidMount() {
@@ -109,12 +108,10 @@ class ReviewIndex extends React.Component {
   }
 
   renderFilters() {
-     ;
     if (this.props.filter) {
       let activeFilters = Object.values(this.props.filter);
       if (activeFilters.length > 0) {
         let filterItems = activeFilters.map((filter, idx) => {
-           ;
           return (
             <button
               key={filter.type}
@@ -206,6 +203,7 @@ class ReviewIndex extends React.Component {
   }
   render() {
     let { reviews, currentUser, openModal, filter, createReview } = this.props;
+    debugger;
     let reviewItems = null;
     let reviewList = null;
     if (this.is_Mounted) {
@@ -214,9 +212,7 @@ class ReviewIndex extends React.Component {
       }
       if (Object.values(filter).length > 0) {
         let filterItem = Object.values(filter)[0];
-         ;
         if (filterItem.type === "review") {
-           ;
           let filteredReviewItems = [];
           for (let i = 0; i < reviews.length; i++) {
             let review = reviews[i];
@@ -225,6 +221,7 @@ class ReviewIndex extends React.Component {
             }
           }
           reviewItems = filteredReviewItems.map(review => {
+            debugger;
             return (
               <ReviewIndexItem
                 deleteReview={this.props.deleteReview}
@@ -241,6 +238,7 @@ class ReviewIndex extends React.Component {
           .slice(0)
           .reverse()
           .map(review => {
+            debugger;
             return (
               <ReviewIndexItem
                 deleteReview={this.props.deleteReview}

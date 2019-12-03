@@ -26,7 +26,7 @@ class Api::ReviewsController < ApplicationController
         review = Review.find(params[:id])
         if review
             review.destroy
-            
+            render json: 
         else
             render json: ["404 Not Found"], status: 404
         end

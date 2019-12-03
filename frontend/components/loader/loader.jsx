@@ -6,7 +6,7 @@ const renderLoader = state => {
     <MoonLoader
       sizeUnit={"px"}
       size={60}
-      color={"$primary-accent-color"}
+      color={"#2b9abf"}
       loading={state.loading}
     />
   ) : null;

@@ -52,7 +52,7 @@ class Api::ReservationsController < ApplicationController
     def destroy
         @reservation = Reservation.find(params[:id])
         if @reservation.destroy!
-            render "api/reservations/show"
+         render "api/reservations/show"
         else
             render json: ["Reservation does not exist."]
         end

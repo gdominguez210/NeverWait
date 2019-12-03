@@ -8,6 +8,7 @@ import SearchFormContainer from "../../search/search_form_container";
 import SearchSidebarFormContainer from "../../search/search_sidebar_form_container";
 import renderLoader from "../../loader/loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LazyLoad from "react-lazyload";
 
 class RestaurantSearchIndex extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class RestaurantSearchIndex extends React.Component {
 
   componentWillUnmount() {
     this.is_Mounted = false;
+    this.props.clearAllFilters();
   }
 
   componentDidUpdate(prevProps) {
@@ -57,8 +59,13 @@ class RestaurantSearchIndex extends React.Component {
   parseFilterTag(filter) {
     switch (filter.type) {
       case "rating":
-        return `Rating: Between ${filter.val}-${parseInt(filter.val) +
-          1} stars`;
+        switch (filter.val) {
+          case "5":
+            return `Rating: 5 stars`;
+          default:
+            return `Rating: Between ${filter.val}-${parseInt(filter.val) +
+              1} stars`;
+        }
       case "price_range":
         switch (filter.val) {
           case "pricey":
@@ -100,13 +107,11 @@ class RestaurantSearchIndex extends React.Component {
   }
 
   renderFilters() {
-     ;
     if (this.props.filter) {
       let activeFilters = Object.values(this.props.filter);
       let clearAllFilters = this.props.clearAllFilters;
       if (activeFilters.length > 0) {
         let filterItems = activeFilters.map((filter, idx) => {
-           ;
           return (
             <button
               key={filter.type}
@@ -153,15 +158,24 @@ class RestaurantSearchIndex extends React.Component {
     let restaurantItems = null;
     if (restaurants) {
       restaurantItems = restaurants.map((restaurant, idx) => (
-        <RestaurantIndexItem
-          currentUser={currentUser}
-          deleteRestaurant={deleteRestaurant}
-          restaurant={restaurant}
-          res={search.res}
-          key={restaurant.id}
-          findTable={findTable}
-          history={history}
-        />
+        <LazyLoad height={200} throttle={200} key={`${restaurant.id}-${idx}`}>
+          <CSSTransition
+            in={true}
+            appear={true}
+            timeout={300}
+            classNames="fade"
+          >
+            <RestaurantIndexItem
+              currentUser={currentUser}
+              deleteRestaurant={deleteRestaurant}
+              restaurant={restaurant}
+              res={search.res}
+              key={restaurant.id}
+              findTable={findTable}
+              history={history}
+            />
+          </CSSTransition>
+        </LazyLoad>
       ));
     }
 
@@ -177,26 +191,20 @@ class RestaurantSearchIndex extends React.Component {
                 <SearchSidebarFormContainer />
               </aside>
             </MediaQuery>
-            <CSSTransition
-              in={true}
-              appear={true}
-              timeout={300}
-              classNames="fade"
-            >
-              <section className="restaurants-index">
-                {this.renderFilters()}
-                {renderLoader(this.state)}
-                {this.state.loading ? null : (
-                  <p>
-                    {search.total_available_openings} available tables{" "}
-                    {restaurants.length > 1 ? "across " : ""}
-                    {restaurants.length}{" "}
-                    {restaurants.length > 1 ? "restaurants" : "restaurant"}
-                  </p>
-                )}
-                <ul className="restaurants-list">{restaurantItems}</ul>
-              </section>
-            </CSSTransition>
+
+            <section className="restaurants-index">
+              {this.renderFilters()}
+              {renderLoader(this.state)}
+              {this.state.loading ? null : (
+                <p>
+                  {search.total_available_openings} available tables{" "}
+                  {restaurants.length > 1 ? "across " : ""}
+                  {restaurants.length}{" "}
+                  {restaurants.length > 1 ? "restaurants" : "restaurant"}
+                </p>
+              )}
+              <ul className="restaurants-list">{restaurantItems}</ul>
+            </section>
           </section>
         </section>
       </>

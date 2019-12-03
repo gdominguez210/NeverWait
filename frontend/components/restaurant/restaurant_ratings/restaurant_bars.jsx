@@ -6,10 +6,12 @@ class RestaurantBars extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearAllFilters();
+  }
   handleClick(e) {
     const targetVal = e.target.dataset.val;
     const { filter, receiveFilter, clearAllFilters } = this.props;
-     ;
     Object.values(this.props.filter).length > 0
       ? filter.review.val === targetVal
         ? clearAllFilters()

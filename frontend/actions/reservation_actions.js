@@ -26,10 +26,14 @@ const receiveReservation = reservation => ({
   reservation
 });
 
-const removeReservation = reservationId => ({
-  type: REMOVE_RESERVATION,
-  reservationId
-});
+const removeReservation = reservation => {
+  debugger;
+  return {
+    type: REMOVE_RESERVATION,
+    userId: reservation.user_id,
+    reservationId: reservation.id
+  };
+};
 
 const availableTimeslots = payload => {
   return {
@@ -63,7 +67,7 @@ export const updateReservation = reservation => dispatch =>
 
 export const deleteReservation = reservationId => dispatch =>
   ApiUtil.deleteReservation(reservationId)
-    .then(reservation => dispatch(removeReservation(reservationId)))
+    .then(reservation => dispatch(removeReservation(reservation)))
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 
 export const fetchReservations = id => dispatch => {

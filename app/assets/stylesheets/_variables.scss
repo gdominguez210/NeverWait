@@ -1,3 +1,7 @@
 $primary-accent-color: #2b9abf;
 $warning: #da3743;
 $green: #6dd783;
+
+:export {
+  primary-accent-color: $primary-accent-color;
+}

@@ -7,14 +7,27 @@ let moment = require("moment");
 export class ReservationIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.is_Mounted = false;
   }
 
   componentDidMount() {
     this.props.fetchReservations(this.props.match.params.userId);
+    this.is_Mounted = true;
   }
 
+  componentDidUpdate(prevProps) {
+    debugger;
+    if (
+      JSON.stringify(this.props.reservations) !==
+        JSON.stringify(prevProps.reservations) &&
+      this.is_Mounted
+    ) {
+      debugger;
+      this.props.fetchReservations(this.props.match.params.userId);
+    }
+  }
   render() {
-    let { reservations } = this.props;
+    let { reservations, deleteReservation } = this.props;
     reservations = reservations.filter(
       reservation => reservation instanceof Object
     );
@@ -33,23 +46,16 @@ export class ReservationIndex extends React.Component {
         let dateObj = moment(reservation.date, "MM/DD/YY");
         let currentDateStr = moment(new Date(), "MM/DD/YY").format("MM/DD/YY");
         let currentDateObj = moment(currentDateStr, "MM/DD/YY");
-        console.log(dateObj);
-        console.log(currentDateObj);
         let timeNow = moment().format("h:mma");
         let resTime = moment(start_time, "h: mma");
-        console.log(timeNow);
-        console.log(resTime);
         timeNow = moment(timeNow, "h:mma");
         let status = null;
         let result1 = currentDateObj.isAfter(dateObj);
         let result2 =
           currentDateObj.isSame(dateObj) && timeNow.isAfter(resTime);
-         ;
         if (result1 || result2) {
-           ;
           status = "past";
         } else {
-           ;
           status = "upcoming";
         }
         if (status === "past") {
@@ -65,6 +71,7 @@ export class ReservationIndex extends React.Component {
           upcomingReservations.push(
             <ReservationIndexItem
               reservation={reservation}
+              deleteReservation={deleteReservation}
               status={status}
               key={reservation.id}
               restaurant={restaurants[reservation.restaurant_id]}

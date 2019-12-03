@@ -15,7 +15,6 @@ const RestaurantIndexItem = props => {
     type,
     currentUser
   } = props;
-   ;
   let banner;
   if (restaurant.image_url) {
     banner = {
@@ -159,7 +158,7 @@ const RestaurantIndexItem = props => {
               </Link>
               <div className="restaurant-ratings">
                 <RestaurantStars restaurant={restaurant} />
-                {restaurant.total_reviews > 0 ? restaurant.total_review : 0}
+                {restaurant.total_reviews > 0 ? restaurant.total_reviews : 0}
                 {restaurant.total_reviews === 1 ? " review " : " reviews "}
               </div>
             </div>

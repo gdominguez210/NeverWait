@@ -15,7 +15,7 @@ import thunk from "redux-thunk";
 //     composeEnhancers(applyMiddleware(thunk))
 //   );
 const configureStore = (preloadedState = {}) =>
-  // createStore(rootReducer, preloadedState, applyMiddleware(thunk, logger));
-  createStore(rootReducer, preloadedState, applyMiddleware(thunk));
+  createStore(rootReducer, preloadedState, applyMiddleware(thunk, logger));
+// createStore(rootReducer, preloadedState, applyMiddleware(thunk));
 
 export default configureStore;

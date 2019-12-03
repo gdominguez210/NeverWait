@@ -43,6 +43,11 @@ body {
 }
 .drop-down a {
   color: #333333;
+  cursor: pointer;
+}
+
+.drop-down a:hover{
+  background: #dddddd;
 }
 
 .drop-down a svg {

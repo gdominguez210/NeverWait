@@ -1,6 +1,9 @@
 import { connect } from "react-redux";
 import ReservationIndex from "./reservation_index";
-import { fetchReservations } from "../../actions/reservation_actions";
+import {
+  fetchReservations,
+  deleteReservation
+} from "../../actions/reservation_actions";
 
 const msp = (state, ownProps) => {
   return {
@@ -17,10 +20,8 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = dispatch => ({
-  fetchReservations: userId => dispatch(fetchReservations(userId))
+  fetchReservations: userId => dispatch(fetchReservations(userId)),
+  deleteReservation: reservationId => dispatch(deleteReservation(reservationId))
 });
 
-export default connect(
-  msp,
-  mdp
-)(ReservationIndex);
+export default connect(msp, mdp)(ReservationIndex);

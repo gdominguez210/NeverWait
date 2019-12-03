@@ -11,8 +11,6 @@ export const scrollTo = params => {
       window.requestAnimationFrame(animateScroll.bind(null, elapsedTime));
     }
   };
-
-  //   animateScroll(0);
   window.requestAnimationFrame(animateScroll.bind(null, 0));
 };
 

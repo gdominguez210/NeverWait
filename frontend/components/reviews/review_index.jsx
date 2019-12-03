@@ -27,6 +27,10 @@ class ReviewIndex extends React.Component {
     this.props.loadingDone();
   }
 
+  componentWillUnmount() {
+    this.props.clearReviews();
+  }
+
   componentDidUpdate(prevProps) {
     // if (
     //   prevProps.match.params.restaurantId !==
@@ -203,10 +207,9 @@ class ReviewIndex extends React.Component {
   }
   render() {
     let { reviews, currentUser, openModal, filter, createReview } = this.props;
-    debugger;
     let reviewItems = null;
     let reviewList = null;
-    if (this.is_Mounted) {
+    if (this.is_Mounted && reviews.length > 0) {
       if (this.state.sort) {
         reviews = this.sort(reviews, this.state.sort);
       }
@@ -221,7 +224,6 @@ class ReviewIndex extends React.Component {
             }
           }
           reviewItems = filteredReviewItems.map(review => {
-            debugger;
             return (
               <ReviewIndexItem
                 deleteReview={this.props.deleteReview}
@@ -238,7 +240,6 @@ class ReviewIndex extends React.Component {
           .slice(0)
           .reverse()
           .map(review => {
-            debugger;
             return (
               <ReviewIndexItem
                 deleteReview={this.props.deleteReview}

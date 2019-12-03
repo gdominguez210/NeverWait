@@ -4,6 +4,7 @@ export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
 export const REMOVE_REVIEW = "REMOVE_REVIEW";
 export const RECEIVE_REVIEWS = "RECEIVE_REVIEWS";
 export const RECEIVE_REVIEW_ERRORS = "RECEIVE_REVIEW_ERRORS";
+export const CLEAR_REVIEWS = "CLEAR_REVIEWS";
 const receiveReviews = payload => ({
   type: RECEIVE_REVIEWS,
   reviews: payload.reviews,
@@ -20,6 +21,9 @@ const removeReview = (reviewId, restaurantId) => ({
   restaurantId
 });
 
+export const clearReviews = () => ({
+  type: CLEAR_REVIEWS
+});
 export const receiveErrors = errors => {
   return {
     type: RECEIVE_REVIEW_ERRORS,

@@ -30,7 +30,6 @@ class ReservationForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
     const reservation = Object.assign({}, this.state);
     this.props.createReservation(reservation).then(() => {
       this.props.history.push(
@@ -91,7 +90,6 @@ class ReservationForm extends React.Component {
               <p>
                 <FontAwesomeIcon icon="calendar" />
               </p>
-              {/* <p>Date: {this.parseDate(this.state.date)}</p> */}
               <p>Date: {this.state.date}</p>
             </div>
             <div className="booking-icon">
@@ -160,7 +158,6 @@ class ReservationForm extends React.Component {
                   onChange={this.update("email")}
                 />
               </div>
-              {/* <ul className="errors">{errorItems}</ul> */}
               <button className="readon-submit">Complete Reservation</button>
               {this.renderErrors()}
               {this.footer()}

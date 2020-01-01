@@ -1,20 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { parseDate, dateAbvToInt } from "../../util/format_date_time";
-import moment from "moment";
+import { parseDate } from "../../util/format_date_time";
+
 const ReservationIndexItem = props => {
-  let moment = require("moment");
   const { reservation, restaurant, status, deleteReservation } = props;
   let parsedDate = parseDate(reservation.date);
   const { date, start_time, end_time } = reservation;
   let banner;
-  if (restaurant) {
-    banner = {
-      backgroundImage: `url(${restaurant.image_url})`
-    };
-  } else {
-    banner = {};
-  }
+  restaurant
+    ? (banner = {
+        backgroundImage: `url(${restaurant.image_url})`
+      })
+    : (banner = {});
 
   const manageDeleteReservation = e => {
     e.preventDefault();

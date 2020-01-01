@@ -17,7 +17,10 @@ export class ReservationIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.is_Mounted && !isEqual(this.props.reservation, prevProps.reservations) {
+    if (
+      this.is_Mounted &&
+      !isEqual(this.props.reservation, prevProps.reservations)
+    ) {
       this.props.fetchReservations(this.props.match.params.userId);
     }
   }
@@ -28,17 +31,19 @@ export class ReservationIndex extends React.Component {
     );
 
     const { restaurants, currentUser } = this.props;
-    let reservationItems = null;
-    let pastReservations = null;
-    let upcomingReservations = null;
-    let pastResHTML = null;
-    let upcomingResHTML = null;
+    let [
+      pastReservations,
+      upcomingReservations,
+      pastResHTML,
+      upcomingResHTMl
+    ] = Array(4).fill(null);
+
     if (reservations) {
       pastReservations = [];
       upcomingReservations = [];
       reservations.forEach(reservation => {
         let { date, start_time, end_time } = reservation;
-        let dateObj = moment(reservation.date, "MM/DD/YY");
+        let dateObj = moment(date, "MM/DD/YY");
         let currentDateStr = moment(new Date(), "MM/DD/YY").format("MM/DD/YY");
         let currentDateObj = moment(currentDateStr, "MM/DD/YY");
         let timeNow = moment().format("h:mma");
@@ -48,11 +53,8 @@ export class ReservationIndex extends React.Component {
         let result1 = currentDateObj.isAfter(dateObj);
         let result2 =
           currentDateObj.isSame(dateObj) && timeNow.isAfter(resTime);
-        if (result1 || result2) {
-          status = "past";
-        } else {
-          status = "upcoming";
-        }
+        result1 || result2 ? (status = "past") : (status = "upcoming");
+
         if (status === "past") {
           pastReservations.push(
             <ReservationIndexItem
@@ -99,14 +101,6 @@ export class ReservationIndex extends React.Component {
             <aside className="user-options">
               <h3>Account Options</h3>
               <ul>
-                {/* <li>
-                  <Link to={`/users/${currentUser.id}/`}>
-                    <span className="icon">
-                      <FontAwesomeIcon icon="user" />
-                    </span>
-                    My Profile
-                  </Link>
-                </li> */}
                 <li>
                   <Link to={`/users/${currentUser.id}/favorites`}>
                     <span className="icon">

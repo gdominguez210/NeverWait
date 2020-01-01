@@ -3,6 +3,7 @@ import ReservationIndexItem from "./reservation_index_item";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import isEqual from "../../util/isEqual";
 let moment = require("moment");
 export class ReservationIndex extends React.Component {
   constructor(props) {
@@ -16,11 +17,7 @@ export class ReservationIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (
-      JSON.stringify(this.props.reservations) !==
-        JSON.stringify(prevProps.reservations) &&
-      this.is_Mounted
-    ) {
+    if (this.is_Mounted && !isEqual(this.props.reservation, prevProps.reservations) {
       this.props.fetchReservations(this.props.match.params.userId);
     }
   }

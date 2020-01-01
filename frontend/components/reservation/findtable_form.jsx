@@ -2,7 +2,6 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "react-dates/initialize";
-// import "react-dates/lib/css/_datepicker.css";
 import moment from "moment";
 import {
   DateRangePicker,
@@ -178,15 +177,13 @@ class FindTableForm extends React.Component {
   }
   update(field) {
     return e => {
-      if (e.target.className) {
-        this.setState({
-          [field]: e.target.dataset.timeslot
-        });
-      } else {
-        this.setState({
-          [field]: e.target.value
-        });
-      }
+      e.target.className
+        ? this.setState({
+            [field]: e.target.dataset.timeslot
+          })
+        : this.setState({
+            [field]: e.target.value
+          });
     };
   }
 
@@ -273,13 +270,12 @@ class FindTableForm extends React.Component {
   }
   renderFindTable() {
     let submit = <button className="readon-submit">Find a Table</button>;
-    if (Object.values(this.props.restaurants).length > 0) {
-      if (
-        this.props.restaurants[this.props.match.params.restaurantId]
-          .available_openings
-      ) {
-        submit = null;
-      }
+    if (
+      Object.values(this.props.restaurants).length > 0 &&
+      this.props.restaurants[this.props.match.params.restaurantId]
+        .available_openings
+    ) {
+      submit = null;
     }
     return submit;
   }
@@ -304,7 +300,7 @@ class FindTableForm extends React.Component {
         return null;
       }
     } else {
-      null;
+      return null;
     }
   }
   render() {
@@ -319,7 +315,6 @@ class FindTableForm extends React.Component {
               {this.date()}
               {this.startTime()}
             </div>
-            {/* <ul className="errors">{errorItems}</ul> */}
             {this.handleAvailableTimes()}
             {renderLoader(this.state)}
             {this.renderFindTable()}

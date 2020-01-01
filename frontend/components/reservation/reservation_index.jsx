@@ -5,7 +5,7 @@ import { CSSTransition } from "react-transition-group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import isEqual from "../../util/isEqual";
 let moment = require("moment");
-export class ReservationIndex extends React.Component {
+class ReservationIndex extends React.Component {
   constructor(props) {
     super(props);
     this.is_Mounted = false;

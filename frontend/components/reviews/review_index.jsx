@@ -13,7 +13,7 @@ class ReviewIndex extends React.Component {
     this.renderFilters = this.renderFilters.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.sortList = this.sortList.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSort = this.handleSort.bind(this);
     this.sort = this.sort.bind(this);
     this.renderSort = this.renderSort.bind(this);
     this.demoReview = this.demoReview.bind(this);
@@ -48,22 +48,24 @@ class ReviewIndex extends React.Component {
       case "oldest":
         arr = arr.sort((a, b) => (a.id < b.id ? 1 : -1));
         return arr;
-      case "top-rated":
+      case "topRated":
         arr = arr.sort((a, b) => (a.total_rating > b.total_rating ? 1 : -1));
         return arr;
-      case "lowest-rated":
+      case "lowestRated":
         arr = arr.sort((a, b) => (a.total_rating < b.total_rating ? 1 : -1));
         return arr;
       default:
         return arr;
     }
   }
-  handleClick(e) {
-    let sortOption = e.target.dataset.sortoption;
-    this.setState({
-      sort: sortOption
-    });
+  handleSort(sortOption) {
+    return () => {
+      this.setState({
+        sort: sortOption
+      });
+    };
   }
+
   update(field) {
     return e => {
       this.setState({
@@ -83,25 +85,25 @@ class ReviewIndex extends React.Component {
   sortList() {
     return this.state.showDropdown ? (
       <ul>
-        <li data-sortoption="newest" onClick={this.handleClick}>
+        <li onClick={this.handleSort("newest")}>
           <span className="icon">
             <FontAwesomeIcon icon="circle" />
           </span>
           Newest
         </li>
-        <li data-sortoption="oldest" onClick={this.handleClick}>
+        <li onClick={this.handleSort("oldest")}>
           <span className="icon">
             <FontAwesomeIcon icon="circle" />
           </span>
           Oldest
         </li>
-        <li data-sortoption="top-rated" onClick={this.handleClick}>
+        <li onClick={this.handleSort("topRated")}>
           <span className="icon">
             <FontAwesomeIcon icon="circle" />
           </span>
           Top Rated
         </li>
-        <li data-sortoption="lowest-rated" onClick={this.handleClick}>
+        <li onClick={this.handleSort("lowestRated")}>
           <span className="icon">
             <FontAwesomeIcon icon="circle" />
           </span>

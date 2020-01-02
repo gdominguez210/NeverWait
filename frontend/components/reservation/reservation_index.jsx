@@ -19,7 +19,7 @@ class ReservationIndex extends React.Component {
   componentDidUpdate(prevProps) {
     if (
       this.is_Mounted &&
-      !isEqual(this.props.reservation, prevProps.reservations)
+      !isEqual(this.props.reservations, prevProps.reservations)
     ) {
       this.props.fetchReservations(this.props.match.params.userId);
     }
@@ -35,7 +35,7 @@ class ReservationIndex extends React.Component {
       pastReservations,
       upcomingReservations,
       pastResHTML,
-      upcomingResHTMl
+      upcomingResHTML
     ] = Array(4).fill(null);
 
     if (reservations) {

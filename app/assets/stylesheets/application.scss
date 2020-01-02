@@ -46,7 +46,7 @@ body {
   cursor: pointer;
 }
 
-.drop-down a:hover{
+.drop-down a:hover {
   background: #dddddd;
 }
 
@@ -652,10 +652,6 @@ textarea {
 //   text-transform: capitalize;
 // }
 
-ul.restaurants-container {
-  overflow-x: scroll;
-}
-
 li.restaurant-item {
   min-width: 25%;
 }
@@ -1060,6 +1056,7 @@ section.banner:after {
 
   .restaurant-details .restaurant-name {
     font-size: 1.8em;
+    text-align: center;
   }
 
   ul.restaurant-location {

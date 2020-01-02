@@ -11,6 +11,10 @@ ul.restaurant-quick-links li {
   cursor: pointer;
 }
 
+.restaurant-location ul li {
+  list-style-type: none;
+}
+
 li.restaurant-item {
   max-width: 25%;
   list-style-type: none;
@@ -638,7 +642,15 @@ div#map-container {
 @media (max-width: 900px) {
   ul.restaurants-container {
     display: block;
-    overflow: auto;
+    overflow-x: none;
+  }
+
+  .featured-header,
+  .location-header {
+    justify-content: center;
+    text-align: center;
+    font-size: 1.2em;
+    margin: 15px;
   }
 
   li.restaurant-item {
@@ -699,5 +711,9 @@ div#map-container {
   }
   .search-form .res-container {
     display: block;
+  }
+  .restaurant-location ul {
+    font-size: 1.2em;
+    justify-content: center;
   }
 }

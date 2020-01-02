@@ -69,7 +69,7 @@ class Restaurant < ApplicationRecord
     class_name: :User
 
     belongs_to :location
-    has_many :reviews, dependent: :destroy
+    has_many :reviews, -> {order('id ASC') }, dependent: :destroy
     has_many :reservations, dependent: :destroy
     has_many :favorites, dependent: :destroy
     # has_many :favorited,

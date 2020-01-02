@@ -49,10 +49,10 @@ class ReviewIndex extends React.Component {
         arr = arr.sort((a, b) => (a.id < b.id ? 1 : -1));
         return arr;
       case "top-rated":
-        arr = arr.sort((a, b) => (a.total_rating < b.total_rating ? 1 : -1));
+        arr = arr.sort((a, b) => (a.total_rating > b.total_rating ? 1 : -1));
         return arr;
       case "lowest-rated":
-        arr = arr.sort((a, b) => (a.total_rating > b.total_rating ? 1 : -1));
+        arr = arr.sort((a, b) => (a.total_rating < b.total_rating ? 1 : -1));
         return arr;
       default:
         return arr;
@@ -206,7 +206,7 @@ class ReviewIndex extends React.Component {
     }
   }
   render() {
-    let { reviews, currentUser, openModal, filter, createReview } = this.props;
+    let { reviews, filter } = this.props;
     let reviewItems = null;
     let reviewList = null;
     if (this.is_Mounted && reviews.length > 0) {

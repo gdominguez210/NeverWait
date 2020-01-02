@@ -88,7 +88,7 @@ class ReviewIndex extends React.Component {
           <span className="icon">
             <FontAwesomeIcon icon="circle" />
           </span>
-          {parsedOption}
+          {option}
         </li>
       );
     });

@@ -9,17 +9,18 @@ class RestaurantBars extends React.Component {
   componentWillUnmount() {
     this.props.clearAllFilters();
   }
-  handleClick(e) {
-    const targetVal = e.target.dataset.val;
+  handleClick(val) {
     const { filter, receiveFilter, clearAllFilters } = this.props;
-    Object.values(this.props.filter).length > 0
-      ? filter.review.val === targetVal
-        ? clearAllFilters()
-        : receiveFilter(targetVal, "review")
-      : receiveFilter(targetVal, "review");
+    return () =>
+      Object.values(filter).length > 0
+        ? filter.review.val === val
+          ? clearAllFilters()
+          : receiveFilter(val, "review")
+        : receiveFilter(val, "review");
   }
   render() {
-    let fillFive,
+    let [
+      fillFive,
       fillFour,
       fillThree,
       fillTwo,
@@ -28,7 +29,8 @@ class RestaurantBars extends React.Component {
       amountFour,
       amountThree,
       amountTwo,
-      amountOne = null;
+      amountOne
+    ] = Array(10).fill(null);
     const { restaurant } = this.props;
     if (restaurant.star_ratings) {
       const totalReviews = restaurant.total_reviews;
@@ -68,73 +70,47 @@ class RestaurantBars extends React.Component {
       <>
         <div className="stat-bar-container">
           <span>5</span>
-          <div
-            className="stat-bar"
-            data-amount={amountFive}
-            data-val="5"
-            onClick={this.handleClick}
-          >
+          <div className="stat-bar" onClick={this.handleClick(5)}>
             <div
               className="inner-stat-bar"
-              style={fillFive}
               data-amount={amountFive}
+              style={fillFive}
             ></div>
           </div>
         </div>
         <div className="stat-bar-container">
           <span>4</span>
-          <div
-            className="stat-bar"
-            data-amount={amountFour}
-            data-val="4"
-            onClick={this.handleClick}
-          >
+          <div className="stat-bar" onClick={this.handleClick(4)}>
             <div
               className="inner-stat-bar"
-              style={fillFour}
               data-amount={amountFour}
+              style={fillFour}
             ></div>
           </div>
         </div>
         <div className="stat-bar-container">
           <span>3</span>
-          <div
-            className="stat-bar"
-            data-amount={amountThree}
-            data-val="3"
-            onClick={this.handleClick}
-          >
+          <div className="stat-bar" onClick={this.handleClick(3)}>
             <div
               className="inner-stat-bar"
-              style={fillThree}
-              data-val="3"
               data-amount={amountThree}
+              style={fillThree}
             ></div>
           </div>
         </div>
         <div className="stat-bar-container">
           <span>2</span>
-          <div
-            className="stat-bar"
-            data-amount={amountTwo}
-            data-val="2"
-            onClick={this.handleClick}
-          >
+          <div className="stat-bar" onClick={this.handleClick(2)}>
             <div
               className="inner-stat-bar"
-              style={fillTwo}
               data-amount={amountTwo}
+              style={fillTwo}
             ></div>
           </div>
         </div>
         <div className="stat-bar-container">
           <span>1</span>
-          <div
-            className="stat-bar"
-            data-amount={amountOne}
-            data-val="1"
-            onClick={this.handleClick}
-          >
+          <div className="stat-bar" data-val="1" onClick={this.handleClick(1)}>
             <div
               className="inner-stat-bar"
               style={fillOne}

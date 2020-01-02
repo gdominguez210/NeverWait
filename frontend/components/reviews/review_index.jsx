@@ -42,16 +42,16 @@ class ReviewIndex extends React.Component {
 
   sort(arr, type) {
     switch (type) {
-      case "newest":
+      case "Newest":
         arr = arr.sort((a, b) => (a.id >= b.id ? 1 : -1));
         return arr;
-      case "oldest":
+      case "Oldest":
         arr = arr.sort((a, b) => (a.id < b.id ? 1 : -1));
         return arr;
-      case "topRated":
+      case "Top Rated":
         arr = arr.sort((a, b) => (a.total_rating > b.total_rating ? 1 : -1));
         return arr;
-      case "lowestRated":
+      case "Lowest Rated":
         arr = arr.sort((a, b) => (a.total_rating < b.total_rating ? 1 : -1));
         return arr;
       default:
@@ -83,34 +83,18 @@ class ReviewIndex extends React.Component {
   }
 
   sortList() {
-    return this.state.showDropdown ? (
-      <ul>
-        <li onClick={this.handleSort("newest")}>
+    let sortOptions = ["Newest", "Oldest", "Top Rated", "Lowest Rated"];
+    let sortItems = sortOptions.map((option, idx) => {
+      return (
+        <li onClick={this.handleSort(sortOptions[idx])} key={idx}>
           <span className="icon">
             <FontAwesomeIcon icon="circle" />
           </span>
-          Newest
+          {parsedOption}
         </li>
-        <li onClick={this.handleSort("oldest")}>
-          <span className="icon">
-            <FontAwesomeIcon icon="circle" />
-          </span>
-          Oldest
-        </li>
-        <li onClick={this.handleSort("topRated")}>
-          <span className="icon">
-            <FontAwesomeIcon icon="circle" />
-          </span>
-          Top Rated
-        </li>
-        <li onClick={this.handleSort("lowestRated")}>
-          <span className="icon">
-            <FontAwesomeIcon icon="circle" />
-          </span>
-          Lowest Rated
-        </li>
-      </ul>
-    ) : null;
+      );
+    });
+    return this.state.showDropdown ? <ul>{sortItems}</ul> : null;
   }
 
   renderFilters() {

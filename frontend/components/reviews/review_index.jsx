@@ -75,11 +75,9 @@ class ReviewIndex extends React.Component {
   }
 
   toggleDropdown() {
-    if (this.state.showDropdown) {
-      this.setState({ showDropdown: false });
-    } else {
-      this.setState({ showDropdown: true });
-    }
+    this.state.showDropdown
+      ? this.setState({ showDropdown: false })
+      : this.setState({ showDropdown: true });
   }
 
   sortList() {

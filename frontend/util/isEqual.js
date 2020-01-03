@@ -6,7 +6,10 @@ const isEqual = (obj1, obj2) => {
 
   for (let i = 0; i < obj1Props.length; i++) {
     let propName = obj1Props[i];
-    if (typeof obj1[propName] === "object") {
+    if (
+      typeof obj1[propName] === "object" &&
+      typeof obj2[propName] === "object"
+    ) {
       let result = isEqual(obj1[propName], obj2[propName]);
       if (result) {
         continue;

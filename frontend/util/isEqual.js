@@ -16,7 +16,7 @@ const isEqual = (obj1, obj2) => {
     } else {
       if (obj1[propName] !== obj2[propName]) return false;
     }
-    return true;
   }
+  return true;
 };
 export default isEqual;

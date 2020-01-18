@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import RestaurantIndexItem from "../restaurant_index_item";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
@@ -17,8 +17,6 @@ class RestaurantSearchIndex extends React.Component {
     this.state = {
       loading: true
     };
-    this.renderFilters = this.renderFilters.bind(this);
-    this.parseFilterTag = this.parseFilterTag.bind(this);
   }
 
   componentDidMount() {
@@ -56,7 +54,7 @@ class RestaurantSearchIndex extends React.Component {
     }
   }
 
-  parseFilterTag(filter) {
+  parseFilterTag = (filter) => {
     switch (filter.type) {
       case "rating":
         switch (filter.val) {
@@ -106,7 +104,7 @@ class RestaurantSearchIndex extends React.Component {
     }
   }
 
-  renderFilters() {
+  renderFilters = () => {
     if (this.props.filter) {
       let activeFilters = Object.values(this.props.filter);
       let clearAllFilters = this.props.clearAllFilters;

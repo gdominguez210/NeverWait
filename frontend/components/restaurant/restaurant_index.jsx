@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import RestaurantIndexItem from "./restaurant_index_item";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";

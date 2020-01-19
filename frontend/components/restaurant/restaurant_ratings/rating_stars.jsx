@@ -5,9 +5,7 @@ const RestaurantStars = props => {
   let fill = null;
   if (props.type) {
     percentage = (props.type.total_rating * 100.0) / 5;
-    fill = {
-      width: `${percentage}%`
-    };
+    fill = { width: `${percentage}%` };
   }
 
   return (

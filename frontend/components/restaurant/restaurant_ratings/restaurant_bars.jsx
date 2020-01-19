@@ -3,63 +3,31 @@ import React from "react";
 class RestaurantBars extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillUnmount() {
     this.props.clearAllFilters();
   }
-  handleClick(val) {
+  handleClick = (val) => {
     const { filter, receiveFilter, clearAllFilters } = this.props;
-    return () =>
-      Object.values(filter).length > 0
-        ? filter.review.val === val
-          ? clearAllFilters()
-          : receiveFilter(val, "review")
-        : receiveFilter(val, "review");
+    return () => Object.values(filter).length > 0 ? filter.review.val === val ? clearAllFilters() : receiveFilter(val, "review") : receiveFilter(val, "review");
   }
   render() {
-    let [
-      fillFive,
-      fillFour,
-      fillThree,
-      fillTwo,
-      fillOne,
-      amountFive,
-      amountFour,
-      amountThree,
-      amountTwo,
-      amountOne
-    ] = Array(10).fill(null);
+    let [fillFive, fillFour, fillThree, fillTwo, fillOne, amountFive, amountFour, amountThree, amountTwo, amountOne] = Array(10).fill(null);
     const { restaurant } = this.props;
     if (restaurant.star_ratings) {
       const totalReviews = restaurant.total_reviews;
-      const FiveStarsPercent =
-        (restaurant.star_ratings["5"] / totalReviews) * 100.0;
-      const FourStarsPercent =
-        (restaurant.star_ratings["4"] / totalReviews) * 100.0;
-      const ThreeStarsPercent =
-        (restaurant.star_ratings["3"] / totalReviews) * 100.0;
-      const TwoStarsPercent =
-        (restaurant.star_ratings["2"] / totalReviews) * 100.0;
-      const OneStarPercent =
-        (restaurant.star_ratings["1"] / totalReviews) * 100.0;
+      const FiveStarsPercent = (restaurant.star_ratings["5"] / totalReviews) * 100.0;
+      const FourStarsPercent = (restaurant.star_ratings["4"] / totalReviews) * 100.0;
+      const ThreeStarsPercent = (restaurant.star_ratings["3"] / totalReviews) * 100.0;
+      const TwoStarsPercent = (restaurant.star_ratings["2"] / totalReviews) * 100.0;
+      const OneStarPercent = (restaurant.star_ratings["1"] / totalReviews) * 100.0;
 
-      fillFive = {
-        width: `${FiveStarsPercent}%`
-      };
-      fillFour = {
-        width: `${FourStarsPercent}%`
-      };
-      fillThree = {
-        width: `${ThreeStarsPercent}%`
-      };
-      fillTwo = {
-        width: `${TwoStarsPercent}%`
-      };
-      fillOne = {
-        width: `${OneStarPercent}%`
-      };
+      fillFive = { width: `${FiveStarsPercent}%` };
+      fillFour = { width: `${FourStarsPercent}%` };
+      fillThree = { width: `${ThreeStarsPercent}%` };
+      fillTwo = { width: `${TwoStarsPercent}%` };
+      fillOne = { width: `${OneStarPercent}%` };
       amountFive = restaurant.star_ratings["5"];
       amountFour = restaurant.star_ratings["4"];
       amountThree = restaurant.star_ratings["3"];

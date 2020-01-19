@@ -3,15 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withRouter } from "react-router-dom";
 import FindTableForm from "../../reservation/findtable_container";
 import RestaurantMapContainer from "./restaurant_map_container";
-class RestaurantSidebar extends React.Component {
-  // const parameters = restaurant.parameters || {};
-  constructor(props) {
-    super(props);
-    let { restaurant } = this.props;
-  }
 
-  phone() {
-    if (this.props.restaurant.phone) {
+const RestaurantSidebar = props => {
+
+  const phone = () => {
+    if (props.restaurant.phone) {
       return (
         <div className="sidebar-item">
           <div className="sidebar-item-icon">
@@ -19,14 +15,14 @@ class RestaurantSidebar extends React.Component {
           </div>
           <div className="sidebar-item-content">
             <p className="sidebar-item-label">Phone</p>
-            <p>{this.props.restaurant.phone}</p>
+            <p>{props.restaurant.phone}</p>
           </div>
         </div>
       );
     }
   }
-  website() {
-    if (this.props.restaurant.website) {
+  const website = () => {
+    if (props.restaurant.website) {
       return (
         <div className="sidebar-item">
           <div className="sidebar-item-icon">
@@ -34,27 +30,27 @@ class RestaurantSidebar extends React.Component {
           </div>
           <div className="sidebar-item-content">
             <p className="sidebar-item-label">Website</p>
-            <p>{this.props.restaurant.website}</p>
+            <p>{props.restaurant.website}</p>
           </div>
         </div>
       );
     }
   }
-  city() {
-    if (this.props.restaurant.city) {
+  const city = () => {
+    if (props.restaurant.city) {
       <div className="sidebar-item">
         <div className="sidebar-item-icon">
           <FontAwesomeIcon icon="city" />
         </div>
         <div className="sidebar-item-content">
           <p className="sidebar-item-label">Neighborhood</p>
-          <p>{this.props.restaurant.neighborhood}</p>
+          <p>{props.restaurant.neighborhood}</p>
         </div>
       </div>;
     }
   }
-  hoursOfOperation() {
-    if (this.props.restaurant.hours_of_operation) {
+  const hoursOfOperation = () => {
+    if (props.restaurant.hours_of_operation) {
       return (
         <div className="sidebar-item">
           <div className="sidebar-item-icon">
@@ -62,14 +58,14 @@ class RestaurantSidebar extends React.Component {
           </div>
           <div className="sidebar-item-content">
             <p className="sidebar-item-label">Hours of Operation</p>
-            <p>{this.props.restaurant.hours_of_operation}</p>
+            <p>{props.restaurant.hours_of_operation}</p>
           </div>
         </div>
       );
     }
   }
-  cuisines() {
-    if (this.props.restaurant.cuisines) {
+  const cuisines = () => {
+    if (props.restaurant.cuisines) {
       return (
         <div className="sidebar-item">
           <div className="sidebar-item-icon">
@@ -77,14 +73,14 @@ class RestaurantSidebar extends React.Component {
           </div>
           <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Cuisines</p>
-            <p>{this.props.restaurant.cuisines}</p>
+            <p>{props.restaurant.cuisines}</p>
           </div>
         </div>
       );
     }
   }
-  diningStyle() {
-    if (this.props.restaurant.dining_style) {
+  const diningStyle = () => {
+    if (props.restaurant.dining_style) {
       return (
         <div className="sidebar-item">
           <div className="sidebar-item-icon">
@@ -92,14 +88,14 @@ class RestaurantSidebar extends React.Component {
           </div>
           <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Dining Style</p>
-            <p>{this.props.restaurant.dining_style}</p>
+            <p>{props.restaurant.dining_style}</p>
           </div>
         </div>
       );
     }
   }
-  dressCode() {
-    if (this.props.restaurant.dress_code) {
+  const dressCode = () => {
+    if (props.restaurant.dress_code) {
       return (
         <div className="sidebar-item">
           <div className="sidebar-item-icon">
@@ -107,14 +103,14 @@ class RestaurantSidebar extends React.Component {
           </div>
           <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Dress Code</p>
-            <p>{this.props.restaurant.dress_code}</p>
+            <p>{props.restaurant.dress_code}</p>
           </div>
         </div>
       );
     }
   }
-  crossStreet() {
-    if (this.props.restaurant.cross_street) {
+  const crossStreet = () => {
+    if (props.restaurant.cross_street) {
       return (
         <div className="sidebar-item">
           <div className="sidebar-item-icon">
@@ -122,14 +118,14 @@ class RestaurantSidebar extends React.Component {
           </div>
           <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Cross Street</p>
-            <p>{this.props.restaurant.cross_street}</p>
+            <p>{props.restaurant.cross_street}</p>
           </div>
         </div>
       );
     }
   }
-  parkingDetails() {
-    if (this.props.restaurant.parking_details) {
+  const parkingDetails = () => {
+    if (props.restaurant.parking_details) {
       return (
         <div className="sidebar-item">
           <div className="sidebar-item-icon">
@@ -137,14 +133,14 @@ class RestaurantSidebar extends React.Component {
           </div>
           <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Parking Details</p>
-            <p>{this.props.restaurant.parking_details}</p>
+            <p>{props.restaurant.parking_details}</p>
           </div>
         </div>
       );
     }
   }
-  publicTransit() {
-    if (this.props.restaurant.public_transit) {
+  const publicTransit = () => {
+    if (props.restaurant.public_transit) {
       return (
         <div className="sidebar-item">
           <div className="sidebar-item-icon">
@@ -152,14 +148,14 @@ class RestaurantSidebar extends React.Component {
           </div>
           <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Public Transit</p>
-            <p>{this.props.restaurant.public_transit}</p>
+            <p>{props.restaurant.public_transit}</p>
           </div>
         </div>
       );
     }
   }
-  paymentOptions() {
-    if (this.props.restaurant.payment_options) {
+  const paymentOptions = () => {
+    if (props.restaurant.payment_options) {
       return (
         <div className="sidebar-item">
           <div className="sidebar-item-icon">
@@ -167,14 +163,14 @@ class RestaurantSidebar extends React.Component {
           </div>
           <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Payment Options</p>
-            <p>{this.props.restaurant.payment_options}</p>
+            <p>{props.restaurant.payment_options}</p>
           </div>
         </div>
       );
     }
   }
-  executiveChef() {
-    if (this.props.restaurant.executive_chef) {
+  const executiveChef = () => {
+    if (props.restaurant.executive_chef) {
       return (
         <div className="sidebar-item">
           <div className="sidebar-item-icon">
@@ -182,14 +178,14 @@ class RestaurantSidebar extends React.Component {
           </div>
           <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Executive Chef</p>
-            <p>{this.props.restaurant.executive_chef}</p>
+            <p>{props.restaurant.executive_chef}</p>
           </div>
         </div>
       );
     }
   }
-  additional() {
-    if (this.props.restaurant.additional) {
+  const additional = () => {
+    if (props.restaurant.additional) {
       return (
         <div className="sidebar-item">
           <div className="sidebar-item-icon">
@@ -197,34 +193,29 @@ class RestaurantSidebar extends React.Component {
           </div>
           <div className="sidebar-item-content">
             <p className="sidebar-item-label"> Additional</p>
-            <p>{this.props.restaurant.additional}</p>
+            <p>{props.restaurant.additional}</p>
           </div>
         </div>
       );
     }
   }
-
-  render() {
-    return (
-      <>
-        <aside className="restaurant-sidebar">
-          <FindTableForm />
-          {/* <RestaurantMapContainer match={this.props.match} /> */}
-          {this.phone()}
-          {this.website()}
-          {this.city()}
-          {this.hoursOfOperation()}
-          {this.cuisines()}
-          {this.dressCode()}
-          {this.crossStreet()}
-          {this.parkingDetails()}
-          {this.publicTransit()}
-          {this.paymentOptions()}
-          {this.executiveChef()}
-          {this.additional()}
-        </aside>
-      </>
-    );
-  }
+  return (
+    <aside className="restaurant-sidebar">
+      <FindTableForm />
+      {/* <RestaurantMapContainer match={props.match} /> */}
+      {phone()}
+      {website()}
+      {city()}
+      {hoursOfOperation()}
+      {cuisines()}
+      {dressCode()}
+      {crossStreet()}
+      {parkingDetails()}
+      {publicTransit()}
+      {paymentOptions()}
+      {executiveChef()}
+      {additional()}
+    </aside>
+  );
 }
 export default withRouter(RestaurantSidebar);

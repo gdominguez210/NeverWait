@@ -33,11 +33,13 @@ const RestaurantIndexItem = props => {
         } left`;
     }
     return (
-      <div className="booking-header">
-        {booked()}
-        <p>{mes}</p>
-      </div>
-      <div className="available-times">{times}</div>
+      <>
+        <div className="booking-header">
+          {booked()}
+          <p>{mes}</p>
+        </div>
+        <div className="available-times">{times}</div>
+      </>
     )
   };
   const booked = () => {

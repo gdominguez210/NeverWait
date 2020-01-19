@@ -60,7 +60,7 @@ const RestaurantFeaturedItem = props => {
           <h3 className="restaurant-name">{restaurant.name}</h3>
         </Link>
         <div className="restaurant-ratings">
-          <RestaurantStars restaurant={props.restaurant} />
+          <RestaurantStars type={props.restaurant} />
           {restaurant.total_reviews}
           {restaurant.total_reviews === 1 ? " review " : " reviews "}
         </div>

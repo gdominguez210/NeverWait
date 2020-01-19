@@ -17,7 +17,7 @@ const RestaurantHeader = props => {
       <h1 id="overview">{props.restaurant.name}</h1>
       <div className="subheader">
         <div className="stars-container">
-          <RestaurantStars restaurant={props.restaurant} />
+          <RestaurantStars type={props.restaurant} />
           <p>{props.restaurant.total_rating}</p>
         </div>
         <p>{props.restaurant.total_reviews} {total}</p>

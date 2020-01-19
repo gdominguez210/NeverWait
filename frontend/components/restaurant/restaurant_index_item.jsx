@@ -106,7 +106,7 @@ const RestaurantIndexItem = props => {
                 <h3 className="restaurant-name">{restaurant.name}</h3>
               </Link>
               <div className="restaurant-ratings">
-                <RestaurantStars restaurant={restaurant} />
+                <RestaurantStars type={restaurant} />
                 {restaurant.total_reviews > 0 ? restaurant.total_reviews : 0}
                 {restaurant.total_reviews === 1 ? " review " : " reviews "}
               </div>

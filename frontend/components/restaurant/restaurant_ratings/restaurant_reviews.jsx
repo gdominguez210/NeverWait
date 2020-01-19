@@ -9,8 +9,8 @@ const RestaurantReviews = props => {
     props.restaurant.total_reviews === 1 ? (
       <h2>What {props.restaurant.total_reviews} Person Is Saying</h2>
     ) : (
-      <h2>What {props.restaurant.total_reviews} People Are Saying</h2>
-    );
+        <h2>What {props.restaurant.total_reviews} People Are Saying</h2>
+      );
   const noise_level = () => {
     if (props.restaurant.noise_level !== "") {
       if (props.restaurant.noise_level <= 2) {
@@ -41,7 +41,7 @@ const RestaurantReviews = props => {
               restaurant
             </p>
             <div className="stars-container">
-              <RestaurantStars restaurant={props.restaurant} />
+              <RestaurantStars type={props.restaurant} />
               <p>{`${props.restaurant.total_rating} based on recent ratings`}</p>
             </div>
             <div className="restaurant-ratings-breakdown">

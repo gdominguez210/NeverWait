@@ -39,7 +39,7 @@ const ReviewIndexItem = props => {
 
   let numReviews = author.total_reviews;
   numReviews === undefined ? (numReviews = 1) : numReviews;
-   ;
+  ;
   return (
     <>
       <CSSTransition in={true} appear={true} timeout={300} classNames="fade">
@@ -59,7 +59,7 @@ const ReviewIndexItem = props => {
             <div className="review-details">
               <div className="review-ratings">
                 <div className="review-stars">
-                  <RestaurantStars review={review} />
+                  <RestaurantStars type={review} />
                 </div>
                 <div className="ratings-container">
                   <div className="rating-container">

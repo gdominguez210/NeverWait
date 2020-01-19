@@ -31,16 +31,17 @@ const RestaurantIndexItem = props => {
         mes = `You're in luck! We still have ${times.length} ${
         times.length === 1 ? "timeslot" : "timeslots"
         } left`;
+
+      return (
+        <>
+          <div className="booking-header">
+            {booked()}
+            <p>{mes}</p>
+          </div>
+          <div className="available-times">{times}</div>
+        </>
+      )
     }
-    return (
-      <>
-        <div className="booking-header">
-          {booked()}
-          <p>{mes}</p>
-        </div>
-        <div className="available-times">{times}</div>
-      </>
-    )
   };
   const booked = () => {
     return (

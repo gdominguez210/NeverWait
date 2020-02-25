@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSTransition } from "react-transition-group";
 import renderLoader from "../../loader/loader";
 import LazyLoad from "react-lazyload";
+import { GalleryItem } from './restaurant_gallery_item';
 
 class RestaurantGallery extends React.Component {
   constructor(props) {
@@ -26,11 +27,7 @@ class RestaurantGallery extends React.Component {
     let imagesList = null;
     if (this.is_Mounted && this.props.restaurant.photoUrls) {
       imagesList = this.props.restaurant.photoUrls.map((url, idx) => (
-        <div className="gallery-item" key={`gallery-${idx}`}>
-          <LazyLoad height={281} throttle={200}>
-            <img src={`${url}`} width="242" height="281" />
-          </LazyLoad>
-        </div>
+        <GalleryItem url={url} key={idx} />
       ));
     }
     return (
